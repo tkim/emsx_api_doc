@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Buy-Side Request/Response Service &mdash; EMSX API Programmers Guide 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="EMSX API Programmers Guide 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Programmable EMSX API" href="index.html"/>
+        <link rel="next" title="Assign Trader Request" href="assignTrader.html"/>
+        <link rel="prev" title="Session Object" href="session.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> EMSX API Programmers Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable EMSX API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="session.html">Session Object</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Buy-Side Request/Response Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-request-response-service">Description of Request/Response Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cfd-odd-lot-flag">CFD &amp; Odd Lot Flag</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="assignTrader.html">Assign Trader Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrder.html">Create an Order Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrderAndRouteEx.html">Create Order and Route Extended Request</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../excel/index.html">Excel COM / Add-In</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">EMSX API Programmers Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Programmable EMSX API</a> &raquo;</li>
+      
+    <li>Buy-Side Request/Response Service</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/programmable/requestResponse.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="buy-side-request-response-service">
+<h1>Buy-Side Request/Response Service<a class="headerlink" href="#buy-side-request-response-service" title="Permalink to this headline">¶</a></h1>
+<p>The EMSX API allows developers to use the Request/Response services for order and route creation, modification, queries related to orders and routes (placements) as well as EMSX Team details. Depending on the type of action required, the application programmer must create a specific request, populate it with required parameters and send that request to the EMSX API service, which provides the response. Communication with the request/response service requires the following steps:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Create a session (if session does not yet exist).</li>
+<li>Connect session to <code class="docutils literal"><span class="pre">//blp/emapisvc_beta</span></code> or <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> service and start it.</li>
+<li>Fetch a service object from the session representing emapisvc.</li>
+<li>Use the service object from above to create a Request object of the desired type</li>
+<li>Send request object via sendRequest method of session object, pass object of type EventQueue to the sendRequest.</li>
+<li>Loop through the EventQueue object until event of type <code class="docutils literal"><span class="pre">Event::RESPONSE</span></code> is read.</li>
+</ol>
+</div></blockquote>
+<p>These are initialized in the constructor as below and are then available for the life of the application for submission of various requests.</p>
+<div class="section" id="description-of-request-response-service">
+<h2>Description of Request/Response Service<a class="headerlink" href="#description-of-request-response-service" title="Permalink to this headline">¶</a></h2>
+<p>EMSX API supports the following Request/Response services:-</p>
+<p><em>Please note, the descriptions to the legacy request/response services are omitted from the description section.</em></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Request Name</th>
+<th class="head">Action</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>AssignTrader</td>
+<td>Assign an order to another UUID</td>
+</tr>
+<tr class="row-odd"><td>CancelRouteEX</td>
+<td>Cancel outstanding routes (placements)</td>
+</tr>
+<tr class="row-even"><td>CreateOrder</td>
+<td>Create an order or stage an order into EMSX&lt;GO&gt;</td>
+</tr>
+<tr class="row-odd"><td>CreateOrderAndRouteEx</td>
+<td>Create a new order and route in a single request.</td>
+</tr>
+<tr class="row-even"><td>CreateOrderAndRouteManually</td>
+<td>Create the order and notify EMSX this is routed.</td>
+</tr>
+<tr class="row-odd"><td>DeleteOrder</td>
+<td>Delete an existing order in EMSX&lt;GO&gt;</td>
+</tr>
+<tr class="row-even"><td>GetAllFieldMetaData</td>
+<td>Get all field meta data in a response message</td>
+</tr>
+<tr class="row-odd"><td>GetAssetClass</td>
+<td>Get all asset class data in a response message</td>
+</tr>
+<tr class="row-even"><td>GetBrokers</td>
+<td>Get all broker data in a response message</td>
+</tr>
+<tr class="row-odd"><td>GetBrokerStrategies</td>
+<td>Get all broker strategy data in a response message</td>
+</tr>
+<tr class="row-even"><td>GetBrokerStrategiesWithAssetClass</td>
+<td>Get all broker strategy information and asset class data</td>
+</tr>
+<tr class="row-odd"><td>GetBrokerStrategyInfo</td>
+<td>Get all broker strategy info data in a response message</td>
+</tr>
+<tr class="row-even"><td>GetBrokerStrategyInfoWithAssetClass</td>
+<td>Get all broker strategy info and asset class data</td>
+</tr>
+<tr class="row-odd"><td>GetBrokerWithAssetClass</td>
+<td>Get all broker data with asset class in a response message</td>
+</tr>
+<tr class="row-even"><td>GetFieldMetaData</td>
+<td>Get field meta data in a reponse message</td>
+</tr>
+<tr class="row-odd"><td>GetTeams</td>
+<td>Get team data in a response message</td>
+</tr>
+<tr class="row-even"><td>GroupRouteEx</td>
+<td>Submit the entire list as a single route to a basket algorithm</td>
+</tr>
+<tr class="row-odd"><td>ModifyOrder</td>
+<td>Modify parent order</td>
+</tr>
+<tr class="row-even"><td>ModifyRouteEx</td>
+<td>Modify child route</td>
+</tr>
+<tr class="row-odd"><td>RouteEx</td>
+<td>Route existing order</td>
+</tr>
+<tr class="row-even"><td>RouteManuallyEx</td>
+<td>Route manually and notify EMSX that it is routed.</td>
+</tr>
+<tr class="row-odd"><td>SellSideAck</td>
+<td>Request to acknowlede an order on EMSX to EMSX setting</td>
+</tr>
+<tr class="row-even"><td>SellSideReject</td>
+<td>Request to reject an order on EMSX to EMSX setting</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code> can be used for both strategy and non-strategy broker destinations.</p>
+<p><code class="docutils literal"><span class="pre">CreateOrderAndRouteManually</span></code> is generally used for phone orders to brokers, where the actual placement is outside of EMSX&lt;GO&gt;.</p>
+<p><code class="docutils literal"><span class="pre">RouteEx</span></code> can be used for both strategy and non-strategy broker destinations.</p>
+<p><code class="docutils literal"><span class="pre">RouteManuallyEx</span></code> is generally used for phone orders to manually enter back the execution to EMSX&lt;GO&gt;.</p>
+<p><code class="docutils literal"><span class="pre">SellSideAck</span></code> is used for EMSX to EMSX or E2E settings where sell-side EMSX&lt;GO&gt; is used to receive order from buy-side EMSX.</p>
+<p class="last"><code class="docutils literal"><span class="pre">SellSideReject</span></code> is used for EMSX to EMSX or E2E settings where sell-side EMSX&lt;GO&gt; is used to receive order from buy-side EMSX.</p>
+</div>
+</div>
+<div class="section" id="cfd-odd-lot-flag">
+<h2>CFD &amp; Odd Lot Flag<a class="headerlink" href="#cfd-odd-lot-flag" title="Permalink to this headline">¶</a></h2>
+<p>This is a feature that indicates CFD orders or to flag an odd lot in EMSX API.</p>
+<p><code class="docutils literal"><span class="pre">EMSX_CFD_FLAG</span></code>  is used to flag a particular order as CFD</p>
+<blockquote>
+<div><ul class="simple">
+<li>0 = not flagged</li>
+<li>1 = flagged</li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">EMSX_ODD_LOT_FLAG</span></code>  is an odd lot is a quantity of stock that is less than 100 shares. A deal involving 100 shares or more is considered a round-lot transactions.</p>
+<blockquote>
+<div><ul class="simple">
+<li>0 = not an odd lot / it won&#8217;t fill odd lots</li>
+<li>1 = odd lot</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="assignTrader.html" class="btn btn-neutral float-right" title="Assign Trader Request" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="session.html" class="btn btn-neutral" title="Session Object" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Terrence C. Kim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

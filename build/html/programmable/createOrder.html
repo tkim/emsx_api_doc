@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Create an Order Request &mdash; EMSX API Programmers Guide 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="EMSX API Programmers Guide 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Programmable EMSX API" href="index.html"/>
+        <link rel="next" title="Create Order and Route Extended Request" href="createOrderAndRouteEx.html"/>
+        <link rel="prev" title="Assign Trader Request" href="assignTrader.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> EMSX API Programmers Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable EMSX API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="session.html">Session Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponse.html">Buy-Side Request/Response Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assignTrader.html">Assign Trader Request</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Create an Order Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrderAndRouteEx.html">Create Order and Route Extended Request</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../excel/index.html">Excel COM / Add-In</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">EMSX API Programmers Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Programmable EMSX API</a> &raquo;</li>
+      
+    <li>Create an Order Request</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/programmable/createOrder.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="create-an-order-request">
+<h1>Create an Order Request<a class="headerlink" href="#create-an-order-request" title="Permalink to this headline">¶</a></h1>
+<p>Creating an order requires the user to create a request from the service object of type CreateOrder and fill in the required fields before submitting the request.</p>
+<p>If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is also true for custom Time in Force fields. Any non-standard TIF will also be restricted from staging unless the broker enables the broker code for EMSX API.</p>
+<p>This is the python <code class="docutils literal"><span class="pre">code-block</span></code> directive <strong>and</strong> specified</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># CreateOrder.py</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">blpapi</span>
+
+
+<span class="n">SESSION_STARTED</span>         <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionStarted&quot;</span><span class="p">)</span>
+<span class="n">SESSION_STARTUP_FAILURE</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionStartupFailure&quot;</span><span class="p">)</span>
+<span class="n">SERVICE_OPENED</span>          <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ServiceOpened&quot;</span><span class="p">)</span>
+<span class="n">SERVICE_OPEN_FAILURE</span>    <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ServiceOpenFailure&quot;</span><span class="p">)</span>
+<span class="n">ERROR_INFO</span>              <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ErrorInfo&quot;</span><span class="p">)</span>
+<span class="n">CREATE_ORDER</span>            <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;CreateOrder&quot;</span><span class="p">)</span>
+
+<span class="n">d_service</span><span class="o">=</span><span class="s2">&quot;//blp/emapisvc_beta&quot;</span>
+<span class="n">d_host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span>
+<span class="n">d_port</span><span class="o">=</span><span class="mi">8194</span>
+<span class="n">bEnd</span><span class="o">=</span><span class="bp">False</span>
+
+<span class="k">class</span> <span class="nc">SessionEventHandler</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="nf">processEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">eventType</span><span class="p">()</span> <span class="o">==</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Event</span><span class="o">.</span><span class="n">SESSION_STATUS</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">processSessionStatusEvent</span><span class="p">(</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">eventType</span><span class="p">()</span> <span class="o">==</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Event</span><span class="o">.</span><span class="n">SERVICE_STATUS</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">processServiceStatusEvent</span><span class="p">(</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">eventType</span><span class="p">()</span> <span class="o">==</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Event</span><span class="o">.</span><span class="n">RESPONSE</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">processResponseEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">processMiscEvents</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Exception:  </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="o">.</span><span class="n">description</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+
+    <span class="k">def</span> <span class="nf">processSessionStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;Processing SESSION_STATUS event&quot;</span>
+
+        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SESSION_STARTED</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;Session started...&quot;</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">openServiceAsync</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SESSION_STARTUP_FAILURE</span><span class="p">:</span>
+                <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Session startup failed&quot;</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span> <span class="n">msg</span>
+
+
+    <span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
+
+        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPENED</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;Service opened...&quot;</span>
+
+                <span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
+
+                <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;CreateOrder&quot;</span><span class="p">)</span>
+
+                <span class="c1"># The fields below are mandatory</span>
+                <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_TICKER&quot;</span><span class="p">,</span> <span class="s2">&quot;IBM US Equity&quot;</span><span class="p">)</span>
+                <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_AMOUNT&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+                <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_ORDER_TYPE&quot;</span><span class="p">,</span> <span class="s2">&quot;MKT&quot;</span><span class="p">)</span>
+                <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_TIF&quot;</span><span class="p">,</span> <span class="s2">&quot;DAY&quot;</span><span class="p">)</span>
+                <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_HAND_INSTRUCTION&quot;</span><span class="p">,</span> <span class="s2">&quot;ANY&quot;</span><span class="p">)</span>
+                <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_SIDE&quot;</span><span class="p">,</span> <span class="s2">&quot;BUY&quot;</span><span class="p">)</span>
+
+                <span class="c1"># The fields below are optional</span>
+                <span class="c1">#request.set(&quot;EMSX_ACCOUNT&quot;,&quot;TestAccount&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_BASKET_NAME&quot;, &quot;HedgingBasket&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_BROKER&quot;, &quot;BMTB&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_CFD_FLAG&quot;, &quot;1&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_CLEARING_ACCOUNT&quot;, &quot;ClrAccName&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_CLEARING_FIRM&quot;, &quot;FirmName&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_CUSTOM_NOTE1&quot;, &quot;Note1&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_CUSTOM_NOTE2&quot;, &quot;Note2&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_CUSTOM_NOTE3&quot;, &quot;Note3&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_CUSTOM_NOTE4&quot;, &quot;Note4&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_CUSTOM_NOTE5&quot;, &quot;Note5&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_EXCHANGE_DESTINATION&quot;, &quot;ExchDest&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_EXEC_INSTRUCTIONS&quot;, &quot;AnyInst&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_GET_WARNINGS&quot;, &quot;0&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_GTD_DATE&quot;, &quot;20170105&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_INVESTOR_ID&quot;, &quot;InvID&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_LIMIT_PRICE&quot;, 123.45)</span>
+                <span class="c1">#request.set(&quot;EMSX_LOCATE_BROKER&quot;, &quot;BMTB&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_LOCATE_ID&quot;, &quot;SomeID&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_LOCATE_REQ&quot;, &quot;Y&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_NOTES&quot;, &quot;Some notes&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_ODD_LOT&quot;, &quot;0&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_ORDER_ORIGIN&quot;, &quot;&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_ORDER_REF_ID&quot;, &quot;UniqueID&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_P_A&quot;, &quot;P&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_RELEASE_TIME&quot;, 34341)</span>
+                <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1001)</span>
+                <span class="c1">#request.set(&quot;EMSX_SETTLE_CURRENCY&quot;, &quot;USD&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_SETTLE_DATE&quot;, 20170106)</span>
+                <span class="c1">#request.set(&quot;EMSX_SETTLE_TYPE&quot;, &quot;T+2&quot;)</span>
+                <span class="c1">#request.set(&quot;EMSX_STOP_PRICE&quot;, 123.5)</span>
+
+                <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
+
+        <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
+        <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
+
+    <span class="k">def</span> <span class="nf">processResponseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;Processing RESPONSE event&quot;</span>
+
+        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+
+            <span class="k">print</span> <span class="s2">&quot;MESSAGE: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">msg</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+            <span class="k">print</span> <span class="s2">&quot;CORRELATION ID: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">msg</span><span class="o">.</span><span class="n">correlationIds</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+
+
+            <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">correlationIds</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>
+                <span class="k">print</span> <span class="s2">&quot;MESSAGE TYPE: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span>
+
+                <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">ERROR_INFO</span><span class="p">:</span>
+                    <span class="n">errorCode</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">getElementAsInteger</span><span class="p">(</span><span class="s2">&quot;ERROR_CODE&quot;</span><span class="p">)</span>
+                    <span class="n">errorMessage</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">getElementAsString</span><span class="p">(</span><span class="s2">&quot;ERROR_MESSAGE&quot;</span><span class="p">)</span>
+                    <span class="k">print</span> <span class="s2">&quot;ERROR CODE: </span><span class="si">%d</span><span class="se">\t</span><span class="s2">ERROR MESSAGE: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">errorCode</span><span class="p">,</span><span class="n">errorMessage</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">CREATE_ORDER</span><span class="p">:</span>
+                    <span class="n">emsx_sequence</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">getElementAsInteger</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">)</span>
+                    <span class="n">message</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">getElementAsString</span><span class="p">(</span><span class="s2">&quot;MESSAGE&quot;</span><span class="p">)</span>
+                    <span class="k">print</span> <span class="s2">&quot;EMSX_SEQUENCE: </span><span class="si">%d</span><span class="se">\t</span><span class="s2">MESSAGE: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">emsx_sequence</span><span class="p">,</span><span class="n">message</span><span class="p">)</span>
+
+                <span class="k">global</span> <span class="n">bEnd</span>
+                <span class="n">bEnd</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">processMiscEvents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+        <span class="k">print</span> <span class="s2">&quot;Processing &quot;</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="n">eventType</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; event&quot;</span>
+
+        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+
+            <span class="k">print</span> <span class="s2">&quot;MESSAGE: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">tostring</span><span class="p">())</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="n">sessionOptions</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">SessionOptions</span><span class="p">()</span>
+    <span class="n">sessionOptions</span><span class="o">.</span><span class="n">setServerHost</span><span class="p">(</span><span class="n">d_host</span><span class="p">)</span>
+    <span class="n">sessionOptions</span><span class="o">.</span><span class="n">setServerPort</span><span class="p">(</span><span class="n">d_port</span><span class="p">)</span>
+
+    <span class="k">print</span> <span class="s2">&quot;Connecting to </span><span class="si">%s</span><span class="s2">:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">d_host</span><span class="p">,</span><span class="n">d_port</span><span class="p">)</span>
+
+    <span class="n">eventHandler</span> <span class="o">=</span> <span class="n">SessionEventHandler</span><span class="p">()</span>
+
+    <span class="n">session</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">sessionOptions</span><span class="p">,</span> <span class="n">eventHandler</span><span class="o">.</span><span class="n">processEvent</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">session</span><span class="o">.</span><span class="n">startAsync</span><span class="p">():</span>
+        <span class="k">print</span> <span class="s2">&quot;Failed to start session.&quot;</span>
+        <span class="k">return</span>
+
+    <span class="k">global</span> <span class="n">bEnd</span>
+    <span class="k">while</span> <span class="n">bEnd</span><span class="o">==</span><span class="bp">False</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="n">session</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;Bloomberg - EMSX API Example - CreateOrder&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">main</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;Ctrl+C pressed. Stopping...&quot;</span>
+</pre></div>
+</div>
+<p>The mandatory fields for the CreateOrder requests are the following:</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="createOrderAndRouteEx.html" class="btn btn-neutral float-right" title="Create Order and Route Extended Request" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="assignTrader.html" class="btn btn-neutral" title="Assign Trader Request" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Terrence C. Kim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
