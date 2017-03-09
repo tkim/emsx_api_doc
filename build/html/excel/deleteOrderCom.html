@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Delete Order Request (COM) &mdash; EMSX API Programmers Guide 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="EMSX API Programmers Guide 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Excel COM" href="index.html"/>
+        <link rel="next" title="Get All Field Meta Data Request (COM)" href="getAllFieldMetaDataCom.html"/>
+        <link rel="prev" title="Create Order And Route Manually Extended Request (COM)" href="createOrderAndRouteManuallyExCom.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> EMSX API Programmers Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmable/index.html">Programmable EMSX API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Excel COM</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="excelCom.html">Excel COM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assignTraderCom.html">Assign Trader Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cancelRouteCom.html">Cancel Route Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrderCom.html">Create Order Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrderAndRouteExCom.html">Create Order And Route Extended Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrderAndRouteManuallyExCom.html">Create Order And Route Manually Extended Request (COM)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Delete Order Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getAllFieldMetaDataCom.html">Get All Field Meta Data Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getBrokerStrategiesWithAssetClassCom.html">Get Broker Strategies With Asset Class Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getBrokerStrategyInfoWithAssetClassCom.html">Get Broker Strategy Infor With Asset Class Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getBrokersWithAssetClassCom.html">Get Brokers With Asset Class Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getFieldMetaDataCom.html">Get Field Meta Data Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTeamsCom.html">Get Teams Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupRouteCom.html">Group Route Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routeExCom.html">Route Extended Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routeManuallyCom.html">Route Manually Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxHistoryCom.html">EMSX History Service (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxSubscriptionCom.html">EMSX Subscription (COM)</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">EMSX API Programmers Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Excel COM</a> &raquo;</li>
+      
+    <li>Delete Order Request (COM)</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/excel/deleteOrderCom.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="delete-order-request-com">
+<h1>Delete Order Request (COM)<a class="headerlink" href="#delete-order-request-com" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-vb.net"><div class="highlight"><pre><span></span><span class="k">Option</span> <span class="n">Explicit</span>
+
+<span class="k">Private</span> <span class="k">WithEvents</span> <span class="n">m_BBG_EMSX</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Session</span>
+<span class="k">Public</span> <span class="n">running</span> <span class="ow">As</span> <span class="kt">Boolean</span>
+<span class="k">Private</span> <span class="n">svc</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">service</span>
+<span class="k">Private</span> <span class="n">emsxService</span> <span class="ow">As</span> <span class="kt">String</span>
+<span class="k">Private</span> <span class="n">requestID</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">CorrelationId</span>
+
+<span class="k">Private</span> <span class="k">Sub</span> <span class="nf">Class_Initialize</span><span class="p">()</span>
+
+    <span class="n">log</span> <span class="s">&quot;Bloomberg - EMSX API Example - DeleteOrder&quot;</span>
+
+    <span class="n">emsxService</span> <span class="o">=</span> <span class="s">&quot;//blp/emapisvc_beta&quot;</span>
+
+    <span class="k">Set</span> <span class="n">m_BBG_EMSX</span> <span class="o">=</span> <span class="k">New</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Session</span>
+
+    <span class="n">running</span> <span class="o">=</span> <span class="k">True</span>
+
+    <span class="n">m_BBG_EMSX</span><span class="p">.</span><span class="n">QueueEvents</span> <span class="o">=</span> <span class="k">True</span>
+    <span class="n">m_BBG_EMSX</span><span class="p">.</span><span class="n">Start</span>
+
+
+<span class="k">End</span> <span class="k">Sub</span>
+
+<span class="k">Private</span> <span class="k">Sub</span> <span class="nf">Class_Terminate</span><span class="p">()</span>
+    <span class="k">Set</span> <span class="n">m_BBG_EMSX</span> <span class="o">=</span> <span class="k">Nothing</span>
+<span class="k">End</span> <span class="k">Sub</span>
+
+<span class="k">Private</span> <span class="k">Sub</span> <span class="nf">m_BBG_EMSX_ProcessEvent</span><span class="p">(</span><span class="k">ByVal</span> <span class="n">obj</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">)</span>
+
+    <span class="k">On</span> <span class="k">Error</span> <span class="k">GoTo</span> <span class="n">errHandler</span>
+
+    <span class="k">Dim</span> <span class="n">eventObj</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Event</span>
+
+     <span class="c">&#39;   Assign the returned data to a Bloomberg type event</span>
+    <span class="k">Set</span> <span class="n">eventObj</span> <span class="o">=</span> <span class="n">obj</span>
+
+    <span class="k">If</span> <span class="n">Application</span><span class="p">.</span><span class="n">Ready</span> <span class="k">Then</span>
+
+        <span class="k">Select</span> <span class="k">Case</span> <span class="n">eventObj</span><span class="p">.</span><span class="n">EventType</span>
+
+            <span class="k">Case</span> <span class="n">SESSION_STATUS</span>
+                <span class="n">processSessionEvent</span> <span class="n">eventObj</span>
+
+            <span class="k">Case</span> <span class="n">BLPSERVICE_STATUS</span>
+                <span class="n">processServiceEvent</span> <span class="n">eventObj</span>
+
+            <span class="k">Case</span> <span class="n">RESPONSE</span>
+                <span class="n">processResponseEvent</span> <span class="n">eventObj</span>
+
+        <span class="k">End</span> <span class="k">Select</span>
+
+    <span class="k">End</span> <span class="k">If</span>
+
+    <span class="k">Exit</span> <span class="k">Sub</span>
+
+<span class="nf">errHandler</span><span class="p">:</span>
+    <span class="k">Dim</span> <span class="n">errmsg</span> <span class="ow">As</span> <span class="kt">Variant</span>
+    <span class="n">errmsg</span> <span class="o">=</span> <span class="n">Err</span><span class="p">.</span><span class="n">Description</span>
+    <span class="n">log</span> <span class="p">(</span><span class="n">errmsg</span><span class="p">)</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="k">False</span>
+
+<span class="k">End</span> <span class="k">Sub</span>
+
+
+<span class="k">Private</span> <span class="k">Sub</span> <span class="nf">processSessionEvent</span><span class="p">(</span><span class="n">evt</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Event</span><span class="p">)</span>
+
+    <span class="n">log</span> <span class="s">&quot;Processing SESSION_STATUS event&quot;</span>
+
+    <span class="k">Dim</span> <span class="n">it</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">MessageIterator</span>
+
+    <span class="k">Set</span> <span class="n">it</span> <span class="o">=</span> <span class="n">evt</span><span class="p">.</span><span class="n">CreateMessageIterator</span><span class="p">()</span>
+
+    <span class="c">&#39; Loop while we have messages remaining</span>
+    <span class="k">Do</span> <span class="k">While</span> <span class="n">it</span><span class="p">.</span><span class="n">Next</span><span class="p">()</span>
+
+        <span class="k">Dim</span> <span class="n">msg</span> <span class="ow">As</span> <span class="n">Message</span>
+
+        <span class="c">&#39;   Pick up message</span>
+        <span class="k">Set</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">Message</span>
+
+        <span class="n">log</span> <span class="s">&quot;MessageType: &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span>
+
+        <span class="k">If</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span> <span class="o">=</span> <span class="s">&quot;SessionStarted&quot;</span> <span class="k">Then</span>
+            <span class="n">log</span> <span class="s">&quot;Session started...&quot;</span>
+            <span class="n">m_BBG_EMSX</span><span class="p">.</span><span class="n">OpenService</span> <span class="n">emsxService</span>
+        <span class="k">ElseIf</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span> <span class="o">=</span> <span class="s">&quot;SessionStartupFailure&quot;</span> <span class="k">Then</span>
+            <span class="n">log</span> <span class="s">&quot;Error: Session startup failed&quot;</span>
+            <span class="n">running</span> <span class="o">=</span> <span class="k">False</span>
+        <span class="k">End</span> <span class="k">If</span>
+
+    <span class="k">Loop</span>
+
+<span class="k">End</span> <span class="k">Sub</span>
+
+<span class="k">Private</span> <span class="k">Sub</span> <span class="nf">processServiceEvent</span><span class="p">(</span><span class="n">evt</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Event</span><span class="p">)</span>
+
+    <span class="k">Dim</span> <span class="n">req</span> <span class="ow">As</span> <span class="n">REQUEST</span>
+    <span class="k">Dim</span> <span class="n">service</span> <span class="ow">As</span> <span class="n">service</span>
+
+    <span class="k">Dim</span> <span class="n">it</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">MessageIterator</span>
+
+    <span class="k">On</span> <span class="k">Error</span> <span class="k">GoTo</span> <span class="n">failed</span>
+
+    <span class="n">log</span> <span class="s">&quot;Processing SERVICE_STATUS event&quot;</span>
+
+    <span class="k">Set</span> <span class="n">it</span> <span class="o">=</span> <span class="n">evt</span><span class="p">.</span><span class="n">CreateMessageIterator</span><span class="p">()</span>
+
+    <span class="c">&#39; Loop while we have messages remaining</span>
+    <span class="k">Do</span> <span class="k">While</span> <span class="n">it</span><span class="p">.</span><span class="n">Next</span><span class="p">()</span>
+
+        <span class="k">Dim</span> <span class="n">msg</span> <span class="ow">As</span> <span class="n">Message</span>
+
+        <span class="c">&#39;   Pick up message</span>
+        <span class="k">Set</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">Message</span>
+
+        <span class="n">log</span> <span class="s">&quot;MessageType: &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span>
+
+        <span class="k">If</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span> <span class="o">=</span> <span class="s">&quot;ServiceOpened&quot;</span> <span class="k">Then</span>
+
+            <span class="c">&#39; Get the service</span>
+            <span class="k">Set</span> <span class="n">service</span> <span class="o">=</span> <span class="n">m_BBG_EMSX</span><span class="p">.</span><span class="n">GetService</span><span class="p">(</span><span class="n">emsxService</span><span class="p">)</span>
+
+            <span class="c">&#39;First, create our request object</span>
+            <span class="k">Set</span> <span class="n">req</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="n">CreateRequest</span><span class="p">(</span><span class="s">&quot;DeleteOrder&quot;</span><span class="p">)</span>
+
+            <span class="c">&#39;req.Set &quot;EMSX_REQUEST_SEQ&quot;, 1001</span>
+
+            <span class="n">req</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;EMSX_SEQUENCE&quot;</span><span class="p">).</span><span class="n">AppendValue</span> <span class="mi">3741181</span>
+            <span class="n">req</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;EMSX_SEQUENCE&quot;</span><span class="p">).</span><span class="n">AppendValue</span> <span class="mi">3741182</span>
+
+            <span class="n">log</span> <span class="s">&quot;Request: &quot;</span> <span class="o">&amp;</span> <span class="n">req</span><span class="p">.</span><span class="n">Print</span>
+
+            <span class="c">&#39; Send the request</span>
+            <span class="k">Set</span> <span class="n">requestID</span> <span class="o">=</span> <span class="n">m_BBG_EMSX</span><span class="p">.</span><span class="n">SendRequest</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+
+        <span class="k">ElseIf</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span> <span class="o">=</span> <span class="s">&quot;ServiceOpenFailure&quot;</span> <span class="k">Then</span>
+
+            <span class="n">log</span> <span class="s">&quot;Error: Service failed to open&quot;</span>
+            <span class="n">running</span> <span class="o">=</span> <span class="k">False</span>
+
+        <span class="k">End</span> <span class="k">If</span>
+
+    <span class="k">Loop</span>
+
+    <span class="k">Exit</span> <span class="k">Sub</span>
+
+<span class="nf">failed</span><span class="p">:</span>
+
+    <span class="n">log</span> <span class="s">&quot;Failed to send the request: &quot;</span> <span class="o">+</span> <span class="n">Err</span><span class="p">.</span><span class="n">Description</span>
+
+    <span class="n">running</span> <span class="o">=</span> <span class="k">False</span>
+    <span class="k">Exit</span> <span class="k">Sub</span>
+
+<span class="nf">End</span> <span class="k">Sub</span>
+
+<span class="nf">Private</span> <span class="k">Sub</span> <span class="nf">processResponseEvent</span><span class="p">(</span><span class="n">evt</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Event</span><span class="p">)</span>
+
+    <span class="n">log</span> <span class="s">&quot;Processing RESPONSE event&quot;</span>
+
+    <span class="k">Dim</span> <span class="n">it</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">MessageIterator</span>
+    <span class="k">Dim</span> <span class="n">i</span> <span class="ow">As</span> <span class="kt">Integer</span>
+    <span class="k">Dim</span> <span class="n">errorCode</span> <span class="ow">As</span> <span class="kt">Long</span>
+    <span class="k">Dim</span> <span class="n">errorMessage</span> <span class="ow">As</span> <span class="kt">String</span>
+
+    <span class="k">Set</span> <span class="n">it</span> <span class="o">=</span> <span class="n">evt</span><span class="p">.</span><span class="n">CreateMessageIterator</span><span class="p">()</span>
+
+    <span class="c">&#39; Loop while we have messages remaining</span>
+    <span class="k">Do</span> <span class="k">While</span> <span class="n">it</span><span class="p">.</span><span class="n">Next</span><span class="p">()</span>
+
+        <span class="k">Dim</span> <span class="n">msg</span> <span class="ow">As</span> <span class="n">Message</span>
+
+        <span class="c">&#39;   Pick up message</span>
+        <span class="k">Set</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">Message</span>
+
+        <span class="n">log</span> <span class="s">&quot;MessageType: &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span>
+
+        <span class="k">If</span> <span class="n">evt</span><span class="p">.</span><span class="n">EventType</span> <span class="o">=</span> <span class="n">RESPONSE</span> <span class="ow">And</span> <span class="n">msg</span><span class="p">.</span><span class="n">CorrelationId</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">requestID</span><span class="p">.</span><span class="n">Value</span> <span class="k">Then</span>
+
+            <span class="k">If</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span> <span class="o">=</span> <span class="s">&quot;ErrorInfo&quot;</span> <span class="k">Then</span>
+
+                <span class="n">errorCode</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;ERROR_CODE&quot;</span><span class="p">)</span>
+                <span class="n">errorMessage</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;ERROR_MESSAGE&quot;</span><span class="p">)</span>
+
+                <span class="n">log</span> <span class="s">&quot;ERROR CODE: &quot;</span> <span class="o">&amp;</span> <span class="n">errorCode</span> <span class="o">&amp;</span> <span class="s">&quot;    ERROR DESCRIPTION: &quot;</span> <span class="o">&amp;</span> <span class="n">errorMessage</span>
+
+                <span class="n">running</span> <span class="o">=</span> <span class="k">False</span>
+
+            <span class="k">ElseIf</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span> <span class="o">=</span> <span class="s">&quot;DeleteOrder&quot;</span> <span class="k">Then</span>
+
+                <span class="k">Dim</span> <span class="n">stat</span> <span class="ow">As</span> <span class="kt">Long</span>
+                <span class="k">Dim</span> <span class="n">msgdesc</span> <span class="ow">As</span> <span class="kt">String</span>
+
+                <span class="n">stat</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;STATUS&quot;</span><span class="p">)</span>
+                <span class="n">msgdesc</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;MESSAGE&quot;</span><span class="p">)</span>
+
+                <span class="n">log</span> <span class="s">&quot;STATUS: &quot;</span> <span class="o">&amp;</span> <span class="n">stat</span> <span class="o">&amp;</span> <span class="s">&quot;    MESSAGE: &quot;</span> <span class="o">&amp;</span> <span class="n">msgdesc</span>
+
+                <span class="n">m_BBG_EMSX</span><span class="p">.</span><span class="n">Stop</span>
+                <span class="n">running</span> <span class="o">=</span> <span class="k">False</span>
+
+            <span class="k">End</span> <span class="k">If</span>
+        <span class="k">End</span> <span class="k">If</span>
+    <span class="k">Loop</span>
+
+<span class="k">End</span> <span class="k">Sub</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getAllFieldMetaDataCom.html" class="btn btn-neutral float-right" title="Get All Field Meta Data Request (COM)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="createOrderAndRouteManuallyExCom.html" class="btn btn-neutral" title="Create Order And Route Manually Extended Request (COM)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Terrence C. Kim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

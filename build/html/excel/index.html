@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Excel COM / Add-In &mdash; EMSX API Programmers Guide 0.0.1 documentation</title>
+  <title>Excel COM &mdash; EMSX API Programmers Guide 0.0.1 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="EMSX API Programmers Guide 0.0.1 documentation" href="../index.html"/>
         <link rel="next" title="Excel COM" href="excelCom.html"/>
-        <link rel="prev" title="Create Order and Route Extended Request" href="../programmable/createOrderAndRouteEx.html"/> 
+        <link rel="prev" title="Route Extended Request" href="../programmable/routeEx.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,9 +88,25 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programmable/index.html">Programmable EMSX API</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Excel COM / Add-In</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Excel COM</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="excelCom.html">Excel COM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="excelAddIn.html">Excel Add-In</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assignTraderCom.html">Assign Trader Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cancelRouteCom.html">Cancel Route Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrderCom.html">Create Order Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrderAndRouteExCom.html">Create Order And Route Extended Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrderAndRouteManuallyExCom.html">Create Order And Route Manually Extended Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleteOrderCom.html">Delete Order Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getAllFieldMetaDataCom.html">Get All Field Meta Data Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getBrokerStrategiesWithAssetClassCom.html">Get Broker Strategies With Asset Class Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getBrokerStrategyInfoWithAssetClassCom.html">Get Broker Strategy Infor With Asset Class Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getBrokersWithAssetClassCom.html">Get Brokers With Asset Class Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getFieldMetaDataCom.html">Get Field Meta Data Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTeamsCom.html">Get Teams Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupRouteCom.html">Group Route Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routeExCom.html">Route Extended Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routeManuallyCom.html">Route Manually Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxHistoryCom.html">EMSX History Service (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxSubscriptionCom.html">EMSX Subscription (COM)</a></li>
 </ul>
 </li>
 </ul>
@@ -123,7 +139,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>Excel COM / Add-In</li>
+    <li>Excel COM</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -137,13 +153,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="excel-com-add-in">
-<h1>Excel COM / Add-In<a class="headerlink" href="#excel-com-add-in" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="excel-com">
+<h1>Excel COM<a class="headerlink" href="#excel-com" title="Permalink to this headline">¶</a></h1>
 <p>The EMSX API for Excel is accessible using Microsoft Component Object Model (COM) or as part of Bloomberg ribbon within Bloomberg Excel Add-In.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="excelCom.html">Excel COM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="excelAddIn.html">Excel Add-In</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignTraderCom.html">Assign Trader Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cancelRouteCom.html">Cancel Route Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="createOrderCom.html">Create Order Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="createOrderAndRouteExCom.html">Create Order And Route Extended Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="createOrderAndRouteManuallyExCom.html">Create Order And Route Manually Extended Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deleteOrderCom.html">Delete Order Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getAllFieldMetaDataCom.html">Get All Field Meta Data Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getBrokerStrategiesWithAssetClassCom.html">Get Broker Strategies With Asset Class Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getBrokerStrategyInfoWithAssetClassCom.html">Get Broker Strategy Infor With Asset Class Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getBrokersWithAssetClassCom.html">Get Brokers With Asset Class Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getFieldMetaDataCom.html">Get Field Meta Data Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getTeamsCom.html">Get Teams Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="groupRouteCom.html">Group Route Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routeExCom.html">Route Extended Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routeManuallyCom.html">Route Manually Request (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="emsxHistoryCom.html">EMSX History Service (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="emsxSubscriptionCom.html">EMSX Subscription (COM)</a></li>
 </ul>
 </div>
 </div>
@@ -158,7 +190,7 @@
         <a href="excelCom.html" class="btn btn-neutral float-right" title="Excel COM" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../programmable/createOrderAndRouteEx.html" class="btn btn-neutral" title="Create Order and Route Extended Request" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../programmable/routeEx.html" class="btn btn-neutral" title="Route Extended Request" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

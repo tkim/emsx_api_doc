@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>EMSX History Service (COM) &mdash; EMSX API Programmers Guide 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="EMSX API Programmers Guide 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Excel COM" href="index.html"/>
+        <link rel="next" title="EMSX Subscription (COM)" href="emsxSubscriptionCom.html"/>
+        <link rel="prev" title="Route Manually Request (COM)" href="routeManuallyCom.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> EMSX API Programmers Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmable/index.html">Programmable EMSX API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Excel COM</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="excelCom.html">Excel COM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assignTraderCom.html">Assign Trader Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cancelRouteCom.html">Cancel Route Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrderCom.html">Create Order Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrderAndRouteExCom.html">Create Order And Route Extended Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrderAndRouteManuallyExCom.html">Create Order And Route Manually Extended Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleteOrderCom.html">Delete Order Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getAllFieldMetaDataCom.html">Get All Field Meta Data Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getBrokerStrategiesWithAssetClassCom.html">Get Broker Strategies With Asset Class Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getBrokerStrategyInfoWithAssetClassCom.html">Get Broker Strategy Infor With Asset Class Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getBrokersWithAssetClassCom.html">Get Brokers With Asset Class Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getFieldMetaDataCom.html">Get Field Meta Data Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTeamsCom.html">Get Teams Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupRouteCom.html">Group Route Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routeExCom.html">Route Extended Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routeManuallyCom.html">Route Manually Request (COM)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EMSX History Service (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxSubscriptionCom.html">EMSX Subscription (COM)</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">EMSX API Programmers Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Excel COM</a> &raquo;</li>
+      
+    <li>EMSX History Service (COM)</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/excel/emsxHistoryCom.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="emsx-history-service-com">
+<h1>EMSX History Service (COM)<a class="headerlink" href="#emsx-history-service-com" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-vb.net"><div class="highlight"><pre><span></span><span class="k">Option</span> <span class="n">Explicit</span>
+
+<span class="k">Private</span> <span class="k">WithEvents</span> <span class="n">m_BBG_EMSX</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Session</span>
+<span class="k">Public</span> <span class="n">running</span> <span class="ow">As</span> <span class="kt">Boolean</span>
+<span class="k">Private</span> <span class="n">svc</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">service</span>
+<span class="k">Private</span> <span class="n">emsxHistoryService</span> <span class="ow">As</span> <span class="kt">String</span>
+<span class="k">Private</span> <span class="n">requestID</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">CorrelationId</span>
+
+<span class="k">Private</span> <span class="k">Sub</span> <span class="nf">Class_Initialize</span><span class="p">()</span>
+
+    <span class="n">log</span> <span class="s">&quot;Bloomberg - EMSX API Example - EMSXHistory&quot;</span>
+
+    <span class="n">emsxHistoryService</span> <span class="o">=</span> <span class="s">&quot;//blp/emsx.history.uat&quot;</span>
+
+    <span class="k">Set</span> <span class="n">m_BBG_EMSX</span> <span class="o">=</span> <span class="k">New</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Session</span>
+
+    <span class="n">running</span> <span class="o">=</span> <span class="k">True</span>
+
+    <span class="n">m_BBG_EMSX</span><span class="p">.</span><span class="n">QueueEvents</span> <span class="o">=</span> <span class="k">True</span>
+    <span class="n">m_BBG_EMSX</span><span class="p">.</span><span class="n">Start</span>
+
+
+<span class="k">End</span> <span class="k">Sub</span>
+
+<span class="k">Private</span> <span class="k">Sub</span> <span class="nf">Class_Terminate</span><span class="p">()</span>
+    <span class="k">Set</span> <span class="n">m_BBG_EMSX</span> <span class="o">=</span> <span class="k">Nothing</span>
+<span class="k">End</span> <span class="k">Sub</span>
+
+<span class="k">Private</span> <span class="k">Sub</span> <span class="nf">m_BBG_EMSX_ProcessEvent</span><span class="p">(</span><span class="k">ByVal</span> <span class="n">obj</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">)</span>
+
+    <span class="k">On</span> <span class="k">Error</span> <span class="k">GoTo</span> <span class="n">errHandler</span>
+
+    <span class="k">Dim</span> <span class="n">eventObj</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Event</span>
+
+     <span class="c">&#39;   Assign the returned data to a Bloomberg type event</span>
+    <span class="k">Set</span> <span class="n">eventObj</span> <span class="o">=</span> <span class="n">obj</span>
+
+    <span class="k">If</span> <span class="n">Application</span><span class="p">.</span><span class="n">Ready</span> <span class="k">Then</span>
+
+        <span class="k">Select</span> <span class="k">Case</span> <span class="n">eventObj</span><span class="p">.</span><span class="n">EventType</span>
+
+            <span class="k">Case</span> <span class="n">SESSION_STATUS</span>
+                <span class="n">processSessionEvent</span> <span class="n">eventObj</span>
+
+            <span class="k">Case</span> <span class="n">BLPSERVICE_STATUS</span>
+                <span class="n">processServiceEvent</span> <span class="n">eventObj</span>
+
+            <span class="k">Case</span> <span class="n">RESPONSE</span>
+                <span class="n">processResponseEvent</span> <span class="n">eventObj</span>
+
+        <span class="k">End</span> <span class="k">Select</span>
+
+    <span class="k">End</span> <span class="k">If</span>
+
+    <span class="k">Exit</span> <span class="k">Sub</span>
+
+<span class="nf">errHandler</span><span class="p">:</span>
+    <span class="k">Dim</span> <span class="n">errmsg</span> <span class="ow">As</span> <span class="kt">Variant</span>
+    <span class="n">errmsg</span> <span class="o">=</span> <span class="n">Err</span><span class="p">.</span><span class="n">Description</span>
+    <span class="n">log</span> <span class="p">(</span><span class="n">errmsg</span><span class="p">)</span>
+    <span class="n">running</span> <span class="o">=</span> <span class="k">False</span>
+
+<span class="k">End</span> <span class="k">Sub</span>
+
+
+<span class="k">Private</span> <span class="k">Sub</span> <span class="nf">processSessionEvent</span><span class="p">(</span><span class="n">evt</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Event</span><span class="p">)</span>
+
+    <span class="n">log</span> <span class="s">&quot;Processing SESSION_STATUS event&quot;</span>
+
+    <span class="k">Dim</span> <span class="n">it</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">MessageIterator</span>
+
+    <span class="k">Set</span> <span class="n">it</span> <span class="o">=</span> <span class="n">evt</span><span class="p">.</span><span class="n">CreateMessageIterator</span><span class="p">()</span>
+
+    <span class="c">&#39; Loop while we have messages remaining</span>
+    <span class="k">Do</span> <span class="k">While</span> <span class="n">it</span><span class="p">.</span><span class="n">Next</span><span class="p">()</span>
+
+        <span class="k">Dim</span> <span class="n">msg</span> <span class="ow">As</span> <span class="n">Message</span>
+
+        <span class="c">&#39;   Pick up message</span>
+        <span class="k">Set</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">Message</span>
+
+        <span class="n">log</span> <span class="s">&quot;MessageType: &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span>
+
+        <span class="k">If</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span> <span class="o">=</span> <span class="s">&quot;SessionStarted&quot;</span> <span class="k">Then</span>
+            <span class="n">log</span> <span class="s">&quot;Session started...&quot;</span>
+            <span class="n">m_BBG_EMSX</span><span class="p">.</span><span class="n">OpenService</span> <span class="n">emsxHistoryService</span>
+        <span class="k">ElseIf</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span> <span class="o">=</span> <span class="s">&quot;SessionStartupFailure&quot;</span> <span class="k">Then</span>
+            <span class="n">log</span> <span class="s">&quot;Error: Session startup failed&quot;</span>
+            <span class="n">running</span> <span class="o">=</span> <span class="k">False</span>
+        <span class="k">End</span> <span class="k">If</span>
+
+    <span class="k">Loop</span>
+
+<span class="k">End</span> <span class="k">Sub</span>
+
+<span class="k">Private</span> <span class="k">Sub</span> <span class="nf">processServiceEvent</span><span class="p">(</span><span class="n">evt</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Event</span><span class="p">)</span>
+
+    <span class="k">Dim</span> <span class="n">req</span> <span class="ow">As</span> <span class="n">REQUEST</span>
+    <span class="k">Dim</span> <span class="n">service</span> <span class="ow">As</span> <span class="n">service</span>
+    <span class="k">Dim</span> <span class="n">scope</span> <span class="ow">As</span> <span class="n">Element</span>
+    <span class="k">Dim</span> <span class="n">filter</span> <span class="ow">As</span> <span class="n">Element</span>
+
+    <span class="k">Dim</span> <span class="n">it</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">MessageIterator</span>
+
+    <span class="k">On</span> <span class="k">Error</span> <span class="k">GoTo</span> <span class="n">failed</span>
+
+    <span class="n">log</span> <span class="s">&quot;Processing SERVICE_STATUS event&quot;</span>
+
+    <span class="k">Set</span> <span class="n">it</span> <span class="o">=</span> <span class="n">evt</span><span class="p">.</span><span class="n">CreateMessageIterator</span><span class="p">()</span>
+
+    <span class="c">&#39; Loop while we have messages remaining</span>
+    <span class="k">Do</span> <span class="k">While</span> <span class="n">it</span><span class="p">.</span><span class="n">Next</span><span class="p">()</span>
+
+        <span class="k">Dim</span> <span class="n">msg</span> <span class="ow">As</span> <span class="n">Message</span>
+
+        <span class="c">&#39;   Pick up message</span>
+        <span class="k">Set</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">Message</span>
+
+        <span class="n">log</span> <span class="s">&quot;MessageType: &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span>
+
+        <span class="k">If</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span> <span class="o">=</span> <span class="s">&quot;ServiceOpened&quot;</span> <span class="k">Then</span>
+
+            <span class="c">&#39; Get the service</span>
+            <span class="k">Set</span> <span class="n">service</span> <span class="o">=</span> <span class="n">m_BBG_EMSX</span><span class="p">.</span><span class="n">GetService</span><span class="p">(</span><span class="n">emsxHistoryService</span><span class="p">)</span>
+
+            <span class="c">&#39;First, create our request object</span>
+            <span class="k">Set</span> <span class="n">req</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="n">CreateRequest</span><span class="p">(</span><span class="s">&quot;GetFills&quot;</span><span class="p">)</span>
+
+            <span class="n">req</span><span class="p">.</span><span class="n">Set</span> <span class="s">&quot;FromDateTime&quot;</span><span class="p">,</span> <span class="s">&quot;2017-02-08T00:00:00.000+00:00&quot;</span>
+            <span class="n">req</span><span class="p">.</span><span class="n">Set</span> <span class="s">&quot;ToDateTime&quot;</span><span class="p">,</span> <span class="s">&quot;2017-02-11T23:59:00.000+00:00&quot;</span>
+
+            <span class="k">Set</span> <span class="n">scope</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Scope&quot;</span><span class="p">)</span>
+
+            <span class="c">&#39;scope.SetChoice &quot;Team&quot;</span>
+            <span class="c">&#39;scope.SetChoice &quot;TradingSystem&quot;</span>
+            <span class="n">scope</span><span class="p">.</span><span class="n">SetChoice</span> <span class="s">&quot;Uuids&quot;</span>
+
+            <span class="c">&#39;scope.SetElement &quot;Team&quot;, &quot;SEXEGROUP&quot;</span>
+            <span class="c">&#39;scope.SetElement &quot;TradingSystem&quot;, False</span>
+
+            <span class="n">scope</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Uuids&quot;</span><span class="p">).</span><span class="n">AppendValue</span> <span class="mi">8049857</span>
+            <span class="c">&#39;scope.GetElement(&quot;Uuids&quot;).AppendValue 1234567</span>
+            <span class="c">&#39;scope.GetElement(&quot;Uuids&quot;).AppendValue 1234568</span>
+            <span class="c">&#39;scope.GetElement(&quot;Uuids&quot;).AppendValue 1234569</span>
+
+            <span class="c">&#39;Set filter = req.GetElement(&quot;FilterBy&quot;)</span>
+
+            <span class="c">&#39;filter.SetChoice &quot;Basket&quot;</span>
+            <span class="c">&#39;filter.SetChoice &quot;Multileg&quot;</span>
+            <span class="c">&#39;filter.SetChoice &quot;OrdersAndRoutes&quot;</span>
+
+            <span class="c">&#39;filter.GetElement(&quot;Basket&quot;).AppendValue &quot;TESTRJC&quot;</span>
+            <span class="c">&#39;filter.GetElement(&quot;Multileg&quot;).AppendValue &quot;mylegId&quot;</span>
+
+            <span class="c">&#39;Dim newOrder As Element</span>
+
+            <span class="c">&#39;Set newOrder = filter.GetElement(&quot;OrdersAndRoutes&quot;).AppendElement()</span>
+            <span class="c">&#39;newOrder.SetElement &quot;OrderId&quot;, 4292580</span>
+            <span class="c">&#39;newOrder.SetElement &quot;RouteId&quot;, 1</span>
+
+            <span class="n">log</span> <span class="s">&quot;Request: &quot;</span> <span class="o">&amp;</span> <span class="n">req</span><span class="p">.</span><span class="n">Print</span>
+
+            <span class="c">&#39; Send the request</span>
+            <span class="k">Set</span> <span class="n">requestID</span> <span class="o">=</span> <span class="n">m_BBG_EMSX</span><span class="p">.</span><span class="n">SendRequest</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+
+        <span class="k">ElseIf</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span> <span class="o">=</span> <span class="s">&quot;ServiceOpenFailure&quot;</span> <span class="k">Then</span>
+
+            <span class="n">log</span> <span class="s">&quot;Error: Service failed to open&quot;</span>
+            <span class="n">running</span> <span class="o">=</span> <span class="k">False</span>
+
+        <span class="k">End</span> <span class="k">If</span>
+
+    <span class="k">Loop</span>
+
+    <span class="k">Exit</span> <span class="k">Sub</span>
+
+<span class="nf">failed</span><span class="p">:</span>
+
+    <span class="n">log</span> <span class="s">&quot;Failed to send the request: &quot;</span> <span class="o">+</span> <span class="n">Err</span><span class="p">.</span><span class="n">Description</span>
+
+    <span class="n">running</span> <span class="o">=</span> <span class="k">False</span>
+    <span class="k">Exit</span> <span class="k">Sub</span>
+
+<span class="nf">End</span> <span class="k">Sub</span>
+
+<span class="nf">Private</span> <span class="k">Sub</span> <span class="nf">processResponseEvent</span><span class="p">(</span><span class="n">evt</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Event</span><span class="p">)</span>
+
+    <span class="n">log</span> <span class="s">&quot;Processing RESPONSE event&quot;</span>
+
+    <span class="k">Dim</span> <span class="n">it</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">MessageIterator</span>
+    <span class="k">Dim</span> <span class="n">i</span> <span class="ow">As</span> <span class="kt">Integer</span>
+    <span class="k">Dim</span> <span class="n">errorCode</span> <span class="ow">As</span> <span class="kt">Long</span>
+    <span class="k">Dim</span> <span class="n">errorMessage</span> <span class="ow">As</span> <span class="kt">String</span>
+
+    <span class="k">Set</span> <span class="n">it</span> <span class="o">=</span> <span class="n">evt</span><span class="p">.</span><span class="n">CreateMessageIterator</span><span class="p">()</span>
+
+    <span class="c">&#39; Loop while we have messages remaining</span>
+    <span class="k">Do</span> <span class="k">While</span> <span class="n">it</span><span class="p">.</span><span class="n">Next</span><span class="p">()</span>
+
+        <span class="k">Dim</span> <span class="n">msg</span> <span class="ow">As</span> <span class="n">Message</span>
+
+        <span class="c">&#39;   Pick up message</span>
+        <span class="k">Set</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">Message</span>
+
+        <span class="n">log</span> <span class="s">&quot;MessageType: &quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span>
+
+        <span class="k">If</span> <span class="n">evt</span><span class="p">.</span><span class="n">EventType</span> <span class="o">=</span> <span class="n">RESPONSE</span> <span class="ow">And</span> <span class="n">msg</span><span class="p">.</span><span class="n">CorrelationId</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">requestID</span><span class="p">.</span><span class="n">Value</span> <span class="k">Then</span>
+
+            <span class="k">If</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span> <span class="o">=</span> <span class="s">&quot;ErrorInfo&quot;</span> <span class="k">Then</span>
+
+                <span class="n">errorCode</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;ERROR_CODE&quot;</span><span class="p">)</span>
+                <span class="n">errorMessage</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;ERROR_MESSAGE&quot;</span><span class="p">)</span>
+
+                <span class="n">log</span> <span class="s">&quot;ERROR CODE: &quot;</span> <span class="o">&amp;</span> <span class="n">errorCode</span> <span class="o">&amp;</span> <span class="s">&quot;    ERROR DESCRIPTION: &quot;</span> <span class="o">&amp;</span> <span class="n">errorMessage</span>
+
+                <span class="n">running</span> <span class="o">=</span> <span class="k">False</span>
+
+            <span class="k">ElseIf</span> <span class="n">msg</span><span class="p">.</span><span class="n">MessageTypeAsString</span> <span class="o">=</span> <span class="s">&quot;GetFillsResponse&quot;</span> <span class="k">Then</span>
+
+                <span class="k">Dim</span> <span class="n">fills</span> <span class="ow">As</span> <span class="n">Element</span>
+                <span class="k">Dim</span> <span class="n">fill</span> <span class="ow">As</span> <span class="n">Element</span>
+                <span class="k">Dim</span> <span class="n">numFills</span> <span class="ow">As</span> <span class="kt">Integer</span>
+                <span class="k">Dim</span> <span class="n">account</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">amount</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">assetClass</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">basketId</span> <span class="ow">As</span> <span class="kt">Integer</span>
+                <span class="k">Dim</span> <span class="n">bbgid</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">blockId</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">broker</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">clearingAccount</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">clearingFirm</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">contractExpDate</span> <span class="ow">As</span> <span class="kt">Date</span>
+                <span class="k">Dim</span> <span class="n">correctedFillId</span> <span class="ow">As</span> <span class="kt">Integer</span>
+                <span class="k">Dim</span> <span class="n">crncy</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">cusip</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">dateTimeOfFill</span> <span class="ow">As</span> <span class="kt">Date</span>
+                <span class="k">Dim</span> <span class="n">exchange</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">execPrevSeqNo</span> <span class="ow">As</span> <span class="kt">Integer</span>
+                <span class="k">Dim</span> <span class="n">execType</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">executingBroker</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">fillId</span> <span class="ow">As</span> <span class="kt">Integer</span>
+                <span class="k">Dim</span> <span class="n">fillPrice</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">fillShares</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">investorId</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">isCFD</span> <span class="ow">As</span> <span class="kt">Boolean</span>
+                <span class="k">Dim</span> <span class="n">isin</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">isLeg</span> <span class="ow">As</span> <span class="kt">Boolean</span>
+                <span class="k">Dim</span> <span class="n">lastCapacity</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">lastMarket</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">limitPrice</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">liquidity</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">localExchangeSymbol</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">locateBroker</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">locateId</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">locateRequired</span> <span class="ow">As</span> <span class="kt">Boolean</span>
+                <span class="k">Dim</span> <span class="n">multiLedId</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">occSymbol</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">orderExecutionInstruction</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">orderHandlingInstruction</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">orderId</span> <span class="ow">As</span> <span class="kt">Long</span>
+                <span class="k">Dim</span> <span class="n">orderInstruction</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">orderOrigin</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">orderReferenceId</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">originatingTraderUUId</span> <span class="ow">As</span> <span class="kt">Integer</span>
+                <span class="k">Dim</span> <span class="n">reroutedBroker</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">routeCommissionAmount</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">routeCommissionRate</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">routeExecutionInstruction</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">routeHandlingInstruction</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">routeId</span> <span class="ow">As</span> <span class="kt">Integer</span>
+                <span class="k">Dim</span> <span class="n">routeNetMoney</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">routeNotes</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">routeShares</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">securityName</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">sedol</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">settlementDate</span> <span class="ow">As</span> <span class="kt">Date</span>
+                <span class="k">Dim</span> <span class="n">side</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">stopPrice</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">strategyType</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">ticker</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">tif</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">traderName</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">traderUUId</span> <span class="ow">As</span> <span class="kt">Long</span>
+                <span class="k">Dim</span> <span class="n">typ</span> <span class="ow">As</span> <span class="kt">String</span>
+                <span class="k">Dim</span> <span class="n">userCommissionAmount</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">userCommissionRate</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">userFees</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">userNetMoney</span> <span class="ow">As</span> <span class="kt">Double</span>
+                <span class="k">Dim</span> <span class="n">yellowKey</span> <span class="ow">As</span> <span class="kt">String</span>
+
+                <span class="k">Set</span> <span class="n">fills</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Fills&quot;</span><span class="p">)</span>
+
+                <span class="n">numFills</span> <span class="o">=</span> <span class="n">fills</span><span class="p">.</span><span class="n">numValues</span>
+
+                <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">To</span> <span class="n">numFills</span> <span class="o">-</span> <span class="mi">1</span>
+
+                    <span class="k">Set</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">fills</span><span class="p">.</span><span class="n">GetValueAsElement</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+                    <span class="n">account</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Account&quot;</span><span class="p">)</span>
+                    <span class="n">amount</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Amount&quot;</span><span class="p">)</span>
+                    <span class="n">assetClass</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;AssetClass&quot;</span><span class="p">)</span>
+                    <span class="n">basketId</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;BasketId&quot;</span><span class="p">)</span>
+                    <span class="n">bbgid</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;BBGID&quot;</span><span class="p">)</span>
+                    <span class="n">blockId</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;BlockId&quot;</span><span class="p">)</span>
+                    <span class="n">broker</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Broker&quot;</span><span class="p">)</span>
+                    <span class="n">clearingAccount</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;ClearingAccount&quot;</span><span class="p">)</span>
+                    <span class="n">clearingFirm</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;ClearingFirm&quot;</span><span class="p">)</span>
+                    <span class="n">contractExpDate</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;ContractExpDate&quot;</span><span class="p">)</span>
+                    <span class="n">correctedFillId</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;CorrectedFillId&quot;</span><span class="p">)</span>
+                    <span class="n">crncy</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Currency&quot;</span><span class="p">)</span>
+                    <span class="n">cusip</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Cusip&quot;</span><span class="p">)</span>
+                    <span class="n">dateTimeOfFill</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;DateTimeOfFill&quot;</span><span class="p">)</span>
+                    <span class="n">exchange</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Exchange&quot;</span><span class="p">)</span>
+                    <span class="n">execPrevSeqNo</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;ExecPrevSeqNo&quot;</span><span class="p">)</span>
+                    <span class="n">execType</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;ExecType&quot;</span><span class="p">)</span>
+                    <span class="n">executingBroker</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;ExecutingBroker&quot;</span><span class="p">)</span>
+                    <span class="n">fillId</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;FillId&quot;</span><span class="p">)</span>
+                    <span class="n">fillPrice</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;FillPrice&quot;</span><span class="p">)</span>
+                    <span class="n">fillShares</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;FillShares&quot;</span><span class="p">)</span>
+                    <span class="n">investorId</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;InvestorID&quot;</span><span class="p">)</span>
+                    <span class="n">isCFD</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;IsCfd&quot;</span><span class="p">)</span>
+                    <span class="n">isin</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Isin&quot;</span><span class="p">)</span>
+                    <span class="n">isLeg</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;IsLeg&quot;</span><span class="p">)</span>
+                    <span class="n">lastCapacity</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;LastCapacity&quot;</span><span class="p">)</span>
+                    <span class="n">lastMarket</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;LastMarket&quot;</span><span class="p">)</span>
+                    <span class="n">limitPrice</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;LimitPrice&quot;</span><span class="p">)</span>
+                    <span class="n">liquidity</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Liquidity&quot;</span><span class="p">)</span>
+                    <span class="n">localExchangeSymbol</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;LocalExchangeSymbol&quot;</span><span class="p">)</span>
+                    <span class="n">locateBroker</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;LocateBroker&quot;</span><span class="p">)</span>
+                    <span class="n">locateId</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;LocateId&quot;</span><span class="p">)</span>
+                    <span class="n">locateRequired</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;LocateRequired&quot;</span><span class="p">)</span>
+                    <span class="n">multiLedId</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;MultilegId&quot;</span><span class="p">)</span>
+                    <span class="n">occSymbol</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;OCCSymbol&quot;</span><span class="p">)</span>
+                    <span class="n">orderExecutionInstruction</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;OrderExecutionInstruction&quot;</span><span class="p">)</span>
+                    <span class="n">orderHandlingInstruction</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;OrderHandlingInstruction&quot;</span><span class="p">)</span>
+                    <span class="n">orderId</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;OrderId&quot;</span><span class="p">)</span>
+                    <span class="n">orderInstruction</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;OrderInstruction&quot;</span><span class="p">)</span>
+                    <span class="n">orderOrigin</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;OrderOrigin&quot;</span><span class="p">)</span>
+                    <span class="n">orderReferenceId</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;OrderReferenceId&quot;</span><span class="p">)</span>
+                    <span class="n">originatingTraderUUId</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;OriginatingTraderUuid&quot;</span><span class="p">)</span>
+                    <span class="n">reroutedBroker</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;ReroutedBroker&quot;</span><span class="p">)</span>
+                    <span class="n">routeCommissionAmount</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;RouteCommissionAmount&quot;</span><span class="p">)</span>
+                    <span class="n">routeCommissionRate</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;RouteCommissionRate&quot;</span><span class="p">)</span>
+                    <span class="n">routeExecutionInstruction</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;RouteExecutionInstruction&quot;</span><span class="p">)</span>
+                    <span class="n">routeHandlingInstruction</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;RouteHandlingInstruction&quot;</span><span class="p">)</span>
+                    <span class="n">routeId</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;RouteId&quot;</span><span class="p">)</span>
+                    <span class="n">routeNetMoney</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;RouteNetMoney&quot;</span><span class="p">)</span>
+                    <span class="n">routeNotes</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;RouteNotes&quot;</span><span class="p">)</span>
+                    <span class="n">routeShares</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;RouteShares&quot;</span><span class="p">)</span>
+                    <span class="n">securityName</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;SecurityName&quot;</span><span class="p">)</span>
+                    <span class="n">sedol</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Sedol&quot;</span><span class="p">)</span>
+                    <span class="n">settlementDate</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;SettlementDate&quot;</span><span class="p">)</span>
+                    <span class="n">side</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Side&quot;</span><span class="p">)</span>
+                    <span class="n">stopPrice</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;StopPrice&quot;</span><span class="p">)</span>
+                    <span class="n">strategyType</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;StrategyType&quot;</span><span class="p">)</span>
+                    <span class="n">ticker</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Ticker&quot;</span><span class="p">)</span>
+                    <span class="n">tif</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;TIF&quot;</span><span class="p">)</span>
+                    <span class="n">traderName</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;TraderName&quot;</span><span class="p">)</span>
+                    <span class="n">traderUUId</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;TraderUuid&quot;</span><span class="p">)</span>
+                    <span class="n">typ</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;Type&quot;</span><span class="p">)</span>
+                    <span class="n">userCommissionAmount</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;UserCommissionAmount&quot;</span><span class="p">)</span>
+                    <span class="n">userCommissionRate</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;UserCommissionRate&quot;</span><span class="p">)</span>
+                    <span class="n">userFees</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;UserFees&quot;</span><span class="p">)</span>
+                    <span class="n">userNetMoney</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;UserNetMoney&quot;</span><span class="p">)</span>
+                    <span class="n">yellowKey</span> <span class="o">=</span> <span class="n">fill</span><span class="p">.</span><span class="n">GetElement</span><span class="p">(</span><span class="s">&quot;YellowKey&quot;</span><span class="p">)</span>
+
+                    <span class="n">log</span> <span class="s">&quot;OrderId: &quot;</span> <span class="o">&amp;</span> <span class="n">orderId</span> <span class="o">&amp;</span> <span class="s">&quot;    Fill ID: &quot;</span> <span class="o">&amp;</span> <span class="n">fillId</span> <span class="o">&amp;</span> <span class="s">&quot;    Date/Time: &quot;</span> <span class="o">&amp;</span> <span class="n">dateTimeOfFill</span> <span class="o">&amp;</span> <span class="s">&quot;    Shares: &quot;</span> <span class="o">&amp;</span> <span class="n">fillShares</span> <span class="o">&amp;</span> <span class="s">&quot;    Price: &quot;</span> <span class="o">&amp;</span> <span class="n">fillPrice</span>
+
+                <span class="k">Next</span> <span class="n">i</span>
+
+                <span class="n">m_BBG_EMSX</span><span class="p">.</span><span class="n">Stop</span>
+                <span class="n">running</span> <span class="o">=</span> <span class="k">False</span>
+
+            <span class="k">End</span> <span class="k">If</span>
+        <span class="k">End</span> <span class="k">If</span>
+    <span class="k">Loop</span>
+
+<span class="k">End</span> <span class="k">Sub</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="emsxSubscriptionCom.html" class="btn btn-neutral float-right" title="EMSX Subscription (COM)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="routeManuallyCom.html" class="btn btn-neutral" title="Route Manually Request (COM)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Terrence C. Kim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
