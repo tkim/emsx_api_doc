@@ -93,11 +93,14 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Buy-Side Request/Response Service</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#description-of-request-response-service">Description of Request/Response Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cfd-odd-lot-flag">CFD &amp; Odd Lot Flag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#date-time-format">Date &amp; Time Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custome-notes-free-text-fields">Custome Notes &amp; Free Text Fields</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="assignTrader.html">Assign Trader Request</a></li>
 <li class="toctree-l2"><a class="reference internal" href="createOrder.html">Create an Order Request</a></li>
 <li class="toctree-l2"><a class="reference internal" href="createOrderAndRouteEx.html">Create Order and Route Extended Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createOrderAndRouteManually.html">Create Order And Route Manually</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../excel/index.html">Excel COM / Add-In</a></li>
@@ -274,6 +277,129 @@
 <li>1 = odd lot</li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="date-time-format">
+<h2>Date &amp; Time Format<a class="headerlink" href="#date-time-format" title="Permalink to this headline">¶</a></h2>
+<p>All date format except <code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME</span></code> are in yyyymmdd format. All time format except <code class="docutils literal"><span class="pre">EMSX_STRATEGY_END_TIME</span></code> and <code class="docutils literal"><span class="pre">EMSX_STRATEGY_START_TIME</span></code> are in number of seconds from midnight.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Element</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_DATE</span></code></td>
+<td>yyyymmdd</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_GTD_DATE</span></code></td>
+<td>yyyymmdd</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_DATE</span></code></td>
+<td>yyyymmdd</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_QUEUED_DATE</span></code></td>
+<td>yyyymmdd</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_DATE</span></code></td>
+<td>yyyymmdd</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_SETTLE_DATE</span></code></td>
+<td>yyyymmdd</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME</span></code></td>
+<td>hhmm</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_END_TIME</span></code></td>
+<td>hhmmss</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_START_TIME</span></code></td>
+<td>hhmmss</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_TIME</span></code></td>
+<td>Number of seconds from midnight</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_TIME</span></code></td>
+<td>Number of seconds from midnight</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME</span></code></td>
+<td>Number of seconds from midnight</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP</span></code></td>
+<td>Number of seconds from midnight</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal"><span class="pre">//blp/emsx.history</span></code> and <code class="docutils literal"><span class="pre">//blp/emsx.history.uat</span></code> are set in date time objects unlike the <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> or <code class="docutils literal"><span class="pre">//blp/emapisvc_beta.</span></code></p>
+</div>
+<div class="section" id="custome-notes-free-text-fields">
+<h2>Custome Notes &amp; Free Text Fields<a class="headerlink" href="#custome-notes-free-text-fields" title="Permalink to this headline">¶</a></h2>
+<p>The EMSX API provides several different EMSX options for entering and using free text fields. Some of these free text fields can be used for an internal only workflow where the others can be used to communicate with the various execution counterparts.</p>
+<p>The following elements are available on order and/or route subscription services. These elements will be passed to the external trading counterparts.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Element</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ACCOUNT</span></code></td>
+<td>30-character free text field (29+1 check digit), FIX Tag 1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_NOTE</span></code></td>
+<td>44-character free text field (43+1 check digit), FIX Tag 58</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ORDER_REF_ID</span></code></td>
+<td>16-character field (15+1 check digit) <em>order subscription only</em></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_REF_ID</span></code></td>
+<td>16-character field (15+1 check digit) <em>route subscription only</em></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TRADER_NOTES</span></code></td>
+<td>44-character free text field (43+1 check digit), <strong>internal only</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The following elements are available only for internal fields unless custom mapped to a custom FIX tag to a particular trading counterparty.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>The following elements are not available on either order or route subscription service.</strong></p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Element</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE1</span></code></td>
+<td>80-character free text field (79+1 check digit)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE2</span></code></td>
+<td>80-character free text field (79+1 check digit)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE3</span></code></td>
+<td>80-character free text field (79+1 check digit)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE4</span></code></td>
+<td>80-character free text field (79+1 check digit)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE5</span></code></td>
+<td>80-character free text field (79+1 check digit)</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 

@@ -93,3 +93,68 @@ This is a feature that indicates CFD orders or to flag an odd lot in EMSX API.
 
 
 
+Date & Time Format
+==================
+
+
+All date format except ``EMSX_QUEUED_TIME`` are in yyyymmdd format. All time format except ``EMSX_STRATEGY_END_TIME`` and ``EMSX_STRATEGY_START_TIME`` are in number of seconds from midnight.
+
+
+=================================== =================================================================
+Element								Description             		
+=================================== =================================================================
+``EMSX_DATE``						yyyymmdd
+``EMSX_GTD_DATE``					yyyymmdd
+``EMSX_LAST_FILL_DATE``				yyyymmdd
+``EMSX_QUEUED_DATE``				yyyymmdd
+``EMSX_ROUTE_CREATE_DATE``			yyyymmdd
+``EMSX_SETTLE_DATE``				yyyymmdd
+``EMSX_QUEUED_TIME``				hhmm
+``EMSX_STRATEGY_END_TIME``			hhmmss
+``EMSX_STRATEGY_START_TIME``		hhmmss
+``EMSX_LAST_FILL_TIME``				Number of seconds from midnight
+``EMSX_ROUTE_CREATE_TIME``			Number of seconds from midnight
+``EMSX_ROUTE_LAST_UPDATE_TIME``		Number of seconds from midnight
+``EMSX_TIME_STAMP``					Number of seconds from midnight
+=================================== =================================================================
+
+The ``//blp/emsx.history`` and ``//blp/emsx.history.uat`` are set in date time objects unlike the ``//blp/emapisvc`` or ``//blp/emapisvc_beta.``
+
+
+Custome Notes & Free Text Fields
+================================
+
+
+The EMSX API provides several different EMSX options for entering and using free text fields. Some of these free text fields can be used for an internal only workflow where the others can be used to communicate with the various execution counterparts. 
+
+The following elements are available on order and/or route subscription services. These elements will be passed to the external trading counterparts.
+
+
+=================================== ==================================================================
+Element								Description             		
+=================================== ==================================================================
+``EMSX_ACCOUNT``					30-character free text field (29+1 check digit), FIX Tag 1
+``EMSX_NOTE``						44-character free text field (43+1 check digit), FIX Tag 58
+``EMSX_ORDER_REF_ID``				16-character field (15+1 check digit) *order subscription only*
+``EMSX_ROUTE_REF_ID``				16-character field (15+1 check digit) *route subscription only*
+``EMSX_TRADER_NOTES``				44-character free text field (43+1 check digit), **internal only**
+=================================== ==================================================================
+
+
+The following elements are available only for internal fields unless custom mapped to a custom FIX tag to a particular trading counterparty. 
+
+
+.. note:: 
+
+	**The following elements are not available on either order or route subscription service.**
+
+
+=================================== ==================================================================
+Element								Description             		
+=================================== ==================================================================
+``EMSX_CUSTOM_NOTE1``				80-character free text field (79+1 check digit)
+``EMSX_CUSTOM_NOTE2``				80-character free text field (79+1 check digit) 
+``EMSX_CUSTOM_NOTE3``				80-character free text field (79+1 check digit) 
+``EMSX_CUSTOM_NOTE4``				80-character free text field (79+1 check digit)
+``EMSX_CUSTOM_NOTE5``				80-character free text field (79+1 check digit)
+=================================== ==================================================================

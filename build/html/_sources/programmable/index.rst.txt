@@ -24,4 +24,6 @@ The ``EMSX_REQUEST_SEQ`` should also be added to every request. The ``EMSX_REQUE
    assignTrader
    createOrder
    createOrderAndRouteEx
-   
+   createOrderAndRouteManually
+   modifyOrder
+   modifyRoute
