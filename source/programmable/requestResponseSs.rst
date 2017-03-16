@@ -35,3 +35,12 @@ Request Name             			Action
 SellSideAck 						Request to acknowlede an order on EMSX to EMSX setting
 SellSideReject 						Request to reject an order on EMSX to EMSX setting
 =================================== =================================================================
+
+
+Sell Side Ack Request
+=====================
+
+
+Sell Side Reject Request
+========================
+
