@@ -15,5 +15,6 @@ The Microsoft Component Object Model (COM) is a platform-independent, distribute
    :maxdepth: 3
 
    requestResponseCom
+   requestResponseSsCOM
    emsxSubscriptionCom
 

@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sell-Side Request/Response Service (COM) &mdash; EMSX API Programmers Guide 0.0.5 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="EMSX API Programmers Guide 0.0.5 documentation" href="../index.html"/>
+        <link rel="up" title="Excel COM" href="index.html"/>
+        <link rel="next" title="EMSX Subscription (COM)" href="emsxSubscriptionCom.html"/>
+        <link rel="prev" title="Buy-Side Request/Response Service (COM)" href="requestResponseCom.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> EMSX API Programmers Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmable/index.html">Programmable EMSX API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Excel COM</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html">Buy-Side Request/Response Service (COM)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sell-Side Request/Response Service (COM)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-request-response-service">Description of Request/Response Service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="emsxSubscriptionCom.html">EMSX Subscription (COM)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">EMSX API Programmers Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Excel COM</a> &raquo;</li>
+      
+    <li>Sell-Side Request/Response Service (COM)</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/excel/requestResponseSsCOM.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sell-side-request-response-service-com">
+<h1>Sell-Side Request/Response Service (COM)<a class="headerlink" href="#sell-side-request-response-service-com" title="Permalink to this headline">¶</a></h1>
+<p>The EMSX API allows developers to use the Request/Response services for order and route creation, modification, queries related to orders and routes (placements) as well as EMSX Team details. Depending on the type of action required, the application programmer must create a specific request, populate it with required parameters and send that request to the EMSX API service, which provides the response. Communication with the request/response service requires the following steps:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Create a session (if session does not yet exist).</li>
+<li>Connect session to <code class="docutils literal"><span class="pre">//blp/emapisvc_beta</span></code> or <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> service and start it.</li>
+<li>Fetch a service object from the session representing emapisvc.</li>
+<li>Use the service object from above to create a Request object of the desired type</li>
+<li>Send request object via sendRequest method of session object, pass object of type EventQueue to the sendRequest.</li>
+<li>Loop through the EventQueue object until event of type <code class="docutils literal"><span class="pre">Event::RESPONSE</span></code> is read.</li>
+</ol>
+</div></blockquote>
+<p>These are initialized in the constructor as below and are then available for the life of the application for submission of various requests.</p>
+<div class="section" id="description-of-request-response-service">
+<h2>Description of Request/Response Service<a class="headerlink" href="#description-of-request-response-service" title="Permalink to this headline">¶</a></h2>
+<p>EMSX API supports the following Request/Response services:-</p>
+<p><em>Please note, the descriptions to the legacy request/response services are omitted from the description section.</em></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Request Name</th>
+<th class="head">Action</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SellSideAck</td>
+<td>Request to acknowlede an order on EMSX to EMSX setting</td>
+</tr>
+<tr class="row-odd"><td>SellSideReject</td>
+<td>Request to reject an order on EMSX to EMSX setting</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="emsxSubscriptionCom.html" class="btn btn-neutral float-right" title="EMSX Subscription (COM)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="requestResponseCom.html" class="btn btn-neutral" title="Buy-Side Request/Response Service (COM)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Terrence C. Kim.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.5',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
