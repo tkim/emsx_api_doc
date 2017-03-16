@@ -1,14 +1,3 @@
-##############################################
-Migrating from Desktop to Server Side EMSX API
-##############################################
-
-
-EMSX API is available for use via both the desktop (Desktop API, or DAPI) and via a server-side endpoint known as EMSX API Server. The first relies on a logged in Bloomberg terminal for is connection, whereas the server does not. This makes DAPI unsuitable for mission critical applications.
-
-However, the service schema is the same across the two platforms.  This means that the code base for an application which was developed on the desktop API is capable of working on the server-side solution without changes to the underlying business logic.
-
-All that is required to move desktop EMSX API applications to the server is the addition of code needed to perform user authentication.
-
 
 Using User Identities
 =====================
@@ -46,13 +35,13 @@ Creating User Identities
 The steps involved in connecting to the EMSX API on the desktop are as follows:-
 
 
-.. image:: image/userIdentity.png
+.. image:: /image/userIdentity.png
 
 
 In the server environment, the user identities must be created and cached prior to the making requests.  Therefore, the process would look as follows:-
 
 
-.. image:: image/userIdentity2.png
+.. image:: /image/userIdentity2.png
 
 
 .. note::

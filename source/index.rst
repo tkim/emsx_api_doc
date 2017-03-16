@@ -15,8 +15,7 @@ This information could include technical inaccuracies or typographical errors. C
    :caption: Contents:
 
    introduction
-   migration
-   serverApiInstallation
+   server/index
    programmable/index
    excel/index
 

@@ -283,8 +283,3 @@ The following example is based on the windows environment and thus there will be
 
 	Once the registration process is completed. EMSX Implementation team globally will assist with configuring the Server Side EMSX API with various execution destinations per client request.
 
-
-
-
-
-
