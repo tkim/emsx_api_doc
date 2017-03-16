@@ -91,6 +91,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Server Side EMSX API</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Using User Identities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-user-identities">Creating User Identities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#server-side-request-response">Server Side Request/Response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="serverApiInstallation.html">How to install serverapi.exe</a></li>
 </ul>
 </li>
@@ -225,6 +226,94 @@ We will receive a Response event for the Authentication service. In the example 
 </div>
 <p>When we receive the successful authorization, we can continue with opening the usual EMSX service. If multiple authorization requests have been sent, for a number of different UUIDs, it is necessary to wait for all the responses before being able to use all the identity objects.</p>
 <p>In the above code, you will see that we examine the ‘seatType’ of the identity. The seat type in this case will be either BPS or non-BPS.</p>
+</div>
+<div class="section" id="server-side-request-response">
+<h1>Server Side Request/Response<a class="headerlink" href="#server-side-request-response" title="Permalink to this headline">¶</a></h1>
+<p>As of today, the following <code class="docutils literal"><span class="pre">emapisvc</span></code> and <code class="docutils literal"><span class="pre">emapisvc_beta</span></code> requests are available from the server side access.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Request Name</th>
+<th class="head">Action</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>AssignTrader</td>
+<td>Assign an order to another UUID</td>
+</tr>
+<tr class="row-odd"><td>CancelRouteEX</td>
+<td>Cancel outstanding routes (placements)</td>
+</tr>
+<tr class="row-even"><td>CreateOrder</td>
+<td>Create an order or stage an order into EMSX&lt;GO&gt;</td>
+</tr>
+<tr class="row-odd"><td>CreateOrderAndRouteEx</td>
+<td>Create a new order and route in a single request.</td>
+</tr>
+<tr class="row-even"><td>CreateOrderAndRouteManually</td>
+<td>Create the order and notify EMSX this is routed.</td>
+</tr>
+<tr class="row-odd"><td>DeleteOrder</td>
+<td>Delete an existing order in EMSX&lt;GO&gt;</td>
+</tr>
+<tr class="row-even"><td>GetAllFieldMetaData</td>
+<td>Get all field meta data in a response message</td>
+</tr>
+<tr class="row-odd"><td>GetAssetClass</td>
+<td>Get all asset class data in a response message</td>
+</tr>
+<tr class="row-even"><td>GetBrokers</td>
+<td>Get all broker data in a response message</td>
+</tr>
+<tr class="row-odd"><td>GetBrokerStrategies</td>
+<td>Get all broker strategy data in a response message</td>
+</tr>
+<tr class="row-even"><td>GetBrokerStrategiesWithAssetClass</td>
+<td>Get all broker strategy information and asset class data</td>
+</tr>
+<tr class="row-odd"><td>GetBrokerStrategyInfo</td>
+<td>Get all broker strategy info data in a response message</td>
+</tr>
+<tr class="row-even"><td>GetBrokerStrategyInfoWithAssetClass</td>
+<td>Get all broker strategy info and asset class data</td>
+</tr>
+<tr class="row-odd"><td>GetBrokerWithAssetClass</td>
+<td>Get all broker data with asset class in a response message</td>
+</tr>
+<tr class="row-even"><td>GetFieldMetaData</td>
+<td>Get field meta data in a reponse message</td>
+</tr>
+<tr class="row-odd"><td>GetTeams</td>
+<td>Get team data in a response message</td>
+</tr>
+<tr class="row-even"><td>GroupRouteEx</td>
+<td>Submit the entire list as a single route to a basket algorithm</td>
+</tr>
+<tr class="row-odd"><td>ModifyOrder</td>
+<td>Modify parent order</td>
+</tr>
+<tr class="row-even"><td>ModifyRouteEx</td>
+<td>Modify child route</td>
+</tr>
+<tr class="row-odd"><td>RouteEx</td>
+<td>Route existing order</td>
+</tr>
+<tr class="row-even"><td>RouteManuallyEx</td>
+<td>Route manually and notify EMSX that it is routed.</td>
+</tr>
+<tr class="row-odd"><td>SellSideAck</td>
+<td>Request to acknowlede an order on EMSX to EMSX setting</td>
+</tr>
+<tr class="row-even"><td>SellSideReject</td>
+<td>Request to reject an order on EMSX to EMSX setting</td>
+</tr>
+</tbody>
+</table>
+<p>Any other requests will return the following error:</p>
+<p>&#8220;Obsolete request type: &#8221; &lt;&lt; request_type</p>
 </div>
 
 

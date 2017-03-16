@@ -119,7 +119,41 @@ When we receive the successful authorization, we can continue with opening the u
 In the above code, you will see that we examine the ‘seatType’ of the identity. The seat type in this case will be either BPS or non-BPS.
 
 
+Server Side Request/Response
+============================
 
 
+As of today, the following ``emapisvc`` and ``emapisvc_beta`` requests are available from the server side access.
 
+=================================== =================================================================
+Request Name             			Action
+=================================== =================================================================
+AssignTrader						Assign an order to another UUID
+CancelRouteEX						Cancel outstanding routes (placements)
+CreateOrder                     	Create an order or stage an order into EMSX<GO>
+CreateOrderAndRouteEx				Create a new order and route in a single request. 
+CreateOrderAndRouteManually	 		Create the order and notify EMSX this is routed.
+DeleteOrder					 		Delete an existing order in EMSX<GO>
+GetAllFieldMetaData			 		Get all field meta data in a response message
+GetAssetClass						Get all asset class data in a response message
+GetBrokers							Get all broker data in a response message
+GetBrokerStrategies					Get all broker strategy data in a response message
+GetBrokerStrategiesWithAssetClass 	Get all broker strategy information and asset class data
+GetBrokerStrategyInfo 				Get all broker strategy info data in a response message
+GetBrokerStrategyInfoWithAssetClass Get all broker strategy info and asset class data
+GetBrokerWithAssetClass 			Get all broker data with asset class in a response message
+GetFieldMetaData 					Get field meta data in a reponse message
+GetTeams 							Get team data in a response message
+GroupRouteEx 						Submit the entire list as a single route to a basket algorithm
+ModifyOrder 						Modify parent order
+ModifyRouteEx 						Modify child route
+RouteEx 							Route existing order
+RouteManuallyEx 					Route manually and notify EMSX that it is routed.
+SellSideAck 						Request to acknowlede an order on EMSX to EMSX setting
+SellSideReject 						Request to reject an order on EMSX to EMSX setting
+=================================== =================================================================
+
+Any other requests will return the following error:
+
+"Obsolete request type: " << request_type
 

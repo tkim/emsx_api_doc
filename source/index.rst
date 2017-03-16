@@ -18,6 +18,7 @@ This information could include technical inaccuracies or typographical errors. C
    server/index
    programmable/index
    excel/index
+   faq
 
 Indices and tables
 ==================
