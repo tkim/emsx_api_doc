@@ -15,6 +15,8 @@ This information could include technical inaccuracies or typographical errors. C
    :caption: Contents:
 
    introduction
+   migration
+   serverApiInstallation
    programmable/index
    excel/index
 
@@ -24,3 +26,5 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
