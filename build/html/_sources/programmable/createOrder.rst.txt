@@ -1,6 +1,6 @@
-#######################
-Create an Order Request
-#######################
+
+Create Order Request
+====================
 
 
 Creating an order requires the user to create a request from the service object of type CreateOrder and fill in the required fields before submitting the request. 

@@ -1,6 +1,6 @@
-#####################
+
 Assign Trader Request
-#####################
+=====================
 
 
 AssignTrader request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.
