@@ -2,6 +2,8 @@
 FAQ
 ###
 
+General FAQ
+===========
 
 * **Why can I not subscribe using ticker and fields like other APIs?**
 
@@ -85,4 +87,83 @@ EMSX Help Desk must enable users for EMSX API access via EMSS.
 
 Users must be enabled for specific brokers. This is done by EMSX Help Desk support for internal simulator codes and by the broker for their own production codes.
 
+* **I am enabled but I get a red bar on the bottom when I click on the EMSX button.**
+
+This is usually due to the following issues.
+
+	* BBCOMM failed to establish a session. For this please see the next section on restarting BBCOMM
+	* The ETORSA/FIET paperwork is not in file. Every EMSX API user’s firm will need to sign ETORSA and or FIET before using the EMSX API. Please click Help Help in EMSX<GO> and have the Trade Desk personnel check for this legal check.
+	* The desktop prevents any third party WPF components from running.  This is usually tied into the PC’s image. This will usually cause an exception in the System.Windows.Media.Composition library. This will usually require reinstall of .NET 3.5 SP1, hardware display drivers, and DirectX libraries.
+
+* **How do I restart bbcomm?**
+
+	* Close all instances of Excel, Word and PowerPoint.
+	* Open task manager and kill bxlaui.exe and bxlartd.exe.
+	* Open a command prompt and type bbstop
+	* In the same command prompt, type the command bbcomm. BBCOMM should report that it is running successfully and should not return. 
+
+* **How do I regenerate apiregistry.ini file?**
+
+	Open regedit from RUN window and Clear the "APIRegistryCRC32" registry value located at 
+	"HKEY_LOCAL_MACHINE\SOFTWARE\Bloomberg L.P.\Office Tools\Settings" or "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Bloomberg L.P.\Office Tools\Settings" on Windows 7.
+
+* **How do I modify GTD to day order?**
+
+Set EMSX_GTD_DATE to "-1" or -1 or any negative GTD date will reset the order to day order.
+
+* **How do I modify or reset the stop price of an order?**
+
+Set EMSX_STOP_PRICE to "-1" or -1 
+
+* **How do I reset my order from Limit to Market?**
+
+EMSX_LIMIT_PRICE=-99999 is only required when modifying *from* LMT to something else
+
+* **How is EMSX_RELEASE_TIME used?**
+
+EMSX_RELEASE_TIME is in HH:MM format. For the API it is defaulted to the exchange time. This only works on requests that are routable from EMSX API. Thus, it will not work on CreateOrder request. Since the field is an integer, it should be forammted as 1101 for 11:01,
+
+* **Are EMSX_TICKER and EMSX_SIDE elements always available on the subscription service?**
+
+No, any fields that are static are not always returned.
+
+* **Can update events come before the initial_paint or new event?**
+
+Yes, this wasn’t the original intention, however, due to current EMSX back-end, the update (Event Status = 7) messages can come before initial_paint (Event Status=4) or New (Event Status = 6)
+
+* **Are INITIAL_PAINT messages always first?**
+
+No, you can receive any route messages before the order message with INITIAL_PAINT.
+
+
+Excel Add-In FAQ
+================
+
+* **I don't see the EMSX button on my Excel Add-In**
+
+This is mostly due to the user not being enabled for EMSX API. Click Help Help on EMSX<GO> and ask the EMSX Help Desk personnel to see if your UUID is enabled for EMSX API Excel Add-In. If the user has multiple Excel Add-Ins, the EMSX button will be under the Trading Icon. 
+
+.. image:: /image/excelAddIn.png
+
+.. image:: /image/trading.png
+
+* **I am a Bloomberg AIM user and I am not able to connect from the Excel Add-In.**
+
+This is mostly often due to the AIM user not being able to connect to the beta environment (Y087).  For AIM, users they will need to test in production since there are no AIM instance in the beta environment (Y087). 
+
+.. image:: /image/registry.png
+
+One of the ways to solve this is by going into the registry edit by clicking Start and type “regedit”.
+
+.. image:: /image/regedit.png
+
+Once in the regedit.exe, click Alt-F and type “EmsxSystem”.
+
+.. image:: /image/emsxSystem.png
+
+Double Click EmsxSystem
+
+.. image:: /image/editString.png
+
+Type the word Production in the Value Data column and Click OK.
 
