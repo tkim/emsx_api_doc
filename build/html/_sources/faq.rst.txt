@@ -84,3 +84,5 @@ EMSX Help Desk must enable users for EMSX API access via EMSS.
 * **Why do I get “User NOT Enabled to route to this broker by EOR (ENAB).”?**
 
 Users must be enabled for specific brokers. This is done by EMSX Help Desk support for internal simulator codes and by the broker for their own production codes.
+
+
