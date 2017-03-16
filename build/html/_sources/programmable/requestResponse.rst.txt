@@ -52,8 +52,6 @@ ModifyOrder 						Modify parent order
 ModifyRouteEx 						Modify child route
 RouteEx 							Route existing order
 RouteManuallyEx 					Route manually and notify EMSX that it is routed.
-SellSideAck 						Request to acknowlede an order on EMSX to EMSX setting
-SellSideReject 						Request to reject an order on EMSX to EMSX setting
 =================================== =================================================================
 
 
@@ -341,6 +339,12 @@ Assigned trader must be in same EMBR group for this to work. EMBR<GO> is an inte
 	        main()
 	    except KeyboardInterrupt:
 	        print "Ctrl+C pressed. Stopping..."
+
+
+
+Cancel Route Extension
+======================
+
 
 
 
@@ -923,6 +927,62 @@ Create Order And Route Manually Request
 
 
 
+Delete Order
+============
+
+
+GetAllFieldMetaData
+===================
+
+
+GetAssetClass						
+=============
+
+
+GetBrokers
+==========							
+
+
+GetBrokerStrategies
+===================
+
+
+
+GetBrokerStrategiesWithAssetClass
+=================================
+
+
+GetBrokerStrategyInfo
+=====================
+
+
+GetBrokerStrategyInfoWithAssetClass
+===================================
+
+
+GetBrokerWithAssetClass
+=======================
+
+
+GetFieldMetaData
+================
+
+
+GetTeams
+========
+
+
+GroupRouteEx
+============
+
+
+ModifyOrder
+===========
+
+
+ModifyRouteEx 						
+=============
+
 Route Extended Request
 ======================
 
@@ -1100,6 +1160,10 @@ Creating a route is essentially a buy-side placement to the market. Going forwar
 	    except KeyboardInterrupt:
 	        print "Ctrl+C pressed. Stopping..."
 
+
+
+Route Manually Extended Request
+===============================
 
 
 

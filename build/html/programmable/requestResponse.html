@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="EMSX API Programmers Guide 0.0.5 documentation" href="../index.html"/>
         <link rel="up" title="Programmable EMSX API" href="index.html"/>
-        <link rel="next" title="EMSX Subscription" href="emsxSubscription.html"/>
+        <link rel="next" title="Sell-Side Request/Response Service" href="requestResponseSs.html"/>
         <link rel="prev" title="Session Object" href="session.html"/> 
 
   
@@ -97,16 +97,34 @@
 <li class="toctree-l3"><a class="reference internal" href="#date-time-format">Date &amp; Time Format</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#custome-notes-free-text-fields">Custome Notes &amp; Free Text Fields</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#assign-trader-request">Assign Trader Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cancel-route-extension">Cancel Route Extension</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-order-request">Create Order Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-order-and-route-extended-request">Create Order and Route Extended Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-order-and-route-manually-request">Create Order And Route Manually Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-order">Delete Order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getallfieldmetadata">GetAllFieldMetaData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getassetclass">GetAssetClass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getbrokers">GetBrokers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getbrokerstrategies">GetBrokerStrategies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getbrokerstrategieswithassetclass">GetBrokerStrategiesWithAssetClass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getbrokerstrategyinfo">GetBrokerStrategyInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getbrokerstrategyinfowithassetclass">GetBrokerStrategyInfoWithAssetClass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getbrokerwithassetclass">GetBrokerWithAssetClass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getfieldmetadata">GetFieldMetaData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getteams">GetTeams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grouprouteex">GroupRouteEx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifyorder">ModifyOrder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifyrouteex">ModifyRouteEx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#route-extended-request">Route Extended Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#route-manually-extended-request">Route Manually Extended Request</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponseSs.html">Sell-Side Request/Response Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emsxSubscription.html">EMSX Subscription</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../excel/index.html">Excel COM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
 
             
@@ -244,12 +262,6 @@
 </tr>
 <tr class="row-even"><td>RouteManuallyEx</td>
 <td>Route manually and notify EMSX that it is routed.</td>
-</tr>
-<tr class="row-odd"><td>SellSideAck</td>
-<td>Request to acknowlede an order on EMSX to EMSX setting</td>
-</tr>
-<tr class="row-even"><td>SellSideReject</td>
-<td>Request to reject an order on EMSX to EMSX setting</td>
 </tr>
 </tbody>
 </table>
@@ -580,6 +592,9 @@
         <span class="k">print</span> <span class="s2">&quot;Ctrl+C pressed. Stopping...&quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="cancel-route-extension">
+<h2>Cancel Route Extension<a class="headerlink" href="#cancel-route-extension" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="create-order-request">
 <h2>Create Order Request<a class="headerlink" href="#create-order-request" title="Permalink to this headline">¶</a></h2>
@@ -1135,6 +1150,48 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="delete-order">
+<h2>Delete Order<a class="headerlink" href="#delete-order" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getallfieldmetadata">
+<h2>GetAllFieldMetaData<a class="headerlink" href="#getallfieldmetadata" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getassetclass">
+<h2>GetAssetClass<a class="headerlink" href="#getassetclass" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getbrokers">
+<h2>GetBrokers<a class="headerlink" href="#getbrokers" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getbrokerstrategies">
+<h2>GetBrokerStrategies<a class="headerlink" href="#getbrokerstrategies" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getbrokerstrategieswithassetclass">
+<h2>GetBrokerStrategiesWithAssetClass<a class="headerlink" href="#getbrokerstrategieswithassetclass" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getbrokerstrategyinfo">
+<h2>GetBrokerStrategyInfo<a class="headerlink" href="#getbrokerstrategyinfo" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getbrokerstrategyinfowithassetclass">
+<h2>GetBrokerStrategyInfoWithAssetClass<a class="headerlink" href="#getbrokerstrategyinfowithassetclass" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getbrokerwithassetclass">
+<h2>GetBrokerWithAssetClass<a class="headerlink" href="#getbrokerwithassetclass" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getfieldmetadata">
+<h2>GetFieldMetaData<a class="headerlink" href="#getfieldmetadata" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getteams">
+<h2>GetTeams<a class="headerlink" href="#getteams" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="grouprouteex">
+<h2>GroupRouteEx<a class="headerlink" href="#grouprouteex" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="modifyorder">
+<h2>ModifyOrder<a class="headerlink" href="#modifyorder" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="modifyrouteex">
+<h2>ModifyRouteEx<a class="headerlink" href="#modifyrouteex" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="route-extended-request">
 <h2>Route Extended Request<a class="headerlink" href="#route-extended-request" title="Permalink to this headline">¶</a></h2>
 <p>Creating a route is essentially a buy-side placement to the market. Going forward we will refer all placment as routes in the documentation.</p>
@@ -1308,6 +1365,9 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="route-manually-extended-request">
+<h2>Route Manually Extended Request<a class="headerlink" href="#route-manually-extended-request" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -1317,7 +1377,7 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="emsxSubscription.html" class="btn btn-neutral float-right" title="EMSX Subscription" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="requestResponseSs.html" class="btn btn-neutral float-right" title="Sell-Side Request/Response Service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="session.html" class="btn btn-neutral" title="Session Object" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

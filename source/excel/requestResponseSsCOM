@@ -1,6 +1,6 @@
-##################################
-Sell-Side Request/Response Service
-##################################
+########################################
+Sell-Side Request/Response Service (COM)
+########################################
 
 
 The EMSX API allows developers to use the Request/Response services for order and route creation, modification, queries related to orders and routes (placements) as well as EMSX Team details. Depending on the type of action required, the application programmer must create a specific request, populate it with required parameters and send that request to the EMSX API service, which provides the response. Communication with the request/response service requires the following steps:

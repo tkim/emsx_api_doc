@@ -20,7 +20,6 @@ The EMSX API allows developers to use the Request/Response services for order an
 These are initialized in the constructor as below and are then available for the life of the application for submission of various requests. 
 
 
-
 Description of Request/Response Service
 =======================================
 
@@ -53,8 +52,6 @@ ModifyOrder 						Modify parent order
 ModifyRouteEx 						Modify child route
 RouteEx 							Route existing order
 RouteManuallyEx 					Route manually and notify EMSX that it is routed.
-SellSideAck 						Request to acknowlede an order on EMSX to EMSX setting
-SellSideReject 						Request to reject an order on EMSX to EMSX setting
 =================================== =================================================================
 
 
