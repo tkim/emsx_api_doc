@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>EMSX History Service (COM) &mdash; EMSX API Programmers Guide 0.0.1 documentation</title>
+  <title>EMSX History Service (COM) &mdash; EMSX API Programmers Guide 0.0.5 documentation</title>
   
 
   
@@ -33,10 +33,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="EMSX API Programmers Guide 0.0.1 documentation" href="../index.html"/>
+    <link rel="top" title="EMSX API Programmers Guide 0.0.5 documentation" href="../index.html"/>
         <link rel="up" title="Excel COM" href="index.html"/>
-        <link rel="next" title="EMSX Subscription (COM)" href="emsxSubscriptionCom.html"/>
-        <link rel="prev" title="Route Manually Request (COM)" href="routeManuallyCom.html"/> 
+        <link rel="next" title="FAQ" href="../faq.html"/>
+        <link rel="prev" title="EMSX Subscription (COM)" href="emsxSubscriptionCom.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.0.1
+                0.0.5
               </div>
             
           
@@ -85,31 +85,20 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programmable/index.html">Programmable EMSX API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Excel COM</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="excelCom.html">Excel COM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignTraderCom.html">Assign Trader Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cancelRouteCom.html">Cancel Route Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="createOrderCom.html">Create Order Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="createOrderAndRouteExCom.html">Create Order And Route Extended Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="createOrderAndRouteManuallyExCom.html">Create Order And Route Manually Extended Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deleteOrderCom.html">Delete Order Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getAllFieldMetaDataCom.html">Get All Field Meta Data Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getBrokerStrategiesWithAssetClassCom.html">Get Broker Strategies With Asset Class Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getBrokerStrategyInfoWithAssetClassCom.html">Get Broker Strategy Infor With Asset Class Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getBrokersWithAssetClassCom.html">Get Brokers With Asset Class Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getFieldMetaDataCom.html">Get Field Meta Data Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getTeamsCom.html">Get Teams Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="groupRouteCom.html">Group Route Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routeExCom.html">Route Extended Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routeManuallyCom.html">Route Manually Request (COM)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">EMSX History Service (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html">Buy-Side Request/Response Service (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponseSsCOM.html">Sell-Side Request/Response Service (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emsxSubscriptionCom.html">EMSX Subscription (COM)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EMSX History Service (COM)</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
 
             
@@ -158,6 +147,231 @@
             
   <div class="section" id="emsx-history-service-com">
 <h1>EMSX History Service (COM)<a class="headerlink" href="#emsx-history-service-com" title="Permalink to this headline">¶</a></h1>
+<p>EMSX History service provides individual fill information via request/response service. The service name is <code class="docutils literal"><span class="pre">//</span>
+<span class="pre">blp/emsx.history</span></code> for production and <code class="docutils literal"><span class="pre">//blp/emsx.history.uat</span></code> for test environment.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please note this service will not be available as part of <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> or <code class="docutils literal"><span class="pre">//blp/emapisvc_beta</span></code> service.</p>
+</div>
+<p>Unlike the //blp/emapisvc and //blp/emapisvc_beta service, //blp/emsx.history and //blp/emsx.history.uat service
+uses camel character for the element names.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Element</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Account</td>
+<td>Trading account used in EMSX&lt;GO&gt;</td>
+</tr>
+<tr class="row-odd"><td>Amount</td>
+<td>Total quantity of the order</td>
+</tr>
+<tr class="row-even"><td>AssetClass</td>
+<td>Asset class of the order</td>
+</tr>
+<tr class="row-odd"><td>BasketId</td>
+<td>ID of the basket</td>
+</tr>
+<tr class="row-even"><td>BasketName</td>
+<td>Name of the basket</td>
+</tr>
+<tr class="row-odd"><td>BBGID</td>
+<td>BBGID field</td>
+</tr>
+<tr class="row-even"><td>BlockId</td>
+<td>Block ID</td>
+</tr>
+<tr class="row-odd"><td>Broker</td>
+<td>Executing broker name</td>
+</tr>
+<tr class="row-even"><td>ClearingAccount</td>
+<td>Clearing account detail</td>
+</tr>
+<tr class="row-odd"><td>ClearingFirm</td>
+<td>Clearing firm detail</td>
+</tr>
+<tr class="row-even"><td>ContractExpDate</td>
+<td>Contract expiration date</td>
+</tr>
+<tr class="row-odd"><td>CorrectedFillId</td>
+<td>Corrected fill ID</td>
+</tr>
+<tr class="row-even"><td>Currency</td>
+<td>Currency</td>
+</tr>
+<tr class="row-odd"><td>Cusip</td>
+<td>CUSIP</td>
+</tr>
+<tr class="row-even"><td>DateTimeOfFill</td>
+<td>Date and time of the fill</td>
+</tr>
+<tr class="row-odd"><td>Exchange</td>
+<td>Exchange details</td>
+</tr>
+<tr class="row-even"><td>ExecPrevSeqNo</td>
+<td>Previous sequence number of execution</td>
+</tr>
+<tr class="row-odd"><td>ExecType</td>
+<td>Execution type details</td>
+</tr>
+<tr class="row-even"><td>ExecutingBrokers</td>
+<td>Executing broker details</td>
+</tr>
+<tr class="row-odd"><td>FillId</td>
+<td>ID of the fill</td>
+</tr>
+<tr class="row-even"><td>FillPrice</td>
+<td>Price of the fill</td>
+</tr>
+<tr class="row-odd"><td>FillShare</td>
+<td>Number of share of the fill</td>
+</tr>
+<tr class="row-even"><td>InvestorID</td>
+<td>Investor ID detail</td>
+</tr>
+<tr class="row-odd"><td>IsCfd</td>
+<td>CFD flag</td>
+</tr>
+<tr class="row-even"><td>Isin</td>
+<td>ISIN detail</td>
+</tr>
+<tr class="row-odd"><td>IsLeg</td>
+<td>I</td>
+</tr>
+<tr class="row-even"><td>LastCapacity</td>
+<td>Last capacity field in EMSX&lt;GO&gt;</td>
+</tr>
+<tr class="row-odd"><td>LastMarket</td>
+<td>Last market detail</td>
+</tr>
+<tr class="row-even"><td>LimitPrice</td>
+<td>Limit price detail</td>
+</tr>
+<tr class="row-odd"><td>Liquidity</td>
+<td>Liquidity detail</td>
+</tr>
+<tr class="row-even"><td>LocalExchangeSymbol</td>
+<td>Local exchange symbol</td>
+</tr>
+<tr class="row-odd"><td>LocateBroker</td>
+<td>Locate broker detail</td>
+</tr>
+<tr class="row-even"><td>LocateId</td>
+<td>Locate ID</td>
+</tr>
+<tr class="row-odd"><td>LocateRequired</td>
+<td>Flag to indicate whether or not short locate is required</td>
+</tr>
+<tr class="row-even"><td>MultilegId</td>
+<td>Multileg ID</td>
+</tr>
+<tr class="row-odd"><td>OCCSymbol</td>
+<td>OCC symbol</td>
+</tr>
+<tr class="row-even"><td>OrderExecutionInstruction</td>
+<td>Order execution instruction detail</td>
+</tr>
+<tr class="row-odd"><td>OrderHandlingInstruction</td>
+<td>Order handling instruction detail</td>
+</tr>
+<tr class="row-even"><td>OrderId</td>
+<td>Order ID</td>
+</tr>
+<tr class="row-odd"><td>OrderInstruction</td>
+<td>Order instruction detail</td>
+</tr>
+<tr class="row-even"><td>OrderOrigin</td>
+<td>Order origin detail</td>
+</tr>
+<tr class="row-odd"><td>OrderReferenceId</td>
+<td>Order reference ID detail</td>
+</tr>
+<tr class="row-even"><td>OriginatingTraderUuid</td>
+<td>UUID of the originating trader</td>
+</tr>
+<tr class="row-odd"><td>ReroutedBroker</td>
+<td>Rerouted broker details</td>
+</tr>
+<tr class="row-even"><td>RouteCommissionAmount</td>
+<td>Commission amount of the route</td>
+</tr>
+<tr class="row-odd"><td>RouteCommissionRate</td>
+<td>Commission rate of the route</td>
+</tr>
+<tr class="row-even"><td>RouteExecutionInstruction</td>
+<td>Route execution instruction</td>
+</tr>
+<tr class="row-odd"><td>RouteHandlingInstruction</td>
+<td>Route handling instruction</td>
+</tr>
+<tr class="row-even"><td>RouteId</td>
+<td>Route ID</td>
+</tr>
+<tr class="row-odd"><td>RouteNetMoney</td>
+<td>Route net money</td>
+</tr>
+<tr class="row-even"><td>RouteNotes</td>
+<td>Route instructions</td>
+</tr>
+<tr class="row-odd"><td>RouteShares</td>
+<td>Route shares</td>
+</tr>
+<tr class="row-even"><td>SecurityName</td>
+<td>Security name detail</td>
+</tr>
+<tr class="row-odd"><td>Sedol</td>
+<td>SEDOL</td>
+</tr>
+<tr class="row-even"><td>SettlementDate</td>
+<td>Settlement date detail</td>
+</tr>
+<tr class="row-odd"><td>Side</td>
+<td>Side</td>
+</tr>
+<tr class="row-even"><td>StopPrice</td>
+<td>Stop Price</td>
+</tr>
+<tr class="row-odd"><td>StrategyType</td>
+<td>Strategy Type</td>
+</tr>
+<tr class="row-even"><td>Ticker</td>
+<td>Ticker</td>
+</tr>
+<tr class="row-odd"><td>TIF</td>
+<td>Time in Force</td>
+</tr>
+<tr class="row-even"><td>TraderName</td>
+<td>Name of the trader</td>
+</tr>
+<tr class="row-odd"><td>TraderUuid</td>
+<td>Bloomberg UUID of the trader</td>
+</tr>
+<tr class="row-even"><td>Type</td>
+<td>Order type</td>
+</tr>
+<tr class="row-odd"><td>UserCommissionAmount</td>
+<td>User commission amount</td>
+</tr>
+<tr class="row-even"><td>UserCommissionRate</td>
+<td>User commission rate</td>
+</tr>
+<tr class="row-odd"><td>UserFees</td>
+<td>User fee detail</td>
+</tr>
+<tr class="row-even"><td>UserNetMoney</td>
+<td>User net money detail</td>
+</tr>
+<tr class="row-odd"><td>YellowKey</td>
+<td>Bloomberg yellow key field detail</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-vb.net"><div class="highlight"><pre><span></span><span class="k">Option</span> <span class="n">Explicit</span>
 
 <span class="k">Private</span> <span class="k">WithEvents</span> <span class="n">m_BBG_EMSX</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Session</span>
@@ -547,10 +761,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="emsxSubscriptionCom.html" class="btn btn-neutral float-right" title="EMSX Subscription (COM)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../faq.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="routeManuallyCom.html" class="btn btn-neutral" title="Route Manually Request (COM)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="emsxSubscriptionCom.html" class="btn btn-neutral" title="EMSX Subscription (COM)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -581,7 +795,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.1',
+            VERSION:'0.0.5',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

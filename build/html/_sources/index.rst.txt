@@ -12,13 +12,14 @@ This information could include technical inaccuracies or typographical errors. C
 
 .. toctree::
    :maxdepth: 3
-   :caption: Contents:
+   :caption: Table of Contents
 
    introduction
    server/index
    programmable/index
    excel/index
    faq
+   glossary
 
 Indices and tables
 ==================

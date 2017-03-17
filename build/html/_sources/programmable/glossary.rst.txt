@@ -1,0 +1,21 @@
+########
+Glossary
+########
+
+* **AIM**
+
+Bloomberg Order Management System (OMS) called Asset and Investment Manager.
+
+* **EMS**
+
+A generic term for execution management system.
+
+* **EMSX<GO>**
+
+Bloomberg Execution Management System for equities, futures and options.
+
+* **OMS**
+
+A generic term for order management system.
+
+

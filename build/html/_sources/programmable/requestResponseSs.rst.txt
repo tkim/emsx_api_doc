@@ -32,8 +32,20 @@ EMSX API supports the following Request/Response services:-
 =================================== =================================================================
 Request Name             			Action
 =================================== =================================================================
-SellSideAck 						Request to acknowlede an order on EMSX to EMSX setting
-SellSideReject 						Request to reject an order on EMSX to EMSX setting
+ManualFill							Request to manually fill a child route.
+SellSideAck 						Request to acknowlede an order on EMSX to EMSX setting.
+SellSideReject 						Request to reject an order on EMSX to EMSX setting.
 =================================== =================================================================
 
+
+Manaul Fill Request
+===================
+
+
+Sell Side Ack Request
+=====================
+
+
+Sell Side Reject Request
+========================
 

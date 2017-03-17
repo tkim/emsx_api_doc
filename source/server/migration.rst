@@ -20,11 +20,11 @@ Migrating the existing desktop application call to a server application simply i
 
 		DAPI:
 			session.sendRequest(request, requestID);
-	      	session.subscribe(subscriptions);
+			session.subscribe(subscriptions);
 
 		Server:
 			session.sendRequest(request, Identity, requestID);
-	      	session.subscribe(subscriptions, Identity);
+			session.subscribe(subscriptions, Identity);
 
 
 
@@ -32,13 +32,13 @@ Creating User Identities
 ========================
 
 
-The steps involved in connecting to the EMSX API on the desktop are as follows:-
+The steps involved in connecting to the EMSX API on the desktop are as follows.
 
 
 .. image:: /image/userIdentity.png
 
 
-In the server environment, the user identities must be created and cached prior to the making requests.  Therefore, the process would look as follows:-
+In the server environment, the user identities must be created and cached prior to the making requests.  Therefore, the process would look as follows.
 
 
 .. image:: /image/userIdentity2.png
@@ -58,7 +58,7 @@ The first new step is to open the authentication service. This is done in the sa
 		session.openServiceAsync(d_authsvc);
 
 
-Once the service is opened, we need to create and send an authorization request. To create an identity for a specific user, you will need the AuthID for the user. This is the name the user is known by in the EMRS system for your server. The values for these names will have been agreed with you as part of the implementation of the server, or subsequently when adding a new user. Also, an IP address is required. The only requirement for this IP address is that it is unique amongst all the identities generated for a session. You can create and send the request as follows:-
+Once the service is opened, we need to create and send an authorization request. To create an identity for a specific user, you will need the AuthID for the user. This is the name the user is known by in the EMRS system for your server. The values for these names will have been agreed with you as part of the implementation of the server, or subsequently when adding a new user. Also, an IP address is required. The only requirement for this IP address is that it is unique amongst all the identities generated for a session. You can create and send the request as follows.
 
 
 .. code-block:: none
@@ -89,8 +89,9 @@ Once the service is opened, we need to create and send an authorization request.
 		}
 
 
-In the above code, you can see that an empty identity object is created using session.createIdentity(). This is the object that will be populated once successful authentication has been achieved, and it is the object that will need to be cached.
-We will receive a Response event for the Authentication service. In the example below, we use a CorrelationID to identify messages from the Authentication service, and check for success or failure:-
+In the above code, you can see that an empty identity object is created using ``session.createIdentity()``. This is the object that will be populated once successful authentication has been achieved, and it is the object that will need to be cached.
+
+We will receive a Response event for the Authentication service. In the example below, we use a ``CorrelationID`` to identify messages from the Authentication service, and check for success or failure:-
 
 
 .. code-block:: none
@@ -125,35 +126,33 @@ Server Side Request/Response
 
 As of today, the following ``emapisvc`` and ``emapisvc_beta`` requests are available from the server side access.
 
+
 =================================== =================================================================
 Request Name             			Action
 =================================== =================================================================
-AssignTrader						Assign an order to another UUID
-CancelRouteEX						Cancel outstanding routes (placements)
-CreateOrder                     	Create an order or stage an order into EMSX<GO>
+AssignTrader						Assign an order to another UUID.
+CancelRouteEx						Cancel outstanding routes (placements).
+CreateOrder                     	Create an order or stage an order into EMSX<GO>.
 CreateOrderAndRouteEx				Create a new order and route in a single request. 
 CreateOrderAndRouteManually	 		Create the order and notify EMSX this is routed.
-DeleteOrder					 		Delete an existing order in EMSX<GO>
-GetAllFieldMetaData			 		Get all field meta data in a response message
-GetAssetClass						Get all asset class data in a response message
-GetBrokers							Get all broker data in a response message
-GetBrokerStrategies					Get all broker strategy data in a response message
-GetBrokerStrategiesWithAssetClass 	Get all broker strategy information and asset class data
-GetBrokerStrategyInfo 				Get all broker strategy info data in a response message
-GetBrokerStrategyInfoWithAssetClass Get all broker strategy info and asset class data
-GetBrokerWithAssetClass 			Get all broker data with asset class in a response message
-GetFieldMetaData 					Get field meta data in a reponse message
-GetTeams 							Get team data in a response message
-GroupRouteEx 						Submit the entire list as a single route to a basket algorithm
-ModifyOrder 						Modify parent order
-ModifyRouteEx 						Modify child route
-RouteEx 							Route existing order
+DeleteOrder					 		Delete an existing order in EMSX<GO>.
+GetAllFieldMetaData			 		Get all field meta data in a response message.
+GetBrokerStrategiesWithAssetClass 	Get all broker strategy information and asset class data.
+GetBrokerStrategyInfoWithAssetClass Get all broker strategy info and asset class data.
+GetBrokerWithAssetClass 			Get all broker data with asset class in a response message.
+GetFieldMetaData 					Get field meta data in a reponse message.
+GetTeams 							Get team data in a response message.
+GroupRouteEx 						Submit the entire list as a single route to a basket algorithm.
+ModifyOrder 						Modify parent order.
+ModifyRouteEx 						Modify child route.
+RouteEx 							Route existing order.
 RouteManuallyEx 					Route manually and notify EMSX that it is routed.
-SellSideAck 						Request to acknowlede an order on EMSX to EMSX setting
-SellSideReject 						Request to reject an order on EMSX to EMSX setting
 =================================== =================================================================
+
 
 Any other requests will return the following error:
 
-"Obsolete request type: " << request_type
+.. code-block:: none
+
+	"Obsolete request type: " << request_type
 

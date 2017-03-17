@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="EMSX API Programmers Guide 0.0.5 documentation" href="../index.html"/>
         <link rel="next" title="Buy-Side Request/Response Service (COM)" href="requestResponseCom.html"/>
-        <link rel="prev" title="EMSX Subscription" href="../programmable/emsxSubscription.html"/> 
+        <link rel="prev" title="EMSX History Request" href="../programmable/emsxHistory.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -84,7 +84,7 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
@@ -93,9 +93,11 @@
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html">Buy-Side Request/Response Service (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseSsCOM.html">Sell-Side Request/Response Service (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emsxSubscriptionCom.html">EMSX Subscription (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxHistoryCom.html">EMSX History Service (COM)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
 
             
@@ -160,30 +162,33 @@
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#date-time-format">Date &amp; Time Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#custome-notes-free-text-fields">Custome Notes &amp; Free Text Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#assign-trader-request-com">Assign Trader Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#cancel-route-request-com">Cancel Route Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#cancel-route-extended-request-com">Cancel Route Extended Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#create-order-request">Create Order Request</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#create-order-and-route-extended-request-com">Create Order And Route Extended Request (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#create-order-and-route-manually-extended-request-com">Create Order And Route Manually Extended Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#create-order-request-com">Create Order Request (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#delete-order-request-com">Delete Order Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#emsx-history-service-com">EMSX History Service (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#get-all-field-meta-data-request-com">Get All Field Meta Data Request (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#get-broker-strategies-with-asset-class-request-com">Get Broker Strategies With Asset Class Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#get-broker-strategy-infor-with-asset-class-request-com">Get Broker Strategy Infor With Asset Class Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#get-broker-strategy-info-with-asset-class-request-com">Get Broker Strategy Info With Asset Class Request (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#get-brokers-with-asset-class-request-com">Get Brokers With Asset Class Request (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#get-field-meta-data-request-com">Get Field Meta Data Request (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#get-teams-request-com">Get Teams Request (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#group-route-request-com">Group Route Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#group-route-extended-request-com">Group Route Extended Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#modify-order-request-com">Modify Order Request (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#modify-route-extended-request-com">Modify Route Extended Request (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#route-extended-request-com">Route Extended Request (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseCom.html#route-manually-request-com">Route Manually Request (COM)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="requestResponseSsCOM.html">Sell-Side Request/Response Service (COM)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseSsCOM.html#description-of-request-response-service">Description of Request/Response Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponseSsCOM.html#manaul-fill-request">Manaul Fill Request</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseSsCOM.html#sell-side-ack-request">Sell Side Ack Request</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseSsCOM.html#sell-side-reject-request">Sell Side Reject Request</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="emsxSubscriptionCom.html">EMSX Subscription (COM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="emsxHistoryCom.html">EMSX History Service (COM)</a></li>
 </ul>
 </div>
 </div>
@@ -198,7 +203,7 @@
         <a href="requestResponseCom.html" class="btn btn-neutral float-right" title="Buy-Side Request/Response Service (COM)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../programmable/emsxSubscription.html" class="btn btn-neutral" title="EMSX Subscription" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../programmable/emsxHistory.html" class="btn btn-neutral" title="EMSX History Request" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

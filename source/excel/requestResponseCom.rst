@@ -31,26 +31,22 @@ EMSX API supports the following Request/Response services:-
 =================================== =================================================================
 Request Name             			Action
 =================================== =================================================================
-AssignTrader						Assign an order to another UUID
-CancelRouteEX						Cancel outstanding routes (placements)
-CreateOrder                     	Create an order or stage an order into EMSX<GO>
+AssignTrader						Assign an order to another UUID.
+CancelRouteEx						Cancel outstanding routes (placements).
+CreateOrder                     	Create an order or stage an order into EMSX<GO>.
 CreateOrderAndRouteEx				Create a new order and route in a single request. 
 CreateOrderAndRouteManually	 		Create the order and notify EMSX this is routed.
-DeleteOrder					 		Delete an existing order in EMSX<GO>
-GetAllFieldMetaData			 		Get all field meta data in a response message
-GetAssetClass						Get all asset class data in a response message
-GetBrokers							Get all broker data in a response message
-GetBrokerStrategies					Get all broker strategy data in a response message
-GetBrokerStrategiesWithAssetClass 	Get all broker strategy information and asset class data
-GetBrokerStrategyInfo 				Get all broker strategy info data in a response message
-GetBrokerStrategyInfoWithAssetClass Get all broker strategy info and asset class data
-GetBrokerWithAssetClass 			Get all broker data with asset class in a response message
-GetFieldMetaData 					Get field meta data in a reponse message
-GetTeams 							Get team data in a response message
-GroupRouteEx 						Submit the entire list as a single route to a basket algorithm
-ModifyOrder 						Modify parent order
-ModifyRouteEx 						Modify child route
-RouteEx 							Route existing order
+DeleteOrder					 		Delete an existing order in EMSX<GO>.
+GetAllFieldMetaData			 		Get all field meta data in a response message.
+GetBrokerStrategiesWithAssetClass 	Get all broker strategy information and asset class data.
+GetBrokerStrategyInfoWithAssetClass Get all broker strategy info and asset class data.
+GetBrokerWithAssetClass 			Get all broker data with asset class in a response message.
+GetFieldMetaData 					Get field meta data in a reponse message.
+GetTeams 							Get team data in a response message.
+GroupRouteEx 						Submit the entire list as a single route to a basket algorithm.
+ModifyOrder 						Modify parent order.
+ModifyRouteEx 						Modify child route.
+RouteEx 							Route existing order.
 RouteManuallyEx 					Route manually and notify EMSX that it is routed.
 =================================== =================================================================
 
@@ -169,7 +165,6 @@ Assign Trader Request (COM)
 AssignTrader request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.
 
 Assigned trader must be in same EMBR group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
-
 
 
 .. code-block:: vb.net
@@ -443,8 +438,11 @@ Assigned trader must be in same EMBR group for this to work. EMBR<GO> is an inte
 
 
 
-Cancel Route Request (COM)
-==========================
+Cancel Route Extended Request (COM)
+===================================
+
+
+In EMSX<GO> we have a notion of parent order and child routes. The CancelRoute request is to effectively send out a cancellation request to the execution venue of the current live route. Submission of CancelRoute does not automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue of the route.
 
 
 .. code-block:: vb.net
@@ -664,8 +662,276 @@ Cancel Route Request (COM)
 
 
 
+Create Order Request
+====================
+
+
+Creating an order requires the user to create a request from the service object of type CreateOrder and fill in the required fields before submitting the request. 
+
+.. note::
+
+	If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is also true for custom time in force fields. Any non-standard TIF will also be restricted from staging unless the broker enables the broker code for EMSX API.
+
+
+.. code-block:: vb.net
+
+	Option Explicit
+
+	Private WithEvents m_BBG_EMSX As blpapicomLib2.Session
+	Public running As Boolean
+	Private svc As blpapicomLib2.service
+	Private emsxService As String
+	Private requestID As blpapicomLib2.CorrelationId
+
+	Private Sub Class_Initialize()
+
+	    log "Bloomberg - EMSX API Example - CreateOrder"
+
+	    emsxService = "//blp/emapisvc_beta"
+	    
+	    Set m_BBG_EMSX = New blpapicomLib2.Session
+	    
+	    running = True
+	    
+	    m_BBG_EMSX.QueueEvents = True
+	    m_BBG_EMSX.Start
+	    
+
+	End Sub
+
+	Private Sub Class_Terminate()
+	    Set m_BBG_EMSX = Nothing
+	End Sub
+
+	Private Sub m_BBG_EMSX_ProcessEvent(ByVal obj As Object)
+
+	    On Error GoTo errHandler
+	    
+	    Dim eventObj As blpapicomLib2.Event
+	    
+	     '   Assign the returned data to a Bloomberg type event
+	    Set eventObj = obj
+	    
+	    If Application.Ready Then
+	    
+	        Select Case eventObj.EventType
+	        
+	            Case SESSION_STATUS
+	                processSessionEvent eventObj
+	                
+	            Case BLPSERVICE_STATUS
+	                processServiceEvent eventObj
+	                
+	            Case RESPONSE
+	                processResponseEvent eventObj
+	                
+	        End Select
+	        
+	    End If
+
+	    Exit Sub
+
+	errHandler:
+	    Dim errmsg As Variant
+	    errmsg = Err.Description
+	    log (errmsg)
+	    running = False
+
+	End Sub
+
+
+	Private Sub processSessionEvent(evt As blpapicomLib2.Event)
+
+	    log "Processing SESSION_STATUS event"
+	    
+	    Dim it As blpapicomLib2.MessageIterator
+	    
+	    Set it = evt.CreateMessageIterator()
+
+	    ' Loop while we have messages remaining
+	    Do While it.Next()
+	              
+	        Dim msg As Message
+	        
+	        '   Pick up message
+	        Set msg = it.Message
+	        
+	        log "MessageType: " + msg.MessageTypeAsString
+	        
+	        If msg.MessageTypeAsString = "SessionStarted" Then
+	            log "Session started..."
+	            m_BBG_EMSX.OpenService emsxService
+	        ElseIf msg.MessageTypeAsString = "SessionStartupFailure" Then
+	            log "Error: Session startup failed"
+	            running = False
+	        End If
+	        
+	    Loop
+
+	End Sub
+
+	Private Sub processServiceEvent(evt As blpapicomLib2.Event)
+
+	    Dim req As REQUEST
+	    Dim service As service
+	    
+	    Dim it As blpapicomLib2.MessageIterator
+	    
+	    On Error GoTo failed
+	    
+	    log "Processing SERVICE_STATUS event"
+	    
+	    Set it = evt.CreateMessageIterator()
+
+	    ' Loop while we have messages remaining
+	    Do While it.Next()
+	              
+	        Dim msg As Message
+	        
+	        '   Pick up message
+	        Set msg = it.Message
+	        
+	        log "MessageType: " + msg.MessageTypeAsString
+	        
+	        If msg.MessageTypeAsString = "ServiceOpened" Then
+	    
+	            ' Get the service
+	            Set service = m_BBG_EMSX.GetService(emsxService)
+	    
+	            'First, create our request object
+	            Set req = service.CreateRequest("CreateOrder")
+	    
+	            'The fields below are mandatory
+	            req.Set "EMSX_TICKER", "IBM US Equity"
+	            req.Set "EMSX_AMOUNT", 1000
+	            req.Set "EMSX_ORDER_TYPE", "MKT"
+	            req.Set "EMSX_TIF", "DAY"
+	            req.Set "EMSX_HAND_INSTRUCTION", "ANY"
+	            req.Set "EMSX_SIDE", "BUY"
+	            
+	            'The fields below are optional
+	            'req.Set "EMSX_ACCOUNT", "TestAccount"
+	            'req.Set "EMSX_BASKET_NAME", "HedgingBasket"
+	            'req.Set "EMSX_BROKER", "BMTB"
+	            'req.Set "EMSX_CFD_FLAG", "1"
+	            'req.Set "EMSX_CLEARING_ACCOUNT", "ClrAccName"
+	            'req.Set "EMSX_CLEARING_FIRM", "FirmName"
+	            'req.Set "EMSX_CUSTOM_NOTE1", "Note1"
+	            'req.Set "EMSX_CUSTOM_NOTE2", "Note2"
+	            'req.Set "EMSX_CUSTOM_NOTE3", "Note3"
+	            'req.Set "EMSX_CUSTOM_NOTE4", "Note4"
+	            'req.Set "EMSX_CUSTOM_NOTE5", "Note5"
+	            'req.Set "EMSX_EXCHANGE_DESTINATION", "ExchDest"
+	            'req.Set "EMSX_EXEC_INSTRUCTIONS", "AnyInst"
+	            'req.Set "EMSX_GET_WARNINGS", "0"
+	            'req.Set "EMSX_GTD_DATE", "20170105"
+	            'req.Set "EMSX_INVESTOR_ID", "InvID"
+	            'req.Set "EMSX_LIMIT_PRICE", 123.45
+	            'req.Set "EMSX_LOCATE_BROKER", "BMTB"
+	            'req.Set "EMSX_LOCATE_ID", "SomeID"
+	            'req.Set "EMSX_LOCATE_REQ", "Y"
+	            'req.Set "EMSX_NOTES", "Some notes"
+	            'req.Set "EMSX_ODD_LOT", "0"
+	            'req.Set "EMSX_ORDER_ORIGIN", ""
+	            'req.Set "EMSX_ORDER_REF_ID", "UniqueID"
+	            'req.Set "EMSX_P_A", "P"
+	            'req.Set "EMSX_RELEASE_TIME", 34341
+	            'req.Set "EMSX_REQUEST_SEQ", 1001
+	            'req.Set "EMSX_SETTLE_CURRENCY", "USD"
+	            'req.Set "EMSX_SETTLE_DATE", 20170106
+	            'req.Set "EMSX_SETTLE_TYPE", "T+2"
+	            'req.Set "EMSX_STOP_PRICE", 123.5
+	           
+	            log "Request: " & req.Print
+	            
+	            ' Send the request
+	            Set requestID = m_BBG_EMSX.SendRequest(req)
+
+	        ElseIf msg.MessageTypeAsString = "ServiceOpenFailure" Then
+	        
+	            log "Error: Service failed to open"
+	            running = False
+	            
+	        End If
+	        
+	    Loop
+
+	    Exit Sub
+	    
+	failed:
+
+	    log "Failed to send the request: " + Err.Description
+	    
+	    running = False
+	    Exit Sub
+	    
+	End Sub
+
+	Private Sub processResponseEvent(evt As blpapicomLib2.Event)
+
+	    log "Processing RESPONSE event"
+	    
+	    Dim it As blpapicomLib2.MessageIterator
+	    Dim i As Integer
+	    Dim errorCode As Long
+	    Dim errorMessage As String
+	 
+	    Set it = evt.CreateMessageIterator()
+
+	    ' Loop while we have messages remaining
+	    Do While it.Next()
+	              
+	        Dim msg As Message
+	        
+	        '   Pick up message
+	        Set msg = it.Message
+	        
+	        log "MessageType: " + msg.MessageTypeAsString
+	        
+	        If evt.EventType = RESPONSE And msg.CorrelationId.Value = requestID.Value Then
+	        
+	            If msg.MessageTypeAsString = "ErrorInfo" Then
+	            
+	                errorCode = msg.GetElement("ERROR_CODE")
+	                errorMessage = msg.GetElement("ERROR_MESSAGE")
+	                
+	                log "ERROR CODE: " & errorCode & "    ERROR DESCRIPTION: " & errorMessage
+	            
+	                running = False
+	                
+	            ElseIf msg.MessageTypeAsString = "CreateOrder" Then
+	                
+	                Dim emsxSequence As Long
+	                Dim msgdesc As String
+	                
+	                emsxSequence = msg.GetElement("EMSX_SEQUENCE")
+	                msgdesc = msg.GetElement("MESSAGE")
+	                
+	                log "EMSX_SEQUENCE: " & emsxSequence & "    MESSAGE: " & msgdesc
+	                
+	                m_BBG_EMSX.Stop
+	                running = False
+	            
+	            End If
+	        End If
+	    Loop
+
+	End Sub
+
+
 Create Order And Route Extended Request (COM)
 =============================================
+
+
+Creating an order and routing with strategy requires the user to create a request from the service object of type CreateOrderAndRouteWithStrat and fill in the required fields before submitting the request. 
+Mandatory fields for the CreateOrderAndRoute requests are the following. 
+
+
+.. note:: 
+
+	The user will first need to request *GetBrokers* to get all the brokers the user is enabled for, returned in response. Subsequently the user can then request *GetBrokerStrategies* to get all the broker strategies user is enabled for that particular broker code. 
+
+	Lastly, *GetBrokerStrategyInfo* will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in *CreateOrderAndRouteEx* and *RouteEx* requests.
 
 
 .. code-block:: vb.net
@@ -922,6 +1188,9 @@ Create Order And Route Manually Extended Request (COM)
 ======================================================
 
 
+``CreateOrderAndRouteManually`` request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
+
+
 .. code-block:: vb.net
 
     Option Explicit
@@ -1161,260 +1430,13 @@ Create Order And Route Manually Extended Request (COM)
     End Sub
 
 
-
-Create Order Request (COM)
-==========================
-
-
-.. code-block:: vb.net
-
-	Option Explicit
-
-	Private WithEvents m_BBG_EMSX As blpapicomLib2.Session
-	Public running As Boolean
-	Private svc As blpapicomLib2.service
-	Private emsxService As String
-	Private requestID As blpapicomLib2.CorrelationId
-
-	Private Sub Class_Initialize()
-
-	    log "Bloomberg - EMSX API Example - CreateOrder"
-
-	    emsxService = "//blp/emapisvc_beta"
-	    
-	    Set m_BBG_EMSX = New blpapicomLib2.Session
-	    
-	    running = True
-	    
-	    m_BBG_EMSX.QueueEvents = True
-	    m_BBG_EMSX.Start
-	    
-
-	End Sub
-
-	Private Sub Class_Terminate()
-	    Set m_BBG_EMSX = Nothing
-	End Sub
-
-	Private Sub m_BBG_EMSX_ProcessEvent(ByVal obj As Object)
-
-	    On Error GoTo errHandler
-	    
-	    Dim eventObj As blpapicomLib2.Event
-	    
-	     '   Assign the returned data to a Bloomberg type event
-	    Set eventObj = obj
-	    
-	    If Application.Ready Then
-	    
-	        Select Case eventObj.EventType
-	        
-	            Case SESSION_STATUS
-	                processSessionEvent eventObj
-	                
-	            Case BLPSERVICE_STATUS
-	                processServiceEvent eventObj
-	                
-	            Case RESPONSE
-	                processResponseEvent eventObj
-	                
-	        End Select
-	        
-	    End If
-
-	    Exit Sub
-
-	errHandler:
-	    Dim errmsg As Variant
-	    errmsg = Err.Description
-	    log (errmsg)
-	    running = False
-
-	End Sub
-
-
-	Private Sub processSessionEvent(evt As blpapicomLib2.Event)
-
-	    log "Processing SESSION_STATUS event"
-	    
-	    Dim it As blpapicomLib2.MessageIterator
-	    
-	    Set it = evt.CreateMessageIterator()
-
-	    ' Loop while we have messages remaining
-	    Do While it.Next()
-	              
-	        Dim msg As Message
-	        
-	        '   Pick up message
-	        Set msg = it.Message
-	        
-	        log "MessageType: " + msg.MessageTypeAsString
-	        
-	        If msg.MessageTypeAsString = "SessionStarted" Then
-	            log "Session started..."
-	            m_BBG_EMSX.OpenService emsxService
-	        ElseIf msg.MessageTypeAsString = "SessionStartupFailure" Then
-	            log "Error: Session startup failed"
-	            running = False
-	        End If
-	        
-	    Loop
-
-	End Sub
-
-	Private Sub processServiceEvent(evt As blpapicomLib2.Event)
-
-	    Dim req As REQUEST
-	    Dim service As service
-	    
-	    Dim it As blpapicomLib2.MessageIterator
-	    
-	    On Error GoTo failed
-	    
-	    log "Processing SERVICE_STATUS event"
-	    
-	    Set it = evt.CreateMessageIterator()
-
-	    ' Loop while we have messages remaining
-	    Do While it.Next()
-	              
-	        Dim msg As Message
-	        
-	        '   Pick up message
-	        Set msg = it.Message
-	        
-	        log "MessageType: " + msg.MessageTypeAsString
-	        
-	        If msg.MessageTypeAsString = "ServiceOpened" Then
-	    
-	            ' Get the service
-	            Set service = m_BBG_EMSX.GetService(emsxService)
-	    
-	            'First, create our request object
-	            Set req = service.CreateRequest("CreateOrder")
-	    
-	            'The fields below are mandatory
-	            req.Set "EMSX_TICKER", "IBM US Equity"
-	            req.Set "EMSX_AMOUNT", 1000
-	            req.Set "EMSX_ORDER_TYPE", "MKT"
-	            req.Set "EMSX_TIF", "DAY"
-	            req.Set "EMSX_HAND_INSTRUCTION", "ANY"
-	            req.Set "EMSX_SIDE", "BUY"
-	            
-	            'The fields below are optional
-	            'req.Set "EMSX_ACCOUNT", "TestAccount"
-	            'req.Set "EMSX_BASKET_NAME", "HedgingBasket"
-	            'req.Set "EMSX_BROKER", "BMTB"
-	            'req.Set "EMSX_CFD_FLAG", "1"
-	            'req.Set "EMSX_CLEARING_ACCOUNT", "ClrAccName"
-	            'req.Set "EMSX_CLEARING_FIRM", "FirmName"
-	            'req.Set "EMSX_CUSTOM_NOTE1", "Note1"
-	            'req.Set "EMSX_CUSTOM_NOTE2", "Note2"
-	            'req.Set "EMSX_CUSTOM_NOTE3", "Note3"
-	            'req.Set "EMSX_CUSTOM_NOTE4", "Note4"
-	            'req.Set "EMSX_CUSTOM_NOTE5", "Note5"
-	            'req.Set "EMSX_EXCHANGE_DESTINATION", "ExchDest"
-	            'req.Set "EMSX_EXEC_INSTRUCTIONS", "AnyInst"
-	            'req.Set "EMSX_GET_WARNINGS", "0"
-	            'req.Set "EMSX_GTD_DATE", "20170105"
-	            'req.Set "EMSX_INVESTOR_ID", "InvID"
-	            'req.Set "EMSX_LIMIT_PRICE", 123.45
-	            'req.Set "EMSX_LOCATE_BROKER", "BMTB"
-	            'req.Set "EMSX_LOCATE_ID", "SomeID"
-	            'req.Set "EMSX_LOCATE_REQ", "Y"
-	            'req.Set "EMSX_NOTES", "Some notes"
-	            'req.Set "EMSX_ODD_LOT", "0"
-	            'req.Set "EMSX_ORDER_ORIGIN", ""
-	            'req.Set "EMSX_ORDER_REF_ID", "UniqueID"
-	            'req.Set "EMSX_P_A", "P"
-	            'req.Set "EMSX_RELEASE_TIME", 34341
-	            'req.Set "EMSX_REQUEST_SEQ", 1001
-	            'req.Set "EMSX_SETTLE_CURRENCY", "USD"
-	            'req.Set "EMSX_SETTLE_DATE", 20170106
-	            'req.Set "EMSX_SETTLE_TYPE", "T+2"
-	            'req.Set "EMSX_STOP_PRICE", 123.5
-	           
-	            log "Request: " & req.Print
-	            
-	            ' Send the request
-	            Set requestID = m_BBG_EMSX.SendRequest(req)
-
-	        ElseIf msg.MessageTypeAsString = "ServiceOpenFailure" Then
-	        
-	            log "Error: Service failed to open"
-	            running = False
-	            
-	        End If
-	        
-	    Loop
-
-	    Exit Sub
-	    
-	failed:
-
-	    log "Failed to send the request: " + Err.Description
-	    
-	    running = False
-	    Exit Sub
-	    
-	End Sub
-
-	Private Sub processResponseEvent(evt As blpapicomLib2.Event)
-
-	    log "Processing RESPONSE event"
-	    
-	    Dim it As blpapicomLib2.MessageIterator
-	    Dim i As Integer
-	    Dim errorCode As Long
-	    Dim errorMessage As String
-	 
-	    Set it = evt.CreateMessageIterator()
-
-	    ' Loop while we have messages remaining
-	    Do While it.Next()
-	              
-	        Dim msg As Message
-	        
-	        '   Pick up message
-	        Set msg = it.Message
-	        
-	        log "MessageType: " + msg.MessageTypeAsString
-	        
-	        If evt.EventType = RESPONSE And msg.CorrelationId.Value = requestID.Value Then
-	        
-	            If msg.MessageTypeAsString = "ErrorInfo" Then
-	            
-	                errorCode = msg.GetElement("ERROR_CODE")
-	                errorMessage = msg.GetElement("ERROR_MESSAGE")
-	                
-	                log "ERROR CODE: " & errorCode & "    ERROR DESCRIPTION: " & errorMessage
-	            
-	                running = False
-	                
-	            ElseIf msg.MessageTypeAsString = "CreateOrder" Then
-	                
-	                Dim emsxSequence As Long
-	                Dim msgdesc As String
-	                
-	                emsxSequence = msg.GetElement("EMSX_SEQUENCE")
-	                msgdesc = msg.GetElement("MESSAGE")
-	                
-	                log "EMSX_SEQUENCE: " & emsxSequence & "    MESSAGE: " & msgdesc
-	                
-	                m_BBG_EMSX.Stop
-	                running = False
-	            
-	            End If
-	        End If
-	    Loop
-
-	End Sub
-
-
-
 Delete Order Request (COM)
 ==========================
+
+
+``DeleteOrder`` request deletes an existing order in EMSX<GO>. This is not the same action as canceling the parent order. In fact, EMSX API does not expose Cancel Order status as in EMSX<GO>. 
+
+The primary reason behind this is because the Cancel Order in EMSX<GO> really just puts an order in an inoperable state and doesn't really serve any meaningful function.
 
 
 .. code-block:: vb.net
@@ -1628,395 +1650,11 @@ Delete Order Request (COM)
 
 
 
-EMSX History Service (COM)
-==========================
-
-
-.. code-block:: vb.net
-
-    Option Explicit
-
-    Private WithEvents m_BBG_EMSX As blpapicomLib2.Session
-    Public running As Boolean
-    Private svc As blpapicomLib2.service
-    Private emsxHistoryService As String
-    Private requestID As blpapicomLib2.CorrelationId
-
-    Private Sub Class_Initialize()
-
-        log "Bloomberg - EMSX API Example - EMSXHistory"
-
-        emsxHistoryService = "//blp/emsx.history.uat"
-        
-        Set m_BBG_EMSX = New blpapicomLib2.Session
-        
-        running = True
-        
-        m_BBG_EMSX.QueueEvents = True
-        m_BBG_EMSX.Start
-        
-
-    End Sub
-
-    Private Sub Class_Terminate()
-        Set m_BBG_EMSX = Nothing
-    End Sub
-
-    Private Sub m_BBG_EMSX_ProcessEvent(ByVal obj As Object)
-
-        On Error GoTo errHandler
-
-        Dim eventObj As blpapicomLib2.Event
-        
-         '   Assign the returned data to a Bloomberg type event
-        Set eventObj = obj
-        
-        If Application.Ready Then
-        
-            Select Case eventObj.EventType
-            
-                Case SESSION_STATUS
-                    processSessionEvent eventObj
-                    
-                Case BLPSERVICE_STATUS
-                    processServiceEvent eventObj
-                    
-                Case RESPONSE
-                    processResponseEvent eventObj
-                    
-            End Select
-            
-        End If
-
-        Exit Sub
-
-    errHandler:
-        Dim errmsg As Variant
-        errmsg = Err.Description
-        log (errmsg)
-        running = False
-
-    End Sub
-
-
-    Private Sub processSessionEvent(evt As blpapicomLib2.Event)
-
-        log "Processing SESSION_STATUS event"
-        
-        Dim it As blpapicomLib2.MessageIterator
-        
-        Set it = evt.CreateMessageIterator()
-
-        ' Loop while we have messages remaining
-        Do While it.Next()
-                  
-            Dim msg As Message
-            
-            '   Pick up message
-            Set msg = it.Message
-            
-            log "MessageType: " + msg.MessageTypeAsString
-            
-            If msg.MessageTypeAsString = "SessionStarted" Then
-                log "Session started..."
-                m_BBG_EMSX.OpenService emsxHistoryService
-            ElseIf msg.MessageTypeAsString = "SessionStartupFailure" Then
-                log "Error: Session startup failed"
-                running = False
-            End If
-            
-        Loop
-
-    End Sub
-
-    Private Sub processServiceEvent(evt As blpapicomLib2.Event)
-
-        Dim req As REQUEST
-        Dim service As service
-        Dim scope As Element
-        Dim filter As Element
-        
-        Dim it As blpapicomLib2.MessageIterator
-        
-        On Error GoTo failed
-        
-        log "Processing SERVICE_STATUS event"
-        
-        Set it = evt.CreateMessageIterator()
-
-        ' Loop while we have messages remaining
-        Do While it.Next()
-                  
-            Dim msg As Message
-            
-            '   Pick up message
-            Set msg = it.Message
-            
-            log "MessageType: " + msg.MessageTypeAsString
-            
-            If msg.MessageTypeAsString = "ServiceOpened" Then
-        
-                ' Get the service
-                Set service = m_BBG_EMSX.GetService(emsxHistoryService)
-        
-                'First, create our request object
-                Set req = service.CreateRequest("GetFills")
-        
-                req.Set "FromDateTime", "2017-02-08T00:00:00.000+00:00"
-                req.Set "ToDateTime", "2017-02-11T23:59:00.000+00:00"
-
-                Set scope = req.GetElement("Scope")
-                
-                'scope.SetChoice "Team"
-                'scope.SetChoice "TradingSystem"
-                scope.SetChoice "Uuids"
-            
-                'scope.SetElement "Team", "SEXEGROUP"
-                'scope.SetElement "TradingSystem", False
-            
-                scope.GetElement("Uuids").AppendValue 8049857
-                'scope.GetElement("Uuids").AppendValue 1234567
-                'scope.GetElement("Uuids").AppendValue 1234568
-                'scope.GetElement("Uuids").AppendValue 1234569
-                        
-                'Set filter = req.GetElement("FilterBy")
-            
-                'filter.SetChoice "Basket"
-                'filter.SetChoice "Multileg"
-                'filter.SetChoice "OrdersAndRoutes"
-            
-                'filter.GetElement("Basket").AppendValue "TESTRJC"
-                'filter.GetElement("Multileg").AppendValue "mylegId"
-                
-                'Dim newOrder As Element
-                
-                'Set newOrder = filter.GetElement("OrdersAndRoutes").AppendElement()
-                'newOrder.SetElement "OrderId", 4292580
-                'newOrder.SetElement "RouteId", 1
-               
-                log "Request: " & req.Print
-                
-                ' Send the request
-                Set requestID = m_BBG_EMSX.SendRequest(req)
-
-            ElseIf msg.MessageTypeAsString = "ServiceOpenFailure" Then
-            
-                log "Error: Service failed to open"
-                running = False
-                
-            End If
-            
-        Loop
-
-        Exit Sub
-        
-    failed:
-
-        log "Failed to send the request: " + Err.Description
-        
-        running = False
-        Exit Sub
-        
-    End Sub
-
-    Private Sub processResponseEvent(evt As blpapicomLib2.Event)
-
-        log "Processing RESPONSE event"
-        
-        Dim it As blpapicomLib2.MessageIterator
-        Dim i As Integer
-        Dim errorCode As Long
-        Dim errorMessage As String
-     
-        Set it = evt.CreateMessageIterator()
-
-        ' Loop while we have messages remaining
-        Do While it.Next()
-                  
-            Dim msg As Message
-            
-            '   Pick up message
-            Set msg = it.Message
-            
-            log "MessageType: " + msg.MessageTypeAsString
-            
-            If evt.EventType = RESPONSE And msg.CorrelationId.Value = requestID.Value Then
-            
-                If msg.MessageTypeAsString = "ErrorInfo" Then
-                
-                    errorCode = msg.GetElement("ERROR_CODE")
-                    errorMessage = msg.GetElement("ERROR_MESSAGE")
-                    
-                    log "ERROR CODE: " & errorCode & "    ERROR DESCRIPTION: " & errorMessage
-                
-                    running = False
-                    
-                ElseIf msg.MessageTypeAsString = "GetFillsResponse" Then
-                    
-                    Dim fills As Element
-                    Dim fill As Element
-                    Dim numFills As Integer
-                    Dim account As String
-                    Dim amount As Double
-                    Dim assetClass As String
-                    Dim basketId As Integer
-                    Dim bbgid As String
-                    Dim blockId As String
-                    Dim broker As String
-                    Dim clearingAccount As String
-                    Dim clearingFirm As String
-                    Dim contractExpDate As Date
-                    Dim correctedFillId As Integer
-                    Dim crncy As String
-                    Dim cusip As String
-                    Dim dateTimeOfFill As Date
-                    Dim exchange As String
-                    Dim execPrevSeqNo As Integer
-                    Dim execType As String
-                    Dim executingBroker As String
-                    Dim fillId As Integer
-                    Dim fillPrice As Double
-                    Dim fillShares As Double
-                    Dim investorId As String
-                    Dim isCFD As Boolean
-                    Dim isin As String
-                    Dim isLeg As Boolean
-                    Dim lastCapacity As String
-                    Dim lastMarket As String
-                    Dim limitPrice As Double
-                    Dim liquidity As String
-                    Dim localExchangeSymbol As String
-                    Dim locateBroker As String
-                    Dim locateId As String
-                    Dim locateRequired As Boolean
-                    Dim multiLedId As String
-                    Dim occSymbol As String
-                    Dim orderExecutionInstruction As String
-                    Dim orderHandlingInstruction As String
-                    Dim orderId As Long
-                    Dim orderInstruction As String
-                    Dim orderOrigin As String
-                    Dim orderReferenceId As String
-                    Dim originatingTraderUUId As Integer
-                    Dim reroutedBroker As String
-                    Dim routeCommissionAmount As Double
-                    Dim routeCommissionRate As Double
-                    Dim routeExecutionInstruction As String
-                    Dim routeHandlingInstruction As String
-                    Dim routeId As Integer
-                    Dim routeNetMoney As Double
-                    Dim routeNotes As String
-                    Dim routeShares As Double
-                    Dim securityName As String
-                    Dim sedol As String
-                    Dim settlementDate As Date
-                    Dim side As String
-                    Dim stopPrice As Double
-                    Dim strategyType As String
-                    Dim ticker As String
-                    Dim tif As String
-                    Dim traderName As String
-                    Dim traderUUId As Long
-                    Dim typ As String
-                    Dim userCommissionAmount As Double
-                    Dim userCommissionRate As Double
-                    Dim userFees As Double
-                    Dim userNetMoney As Double
-                    Dim yellowKey As String
-                    
-                    Set fills = msg.GetElement("Fills")
-                            
-                    numFills = fills.numValues
-                            
-                    For i = 0 To numFills - 1
-                        
-                        Set fill = fills.GetValueAsElement(i)
-
-                        account = fill.GetElement("Account")
-                        amount = fill.GetElement("Amount")
-                        assetClass = fill.GetElement("AssetClass")
-                        basketId = fill.GetElement("BasketId")
-                        bbgid = fill.GetElement("BBGID")
-                        blockId = fill.GetElement("BlockId")
-                        broker = fill.GetElement("Broker")
-                        clearingAccount = fill.GetElement("ClearingAccount")
-                        clearingFirm = fill.GetElement("ClearingFirm")
-                        contractExpDate = fill.GetElement("ContractExpDate")
-                        correctedFillId = fill.GetElement("CorrectedFillId")
-                        crncy = fill.GetElement("Currency")
-                        cusip = fill.GetElement("Cusip")
-                        dateTimeOfFill = fill.GetElement("DateTimeOfFill")
-                        exchange = fill.GetElement("Exchange")
-                        execPrevSeqNo = fill.GetElement("ExecPrevSeqNo")
-                        execType = fill.GetElement("ExecType")
-                        executingBroker = fill.GetElement("ExecutingBroker")
-                        fillId = fill.GetElement("FillId")
-                        fillPrice = fill.GetElement("FillPrice")
-                        fillShares = fill.GetElement("FillShares")
-                        investorId = fill.GetElement("InvestorID")
-                        isCFD = fill.GetElement("IsCfd")
-                        isin = fill.GetElement("Isin")
-                        isLeg = fill.GetElement("IsLeg")
-                        lastCapacity = fill.GetElement("LastCapacity")
-                        lastMarket = fill.GetElement("LastMarket")
-                        limitPrice = fill.GetElement("LimitPrice")
-                        liquidity = fill.GetElement("Liquidity")
-                        localExchangeSymbol = fill.GetElement("LocalExchangeSymbol")
-                        locateBroker = fill.GetElement("LocateBroker")
-                        locateId = fill.GetElement("LocateId")
-                        locateRequired = fill.GetElement("LocateRequired")
-                        multiLedId = fill.GetElement("MultilegId")
-                        occSymbol = fill.GetElement("OCCSymbol")
-                        orderExecutionInstruction = fill.GetElement("OrderExecutionInstruction")
-                        orderHandlingInstruction = fill.GetElement("OrderHandlingInstruction")
-                        orderId = fill.GetElement("OrderId")
-                        orderInstruction = fill.GetElement("OrderInstruction")
-                        orderOrigin = fill.GetElement("OrderOrigin")
-                        orderReferenceId = fill.GetElement("OrderReferenceId")
-                        originatingTraderUUId = fill.GetElement("OriginatingTraderUuid")
-                        reroutedBroker = fill.GetElement("ReroutedBroker")
-                        routeCommissionAmount = fill.GetElement("RouteCommissionAmount")
-                        routeCommissionRate = fill.GetElement("RouteCommissionRate")
-                        routeExecutionInstruction = fill.GetElement("RouteExecutionInstruction")
-                        routeHandlingInstruction = fill.GetElement("RouteHandlingInstruction")
-                        routeId = fill.GetElement("RouteId")
-                        routeNetMoney = fill.GetElement("RouteNetMoney")
-                        routeNotes = fill.GetElement("RouteNotes")
-                        routeShares = fill.GetElement("RouteShares")
-                        securityName = fill.GetElement("SecurityName")
-                        sedol = fill.GetElement("Sedol")
-                        settlementDate = fill.GetElement("SettlementDate")
-                        side = fill.GetElement("Side")
-                        stopPrice = fill.GetElement("StopPrice")
-                        strategyType = fill.GetElement("StrategyType")
-                        ticker = fill.GetElement("Ticker")
-                        tif = fill.GetElement("TIF")
-                        traderName = fill.GetElement("TraderName")
-                        traderUUId = fill.GetElement("TraderUuid")
-                        typ = fill.GetElement("Type")
-                        userCommissionAmount = fill.GetElement("UserCommissionAmount")
-                        userCommissionRate = fill.GetElement("UserCommissionRate")
-                        userFees = fill.GetElement("UserFees")
-                        userNetMoney = fill.GetElement("UserNetMoney")
-                        yellowKey = fill.GetElement("YellowKey")
-                                
-                        log "OrderId: " & orderId & "    Fill ID: " & fillId & "    Date/Time: " & dateTimeOfFill & "    Shares: " & fillShares & "    Price: " & fillPrice
-                        
-                    Next i
-                    
-                    m_BBG_EMSX.Stop
-                    running = False
-                
-                End If
-            End If
-        Loop
-
-    End Sub
-
-
-
 Get All Field Meta Data Request (COM)
 =====================================
+
+
+``GetAllFiedlMetaData`` request provides all field metadata in a response message.
 
 
 .. code-block:: vb.net
@@ -2250,6 +1888,9 @@ Get Broker Strategies With Asset Class Request (COM)
 ====================================================
 
 
+``GetBrokerStrategiesWithAssetClass`` request provides all broker strategy fields with asset class data in a response message.
+
+
 .. code-block:: vb.net
 
     Option Explicit
@@ -2470,8 +2111,11 @@ Get Broker Strategies With Asset Class Request (COM)
 
 
 
-Get Broker Strategy Infor With Asset Class Request (COM)
+Get Broker Strategy Info With Asset Class Request (COM)
 ========================================================
+
+
+``GetBrokerStrategyInfoWithAssetClass`` request provides all broker strategy information fields with asset classdata in a response message.
 
 
 .. code-block:: vb.net
@@ -2707,6 +2351,9 @@ Get Brokers With Asset Class Request (COM)
 ==========================================
 
 
+``GetBrokersWithAssetClass`` request provides all broker information with asset class data in a response message.
+
+
 .. code-block:: vb.net
 
     Option Explicit
@@ -2927,6 +2574,9 @@ Get Brokers With Asset Class Request (COM)
 
 Get Field Meta Data Request (COM)
 =================================
+
+
+``GetFieldMetaData`` request provides all field metadata in a response message.
 
 
 .. code-block:: vb.net
@@ -3163,6 +2813,9 @@ Get Teams Request (COM)
 =======================
 
 
+``GetTeams`` request provides all the team details in a response message.
+
+
 .. code-block:: vb.net
 
     Option Explicit
@@ -3379,8 +3032,15 @@ Get Teams Request (COM)
 
 
 
-Group Route Request (COM)
-=========================
+Group Route Extended Request (COM)
+==================================
+
+
+``GroupRouteEx`` request submits an entire list as a single route to a basket/program broker strategy destination.
+
+This request should only be used if the intention is to submit an entire list or basket of securities to a single broker strategy destination. This should not be confused with maintaining a list or a basket from a portfolio perspective.
+
+Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use ``CreateOrder`` request to create the order and add the ``EMSX_BASKET_NAME`` in the field. The second step is to submit the list using ``GroupRouteEx`` request and include the ``EMSX_SEQUENCE`` number inside the array. 
 
 
 .. code-block:: vb.net
@@ -3744,10 +3404,32 @@ Group Route Request (COM)
 
     End Sub
 
+Modify Order Request (COM)
+==========================
+
+
+``ModifyOrder`` request modifies an existing or previously created order in EMSX<GO> or using EMSX API. 
+
+
+.. code-block:: vb.net
+
+
+
+Modify Route Extended Request (COM)
+===================================
+
+
+``ModifyRouteEx`` request modifies an existing or previously created child routes in EMSX<GO> or using EMSX API. 
+
+
+.. code-block:: vb.net
 
 
 Route Extended Request (COM)
 ============================
+
+
+``RouteEx`` request submits an existing order into various execution veneues. This request is used primarily to submit a child route based on previously created parent order.
 
 
  .. code-block:: vb.net
@@ -3989,6 +3671,9 @@ Route Extended Request (COM)
 
 Route Manually Request (COM)
 ============================
+
+
+``RouteManuallyEx`` requestis generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
 
 
 .. code-block:: vb.net
