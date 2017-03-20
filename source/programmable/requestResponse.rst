@@ -164,6 +164,21 @@ AssignTrader request allows EMSX API to reassign order to another user UUID. A t
 Assigned trader must be in same EMBR group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
 
 
+====================== ===================
+`Assign Trader cpp`_   `Assign Trader cs`_ 	
+====================== ===================
+`Assign Trader java`_  `Assign Trader py`_
+====================== ===================
+
+.. _Assign Trader cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/AssignTrader.cpp
+
+.. _Assign Trader cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/AssignTrader.cs
+
+.. _Assign Trader java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/AssignTrader.java
+
+.. _Assign Trader py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/AssignTrader.py
+
+
 .. code-block:: python
 
 	# AssignTrader.py
@@ -346,6 +361,21 @@ Cancel Route Extended Request
 In EMSX<GO> we have a notion of parent order and child routes. The CancelRoute request is to effectively send out a cancellation request to the execution venue of the current live route. Submission of CancelRoute does not automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue of the route.
 
 
+====================== ===================
+`Cancel Route cpp`_    `Cancel Route cs`_ 	
+====================== ===================
+`Cancel Route java`_   `Cancel Route py`_
+====================== ===================
+
+.. _Cancel Route cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CancelRoute.cpp
+
+.. _Cancel Route cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CancelRoute.cs
+
+.. _Cancel Route java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CancelRoute.java
+
+.. _Cancel Route py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CancelRoute.py
+
+
 .. code-block:: python
 
 	# CancelRoute.py
@@ -503,6 +533,21 @@ Create Order Request
 Creating an order requires the user to create a request from the service object of type CreateOrder and fill in the required fields before submitting the request. 
 
 If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is also true for custom Time in Force fields. Any non-standard TIF will also be restricted from staging unless the broker enables the broker code for EMSX API.
+
+
+====================== ===================
+`Create Order cpp`_    `Create Order cs`_ 	
+====================== ===================
+`Create Order java`_   `Create Order py`_
+====================== ===================
+
+.. _Create Order cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateOrder.cpp
+
+.. _Create Order cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateOrder.cs
+
+.. _Create Order java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrder.java
+
+.. _Create Order py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrder.py
 
 
 .. code-block:: python
@@ -704,6 +749,20 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.
 
 	Lastly, *GetBrokerStrategyInfo* will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in *CreateOrderAndRouteEx* and *RouteEx* requests.
 
+
+======================================= =====================================
+`Create Order And Route Extended cpp`_  `Create Order And Route Extended cs`_ 	
+======================================= =====================================
+`Create Order And Route Extended java`_ `Create Order And Route Extended py`_
+======================================= =====================================
+
+.. _Create Order And Route Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateOrderAndRouteEx.cpp
+
+.. _Create Order And Route Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateOrderAndRouteEx.cs
+
+.. _Create Order And Route Extendedjava: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrderAndRouteEx.java
+
+.. _Create Order And Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrderAndRouteEx.py
 
 
 .. code-block:: python

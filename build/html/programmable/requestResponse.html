@@ -406,6 +406,22 @@
 <h2>Assign Trader Request<a class="headerlink" href="#assign-trader-request" title="Permalink to this headline">¶</a></h2>
 <p>AssignTrader request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.</p>
 <p>Assigned trader must be in same EMBR group for this to work. EMBR&lt;GO&gt; is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="54%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/AssignTrader.cpp">Assign Trader cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/AssignTrader.cs">Assign Trader cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/AssignTrader.java">Assign Trader java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/AssignTrader.py">Assign Trader py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># AssignTrader.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -582,6 +598,22 @@
 <div class="section" id="cancel-route-extended-request">
 <h2>Cancel Route Extended Request<a class="headerlink" href="#cancel-route-extended-request" title="Permalink to this headline">¶</a></h2>
 <p>In EMSX&lt;GO&gt; we have a notion of parent order and child routes. The CancelRoute request is to effectively send out a cancellation request to the execution venue of the current live route. Submission of CancelRoute does not automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue of the route.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="54%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CancelRoute.cpp">Cancel Route cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CancelRoute.cs">Cancel Route cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CancelRoute.java">Cancel Route java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CancelRoute.py">Cancel Route py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># CancelRoute.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -734,6 +766,22 @@
 <h2>Create Order Request<a class="headerlink" href="#create-order-request" title="Permalink to this headline">¶</a></h2>
 <p>Creating an order requires the user to create a request from the service object of type CreateOrder and fill in the required fields before submitting the request.</p>
 <p>If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is also true for custom Time in Force fields. Any non-standard TIF will also be restricted from staging unless the broker enables the broker code for EMSX API.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="54%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateOrder.cpp">Create Order cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateOrder.cs">Create Order cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrder.java">Create Order java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrder.py">Create Order py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># CreateOrder.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
