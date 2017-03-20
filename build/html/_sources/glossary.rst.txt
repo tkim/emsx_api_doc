@@ -93,6 +93,11 @@ The reference data service of the Bloomberg API: ``//blp/refdata``
 
 Technically route refers to orders being submitted from the execution brokers to exchanges. EMSX<GO> uses the term route to mean placement.
 
+* **Server-Side Application**
+
+Server-side refers to operations that are performed by the server and not by the desktop such as PC.
+
+
 * **Service**
 
 Refers to the different types of data connections available via the Bloomberg API. Each service has its own 

@@ -11,6 +11,13 @@ The Microsoft Component Object Model (COM) is a platform-independent, distribute
 :ref: https://msdn.microsoft.com/en-us/library/windows/desktop/ms694363(v=vs.85).aspx
 
 
+.. important::
+
+			EMSX API Code samples can be found `here`_.
+
+			.. _here: https://github.com/tkim/emsx_api_repository
+			
+
 .. toctree::
    :maxdepth: 3
 
