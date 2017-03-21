@@ -3,7 +3,11 @@ Buy-Side Request/Response Service
 #################################
 
 
-The EMSX API allows developers to use the Request/Response services for order and route creation, modification, queries related to orders and routes as well as EMSX Team details. Depending on the type of action required, the application programmer must create a specific request, populate it with required parameters and send that request to the EMSX API service, which provides the response. Communication with the request/response service requires the following steps:
+The EMSX API allows developers to use the Request/Response services for order and route creation, modification, 
+queries related to orders and routes as well as EMSX Team details. Depending on the type of action required, the 
+application programmer must create a specific request, populate it with required parameters and send that request to 
+the EMSX API service, which provides the response. Communication with the request/response service requires the 
+following steps:
 
 	#. Create a session (if session does not yet exist).
 
@@ -66,7 +70,6 @@ Request Name             			    Action
 	``SellSideReject`` is used for EMSX to EMSX or E2E settings where sell-side EMSX<GO> is used to receive order from buy-side EMSX.
 
 
-
 CFD & Odd Lot Flag
 ==================
 
@@ -84,7 +87,6 @@ This is a feature that indicates CFD orders or to flag an odd lot in EMSX API.
 
 	* 0 = not an odd lot / it won't fill odd lots							
 	* 1 = odd lot 															
-
 
 
 Date & Time Format
@@ -219,7 +221,10 @@ Cancel Route Extended Request
 ==============================
 
 
-In EMSX<GO> we have a notion of parent order and child routes. The ``CancelRoute`` request is to effectively send out a cancellation request to the execution venue of the current live route. Submission of ``CancelRoute`` does not automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue of the route.
+In EMSX<GO> we have a notion of parent order and child routes. The ``CancelRoute`` request is to effectively send out 
+a cancellation request to the execution venue of the current live route. Submission of ``CancelRoute`` does not 
+automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue 
+of the route.
 
 
 Full code sample:-
@@ -381,7 +386,8 @@ Create Order and Route Extended Request
 =======================================
 
 
-Creating an order and routing with strategy requires the user to create a request from the service object of type ``CreateOrderAndRouteEx`` and fill in the required fields before submitting the request. 
+Creating an order and routing with strategy requires the user to create a request from the service object of type ``
+CreateOrderAndRouteEx`` and fill in the required fields before submitting the request. 
 Mandatory fields for the CreateOrderAndRoute requests are the following. 
 
 

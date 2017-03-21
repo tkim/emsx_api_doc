@@ -3,7 +3,11 @@ Buy-Side Request/Response Service (COM)
 #######################################
 
 
-The EMSX API allows developers to use the Request/Response services for order and route creation, modification, queries related to orders and routes (placements) as well as EMSX Team details. Depending on the type of action required, the application programmer must create a specific request, populate it with required parameters and send that request to the EMSX API service, which provides the response. Communication with the request/response service requires the following steps:
+The EMSX API allows developers to use the Request/Response services for order and route creation, modification, 
+queries related to orders and routes as well as EMSX Team details. Depending on the type of action required, the 
+application programmer must create a specific request, populate it with required parameters and send that request to 
+the EMSX API service, which provides the response. Communication with the request/response service requires the 
+following steps:
 
 	#. Create a session (if session does not yet exist).
 
@@ -28,27 +32,28 @@ EMSX API supports the following Request/Response services:-
 
 *Please note, the descriptions to the legacy request/response services are omitted from the description section.*
 
-=================================== =================================================================
-Request Name             			Action
-=================================== =================================================================
-AssignTrader						Assign an order to another UUID.
-CancelRouteEx						Cancel outstanding routes (placements).
-CreateOrder                     	Create an order or stage an order into EMSX<GO>.
-CreateOrderAndRouteEx				Create a new order and route in a single request. 
-CreateOrderAndRouteManually	 		Create the order and notify EMSX this is routed.
-DeleteOrder					 		Delete an existing order in EMSX<GO>.
-GetAllFieldMetaData			 		Get all field meta data in a response message.
-GetBrokerStrategiesWithAssetClass 	Get all broker strategy information and asset class data.
-GetBrokerStrategyInfoWithAssetClass Get all broker strategy info and asset class data.
-GetBrokerWithAssetClass 			Get all broker data with asset class in a response message.
-GetFieldMetaData 					Get field meta data in a reponse message.
-GetTeams 							Get team data in a response message.
-GroupRouteEx 						Submit the entire list as a single route to a basket algorithm.
-ModifyOrder 						Modify parent order.
-ModifyRouteEx 						Modify child route.
-RouteEx 							Route existing order.
-RouteManuallyEx 					Route manually and notify EMSX that it is routed.
-=================================== =================================================================
+======================================= =================================================================
+Request Name             			    Action
+======================================= =================================================================
+``AssignTrader``						Assign an order to another UUID.
+``CancelRouteEx``						Cancel outstanding routes (placements).
+``CreateOrder``                     	Create an order or stage an order into EMSX<GO>.
+``CreateOrderAndRouteEx``				Create a new order and route in a single request. 
+``CreateOrderAndRouteManually``	 		Create the order and notify EMSX this is routed.
+``DeleteOrder``					 		Delete an existing order in EMSX<GO>.
+``GetAllFieldMetaData``			 		Get all field meta data in a response message.
+``GetBrokerStrategiesWithAssetClass`` 	Get all broker strategy information and asset class data.
+``GetBrokerStrategyInfoWithAssetClass`` Get all broker strategy info and asset class data.
+``GetBrokerWithAssetClass`` 			Get all broker data with asset class in a response message.
+``GetFieldMetaData`` 					Get field meta data in a reponse message.
+``GetTeams`` 							Get team data in a response message.
+``GroupRouteEx`` 						Submit the entire list as a single route to a basket algorithm.
+``ModifyOrder`` 						Modify parent order.
+``ModifyRouteEx`` 						Modify child route.
+``RouteEx`` 							Route existing order.
+``RouteManuallyEx`` 					Route manually and notify EMSX that it is routed.
+======================================= =================================================================
+
 
 
 .. note::
@@ -64,8 +69,6 @@ RouteManuallyEx 					Route manually and notify EMSX that it is routed.
 	``SellSideAck`` is used for EMSX to EMSX or E2E settings where sell-side EMSX<GO> is used to receive order from buy-side EMSX.
 
 	``SellSideReject`` is used for EMSX to EMSX or E2E settings where sell-side EMSX<GO> is used to receive order from buy-side EMSX.
-
-
 
 
 CFD & Odd Lot Flag
@@ -85,8 +88,6 @@ This is a feature that indicates CFD orders or to flag an odd lot in EMSX API.
 
 	* 0 = not an odd lot / it won't fill odd lots							
 	* 1 = odd lot 															
-
-
 
 
 Date & Time Format
@@ -141,9 +142,9 @@ Element								Description
 The following elements are available only for internal fields unless custom mapped to a custom FIX tag to a particular trading counterparty. 
 
 
-.. note:: 
+.. warning:: 
 
-	**The following elements are not available on either order or route subscription service.**
+	The following ``EMSX_CUSTOM_NOTE*`` elements are not available on either order or route subscription service.
 
 
 =================================== ==================================================================
@@ -157,14 +158,18 @@ Element								Description
 =================================== ==================================================================
 
 
-
 Assign Trader Request (COM) 
 ===========================
 
 
-AssignTrader request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.
+``AssignTrader`` request allows EMSX API to reassign order to another user UUID. A typical setup will have the 
+different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated 
+trades to be reassigned to another human trader if need be from the EMSX API.
 
-Assigned trader must be in same EMBR group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
+Assigned trader must be in same EMBR group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX 
+account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the 
+ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID 
+feature will no longer work for that team.
 
 
 .. code-block:: vb.net
@@ -442,7 +447,10 @@ Cancel Route Extended Request (COM)
 ===================================
 
 
-In EMSX<GO> we have a notion of parent order and child routes. The CancelRoute request is to effectively send out a cancellation request to the execution venue of the current live route. Submission of CancelRoute does not automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue of the route.
+In EMSX<GO> we have a notion of parent order and child routes. The ``CancelRoute`` request is to effectively send out 
+a cancellation request to the execution venue of the current live route. Submission of ``CancelRoute`` does not 
+automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue 
+of the route.
 
 
 .. code-block:: vb.net
@@ -666,11 +674,20 @@ Create Order Request
 ====================
 
 
-Creating an order requires the user to create a request from the service object of type CreateOrder and fill in the required fields before submitting the request. 
+Creating an order requires the user to create a request from the service object of type ``CreateOrder`` and fill in 
+the required fields before submitting the request. 
+
+If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not 
+allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is 
+also true for custom Time in Force fields. Any non-standard TIF will also be restricted from staging unless the 
+broker enables the broker code for EMSX API.
 
 .. note::
 
-	If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is also true for custom time in force fields. Any non-standard TIF will also be restricted from staging unless the broker enables the broker code for EMSX API.
+	If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not 
+	allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is 
+	also true for custom time in force fields. Any non-standard TIF will also be restricted from staging unless the 
+	broker enables the broker code for EMSX API.
 
 
 .. code-block:: vb.net
@@ -923,15 +940,15 @@ Create Order And Route Extended Request (COM)
 =============================================
 
 
-Creating an order and routing with strategy requires the user to create a request from the service object of type CreateOrderAndRouteWithStrat and fill in the required fields before submitting the request. 
+Creating an order and routing with strategy requires the user to create a request from the service object of type ``CreateOrderAndRouteEx`` and fill in the required fields before submitting the request. 
 Mandatory fields for the CreateOrderAndRoute requests are the following. 
 
 
 .. note:: 
 
-	The user will first need to request *GetBrokers* to get all the brokers the user is enabled for, returned in response. Subsequently the user can then request *GetBrokerStrategies* to get all the broker strategies user is enabled for that particular broker code. 
+	The user will first need to request ``GetBrokers`` to get all the brokers the user is enabled for, returned in response. Subsequently the user can then request ``GetBrokerStrategies`` to get all the broker strategies user is enabled for that particular broker code. 
 
-	Lastly, *GetBrokerStrategyInfo* will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in *CreateOrderAndRouteEx* and *RouteEx* requests.
+	Lastly, ``GetBrokerStrategyInfo`` will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in ``CreateOrderAndRouteEx`` and ``RouteEx`` requests.
 
 
 .. code-block:: vb.net

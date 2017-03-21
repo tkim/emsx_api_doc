@@ -100,6 +100,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="emsxSubscriptionCom.html">EMSX Subscription (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxHistoryCom.html">EMSX History Service (COM)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
@@ -152,7 +153,11 @@
             
   <div class="section" id="sell-side-request-response-service-com">
 <h1>Sell-Side Request/Response Service (COM)<a class="headerlink" href="#sell-side-request-response-service-com" title="Permalink to this headline">¶</a></h1>
-<p>The EMSX API allows developers to use the Request/Response services for order and route creation, modification, queries related to orders and routes (placements) as well as EMSX Team details. Depending on the type of action required, the application programmer must create a specific request, populate it with required parameters and send that request to the EMSX API service, which provides the response. Communication with the request/response service requires the following steps:</p>
+<p>The EMSX API allows developers to use the Request/Response services for order and route creation, modification,
+queries related to orders and routes (placements) as well as EMSX Team details. Depending on the type of action
+required, the application programmer must create a specific request, populate it with required parameters and send
+that request to the EMSX API service, which provides the response. Communication with the request/response service
+requires the following steps:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>Create a session (if session does not yet exist).</li>
@@ -163,7 +168,8 @@
 <li>Loop through the EventQueue object until event of type <code class="docutils literal"><span class="pre">Event::RESPONSE</span></code> is read.</li>
 </ol>
 </div></blockquote>
-<p>These are initialized in the constructor as below and are then available for the life of the application for submission of various requests.</p>
+<p>These are initialized in the constructor as below and are then available for the life of the application for submission
+of various requests.</p>
 <div class="section" id="description-of-request-response-service">
 <h2>Description of Request/Response Service<a class="headerlink" href="#description-of-request-response-service" title="Permalink to this headline">¶</a></h2>
 <p>EMSX API supports the following Request/Response services:-</p>
@@ -179,13 +185,13 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>ManualFill</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ManualFill</span></code></td>
 <td>Request to manually fill a child route.</td>
 </tr>
-<tr class="row-odd"><td>SellSideAck</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">SellSideAck</span></code></td>
 <td>Request to acknowlede an order on EMSX to EMSX setting.</td>
 </tr>
-<tr class="row-even"><td>SellSideReject</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">SellSideReject</span></code></td>
 <td>Request to reject an order on EMSX to EMSX setting.</td>
 </tr>
 </tbody>
@@ -193,12 +199,21 @@
 </div>
 <div class="section" id="manaul-fill-request">
 <h2>Manaul Fill Request<a class="headerlink" href="#manaul-fill-request" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-vb.net"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="sell-side-ack-request">
 <h2>Sell Side Ack Request<a class="headerlink" href="#sell-side-ack-request" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-vb.net"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="sell-side-reject-request">
 <h2>Sell Side Reject Request<a class="headerlink" href="#sell-side-reject-request" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-vb.net"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 

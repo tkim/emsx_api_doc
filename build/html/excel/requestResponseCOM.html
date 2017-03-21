@@ -117,6 +117,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseSsCOM.html">Sell-Side Request/Response Service (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emsxSubscriptionCom.html">EMSX Subscription (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxHistoryCom.html">EMSX History Service (COM)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
@@ -169,7 +170,11 @@
             
   <div class="section" id="buy-side-request-response-service-com">
 <h1>Buy-Side Request/Response Service (COM)<a class="headerlink" href="#buy-side-request-response-service-com" title="Permalink to this headline">¶</a></h1>
-<p>The EMSX API allows developers to use the Request/Response services for order and route creation, modification, queries related to orders and routes (placements) as well as EMSX Team details. Depending on the type of action required, the application programmer must create a specific request, populate it with required parameters and send that request to the EMSX API service, which provides the response. Communication with the request/response service requires the following steps:</p>
+<p>The EMSX API allows developers to use the Request/Response services for order and route creation, modification,
+queries related to orders and routes as well as EMSX Team details. Depending on the type of action required, the
+application programmer must create a specific request, populate it with required parameters and send that request to
+the EMSX API service, which provides the response. Communication with the request/response service requires the
+following steps:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>Create a session (if session does not yet exist).</li>
@@ -187,8 +192,8 @@
 <p><em>Please note, the descriptions to the legacy request/response services are omitted from the description section.</em></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col width="31%" />
+<col width="69%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Request Name</th>
@@ -196,55 +201,55 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>AssignTrader</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">AssignTrader</span></code></td>
 <td>Assign an order to another UUID.</td>
 </tr>
-<tr class="row-odd"><td>CancelRouteEx</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CancelRouteEx</span></code></td>
 <td>Cancel outstanding routes (placements).</td>
 </tr>
-<tr class="row-even"><td>CreateOrder</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">CreateOrder</span></code></td>
 <td>Create an order or stage an order into EMSX&lt;GO&gt;.</td>
 </tr>
-<tr class="row-odd"><td>CreateOrderAndRouteEx</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code></td>
 <td>Create a new order and route in a single request.</td>
 </tr>
-<tr class="row-even"><td>CreateOrderAndRouteManually</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">CreateOrderAndRouteManually</span></code></td>
 <td>Create the order and notify EMSX this is routed.</td>
 </tr>
-<tr class="row-odd"><td>DeleteOrder</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">DeleteOrder</span></code></td>
 <td>Delete an existing order in EMSX&lt;GO&gt;.</td>
 </tr>
-<tr class="row-even"><td>GetAllFieldMetaData</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">GetAllFieldMetaData</span></code></td>
 <td>Get all field meta data in a response message.</td>
 </tr>
-<tr class="row-odd"><td>GetBrokerStrategiesWithAssetClass</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">GetBrokerStrategiesWithAssetClass</span></code></td>
 <td>Get all broker strategy information and asset class data.</td>
 </tr>
-<tr class="row-even"><td>GetBrokerStrategyInfoWithAssetClass</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code></td>
 <td>Get all broker strategy info and asset class data.</td>
 </tr>
-<tr class="row-odd"><td>GetBrokerWithAssetClass</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">GetBrokerWithAssetClass</span></code></td>
 <td>Get all broker data with asset class in a response message.</td>
 </tr>
-<tr class="row-even"><td>GetFieldMetaData</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">GetFieldMetaData</span></code></td>
 <td>Get field meta data in a reponse message.</td>
 </tr>
-<tr class="row-odd"><td>GetTeams</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">GetTeams</span></code></td>
 <td>Get team data in a response message.</td>
 </tr>
-<tr class="row-even"><td>GroupRouteEx</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">GroupRouteEx</span></code></td>
 <td>Submit the entire list as a single route to a basket algorithm.</td>
 </tr>
-<tr class="row-odd"><td>ModifyOrder</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ModifyOrder</span></code></td>
 <td>Modify parent order.</td>
 </tr>
-<tr class="row-even"><td>ModifyRouteEx</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ModifyRouteEx</span></code></td>
 <td>Modify child route.</td>
 </tr>
-<tr class="row-odd"><td>RouteEx</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RouteEx</span></code></td>
 <td>Route existing order.</td>
 </tr>
-<tr class="row-even"><td>RouteManuallyEx</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">RouteManuallyEx</span></code></td>
 <td>Route manually and notify EMSX that it is routed.</td>
 </tr>
 </tbody>
@@ -367,9 +372,9 @@
 </tbody>
 </table>
 <p>The following elements are available only for internal fields unless custom mapped to a custom FIX tag to a particular trading counterparty.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><strong>The following elements are not available on either order or route subscription service.</strong></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The following <code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE*</span></code> elements are not available on either order or route subscription service.</p>
 </div>
 <table border="1" class="docutils">
 <colgroup>
@@ -402,8 +407,13 @@
 </div>
 <div class="section" id="assign-trader-request-com">
 <h2>Assign Trader Request (COM)<a class="headerlink" href="#assign-trader-request-com" title="Permalink to this headline">¶</a></h2>
-<p>AssignTrader request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.</p>
-<p>Assigned trader must be in same EMBR group for this to work. EMBR&lt;GO&gt; is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.</p>
+<p><code class="docutils literal"><span class="pre">AssignTrader</span></code> request allows EMSX API to reassign order to another user UUID. A typical setup will have the
+different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated
+trades to be reassigned to another human trader if need be from the EMSX API.</p>
+<p>Assigned trader must be in same EMBR group for this to work. EMBR&lt;GO&gt; is an internal Bloomberg function the EMSX
+account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the
+ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID
+feature will no longer work for that team.</p>
 <div class="highlight-vb.net"><div class="highlight"><pre><span></span><span class="k">Option</span> <span class="n">Explicit</span>
 
 <span class="k">Private</span> <span class="k">WithEvents</span> <span class="n">m_BBG_EMSX</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Session</span>
@@ -675,7 +685,10 @@
 </div>
 <div class="section" id="cancel-route-extended-request-com">
 <h2>Cancel Route Extended Request (COM)<a class="headerlink" href="#cancel-route-extended-request-com" title="Permalink to this headline">¶</a></h2>
-<p>In EMSX&lt;GO&gt; we have a notion of parent order and child routes. The CancelRoute request is to effectively send out a cancellation request to the execution venue of the current live route. Submission of CancelRoute does not automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue of the route.</p>
+<p>In EMSX&lt;GO&gt; we have a notion of parent order and child routes. The <code class="docutils literal"><span class="pre">CancelRoute</span></code> request is to effectively send out
+a cancellation request to the execution venue of the current live route. Submission of <code class="docutils literal"><span class="pre">CancelRoute</span></code> does not
+automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue
+of the route.</p>
 <div class="highlight-vb.net"><div class="highlight"><pre><span></span><span class="k">Option</span> <span class="n">Explicit</span>
 
 <span class="k">Private</span> <span class="k">WithEvents</span> <span class="n">m_BBG_EMSX</span> <span class="ow">As</span> <span class="n">blpapicomLib2</span><span class="p">.</span><span class="n">Session</span>
@@ -893,10 +906,18 @@
 </div>
 <div class="section" id="create-order-request">
 <h2>Create Order Request<a class="headerlink" href="#create-order-request" title="Permalink to this headline">¶</a></h2>
-<p>Creating an order requires the user to create a request from the service object of type CreateOrder and fill in the required fields before submitting the request.</p>
+<p>Creating an order requires the user to create a request from the service object of type <code class="docutils literal"><span class="pre">CreateOrder</span></code> and fill in
+the required fields before submitting the request.</p>
+<p>If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not
+allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is
+also true for custom Time in Force fields. Any non-standard TIF will also be restricted from staging unless the
+broker enables the broker code for EMSX API.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is also true for custom time in force fields. Any non-standard TIF will also be restricted from staging unless the broker enables the broker code for EMSX API.</p>
+<p class="last">If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not
+allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is
+also true for custom time in force fields. Any non-standard TIF will also be restricted from staging unless the
+broker enables the broker code for EMSX API.</p>
 </div>
 <div class="highlight-vb.net"><div class="highlight"><pre><span></span><span class="k">Option</span> <span class="n">Explicit</span>
 
@@ -1145,12 +1166,12 @@
 </div>
 <div class="section" id="create-order-and-route-extended-request-com">
 <h2>Create Order And Route Extended Request (COM)<a class="headerlink" href="#create-order-and-route-extended-request-com" title="Permalink to this headline">¶</a></h2>
-<p>Creating an order and routing with strategy requires the user to create a request from the service object of type CreateOrderAndRouteWithStrat and fill in the required fields before submitting the request.
+<p>Creating an order and routing with strategy requires the user to create a request from the service object of type <code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code> and fill in the required fields before submitting the request.
 Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>The user will first need to request <em>GetBrokers</em> to get all the brokers the user is enabled for, returned in response. Subsequently the user can then request <em>GetBrokerStrategies</em> to get all the broker strategies user is enabled for that particular broker code.</p>
-<p class="last">Lastly, <em>GetBrokerStrategyInfo</em> will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in <em>CreateOrderAndRouteEx</em> and <em>RouteEx</em> requests.</p>
+<p>The user will first need to request <code class="docutils literal"><span class="pre">GetBrokers</span></code> to get all the brokers the user is enabled for, returned in response. Subsequently the user can then request <code class="docutils literal"><span class="pre">GetBrokerStrategies</span></code> to get all the broker strategies user is enabled for that particular broker code.</p>
+<p class="last">Lastly, <code class="docutils literal"><span class="pre">GetBrokerStrategyInfo</span></code> will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in <code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code> and <code class="docutils literal"><span class="pre">RouteEx</span></code> requests.</p>
 </div>
 <div class="highlight-vb.net"><div class="highlight"><pre><span></span><span class="k">Option</span> <span class="n">Explicit</span>
 

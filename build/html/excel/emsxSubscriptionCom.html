@@ -151,8 +151,8 @@
 <p>EMSX subscription sample illustrates how to use both Order and Route subscription service for EMSX API.</p>
 <p>Once the subscription is established all the orders and routes in the user&#8217;s blotter are returned via one or more <code class="docutils literal"><span class="pre">BLP</span> <span class="pre">API</span></code> events of type <code class="docutils literal"><span class="pre">SUBSCRIPTION</span></code>. Each event is further composed of one or more messages where each message contains all the subscribed fields for a single order or route.</p>
 <p>Additionally, any changes to these orders and/or routes will generate events that are passed along as they occur.  These subscriptions can be asynchronous or synchronous but it is best to always approach this with asynchronous event-driven architecture in mind.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
 <p class="last">When implementing subscription service, it&#8217;s important to write the code using two separate .subscribe() events for the order and route subscriptions.</p>
 </div>
 <div class="highlight-vb.net"><div class="highlight"><pre><span></span><span class="k">Option</span> <span class="n">Explicit</span>

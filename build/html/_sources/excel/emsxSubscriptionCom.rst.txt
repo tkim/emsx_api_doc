@@ -11,10 +11,9 @@ Once the subscription is established all the orders and routes in the user's blo
 Additionally, any changes to these orders and/or routes will generate events that are passed along as they occur.  These subscriptions can be asynchronous or synchronous but it is best to always approach this with asynchronous event-driven architecture in mind.
 
 
-.. note::
+.. warning::
 
     When implementing subscription service, it's important to write the code using two separate .subscribe() events for the order and route subscriptions.
-
 
 
 .. code-block:: vb.net
