@@ -154,7 +154,7 @@
 <p class="first admonition-title">Note</p>
 <p class="last">Please note this service will not be available as part of <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> or <code class="docutils literal"><span class="pre">//blp/emapisvc_beta</span></code> service.</p>
 </div>
-<p>Unlike the //blp/emapisvc and //blp/emapisvc_beta service, //blp/emsx.history and //blp/emsx.history.uat service uses semi-camel character for the element names.</p>
+<p>Unlike the <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> and <code class="docutils literal"><span class="pre">//blp/emapisvc_beta</span></code> service, <code class="docutils literal"><span class="pre">//blp/emsx.history</span></code> and <code class="docutils literal"><span class="pre">//blp/emsx.history.uat</span></code> service uses semi-camel character for the element names.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="32%" />
@@ -372,6 +372,7 @@
 </tr>
 </tbody>
 </table>
+<p>Full code sample for the history service:-</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="51%" />
@@ -388,25 +389,15 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># EMSXHistory.py</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">blpapi</span>
-
-
-<span class="n">SESSION_STARTED</span>         <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionStarted&quot;</span><span class="p">)</span>
-<span class="n">SESSION_STARTUP_FAILURE</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionStartupFailure&quot;</span><span class="p">)</span>
-<span class="n">SERVICE_OPENED</span>          <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ServiceOpened&quot;</span><span class="p">)</span>
-<span class="n">SERVICE_OPEN_FAILURE</span>    <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ServiceOpenFailure&quot;</span><span class="p">)</span>
-<span class="n">ERROR_INFO</span>              <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ErrorInfo&quot;</span><span class="p">)</span>
-<span class="n">GET_FILLS_RESPONSE</span>      <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;GetFillsResponse&quot;</span><span class="p">)</span>
-
-<span class="n">d_service</span><span class="o">=</span><span class="s2">&quot;//blp/emsx.history.uat&quot;</span>
+<p>Specify service name and host/port :-</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">d_service</span><span class="o">=</span><span class="s2">&quot;//blp/emsx.history.uat&quot;</span>
 <span class="n">d_host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span>
 <span class="n">d_port</span><span class="o">=</span><span class="mi">8194</span>
 <span class="n">bEnd</span><span class="o">=</span><span class="bp">False</span>
-
-<span class="k">class</span> <span class="nc">SessionEventHandler</span><span class="p">():</span>
+</pre></div>
+</div>
+<p>Connect and create a session object:-</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SessionEventHandler</span><span class="p">():</span>
 
     <span class="k">def</span> <span class="nf">processEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
@@ -425,205 +416,48 @@
         <span class="k">except</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">print</span> <span class="s2">&quot;Exception:  </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="o">.</span><span class="n">description</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">False</span>
+</pre></div>
+</div>
+<p>Set elements (e.g. UUID, team name, and Date/Time range):-</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
 
+<span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;GetFills&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">processSessionStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s2">&quot;Processing SESSION_STATUS event&quot;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;FromDateTime&quot;</span><span class="p">,</span> <span class="s2">&quot;2017-02-08T00:00:00.000+00:00&quot;</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;ToDateTime&quot;</span><span class="p">,</span> <span class="s2">&quot;2017-02-11T23:59:00.000+00:00&quot;</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SESSION_STARTED</span><span class="p">:</span>
-                <span class="k">print</span> <span class="s2">&quot;Session started...&quot;</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">openServiceAsync</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
+<span class="n">scope</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Scope&quot;</span><span class="p">)</span>
 
-            <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SESSION_STARTUP_FAILURE</span><span class="p">:</span>
-                <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Session startup failed&quot;</span>
+<span class="c1">#scope.setChoice(&quot;Team&quot;)</span>
+<span class="c1">#scope.setChoice(&quot;TradingSystem&quot;)</span>
+<span class="n">scope</span><span class="o">.</span><span class="n">setChoice</span><span class="p">(</span><span class="s2">&quot;Uuids&quot;</span><span class="p">)</span>
 
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">print</span> <span class="n">msg</span>
+<span class="c1">#scope.setElement(&quot;Team&quot;, &quot;TEAM1&quot;)</span>
+<span class="c1">#scope.setElement(&quot;TradingSystem&quot;,false)</span>
 
+<span class="n">scope</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Uuids&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">appendValue</span><span class="p">(</span><span class="mi">8049857</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">scope.getElement(&quot;Uuids&quot;).appendValue(14348220);</span>
+<span class="sd">scope.getElement(&quot;Uuids&quot;).appendValue(8639067);</span>
+<span class="sd">scope.getElement(&quot;Uuids&quot;).appendValue(4674574);</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Process response events:-</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processResponseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s2">&quot;Processing RESPONSE event&quot;</span>
 
-        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
 
-            <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPENED</span><span class="p">:</span>
-                <span class="k">print</span> <span class="s2">&quot;Service opened...&quot;</span>
+        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">correlationIds</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>
+            <span class="k">print</span> <span class="s2">&quot;MESSAGE TYPE: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span>
 
-                <span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
-
-                <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;GetFills&quot;</span><span class="p">)</span>
-
-                <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;FromDateTime&quot;</span><span class="p">,</span> <span class="s2">&quot;2017-02-08T00:00:00.000+00:00&quot;</span><span class="p">)</span>
-                <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;ToDateTime&quot;</span><span class="p">,</span> <span class="s2">&quot;2017-02-11T23:59:00.000+00:00&quot;</span><span class="p">)</span>
-
-                <span class="n">scope</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Scope&quot;</span><span class="p">)</span>
-
-                <span class="c1">#scope.setChoice(&quot;Team&quot;)</span>
-                <span class="c1">#scope.setChoice(&quot;TradingSystem&quot;)</span>
-                <span class="n">scope</span><span class="o">.</span><span class="n">setChoice</span><span class="p">(</span><span class="s2">&quot;Uuids&quot;</span><span class="p">)</span>
-
-                <span class="c1">#scope.setElement(&quot;Team&quot;, &quot;SEXEGROUP&quot;)</span>
-                <span class="c1">#scope.setElement(&quot;TradingSystem&quot;,false)</span>
-
-                <span class="n">scope</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Uuids&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">appendValue</span><span class="p">(</span><span class="mi">8049857</span><span class="p">)</span>
-
-                <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">                scope.getElement(&quot;Uuids&quot;).appendValue(14348220);</span>
-<span class="sd">                scope.getElement(&quot;Uuids&quot;).appendValue(8639067);</span>
-<span class="sd">                scope.getElement(&quot;Uuids&quot;).appendValue(4674574);</span>
-<span class="sd">                &#39;&#39;&#39;</span>
-
-                <span class="nb">filter</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;FilterBy&quot;</span><span class="p">)</span>
-
-                <span class="c1">#filter.setChoice(&quot;Basket&quot;)</span>
-                <span class="c1">#filter.setChoice(&quot;Multileg&quot;)</span>
-                <span class="c1">#filter.setChoice(&quot;OrdersAndRoutes&quot;)</span>
-
-                <span class="c1">#filter.getElement(&quot;Basket&quot;).appendValue(&quot;TESTRJC&quot;)</span>
-                <span class="c1">#filter.getElement(&quot;Multileg&quot;).appendValue(&quot;mymlegId&quot;)</span>
-
-                <span class="c1">#newOrder = filter.getElement(&quot;OrdersAndRoutes&quot;).appendElement()</span>
-                <span class="c1">#newOrder.setElement(&quot;OrderId&quot;,4292580)</span>
-                <span class="c1">#newOrder.setElement(&quot;RouteId&quot;,1)</span>
-
-                <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
-
-                <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
-
-                <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
-
-            <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
-                <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
-
-    <span class="k">def</span> <span class="nf">processResponseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s2">&quot;Processing RESPONSE event&quot;</span>
-
-        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
-
-            <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">correlationIds</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>
-                <span class="k">print</span> <span class="s2">&quot;MESSAGE TYPE: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span>
-
-                <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">ERROR_INFO</span><span class="p">:</span>
-                    <span class="n">errorCode</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">getElementAsInteger</span><span class="p">(</span><span class="s2">&quot;ERROR_CODE&quot;</span><span class="p">)</span>
-                    <span class="n">errorMessage</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">getElementAsString</span><span class="p">(</span><span class="s2">&quot;ERROR_MESSAGE&quot;</span><span class="p">)</span>
-                    <span class="k">print</span> <span class="s2">&quot;ERROR CODE: </span><span class="si">%d</span><span class="se">\t</span><span class="s2">ERROR MESSAGE: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">errorCode</span><span class="p">,</span><span class="n">errorMessage</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">GET_FILLS_RESPONSE</span><span class="p">:</span>
-
-                    <span class="n">fills</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Fills&quot;</span><span class="p">)</span>
-
-                    <span class="k">for</span> <span class="n">fill</span> <span class="ow">in</span> <span class="n">fills</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-
-                        <span class="n">account</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Account&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">amount</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Amount&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">assetClass</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;AssetClass&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">basketId</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;BasketId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsInteger</span><span class="p">()</span>
-                        <span class="n">bbgid</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;BBGID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">blockId</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;BlockId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">broker</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Broker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">clearingAccount</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;ClearingAccount&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">clearingFirm</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;ClearingFirm&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">contractExpDate</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;ContractExpDate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">correctedFillId</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;CorrectedFillId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsInteger</span><span class="p">()</span>
-                        <span class="n">currency</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Currency&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">cusip</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Cusip&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">dateTimeOfFill</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;DateTimeOfFill&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">exchange</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Exchange&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">execPrevSeqNo</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;ExecPrevSeqNo&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsInteger</span><span class="p">()</span>
-                        <span class="n">execType</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;ExecType&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">executingBroker</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;ExecutingBroker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">fillId</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;FillId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsInteger</span><span class="p">()</span>
-                        <span class="n">fillPrice</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;FillPrice&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">fillShares</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;FillShares&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">investorId</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;InvestorID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">isCFD</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;IsCfd&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsBool</span><span class="p">()</span>
-                        <span class="n">isin</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Isin&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">isLeg</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;IsLeg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsBool</span><span class="p">()</span>
-                        <span class="n">lastCapacity</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;LastCapacity&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">lastMarket</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;LastMarket&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">limitPrice</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;LimitPrice&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">liquidity</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Liquidity&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">localExchangeSymbol</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;LocalExchangeSymbol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">locateBroker</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;LocateBroker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">locateId</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;LocateId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">locateRequired</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;LocateRequired&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsBool</span><span class="p">()</span>
-                        <span class="n">multiLedId</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;MultilegId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">occSymbol</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;OCCSymbol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">orderExecutionInstruction</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;OrderExecutionInstruction&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">orderHandlingInstruction</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;OrderHandlingInstruction&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">orderId</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;OrderId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsInteger</span><span class="p">()</span>
-                        <span class="n">orderInstruction</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;OrderInstruction&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">orderOrigin</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;OrderOrigin&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">orderReferenceId</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;OrderReferenceId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">originatingTraderUUId</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;OriginatingTraderUuid&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsInteger</span><span class="p">()</span>
-                        <span class="n">reroutedBroker</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;ReroutedBroker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">routeCommissionAmount</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;RouteCommissionAmount&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">routeCommissionRate</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;RouteCommissionRate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">routeExecutionInstruction</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;RouteExecutionInstruction&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">routeHandlingInstruction</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;RouteHandlingInstruction&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">routeId</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;RouteId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsInteger</span><span class="p">()</span>
-                        <span class="n">routeNetMoney</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;RouteNetMoney&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">routeNotes</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;RouteNotes&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">routeShares</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;RouteShares&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">securityName</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;SecurityName&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">sedol</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Sedol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">settlementDate</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;SettlementDate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">side</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Side&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">stopPrice</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;StopPrice&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">strategyType</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;StrategyType&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">ticker</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Ticker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">tif</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;TIF&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">traderName</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;TraderName&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">traderUUId</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;TraderUuid&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsInteger</span><span class="p">()</span>
-                        <span class="nb">type</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;Type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-                        <span class="n">userCommissionAmount</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;UserCommissionAmount&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">userCommissionRate</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;UserCommissionRate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">userFees</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;UserFees&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">userNetMoney</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;UserNetMoney&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsFloat</span><span class="p">()</span>
-                        <span class="n">yellowKey</span> <span class="o">=</span> <span class="n">fill</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;YellowKey&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValueAsString</span><span class="p">()</span>
-
-                        <span class="k">print</span> <span class="s2">&quot;OrderId: </span><span class="si">%d</span><span class="se">\t</span><span class="s2">Fill ID: </span><span class="si">%d</span><span class="se">\t</span><span class="s2">Date/Time: </span><span class="si">%s</span><span class="se">\t</span><span class="s2">Shares: </span><span class="si">%f</span><span class="se">\t</span><span class="s2">Price: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">orderId</span><span class="p">,</span><span class="n">fillId</span><span class="p">,</span> <span class="n">dateTimeOfFill</span><span class="p">,</span> <span class="n">fillShares</span><span class="p">,</span> <span class="n">fillPrice</span><span class="p">)</span>
-
-                <span class="k">global</span> <span class="n">bEnd</span>
-                <span class="n">bEnd</span> <span class="o">=</span> <span class="bp">True</span>
-
-    <span class="k">def</span> <span class="nf">processMiscEvents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-
-        <span class="k">print</span> <span class="s2">&quot;Processing &quot;</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="n">eventType</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; event&quot;</span>
-
-        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
-
-            <span class="k">print</span> <span class="s2">&quot;MESSAGE: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">tostring</span><span class="p">())</span>
-
-
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-
-    <span class="n">sessionOptions</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">SessionOptions</span><span class="p">()</span>
-    <span class="n">sessionOptions</span><span class="o">.</span><span class="n">setServerHost</span><span class="p">(</span><span class="n">d_host</span><span class="p">)</span>
-    <span class="n">sessionOptions</span><span class="o">.</span><span class="n">setServerPort</span><span class="p">(</span><span class="n">d_port</span><span class="p">)</span>
-
-    <span class="k">print</span> <span class="s2">&quot;Connecting to </span><span class="si">%s</span><span class="s2">:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">d_host</span><span class="p">,</span><span class="n">d_port</span><span class="p">)</span>
-
-    <span class="n">eventHandler</span> <span class="o">=</span> <span class="n">SessionEventHandler</span><span class="p">()</span>
-
-    <span class="n">session</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">sessionOptions</span><span class="p">,</span> <span class="n">eventHandler</span><span class="o">.</span><span class="n">processEvent</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">session</span><span class="o">.</span><span class="n">startAsync</span><span class="p">():</span>
-        <span class="k">print</span> <span class="s2">&quot;Failed to start session.&quot;</span>
-        <span class="k">return</span>
-
-    <span class="k">global</span> <span class="n">bEnd</span>
-    <span class="k">while</span> <span class="n">bEnd</span><span class="o">==</span><span class="bp">False</span><span class="p">:</span>
-        <span class="k">pass</span>
-
-    <span class="n">session</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s2">&quot;Bloomberg - EMSX API Example - EMSXHistory&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">main</span><span class="p">()</span>
-    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-        <span class="k">print</span>  <span class="s2">&quot;Ctrl+C pressed. Stopping...&quot;</span>
+            <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">ERROR_INFO</span><span class="p">:</span>
+                <span class="n">errorCode</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">getElementAsInteger</span><span class="p">(</span><span class="s2">&quot;ERROR_CODE&quot;</span><span class="p">)</span>
+                <span class="n">errorMessage</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">getElementAsString</span><span class="p">(</span><span class="s2">&quot;ERROR_MESSAGE&quot;</span><span class="p">)</span>
+                <span class="k">print</span> <span class="s2">&quot;ERROR CODE: </span><span class="si">%d</span><span class="se">\t</span><span class="s2">ERROR MESSAGE: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">errorCode</span><span class="p">,</span><span class="n">errorMessage</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">GET_FILLS_RESPONSE</span><span class="p">:</span>
 </pre></div>
 </div>
 </div>

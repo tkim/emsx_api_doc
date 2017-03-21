@@ -1,4 +1,4 @@
-.. emsx_api_doc documentation master file, created by :caption: Contents:
+.. emsx_api_doc documentation master file, created by  Terrence C. Kim :caption: Contents:
    
 ##########################
 EMSX API Programmers Guide
