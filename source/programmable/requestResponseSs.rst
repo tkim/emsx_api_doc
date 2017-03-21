@@ -42,10 +42,76 @@ Manaul Fill Request
 ===================
 
 
+==================== ===================
+`Manual Fill cpp`_   `Manual Fill cs`_ 
+==================== ===================
+`Manual Fill java`_  `Manual Fill py`_
+==================== ===================
+
+.. _Manual Fill cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp
+
+.. _Manual Fill cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ManualFill.cs
+
+.. _Manual Fill java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ManualFill.java
+
+.. _Manual Fill py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py
+
+
+.. code-block:: python
+	
+	# ManualFill.py
+
+
+
+
 Sell Side Ack Request
 =====================
 
 
+=====================  ===================
+`Sell Side Ack cpp`_   `Sell Side Ack cs`_ 
+=====================  ===================
+`Sell Side Ack java`_  `Sell Side Ack py`_
+=====================  ===================
+
+.. _Sell Side Ack cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideAck.cpp
+
+.. _Sell Side Ack cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideAck.cs
+
+.. _Sell Side Ack java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/SellSideAck.java
+
+.. _Sell Side Ack py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideAck.py
+
+
+.. code-block:: python
+
+	# SellSideAck.py
+
+
+
 Sell Side Reject Request
 ========================
+
+
+===================== ===================
+`Sell Side Rej cpp`_  `Sell Side Rej cs`_ 
+===================== ===================
+`Sell Side Rej java`_ `Sell Side Rej py`_
+===================== ===================
+
+.. _Sell Side Rej cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideRej.cpp
+
+.. _Sell Side Rej cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideRej.cs
+
+.. _Sell Side Rej java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/SellSideRej.java
+
+.. _Sell Side Rej py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideRej.py
+
+
+.. code-block:: python
+
+	SellSideRej.py
+
+
+
 

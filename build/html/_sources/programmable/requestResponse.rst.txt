@@ -361,11 +361,11 @@ Cancel Route Extended Request
 In EMSX<GO> we have a notion of parent order and child routes. The CancelRoute request is to effectively send out a cancellation request to the execution venue of the current live route. Submission of CancelRoute does not automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue of the route.
 
 
-====================== ===================
-`Cancel Route cpp`_    `Cancel Route cs`_ 	
-====================== ===================
-`Cancel Route java`_   `Cancel Route py`_
-====================== ===================
+===================== ===================
+`Cancel Route cpp`_   `Cancel Route cs`_ 	
+===================== ===================
+`Cancel Route java`_  `Cancel Route py`_
+===================== ===================
 
 .. _Cancel Route cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CancelRoute.cpp
 
@@ -535,11 +535,11 @@ Creating an order requires the user to create a request from the service object 
 If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is also true for custom Time in Force fields. Any non-standard TIF will also be restricted from staging unless the broker enables the broker code for EMSX API.
 
 
-====================== ===================
-`Create Order cpp`_    `Create Order cs`_ 	
-====================== ===================
-`Create Order java`_   `Create Order py`_
-====================== ===================
+===================== ===================
+`Create Order cpp`_   `Create Order cs`_ 	
+===================== ===================
+`Create Order java`_  `Create Order py`_
+===================== ===================
 
 .. _Create Order cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateOrder.cpp
 
@@ -750,6 +750,20 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.
 	Lastly, *GetBrokerStrategyInfo* will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in *CreateOrderAndRouteEx* and *RouteEx* requests.
 
 
+======================================= =====================================
+`Create Order And Route Extended cpp`_  `Create Order And Route Extended cs`_ 	
+======================================= =====================================
+`Create Order And Route Extended java`_ `Create Order And Route Extended py`_
+======================================= =====================================
+
+.. _Create Order And Route Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateOrderAndRouteEx.cpp
+
+.. _Create Order And Route Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateOrderAndRouteEx.cs
+
+.. _Create Order And Route Extended java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrderAndRouteEx.java
+
+.. _Create Order And Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrderAndRouteEx.py
+
 
 .. code-block:: python
 
@@ -944,6 +958,22 @@ Create Order And Route Manually Request
 ``CreateOrderAndRouteManually`` request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
 
 
+======================================= =====================================
+`Create Order And Route Manually cpp`_  `Create Order And Route Manually cs`_ 	
+======================================= =====================================
+`Create Order And Route Manually java`_ `Create Order And Route Manually py`_
+======================================= =====================================
+
+
+.. _Create Order And Route Manually cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateOrderAndRouteManually.cpp
+
+.. _Create Order And Route Manually cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateOrderAndRouteManually.cs
+
+.. _Create Order And Route Manually java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrderAndRouteManually.java
+
+.. _Create Order And Route Manually py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrderAndRouteManually.py
+
+
 .. code-block:: python
 
 	# CreateOrderAndRouteManually.py
@@ -1128,6 +1158,23 @@ Delete Order Request
 The primary reason behind this is because the Cancel Order in EMSX<GO> really just puts an order in an inoperable state and doesn't really serve any meaningful function.
 
 
+==================== ===================
+`Delete Order cpp`_  `Delete Order cs`_ 	
+==================== ===================
+`Delete Order java`_ `Delete Order py`_
+==================== ===================
+
+
+.. _Delete Order cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/DeleteOrder.cpp
+
+.. _Delete Order cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/DeleteOrder.cs
+
+.. _Delete Order java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/DeleteOrder.java
+
+.. _Delete Order py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/DeleteOrder.py
+
+
+
 .. code-block:: python
 
 	# DeleteOrder.py
@@ -1280,6 +1327,21 @@ Get All Field Metadata Request
 
 
 ``GetAllFiedlMetaData`` request provides all field metadata in a response message.
+
+
+=============================== =============================
+`Get All Field Meta Data cpp`_ 	`Get All Field Meta Data cs`_ 	
+=============================== =============================
+`Get All Field Meta Data java`_ `Get All Field Meta Data py`_
+=============================== =============================
+
+.. _Get All Field Meta Data cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetAllFieldMetaData.cpp
+
+.. _Get All Field Meta Data cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetAllFieldMetaData.cs
+
+.. _Get All Field Meta Data java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetAllFieldMetaData.java
+
+.. _Get All Field Meta Data py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetAllFieldMetaData.py
 
 
 .. code-block:: python
@@ -1441,6 +1503,21 @@ Get Broker Strategies with Asset Class Request
 ``GetBrokerStrategiesWithAssetClass`` request provides all broker strategy fields with asset class data in a response message.
 
 
+============================================== =============================================
+`Get Broker Strategies With Asset Class cpp`_ 	`Get Broker Strategies With Asset Class cs`_ 	
+============================================== =============================================
+`Get Broker Strategies With Asset Class java`_ 	`Get Broker Strategies With Asset Class py`_
+============================================== =============================================
+
+.. _Get Broker Strategies With Asset Class cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetBrokerStrategiesWithAssetClass.cpp
+
+.. _Get Broker Strategies With Asset Class cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetBrokerStrategiesWithAssetClass.cs
+
+.. _Get Broker Strategies With Asset Class java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetBrokerStrategiesWithAssetClass.java
+
+.. _Get Broker Strategies With Asset Class py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokerStrategiesWithAssetClass.py
+
+
 .. code-block:: python
 
 	# GetBrokerStrategiesWithAssetClass.py
@@ -1592,6 +1669,20 @@ Get Broker Strategy Info with Asset Class Request
 
 
 ``GetBrokerStrategyInfoWithAssetClass`` request provides all broker strategy information fields with asset classdata in a response message.
+
+================================================= ================================================
+`Get Broker Strategy Info With Asset Class cpp`_  `Get Broker Strategy Info With Asset Class cs`_ 	
+================================================= ================================================
+`Get Broker Strategy Info With Asset Class java`_ `Get Broker Strategy Info With Asset Class py`_
+================================================= ================================================
+
+.. _Get Broker Strategy Info With Asset Class cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetBrokerStrategyInfoWithAssetClass.cpp
+
+.. _Get Broker Strategy Info With Asset Class cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetBrokerStrategyInfoWithAssetClass.cs
+
+.. _Get Broker Strategy Info With Asset Class java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetBrokerStrategyInfoWithAssetClass.java
+
+.. _Get Broker Strategy Info With Asset Class py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokerStrategyInfoWithAssetClass.py
 
 
 .. code-block:: python
@@ -1753,6 +1844,21 @@ Get Brokers with Asset Class Request
 ``GetBrokersWithAssetClass`` request provides all broker information with asset class data in a response message.
 
 
+==================================== ====================================
+`Get Brokers With Asset Class cpp`_  `Get Brokers With Asset Class cs`_ 	
+==================================== ====================================
+`Get Brokers With Asset Class java`_ `Get Brokers With Asset Class py`_
+==================================== ====================================
+
+.. _Get Brokers With Asset Class cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetBrokersWithAssetClass.cpp
+
+.. _Get Brokers With Asset Class cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetBrokersWithAssetClass.cs
+
+.. _Get Brokers With Asset Class java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetBrokersWithAssetClass.java
+
+.. _Get Brokers With Asset Class py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokersWithAssetClass.py
+
+
 .. code-block:: python
 
 	# GetBrokersWithAssetClass.py
@@ -1904,6 +2010,21 @@ Get Field Metadata Request
 
 
 ``GetFieldMetaData`` request provides all field metadata in a response message.
+
+
+=========================== ==========================
+`Get Field Meta Data cpp`_  `Get Field Meta Data cs`_ 	
+=========================== ==========================
+`Get Field Meta Data java`_ `Get Field Meta Data py`_
+=========================== ==========================
+
+.. _Get Field Meta Data cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetFieldMetaData.cpp
+
+.. _Get Field Meta Data cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetFieldMetaData.cs
+
+.. _Get Field Meta Data java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetFieldMetaData.java
+
+.. _Get Field Meta Data py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetFieldMetaData.py
 
 
 .. code-block:: python
@@ -2067,6 +2188,21 @@ Get Teams Request
 ``GetTeams`` request provides all the team details in a response message.
 
 
+================= =================
+`Get Teams cpp`_  `Get Teams cs`_ 	
+================= =================
+`Get Teams java`_ `Get Teams py`_
+================= =================
+
+.. _Get Teams cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetTeams.cpp
+
+.. _Get Teams cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetTeams.cs
+
+.. _Get Teams java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetTeams.java
+
+.. _Get Teams py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetTeams.py
+
+
 .. code-block:: python
 
 	# GetTeams.py
@@ -2220,6 +2356,21 @@ Group Route Extended Request
 This request should only be used if the intention is to submit an entire list or basket of securities to a single broker strategy destination. This should not be confused with maintaining a list or a basket from a portfolio perspective.
 
 Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use ``CreateOrder`` request to create the order and add the ``EMSX_BASKET_NAME`` in the field. The second step is to submit the list using ``GroupRouteEx`` request and include the ``EMSX_SEQUENCE`` number inside the array. 
+
+
+============================ ===========================
+`Group Route Extended cpp`_  `Group Route Extended cs`_ 	
+============================ ===========================
+`Group Route Extended java`_ `Group Route Extended py`_
+============================ ===========================
+
+.. _Group Route Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GroupRouteEx.cpp
+
+.. _Group Route Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GroupRouteEx.cs
+
+.. _Group Route Extended java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GroupRouteEx.java
+
+.. _Group Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GroupRouteEx.py
 
 
 .. code-block:: python
@@ -2524,6 +2675,21 @@ Route Extended Request
 ``RouteEx`` request submits an existing order into various execution veneues. This request is used primarily to submit a child route based on previously created parent order. 
 
 
+======================= ====================
+`Route Extended cpp`_   `Route Extended cs`_ 	
+======================= ====================
+`Route Extended java`_  `Route Extended py`_
+======================= ====================
+
+.. _Route Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/RouteEx.cpp
+
+.. _Route Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/RouteEx.cs
+
+.. _Route Extended java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/RouteEx.java
+
+.. _Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteEx.py
+
+
 .. code-block:: python
 
 	# RouteEx.py
@@ -2701,6 +2867,21 @@ Route Manually Extended Request
 
 
 ``RouteManuallyEx`` requestis generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
+
+
+======================= ====================
+`Route Manually cpp`_   `Route Manually cs`_ 	
+======================= ====================
+`Route Manually java`_  `Route Manually py`_
+======================= ====================
+
+.. _Route Manually cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/RouteManually.cpp
+
+.. _Route Manually cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/RouteManually.cs
+
+.. _Route Manually java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/RouteManually.java
+
+.. _Route Manually py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteManually.py
 
 
 .. code-block:: python

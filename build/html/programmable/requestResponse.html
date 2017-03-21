@@ -600,8 +600,8 @@
 <p>In EMSX&lt;GO&gt; we have a notion of parent order and child routes. The CancelRoute request is to effectively send out a cancellation request to the execution venue of the current live route. Submission of CancelRoute does not automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue of the route.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="54%" />
-<col width="46%" />
+<col width="53%" />
+<col width="48%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CancelRoute.cpp">Cancel Route cpp</a></th>
@@ -768,8 +768,8 @@
 <p>If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is also true for custom Time in Force fields. Any non-standard TIF will also be restricted from staging unless the broker enables the broker code for EMSX API.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="54%" />
-<col width="46%" />
+<col width="53%" />
+<col width="48%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateOrder.cpp">Create Order cpp</a></th>
@@ -972,6 +972,22 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <p>The user will first need to request <em>GetBrokers</em> to get all the brokers the user is enabled for, returned in response. Subsequently the user can then request <em>GetBrokerStrategies</em> to get all the broker strategies user is enabled for that particular broker code.</p>
 <p class="last">Lastly, <em>GetBrokerStrategyInfo</em> will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in <em>CreateOrderAndRouteEx</em> and <em>RouteEx</em> requests.</p>
 </div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateOrderAndRouteEx.cpp">Create Order And Route Extended cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateOrderAndRouteEx.cs">Create Order And Route Extended cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrderAndRouteEx.java">Create Order And Route Extended java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrderAndRouteEx.py">Create Order And Route Extended py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># CreateOrderAndRouteEx.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -1158,6 +1174,22 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <div class="section" id="create-order-and-route-manually-request">
 <h2>Create Order And Route Manually Request<a class="headerlink" href="#create-order-and-route-manually-request" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">CreateOrderAndRouteManually</span></code> request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX&lt;GO&gt; that this order is routed to the execution venue.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateOrderAndRouteManually.cpp">Create Order And Route Manually cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateOrderAndRouteManually.cs">Create Order And Route Manually cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrderAndRouteManually.java">Create Order And Route Manually java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrderAndRouteManually.py">Create Order And Route Manually py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># CreateOrderAndRouteManually.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -1335,6 +1367,22 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <h2>Delete Order Request<a class="headerlink" href="#delete-order-request" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">DeleteOrder</span></code> request deletes an existing order in EMSX&lt;GO&gt;. This is not the same action as canceling the parent order. In fact, EMSX API does not expose Cancel Order status as in EMSX&lt;GO&gt;.</p>
 <p>The primary reason behind this is because the Cancel Order in EMSX&lt;GO&gt; really just puts an order in an inoperable state and doesn&#8217;t really serve any meaningful function.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/DeleteOrder.cpp">Delete Order cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/DeleteOrder.cs">Delete Order cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/DeleteOrder.java">Delete Order java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/DeleteOrder.py">Delete Order py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># DeleteOrder.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -1483,6 +1531,22 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <div class="section" id="get-all-field-metadata-request">
 <h2>Get All Field Metadata Request<a class="headerlink" href="#get-all-field-metadata-request" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">GetAllFiedlMetaData</span></code> request provides all field metadata in a response message.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetAllFieldMetaData.cpp">Get All Field Meta Data cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetAllFieldMetaData.cs">Get All Field Meta Data cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetAllFieldMetaData.java">Get All Field Meta Data java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetAllFieldMetaData.py">Get All Field Meta Data py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># GetAllFieldMetaData.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -1636,6 +1700,22 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <div class="section" id="get-broker-strategies-with-asset-class-request">
 <h2>Get Broker Strategies with Asset Class Request<a class="headerlink" href="#get-broker-strategies-with-asset-class-request" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">GetBrokerStrategiesWithAssetClass</span></code> request provides all broker strategy fields with asset class data in a response message.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetBrokerStrategiesWithAssetClass.cpp">Get Broker Strategies With Asset Class cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetBrokerStrategiesWithAssetClass.cs">Get Broker Strategies With Asset Class cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetBrokerStrategiesWithAssetClass.java">Get Broker Strategies With Asset Class java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokerStrategiesWithAssetClass.py">Get Broker Strategies With Asset Class py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># GetBrokerStrategiesWithAssetClass.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -1783,6 +1863,22 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <div class="section" id="get-broker-strategy-info-with-asset-class-request">
 <h2>Get Broker Strategy Info with Asset Class Request<a class="headerlink" href="#get-broker-strategy-info-with-asset-class-request" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code> request provides all broker strategy information fields with asset classdata in a response message.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetBrokerStrategyInfoWithAssetClass.cpp">Get Broker Strategy Info With Asset Class cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetBrokerStrategyInfoWithAssetClass.cs">Get Broker Strategy Info With Asset Class cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetBrokerStrategyInfoWithAssetClass.java">Get Broker Strategy Info With Asset Class java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokerStrategyInfoWithAssetClass.py">Get Broker Strategy Info With Asset Class py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># GetBrokerStrategyInfoWithAssetClass.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -1937,6 +2033,22 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <div class="section" id="get-brokers-with-asset-class-request">
 <h2>Get Brokers with Asset Class Request<a class="headerlink" href="#get-brokers-with-asset-class-request" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">GetBrokersWithAssetClass</span></code> request provides all broker information with asset class data in a response message.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetBrokersWithAssetClass.cpp">Get Brokers With Asset Class cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetBrokersWithAssetClass.cs">Get Brokers With Asset Class cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetBrokersWithAssetClass.java">Get Brokers With Asset Class java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokersWithAssetClass.py">Get Brokers With Asset Class py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># GetBrokersWithAssetClass.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -2085,6 +2197,22 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <div class="section" id="get-field-metadata-request">
 <h2>Get Field Metadata Request<a class="headerlink" href="#get-field-metadata-request" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">GetFieldMetaData</span></code> request provides all field metadata in a response message.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetFieldMetaData.cpp">Get Field Meta Data cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetFieldMetaData.cs">Get Field Meta Data cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetFieldMetaData.java">Get Field Meta Data java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetFieldMetaData.py">Get Field Meta Data py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># GetFieldMetaData.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -2241,6 +2369,22 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <div class="section" id="get-teams-request">
 <h2>Get Teams Request<a class="headerlink" href="#get-teams-request" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">GetTeams</span></code> request provides all the team details in a response message.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetTeams.cpp">Get Teams cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetTeams.cs">Get Teams cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetTeams.java">Get Teams java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetTeams.py">Get Teams py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># GetTeams.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -2389,6 +2533,22 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <p><code class="docutils literal"><span class="pre">GroupRouteEx</span></code> request submits an entire list as a single route to a basket/program broker strategy destination.</p>
 <p>This request should only be used if the intention is to submit an entire list or basket of securities to a single broker strategy destination. This should not be confused with maintaining a list or a basket from a portfolio perspective.</p>
 <p>Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use <code class="docutils literal"><span class="pre">CreateOrder</span></code> request to create the order and add the <code class="docutils literal"><span class="pre">EMSX_BASKET_NAME</span></code> in the field. The second step is to submit the list using <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> request and include the <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> number inside the array.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GroupRouteEx.cpp">Group Route Extended cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GroupRouteEx.cs">Group Route Extended cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GroupRouteEx.java">Group Route Extended java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GroupRouteEx.py">Group Route Extended py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># GroupRoute.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -2677,6 +2837,22 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <div class="section" id="route-extended-request">
 <h2>Route Extended Request<a class="headerlink" href="#route-extended-request" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">RouteEx</span></code> request submits an existing order into various execution veneues. This request is used primarily to submit a child route based on previously created parent order.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/RouteEx.cpp">Route Extended cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/RouteEx.cs">Route Extended cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/RouteEx.java">Route Extended java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteEx.py">Route Extended py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># RouteEx.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -2850,6 +3026,22 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 <div class="section" id="route-manually-extended-request">
 <h2>Route Manually Extended Request<a class="headerlink" href="#route-manually-extended-request" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">RouteManuallyEx</span></code> requestis generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX&lt;GO&gt; that this order is routed to the execution venue.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/RouteManually.cpp">Route Manually cpp</a></th>
+<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/RouteManually.cs">Route Manually cs</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/RouteManually.java">Route Manually java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteManually.py">Route Manually py</a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># RouteManually.py</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>

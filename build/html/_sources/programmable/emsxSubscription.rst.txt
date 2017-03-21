@@ -17,6 +17,20 @@ Additionally, any changes to these orders and/or routes will generate events tha
     When implementing subscription service, it's important to write the code using two separate .subscribe() events for the order and route subscriptions.
 
 
+========================== ========================
+`EMSX Subscriptions cpp`_  `EMSX Subscriptions cs`_ 	
+========================== ========================
+`EMSX Subscriptions java`_ `EMSX Subscriptions py`_
+========================== ========================
+
+.. _EMSX Subscriptions cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/EMSXSubscriptions.cpp
+
+.. _EMSX Subscriptions cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/EMSXSubscriptions.cs
+
+.. _EMSX Subscriptions java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/EMSXSubscriptions.java
+
+.. _EMSX Subscriptions py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/EMSXSubscriptions.py
+
 
 .. code-block:: python
 

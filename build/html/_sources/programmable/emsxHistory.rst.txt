@@ -88,6 +88,21 @@ YellowKey 							Bloomberg yellow key field detail
 =================================== =================================================================
 
 
+==================== ===================
+`EMSX History cpp`_  `EMSX History cs`_ 
+==================== ===================
+`EMSX History java`_ `EMSX History py`_
+==================== ===================
+
+.. _EMSX History cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/EMSXHistory.cpp
+
+.. _EMSX History cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/EMSXHistory.cs
+
+.. _EMSX History java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/EMSXHistory.java
+
+.. _EMSX History py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/EMSXHistory.py
+
+
 .. code-block:: python
 
 	# EMSXHistory.py

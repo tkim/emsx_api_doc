@@ -17,12 +17,6 @@ For example, when a ``CreateOrder`` is issued, as discussed above, it is perfect
 
 The ``EMSX_REQUEST_SEQ`` should also be added to every request. The ``EMSX_REQUEST_SEQ`` should consist of 64-bit integer and should be reset once a week.  The purpose of this unique user assigned sequence number is to prevent duplicate requests from being sent during system outages. The number also should be unique per serial number of the Bloomberg terminal.
 
-.. important::
-
-			EMSX API Code samples can be found `here`_.
-
-			.. _here: https://github.com/tkim/emsx_api_repository
-
 
 .. toctree::
 	   :maxdepth: 3
