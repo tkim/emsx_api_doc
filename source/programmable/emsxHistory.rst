@@ -42,7 +42,7 @@ FillShare 							Number of share of the fill
 InvestorID 							Investor ID detail
 IsCfd 								CFD flag
 Isin 								ISIN detail
-IsLeg 								I
+IsLeg 								Is leg
 LastCapacity 						Last capacity field in EMSX<GO>
 LastMarket 							Last market detail
 LimitPrice 							Limit price detail
