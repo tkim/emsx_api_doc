@@ -148,7 +148,7 @@
             
   <div class="section" id="emsx-history-request">
 <h1>EMSX History Request<a class="headerlink" href="#emsx-history-request" title="Permalink to this headline">¶</a></h1>
-<p>EMSX History service provides individual fill information via request/response service. The service name is
+<p>EMSX history service provides individual fill information via request/response service. The service name is
 <code class="docutils literal"><span class="pre">//blp/emsx.history</span></code> for production and <code class="docutils literal"><span class="pre">//blp/emsx.history.uat</span></code> for test environment.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -166,229 +166,231 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>Account</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Account</span></code></td>
 <td>Trading account used in EMSX&lt;GO&gt;</td>
 </tr>
-<tr class="row-odd"><td>Amount</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Amount</span></code></td>
 <td>Total quantity of the order</td>
 </tr>
-<tr class="row-even"><td>AssetClass</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">AssetClass</span></code></td>
 <td>Asset class of the order</td>
 </tr>
-<tr class="row-odd"><td>BasketId</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">BasketId</span></code></td>
 <td>ID of the basket</td>
 </tr>
-<tr class="row-even"><td>BasketName</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">BasketName</span></code></td>
 <td>Name of the basket</td>
 </tr>
-<tr class="row-odd"><td>BBGID</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">BBGID</span></code></td>
 <td>BBGID field</td>
 </tr>
-<tr class="row-even"><td>BlockId</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">BlockId</span></code></td>
 <td>Block ID</td>
 </tr>
-<tr class="row-odd"><td>Broker</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Broker</span></code></td>
 <td>Executing broker name</td>
 </tr>
-<tr class="row-even"><td>ClearingAccount</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ClearingAccount</span></code></td>
 <td>Clearing account detail</td>
 </tr>
-<tr class="row-odd"><td>ClearingFirm</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ClearingFirm</span></code></td>
 <td>Clearing firm detail</td>
 </tr>
-<tr class="row-even"><td>ContractExpDate</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ContractExpDate</span></code></td>
 <td>Contract expiration date</td>
 </tr>
-<tr class="row-odd"><td>CorrectedFillId</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CorrectedFillId</span></code></td>
 <td>Corrected fill ID</td>
 </tr>
-<tr class="row-even"><td>Currency</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Currency</span></code></td>
 <td>Currency</td>
 </tr>
-<tr class="row-odd"><td>Cusip</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Cusip</span></code></td>
 <td>CUSIP</td>
 </tr>
-<tr class="row-even"><td>DateTimeOfFill</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">DateTimeOfFill</span></code></td>
 <td>Date and time of the fill</td>
 </tr>
-<tr class="row-odd"><td>Exchange</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Exchange</span></code></td>
 <td>Exchange details</td>
 </tr>
-<tr class="row-even"><td>ExecPrevSeqNo</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ExecPrevSeqNo</span></code></td>
 <td>Previous sequence number of execution</td>
 </tr>
-<tr class="row-odd"><td>ExecType</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ExecType</span></code></td>
 <td>Execution type details</td>
 </tr>
-<tr class="row-even"><td>ExecutingBrokers</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ExecutingBrokers</span></code></td>
 <td>Executing broker details</td>
 </tr>
-<tr class="row-odd"><td>FillId</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">FillId</span></code></td>
 <td>ID of the fill</td>
 </tr>
-<tr class="row-even"><td>FillPrice</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">FillPrice</span></code></td>
 <td>Price of the fill</td>
 </tr>
-<tr class="row-odd"><td>FillShare</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">FillShare</span></code></td>
 <td>Number of share of the fill</td>
 </tr>
-<tr class="row-even"><td>InvestorID</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">InvestorID</span></code></td>
 <td>Investor ID detail</td>
 </tr>
-<tr class="row-odd"><td>IsCfd</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">IsCfd</span></code></td>
 <td>CFD flag</td>
 </tr>
-<tr class="row-even"><td>Isin</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Isin</span></code></td>
 <td>ISIN detail</td>
 </tr>
-<tr class="row-odd"><td>IsLeg</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">IsLeg</span></code></td>
 <td>Is leg</td>
 </tr>
-<tr class="row-even"><td>LastCapacity</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">LastCapacity</span></code></td>
 <td>Last capacity field in EMSX&lt;GO&gt;</td>
 </tr>
-<tr class="row-odd"><td>LastMarket</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">LastMarket</span></code></td>
 <td>Last market detail</td>
 </tr>
-<tr class="row-even"><td>LimitPrice</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">LimitPrice</span></code></td>
 <td>Limit price detail</td>
 </tr>
-<tr class="row-odd"><td>Liquidity</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Liquidity</span></code></td>
 <td>Liquidity detail</td>
 </tr>
-<tr class="row-even"><td>LocalExchangeSymbol</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">LocalExchangeSymbol</span></code></td>
 <td>Local exchange symbol</td>
 </tr>
-<tr class="row-odd"><td>LocateBroker</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">LocateBroker</span></code></td>
 <td>Locate broker detail</td>
 </tr>
-<tr class="row-even"><td>LocateId</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">LocateId</span></code></td>
 <td>Locate ID</td>
 </tr>
-<tr class="row-odd"><td>LocateRequired</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">LocateRequired</span></code></td>
 <td>Flag to indicate whether or not short locate is required</td>
 </tr>
-<tr class="row-even"><td>MultilegId</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">MultilegId</span></code></td>
 <td>Multileg ID</td>
 </tr>
-<tr class="row-odd"><td>OCCSymbol</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">OCCSymbol</span></code></td>
 <td>OCC symbol</td>
 </tr>
-<tr class="row-even"><td>OrderExecutionInstruction</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">OrderExecutionInstruction</span></code></td>
 <td>Order execution instruction detail</td>
 </tr>
-<tr class="row-odd"><td>OrderHandlingInstruction</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">OrderHandlingInstruction</span></code></td>
 <td>Order handling instruction detail</td>
 </tr>
-<tr class="row-even"><td>OrderId</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">OrderId</span></code></td>
 <td>Order ID</td>
 </tr>
-<tr class="row-odd"><td>OrderInstruction</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">OrderInstruction</span></code></td>
 <td>Order instruction detail</td>
 </tr>
-<tr class="row-even"><td>OrderOrigin</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">OrderOrigin</span></code></td>
 <td>Order origin detail</td>
 </tr>
-<tr class="row-odd"><td>OrderReferenceId</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">OrderReferenceId</span></code></td>
 <td>Order reference ID detail</td>
 </tr>
-<tr class="row-even"><td>OriginatingTraderUuid</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">OriginatingTraderUuid</span></code></td>
 <td>UUID of the originating trader</td>
 </tr>
-<tr class="row-odd"><td>ReroutedBroker</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ReroutedBroker</span></code></td>
 <td>Rerouted broker details</td>
 </tr>
-<tr class="row-even"><td>RouteCommissionAmount</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">RouteCommissionAmount</span></code></td>
 <td>Commission amount of the route</td>
 </tr>
-<tr class="row-odd"><td>RouteCommissionRate</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RouteCommissionRate</span></code></td>
 <td>Commission rate of the route</td>
 </tr>
-<tr class="row-even"><td>RouteExecutionInstruction</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">RouteExecutionInstruction</span></code></td>
 <td>Route execution instruction</td>
 </tr>
-<tr class="row-odd"><td>RouteHandlingInstruction</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RouteHandlingInstruction</span></code></td>
 <td>Route handling instruction</td>
 </tr>
-<tr class="row-even"><td>RouteId</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">RouteId</span></code></td>
 <td>Route ID</td>
 </tr>
-<tr class="row-odd"><td>RouteNetMoney</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RouteNetMoney</span></code></td>
 <td>Route net money</td>
 </tr>
-<tr class="row-even"><td>RouteNotes</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">RouteNotes</span></code></td>
 <td>Route instructions</td>
 </tr>
-<tr class="row-odd"><td>RouteShares</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RouteShares</span></code></td>
 <td>Route shares</td>
 </tr>
-<tr class="row-even"><td>SecurityName</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">SecurityName</span></code></td>
 <td>Security name detail</td>
 </tr>
-<tr class="row-odd"><td>Sedol</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Sedol</span></code></td>
 <td>SEDOL</td>
 </tr>
-<tr class="row-even"><td>SettlementDate</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">SettlementDate</span></code></td>
 <td>Settlement date detail</td>
 </tr>
-<tr class="row-odd"><td>Side</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Side</span></code></td>
 <td>Side</td>
 </tr>
-<tr class="row-even"><td>StopPrice</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">StopPrice</span></code></td>
 <td>Stop Price</td>
 </tr>
-<tr class="row-odd"><td>StrategyType</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">StrategyType</span></code></td>
 <td>Strategy Type</td>
 </tr>
-<tr class="row-even"><td>Ticker</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Ticker</span></code></td>
 <td>Ticker</td>
 </tr>
-<tr class="row-odd"><td>TIF</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">TIF</span></code></td>
 <td>Time in Force</td>
 </tr>
-<tr class="row-even"><td>TraderName</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">TraderName</span></code></td>
 <td>Name of the trader</td>
 </tr>
-<tr class="row-odd"><td>TraderUuid</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">TraderUuid</span></code></td>
 <td>Bloomberg UUID of the trader</td>
 </tr>
-<tr class="row-even"><td>Type</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Type</span></code></td>
 <td>Order type</td>
 </tr>
-<tr class="row-odd"><td>UserCommissionAmount</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">UserCommissionAmount</span></code></td>
 <td>User commission amount</td>
 </tr>
-<tr class="row-even"><td>UserCommissionRate</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">UserCommissionRate</span></code></td>
 <td>User commission rate</td>
 </tr>
-<tr class="row-odd"><td>UserFees</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">UserFees</span></code></td>
 <td>User fee detail</td>
 </tr>
-<tr class="row-even"><td>UserNetMoney</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">UserNetMoney</span></code></td>
 <td>User net money detail</td>
 </tr>
-<tr class="row-odd"><td>YellowKey</td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">YellowKey</span></code></td>
 <td>Bloomberg yellow key field detail</td>
 </tr>
 </tbody>
 </table>
-<p>Full code sample for the history service:-</p>
+<p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="51%" />
 <col width="49%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/EMSXHistory.cpp">EMSX History cpp</a></th>
-<th class="head"><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/EMSXHistory.cs">EMSX History cs</a></th>
-</tr>
-</thead>
 <tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/EMSXHistory.cpp">EMSX History cpp</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/EMSXHistory.cs">EMSX History cs</a></td>
+</tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/EMSXHistory.java">EMSX History java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/EMSXHistory.py">EMSX History py</a></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Please right click on the top code sample link to open in a new tab.</p>
+</div>
 <p>Specify service name and host/port :-</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">d_service</span><span class="o">=</span><span class="s2">&quot;//blp/emsx.history.uat&quot;</span>
 <span class="n">d_host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span>

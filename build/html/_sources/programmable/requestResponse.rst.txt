@@ -28,27 +28,27 @@ EMSX API supports the following Request/Response services.
 
 *Please note, the descriptions to the legacy request/response services are omitted from the description section.*
 
-=================================== =================================================================
-Request Name             			Action
-=================================== =================================================================
-AssignTrader						Assign an order to another UUID.
-CancelRouteEx						Cancel outstanding routes (placements).
-CreateOrder                     	Create an order or stage an order into EMSX<GO>.
-CreateOrderAndRouteEx				Create a new order and route in a single request. 
-CreateOrderAndRouteManually	 		Create the order and notify EMSX this is routed.
-DeleteOrder					 		Delete an existing order in EMSX<GO>.
-GetAllFieldMetaData			 		Get all field meta data in a response message.
-GetBrokerStrategiesWithAssetClass 	Get all broker strategy information and asset class data.
-GetBrokerStrategyInfoWithAssetClass Get all broker strategy info and asset class data.
-GetBrokerWithAssetClass 			Get all broker data with asset class in a response message.
-GetFieldMetaData 					Get field meta data in a reponse message.
-GetTeams 							Get team data in a response message.
-GroupRouteEx 						Submit the entire list as a single route to a basket algorithm.
-ModifyOrder 						Modify parent order.
-ModifyRouteEx 						Modify child route.
-RouteEx 							Route existing order.
-RouteManuallyEx 					Route manually and notify EMSX that it is routed.
-=================================== =================================================================
+======================================= =================================================================
+Request Name             			    Action
+======================================= =================================================================
+``AssignTrader``						Assign an order to another UUID.
+``CancelRouteEx``						Cancel outstanding routes (placements).
+``CreateOrder``                     	Create an order or stage an order into EMSX<GO>.
+``CreateOrderAndRouteEx``				Create a new order and route in a single request. 
+``CreateOrderAndRouteManually``	 		Create the order and notify EMSX this is routed.
+``DeleteOrder``					 		Delete an existing order in EMSX<GO>.
+``GetAllFieldMetaData``			 		Get all field meta data in a response message.
+``GetBrokerStrategiesWithAssetClass`` 	Get all broker strategy information and asset class data.
+``GetBrokerStrategyInfoWithAssetClass`` Get all broker strategy info and asset class data.
+``GetBrokerWithAssetClass`` 			Get all broker data with asset class in a response message.
+``GetFieldMetaData`` 					Get field meta data in a reponse message.
+``GetTeams`` 							Get team data in a response message.
+``GroupRouteEx`` 						Submit the entire list as a single route to a basket algorithm.
+``ModifyOrder`` 						Modify parent order.
+``ModifyRouteEx`` 						Modify child route.
+``RouteEx`` 							Route existing order.
+``RouteManuallyEx`` 					Route manually and notify EMSX that it is routed.
+======================================= =================================================================
 
 
 .. note::
@@ -138,9 +138,9 @@ Element								Description
 The following elements are available only for internal fields unless custom mapped to a custom FIX tag to a particular trading counterparty. 
 
 
-.. note:: 
+.. warning:: 
 
-	**The following elements are not available on either order or route subscription service.**
+	The following ``EMSX_CUSTOM_NOTE*`` elements are not available on either order or route subscription service.
 
 
 =================================== ==================================================================
@@ -154,19 +154,20 @@ Element								Description
 =================================== ==================================================================
 
 
-
 Assign Trader Request
 =====================
 
 
-AssignTrader request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.
+``AssignTrader`` request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.
 
 Assigned trader must be in same EMBR group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
 
 
+Full code sample:-
+
 ====================== ===================
 `Assign Trader cpp`_   `Assign Trader cs`_ 	
-====================== ===================
+---------------------- -------------------
 `Assign Trader java`_  `Assign Trader py`_
 ====================== ===================
 
@@ -179,191 +180,53 @@ Assigned trader must be in same EMBR group for this to work. EMBR<GO> is an inte
 .. _Assign Trader py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/AssignTrader.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
+             
 
-	# AssignTrader.py
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
 
-	import sys
-	import blpapi
+                service = session.getService(d_service)
+    
+                request = service.createRequest("AssignTrader")
+                
+                request.append("EMSX_SEQUENCE", 3744303)
+                request.append("EMSX_SEQUENCE", 3744341)
 
-
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	ASSIGN_TRADER           = blpapi.Name("AssignTrader")
-
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
-
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
-
-	    def processServiceStatusEvent(self,event,session):
-	        print "Processing SERVICE_STATUS event"
-	        
-	        for msg in event:
-	            
-	            if msg.messageType() == SERVICE_OPENED:
-	                print "Service opened..."
-
-	                service = session.getService(d_service)
-	    
-	                request = service.createRequest("AssignTrader")
-	                
-	                request.append("EMSX_SEQUENCE", 3744303)
-	                request.append("EMSX_SEQUENCE", 3744341)
-
-	                request.set("EMSX_ASSIGNEE_TRADER_UUID", 12109783)
-	            
-	                print "Request: %s" % request.toString()
-	                    
-	                self.requestID = blpapi.CorrelationId()
-	                
-	                session.sendRequest(request, correlationId=self.requestID )
-	                            
-	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
-	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == ASSIGN_TRADER:
-	                    success = msg.getElementAsBool("EMSX_ALL_SUCCESS")
-	                    if success:
-	                        print "All orders successfully assigned"
-	                        successful = msg.getElement("EMSX_ASSIGN_TRADER_SUCCESSFUL_ORDERS") 
-	                        
-	                        if successful.numValues() > 0: print "Successful assignments:-"
-
-	                        for order in successful.values():
-	                            seq = order.getElement("EMSX_SEQUENCE").getValue()
-	                            print seq
-
-	                    else:
-	                        print "One or more failed assignments...\n"
-	                        
-	                        if msg.hasElement("EMSX_ASSIGN_TRADER_SUCCESSFUL_ORDERS"):
-	                            successful = msg.getElement("EMSX_ASSIGN_TRADER_SUCCESSFUL_ORDERS") 
-	                            
-	                            if successful.numValues() > 0: print "Successful assignments:-"
-
-	                            for order in successful.values():
-	                                seq = order.getElement("EMSX_SEQUENCE").getValue()
-	                                print seq
-	                                
-	                            
-	                        if msg.hasElement("EMSX_ASSIGN_TRADER_FAILED_ORDERS"):
-	                            failed = msg.getElement("EMSX_ASSIGN_TRADER_FAILED_ORDERS")
-
-	                            if failed.numValues() > 0: print "Failed assignments:-"
-
-	                            for order in failed.values():
-	                                seq = order.getElement("EMSX_SEQUENCE").getValue()
-	                                print seq
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - AssignTrader"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
-
+                request.set("EMSX_ASSIGNEE_TRADER_UUID", 12109783)
+            
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
 
 
 Cancel Route Extended Request
 ==============================
 
 
-In EMSX<GO> we have a notion of parent order and child routes. The CancelRoute request is to effectively send out a cancellation request to the execution venue of the current live route. Submission of CancelRoute does not automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue of the route.
+In EMSX<GO> we have a notion of parent order and child routes. The ``CancelRoute`` request is to effectively send out a cancellation request to the execution venue of the current live route. Submission of ``CancelRoute`` does not automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue of the route.
 
+
+Full code sample:-
 
 ===================== ===================
 `Cancel Route cpp`_   `Cancel Route cs`_ 	
-===================== ===================
+--------------------- -------------------
 `Cancel Route java`_  `Cancel Route py`_
 ===================== ===================
 
@@ -376,168 +239,60 @@ In EMSX<GO> we have a notion of parent order and child routes. The CancelRoute r
 .. _Cancel Route py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CancelRoute.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
 
-	# CancelRoute.py
 
-	import sys
-	import blpapi
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
 
+                service = session.getService(d_service)
+    
+                request = service.createRequest("CancelRoute")
 
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	CANCEL_ROUTE            = blpapi.Name("CancelRoute")
+                #request.set("EMSX_REQUEST_SEQ", 1)
+                #request.set("EMSX_TRADER_UUID", 1234567)        # UUID of trader who owns the order
 
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
-
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
-
-	    def processServiceStatusEvent(self,event,session):
-	        print "Processing SERVICE_STATUS event"
-	        
-	        for msg in event:
-	            
-	            if msg.messageType() == SERVICE_OPENED:
-	                print "Service opened..."
-
-	                service = session.getService(d_service)
-	    
-	                request = service.createRequest("CancelRoute")
-
-	                #request.set("EMSX_REQUEST_SEQ", 1)
-	                #request.set("EMSX_TRADER_UUID", 1234567)        # UUID of trader who owns the order
-
-	                routes = request.getElement("ROUTES")
-	    
-	                route = routes.appendElement()
-	                route.getElement("EMSX_SEQUENCE").setValue(3744354)
-	                route.getElement("EMSX_ROUTE_ID").setValue(1)
-	            
-	                print "Request: %s" % request.toString()
-	                    
-	                self.requestID = blpapi.CorrelationId()
-	                
-	                session.sendRequest(request, correlationId=self.requestID )
-	                            
-	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
-	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == CANCEL_ROUTE:
-	                    status = msg.getElementAsInteger("STATUS")
-	                    message = msg.getElementAsString("MESSAGE")
-	                    print "STATUS: %d\tMESSAGE: %s" % (status,message)
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - CancelRoute"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
-
+                routes = request.getElement("ROUTES")
+    
+                route = routes.appendElement()
+                route.getElement("EMSX_SEQUENCE").setValue(3744354)
+                route.getElement("EMSX_ROUTE_ID").setValue(1)
+            
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
+	                	 
 
 
 Create Order Request
 ====================
 
 
-Creating an order requires the user to create a request from the service object of type CreateOrder and fill in the required fields before submitting the request. 
+Creating an order requires the user to create a request from the service object of type ``CreateOrder`` and fill in the required fields before submitting the request. 
 
 If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is also true for custom Time in Force fields. Any non-standard TIF will also be restricted from staging unless the broker enables the broker code for EMSX API.
 
 
+Full code sample:-
+
 ===================== ===================
 `Create Order cpp`_   `Create Order cs`_ 	
-===================== ===================
+--------------------- -------------------
 `Create Order java`_  `Create Order py`_
 ===================== ===================
 
@@ -550,188 +305,75 @@ If the handling instruction is for DMA access or any other non-standard handling
 .. _Create Order py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrder.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
 
-	# CreateOrder.py
-
-	import sys
-	import blpapi
-
-
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	CREATE_ORDER            = blpapi.Name("CreateOrder")
-
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
 	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
 
+                service = session.getService(d_service)
+    
+                request = service.createRequest("CreateOrder")
 
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
+                # The fields below are mandatory
+                request.set("EMSX_TICKER", "IBM US Equity")
+                request.set("EMSX_AMOUNT", 1000)
+                request.set("EMSX_ORDER_TYPE", "MKT")
+                request.set("EMSX_TIF", "DAY")
+                request.set("EMSX_HAND_INSTRUCTION", "ANY")
+                request.set("EMSX_SIDE", "BUY")
 
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
+                # The fields below are optional
+                #request.set("EMSX_ACCOUNT","TestAccount")
+                #request.set("EMSX_BASKET_NAME", "HedgingBasket")
+                #request.set("EMSX_BROKER", "BMTB")
+                #request.set("EMSX_CFD_FLAG", "1")
+                #request.set("EMSX_CLEARING_ACCOUNT", "ClrAccName")
+                #request.set("EMSX_CLEARING_FIRM", "FirmName")
+                #request.set("EMSX_CUSTOM_NOTE1", "Note1")
+                #request.set("EMSX_CUSTOM_NOTE2", "Note2")
+                #request.set("EMSX_CUSTOM_NOTE3", "Note3")
+                #request.set("EMSX_CUSTOM_NOTE4", "Note4")
+                #request.set("EMSX_CUSTOM_NOTE5", "Note5")
+                #request.set("EMSX_EXCHANGE_DESTINATION", "ExchDest")
+                #request.set("EMSX_EXEC_INSTRUCTIONS", "AnyInst")
+                #request.set("EMSX_GET_WARNINGS", "0")
+                #request.set("EMSX_GTD_DATE", "20170105")
+                #request.set("EMSX_INVESTOR_ID", "InvID")
+                #request.set("EMSX_LIMIT_PRICE", 123.45)
+                #request.set("EMSX_LOCATE_BROKER", "BMTB")
+                #request.set("EMSX_LOCATE_ID", "SomeID")
+                #request.set("EMSX_LOCATE_REQ", "Y")
+                #request.set("EMSX_NOTES", "Some notes")
+                #request.set("EMSX_ODD_LOT", "0")
+                #request.set("EMSX_ORDER_ORIGIN", "")
+                #request.set("EMSX_ORDER_REF_ID", "UniqueID")
+                #request.set("EMSX_P_A", "P")
+                #request.set("EMSX_RELEASE_TIME", 34341)
+                #request.set("EMSX_REQUEST_SEQ", 1001)
+                #request.set("EMSX_SETTLE_CURRENCY", "USD")
+                #request.set("EMSX_SETTLE_DATE", 20170106)
+                #request.set("EMSX_SETTLE_TYPE", "T+2")
+                #request.set("EMSX_STOP_PRICE", 123.5)
 
-	    def processServiceStatusEvent(self,event,session):
-	        print "Processing SERVICE_STATUS event"
-	        
-	        for msg in event:
-	            
-	            if msg.messageType() == SERVICE_OPENED:
-	                print "Service opened..."
-
-	                service = session.getService(d_service)
-	    
-	                request = service.createRequest("CreateOrder")
-
-	                # The fields below are mandatory
-	                request.set("EMSX_TICKER", "IBM US Equity")
-	                request.set("EMSX_AMOUNT", 1000)
-	                request.set("EMSX_ORDER_TYPE", "MKT")
-	                request.set("EMSX_TIF", "DAY")
-	                request.set("EMSX_HAND_INSTRUCTION", "ANY")
-	                request.set("EMSX_SIDE", "BUY")
-
-	                # The fields below are optional
-	                #request.set("EMSX_ACCOUNT","TestAccount")
-	                #request.set("EMSX_BASKET_NAME", "HedgingBasket")
-	                #request.set("EMSX_BROKER", "BMTB")
-	                #request.set("EMSX_CFD_FLAG", "1")
-	                #request.set("EMSX_CLEARING_ACCOUNT", "ClrAccName")
-	                #request.set("EMSX_CLEARING_FIRM", "FirmName")
-	                #request.set("EMSX_CUSTOM_NOTE1", "Note1")
-	                #request.set("EMSX_CUSTOM_NOTE2", "Note2")
-	                #request.set("EMSX_CUSTOM_NOTE3", "Note3")
-	                #request.set("EMSX_CUSTOM_NOTE4", "Note4")
-	                #request.set("EMSX_CUSTOM_NOTE5", "Note5")
-	                #request.set("EMSX_EXCHANGE_DESTINATION", "ExchDest")
-	                #request.set("EMSX_EXEC_INSTRUCTIONS", "AnyInst")
-	                #request.set("EMSX_GET_WARNINGS", "0")
-	                #request.set("EMSX_GTD_DATE", "20170105")
-	                #request.set("EMSX_INVESTOR_ID", "InvID")
-	                #request.set("EMSX_LIMIT_PRICE", 123.45)
-	                #request.set("EMSX_LOCATE_BROKER", "BMTB")
-	                #request.set("EMSX_LOCATE_ID", "SomeID")
-	                #request.set("EMSX_LOCATE_REQ", "Y")
-	                #request.set("EMSX_NOTES", "Some notes")
-	                #request.set("EMSX_ODD_LOT", "0")
-	                #request.set("EMSX_ORDER_ORIGIN", "")
-	                #request.set("EMSX_ORDER_REF_ID", "UniqueID")
-	                #request.set("EMSX_P_A", "P")
-	                #request.set("EMSX_RELEASE_TIME", 34341)
-	                #request.set("EMSX_REQUEST_SEQ", 1001)
-	                #request.set("EMSX_SETTLE_CURRENCY", "USD")
-	                #request.set("EMSX_SETTLE_DATE", 20170106)
-	                #request.set("EMSX_SETTLE_TYPE", "T+2")
-	                #request.set("EMSX_STOP_PRICE", 123.5)
-
-	                print "Request: %s" % request.toString()
-                    
-                self.requestID = blpapi.CorrelationId()
+                print "Request: %s" % request.toString()
                 
-                session.sendRequest(request, correlationId=self.requestID )
-                            
-            elif msg.messageType() == SERVICE_OPEN_FAILURE:
-                print >> sys.stderr, "Error: Service failed to open"        
-                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == CREATE_ORDER:
-	                    emsx_sequence = msg.getElementAsInteger("EMSX_SEQUENCE")
-	                    message = msg.getElementAsString("MESSAGE")
-	                    print "EMSX_SEQUENCE: %d\tMESSAGE: %s" % (emsx_sequence,message)
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - CreateOrder"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
-
-
-The mandatory fields for the CreateOrder requests are the following:
+            self.requestID = blpapi.CorrelationId()
+            
+            session.sendRequest(request, correlationId=self.requestID )
+                        
+        elif msg.messageType() == SERVICE_OPEN_FAILURE:
+            print >> sys.stderr, "Error: Service failed to open" 
 
 
 
@@ -739,20 +381,22 @@ Create Order and Route Extended Request
 =======================================
 
 
-Creating an order and routing with strategy requires the user to create a request from the service object of type CreateOrderAndRouteWithStrat and fill in the required fields before submitting the request. 
+Creating an order and routing with strategy requires the user to create a request from the service object of type ``CreateOrderAndRouteEx`` and fill in the required fields before submitting the request. 
 Mandatory fields for the CreateOrderAndRoute requests are the following. 
 
 
 .. note:: 
 
-	The user will first need to request *GetBrokers* to get all the brokers the user is enabled for, returned in response. Subsequently the user can then request *GetBrokerStrategies* to get all the broker strategies user is enabled for that particular broker code. 
+	The user will first need to request ``GetBrokers`` to get all the brokers the user is enabled for, returned in response. Subsequently the user can then request ``GetBrokerStrategies`` to get all the broker strategies user is enabled for that particular broker code. 
 
-	Lastly, *GetBrokerStrategyInfo* will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in *CreateOrderAndRouteEx* and *RouteEx* requests.
+	Lastly, ``GetBrokerStrategyInfo`` will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in ``CreateOrderAndRouteEx`` and ``RouteEx`` requests.
 
+
+Full code sample:-
 
 ======================================= =====================================
 `Create Order And Route Extended cpp`_  `Create Order And Route Extended cs`_ 	
-======================================= =====================================
+--------------------------------------- -------------------------------------
 `Create Order And Route Extended java`_ `Create Order And Route Extended py`_
 ======================================= =====================================
 
@@ -765,60 +409,12 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.
 .. _Create Order And Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrderAndRouteEx.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
-
-	# CreateOrderAndRouteEx.py
-
-	import sys
-	import blpapi
-
-
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	CREATE_ORDER_AND_ROUTE  = blpapi.Name("CreateOrderAndRouteEx")
-
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
-
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
 	                
 
 	    def processServiceStatusEvent(self,event,session):
@@ -843,112 +439,7 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.
 	                request.set("EMSX_BROKER", "BB")
 	                
 	                # The fields below are optional
-	                #request.set("EMSX_ACCOUNT","TestAccount")
-	                #request.set("EMSX_BOOKNAME","BookName")
-	                #request.set("EMSX_BASKET_NAME", "HedgingBasket")
-	                #request.set("EMSX_CFD_FLAG", "1")
-	                #request.set("EMSX_CLEARING_ACCOUNT", "ClrAccName")
-	                #request.set("EMSX_CLEARING_FIRM", "FirmName")
-	                #request.set("EMSX_CUSTOM_NOTE1", "Note1")
-	                #request.set("EMSX_CUSTOM_NOTE2", "Note2")
-	                #request.set("EMSX_CUSTOM_NOTE3", "Note3")
-	                #request.set("EMSX_CUSTOM_NOTE4", "Note4")
-	                #request.set("EMSX_CUSTOM_NOTE5", "Note5")
-	                #request.set("EMSX_EXCHANGE_DESTINATION", "ExchDest")
-	                #request.set("EMSX_EXEC_INSTRUCTIONS", "AnyInst")
-	                #request.set("EMSX_GET_WARNINGS", "0")
-	                #request.set("EMSX_GTD_DATE", "20170105")
-	                #request.set("EMSX_INVESTOR_ID", "InvID")
-	                #request.set("EMSX_LIMIT_PRICE", 123.45)
-	                #request.set("EMSX_LOCATE_BROKER", "BMTB")
-	                #request.set("EMSX_LOCATE_ID", "SomeID")
-	                #request.set("EMSX_LOCATE_REQ", "Y")
-	                #request.set("EMSX_NOTES", "Some notes")
-	                #request.set("EMSX_ODD_LOT", "0")
-	                #request.set("EMSX_ORDER_ORIGIN", "")
-	                #request.set("EMSX_ORDER_REF_ID", "UniqueID")
-	                #request.set("EMSX_P_A", "P")
-	                #request.set("EMSX_RELEASE_TIME", 34341)
-	                #request.set("EMSX_REQUEST_SEQ", 1001)
-	                #request.set("EMSX_ROUTE_REF_ID", "UniqueID")
-	                #request.set("EMSX_SETTLE_CURRENCY", "USD")
-	                #request.set("EMSX_SETTLE_DATE", 20170106)
-	                #request.set("EMSX_SETTLE_TYPE", "T+2")
-	                #request.set("EMSX_STOP_PRICE", 123.5)
-
-	                print "Request: %s" % request.toString()
-	                    
-	                self.requestID = blpapi.CorrelationId()
-	                
-	                session.sendRequest(request, correlationId=self.requestID )
-	                            
-	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
-	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == CREATE_ORDER_AND_ROUTE:
-	                    emsx_sequence = msg.getElementAsInteger("EMSX_SEQUENCE")
-	                    emsx_route_id = msg.getElementAsInteger("EMSX_ROUTE_ID")
-	                    message = msg.getElementAsString("MESSAGE")
-	                    print "EMSX_SEQUENCE: %d\tEMSX_ROUTE_ID: %d\tMESSAGE: %s" % (emsx_sequence,emsx_route_id,message)
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - CreateOrderAndRoute"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
-
-
+	                #request.set("EMSX_ACCOUNT","TestAccount")       
 
 
 Create Order And Route Manually Request
@@ -958,9 +449,11 @@ Create Order And Route Manually Request
 ``CreateOrderAndRouteManually`` request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
 
 
+Full code sample:-
+
 ======================================= =====================================
 `Create Order And Route Manually cpp`_  `Create Order And Route Manually cs`_ 	
-======================================= =====================================
+--------------------------------------- ------------------------------------- 
 `Create Order And Route Manually java`_ `Create Order And Route Manually py`_
 ======================================= =====================================
 
@@ -974,179 +467,67 @@ Create Order And Route Manually Request
 .. _Create Order And Route Manually py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrderAndRouteManually.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
+     
 
-	# CreateOrderAndRouteManually.py
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
 
-	import sys
-	import blpapi
+                service = session.getService(d_service)
+    
+                request = service.createRequest("CreateOrderAndRouteManually")
 
+                # The fields below are mandatory
+                request.set("EMSX_TICKER", "IBM US Equity")
+                request.set("EMSX_AMOUNT", 1000)
+                request.set("EMSX_ORDER_TYPE", "MKT")
+                request.set("EMSX_TIF", "DAY")
+                request.set("EMSX_HAND_INSTRUCTION", "ANY")
+                request.set("EMSX_SIDE", "BUY")
+                request.set("EMSX_BROKER", "BB")
+            
+                # The fields below are optional
+                #request.set("EMSX_ACCOUNT","TestAccount")
+                #request.set("EMSX_CFD_FLAG", "1")
+                #request.set("EMSX_CLEARING_ACCOUNT", "ClrAccName")
+                #request.set("EMSX_CLEARING_FIRM", "FirmName")
+                #request.set("EMSX_EXCHANGE_DESTINATION", "ExchDest")
+                #request.set("EMSX_EXEC_INSTRUCTIONS", "AnyInst")
+                #request.set("EMSX_GET_WARNINGS", "0")
+                #request.set("EMSX_GTD_DATE", "20170105")
+                #request.set("EMSX_INVESTOR_ID", "InvID")
+                #request.set("EMSX_LIMIT_PRICE", 123.45)
+                #request.set("EMSX_LOCATE_BROKER", "BMTB")
+                #request.set("EMSX_LOCATE_ID", "SomeID")
+                #request.set("EMSX_LOCATE_REQ", "Y")
+                #request.set("EMSX_NOTES", "Some notes")
+                #request.set("EMSX_ODD_LOT", "0")
+                #request.set("EMSX_ORDER_ORIGIN", "")
+                #request.set("EMSX_ORDER_REF_ID", "UniqueID")
+                #request.set("EMSX_P_A", "P")
+                #request.set("EMSX_RELEASE_TIME", 34341)
+                #request.set("EMSX_REQUEST_SEQ", 1001)
+                #request.set("EMSX_SETTLE_DATE", 20170106)
+                #request.set("EMSX_STOP_PRICE", 123.5)
 
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	CREATE_ORDER_AND_ROUTE_MANUALLY  = blpapi.Name("CreateOrderAndRouteManually")
-
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
-
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
-
-	    def processServiceStatusEvent(self,event,session):
-	        print "Processing SERVICE_STATUS event"
-	        
-	        for msg in event:
-	            
-	            if msg.messageType() == SERVICE_OPENED:
-	                print "Service opened..."
-
-	                service = session.getService(d_service)
-	    
-	                request = service.createRequest("CreateOrderAndRouteManually")
-
-	                # The fields below are mandatory
-	                request.set("EMSX_TICKER", "IBM US Equity")
-	                request.set("EMSX_AMOUNT", 1000)
-	                request.set("EMSX_ORDER_TYPE", "MKT")
-	                request.set("EMSX_TIF", "DAY")
-	                request.set("EMSX_HAND_INSTRUCTION", "ANY")
-	                request.set("EMSX_SIDE", "BUY")
-	                request.set("EMSX_BROKER", "BB")
-	            
-	                # The fields below are optional
-	                #request.set("EMSX_ACCOUNT","TestAccount")
-	                #request.set("EMSX_CFD_FLAG", "1")
-	                #request.set("EMSX_CLEARING_ACCOUNT", "ClrAccName")
-	                #request.set("EMSX_CLEARING_FIRM", "FirmName")
-	                #request.set("EMSX_EXCHANGE_DESTINATION", "ExchDest")
-	                #request.set("EMSX_EXEC_INSTRUCTIONS", "AnyInst")
-	                #request.set("EMSX_GET_WARNINGS", "0")
-	                #request.set("EMSX_GTD_DATE", "20170105")
-	                #request.set("EMSX_INVESTOR_ID", "InvID")
-	                #request.set("EMSX_LIMIT_PRICE", 123.45)
-	                #request.set("EMSX_LOCATE_BROKER", "BMTB")
-	                #request.set("EMSX_LOCATE_ID", "SomeID")
-	                #request.set("EMSX_LOCATE_REQ", "Y")
-	                #request.set("EMSX_NOTES", "Some notes")
-	                #request.set("EMSX_ODD_LOT", "0")
-	                #request.set("EMSX_ORDER_ORIGIN", "")
-	                #request.set("EMSX_ORDER_REF_ID", "UniqueID")
-	                #request.set("EMSX_P_A", "P")
-	                #request.set("EMSX_RELEASE_TIME", 34341)
-	                #request.set("EMSX_REQUEST_SEQ", 1001)
-	                #request.set("EMSX_SETTLE_DATE", 20170106)
-	                #request.set("EMSX_STOP_PRICE", 123.5)
-
-	                print "Request: %s" % request.toString()
-	                    
-	                self.requestID = blpapi.CorrelationId()
-	                
-	                session.sendRequest(request, correlationId=self.requestID )
-	                            
-	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
-	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == CREATE_ORDER_AND_ROUTE_MANUALLY:
-	                    emsx_sequence = msg.getElementAsInteger("EMSX_SEQUENCE")
-	                    emsx_route_id = msg.getElementAsInteger("EMSX_ROUTE_ID")
-	                    message = msg.getElementAsString("MESSAGE")
-	                    print "EMSX_SEQUENCE: %d\tEMSX_ROUTE_ID: %d\tMESSAGE: %s" % (emsx_sequence,emsx_route_id,message)
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - CreateOrderAndRouteManually"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
-
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
 
 
 Delete Order Request
@@ -1155,12 +536,14 @@ Delete Order Request
 
 ``DeleteOrder`` request deletes an existing order in EMSX<GO>. This is not the same action as canceling the parent order. In fact, EMSX API does not expose Cancel Order status as in EMSX<GO>. 
 
-The primary reason behind this is because the Cancel Order in EMSX<GO> really just puts an order in an inoperable state and doesn't really serve any meaningful function.
+The primary reason behind this is because the cancel rrder in EMSX<GO> really just puts an order in an inoperable state and doesn't really serve any meaningful function.
 
+
+Full code sample:-
 
 ==================== ===================
 `Delete Order cpp`_  `Delete Order cs`_ 	
-==================== ===================
+-------------------- -------------------
 `Delete Order java`_ `Delete Order py`_
 ==================== ===================
 
@@ -1174,153 +557,40 @@ The primary reason behind this is because the Cancel Order in EMSX<GO> really ju
 .. _Delete Order py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/DeleteOrder.py
 
 
+.. hint:: 
 
-.. code-block:: python
-
-	# DeleteOrder.py
-
-	import sys
-	import blpapi
+	Please right click on the top code sample link to open in a new tab.
 
 
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	DELETE_ORDER            = blpapi.Name("DeleteOrder")
+.. code-block:: python	                
 
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
 
-	class SessionEventHandler():
+                service = session.getService(d_service)
+    
+                request = service.createRequest("DeleteOrder")
 
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
+                #request.set("EMSX_REQUEST_SEQ", 1)
+                
+                request.getElement("EMSX_SEQUENCE").appendValue(3744363)
+                request.getElement("EMSX_SEQUENCE").appendValue(3744364)
 
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
-
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
-
-	    def processServiceStatusEvent(self,event,session):
-	        print "Processing SERVICE_STATUS event"
-	        
-	        for msg in event:
-	            
-	            if msg.messageType() == SERVICE_OPENED:
-	                print "Service opened..."
-
-	                service = session.getService(d_service)
-	    
-	                request = service.createRequest("DeleteOrder")
-
-	                #request.set("EMSX_REQUEST_SEQ", 1)
-	                
-	                request.getElement("EMSX_SEQUENCE").appendValue(3744363)
-	                request.getElement("EMSX_SEQUENCE").appendValue(3744364)
-
-	            
-	                print "Request: %s" % request.toString()
-	                    
-	                self.requestID = blpapi.CorrelationId()
-	                
-	                session.sendRequest(request, correlationId=self.requestID )
-	                            
-	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
-	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == DELETE_ORDER:
-	                    status = msg.getElementAsInteger("STATUS")
-	                    message = msg.getElementAsString("MESSAGE")
-	                    print "STATUS: %d\tMESSAGE: %s" % (status,message)
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - DeleteOrder"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
-
-
+            
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
+                  
 
 Get All Field Metadata Request
 ==============================
@@ -1329,9 +599,11 @@ Get All Field Metadata Request
 ``GetAllFiedlMetaData`` request provides all field metadata in a response message.
 
 
+Full code sample:-
+
 =============================== =============================
 `Get All Field Meta Data cpp`_ 	`Get All Field Meta Data cs`_ 	
-=============================== =============================
+------------------------------- -----------------------------
 `Get All Field Meta Data java`_ `Get All Field Meta Data py`_
 =============================== =============================
 
@@ -1344,156 +616,84 @@ Get All Field Metadata Request
 .. _Get All Field Meta Data py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetAllFieldMetaData.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
 
-	# GetAllFieldMetaData.py
 
-	import sys
-	import blpapi
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
 
+                service = session.getService(d_service)
+    
+                request = service.createRequest("GetAllFieldMetaData")
 
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	GET_ALL_FIELD_METADATA  = blpapi.Name("GetAllFieldMetaData")
-
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
+                #request.set("EMSX_REQUEST_SEQ", 1)
+            
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
 
 
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
-
-	    def processServiceStatusEvent(self,event,session):
-	        print "Processing SERVICE_STATUS event"
-	        
-	        for msg in event:
-	            
-	            if msg.messageType() == SERVICE_OPENED:
-	                print "Service opened..."
-
-	                service = session.getService(d_service)
-	    
-	                request = service.createRequest("GetAllFieldMetaData")
-
-	                #request.set("EMSX_REQUEST_SEQ", 1)
-	            
-	                print "Request: %s" % request.toString()
-	                    
-	                self.requestID = blpapi.CorrelationId()
-	                
-	                session.sendRequest(request, correlationId=self.requestID )
-	                            
-	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
-	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
+Process response messages:-
 
 
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == GET_ALL_FIELD_METADATA:
-
-	                    md = msg.getElement("MetaData")
-	                    
-	                    for e in md.values():
-	                        
-	                        emsx_field_name = e.getElementAsString("EMSX_FIELD_NAME")
-	                        emsx_disp_name = e.getElementAsString("EMSX_DISP_NAME")
-	                        emsx_type = e.getElementAsString("EMSX_TYPE")
-	                        emsx_level = e.getElementAsInteger("EMSX_LEVEL")
-	                        emsx_len = e.getElementAsInteger("EMSX_LEN")
-	                        
-	                        print "MetaData: %s,%s,%s,%d,%d" % (emsx_field_name, emsx_disp_name, emsx_type, emsx_level, emsx_len)
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
+.. code-block:: python
 
 
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
+    def processResponseEvent(self, event):
+        print "Processing RESPONSE event"
+        
+        for msg in event:
+            
+            print "MESSAGE: %s" % msg.toString()
+            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
 
-	    print "Connecting to %s:%d" % (d_host,d_port)
 
-	    eventHandler = SessionEventHandler()
+            if msg.correlationIds()[0].value() == self.requestID.value():
+                print "MESSAGE TYPE: %s" % msg.messageType()
+                
+                if msg.messageType() == ERROR_INFO:
+                    errorCode = msg.getElementAsInteger("ERROR_CODE")
+                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
+                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
+                elif msg.messageType() == GET_ALL_FIELD_METADATA:
 
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
+                    md = msg.getElement("MetaData")
+                    
+                    for e in md.values():
+                        
+                        emsx_field_name = e.getElementAsString("EMSX_FIELD_NAME")
+                        emsx_disp_name = e.getElementAsString("EMSX_DISP_NAME")
+                        emsx_type = e.getElementAsString("EMSX_TYPE")
+                        emsx_level = e.getElementAsInteger("EMSX_LEVEL")
+                        emsx_len = e.getElementAsInteger("EMSX_LEN")
+                        
+                        print "MetaData: %s,%s,%s,%d,%d" % (emsx_field_name, emsx_disp_name, emsx_type, emsx_level, emsx_len)
 
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - GetAllFieldMetaData"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
+                global bEnd
+                bEnd = True
+                
+    def processMiscEvents(self, event):
+        
+        print "Processing " + event.eventType() + " event"
+        
+        for msg in event:
 
+            print "MESSAGE: %s" % (msg.tostring())
 
 
 Get Broker Strategies with Asset Class Request
@@ -1503,9 +703,11 @@ Get Broker Strategies with Asset Class Request
 ``GetBrokerStrategiesWithAssetClass`` request provides all broker strategy fields with asset class data in a response message.
 
 
+Full code sample:-
+
 ============================================== =============================================
 `Get Broker Strategies With Asset Class cpp`_ 	`Get Broker Strategies With Asset Class cs`_ 	
-============================================== =============================================
+---------------------------------------------- ---------------------------------------------
 `Get Broker Strategies With Asset Class java`_ 	`Get Broker Strategies With Asset Class py`_
 ============================================== =============================================
 
@@ -1518,149 +720,38 @@ Get Broker Strategies with Asset Class Request
 .. _Get Broker Strategies With Asset Class py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokerStrategiesWithAssetClass.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
 
-	# GetBrokerStrategiesWithAssetClass.py
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
 
-	import sys
-	import blpapi
+                service = session.getService(d_service)
+    
+                request = service.createRequest("GetBrokerStrategiesWithAssetClass")
 
-
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	GET_BROKER_STRATEGIES_WITH_ASSET_CLASS  = blpapi.Name("GetBrokerStrategiesWithAssetClass")
-
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-
-	        return False
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
-	    def processServiceStatusEvent(self,event,session):
-	        print "Processing SERVICE_STATUS event"
-	        
-	        for msg in event:
-	            
-	            if msg.messageType() == SERVICE_OPENED:
-	                print "Service opened..."
-
-	                service = session.getService(d_service)
-	    
-	                request = service.createRequest("GetBrokerStrategiesWithAssetClass")
-
-	                #request.set("EMSX_REQUEST_SEQ", 1)
-	                
-	                request.set("EMSX_ASSET_CLASS","EQTY")  # one of EQTY, OPT, FUT or MULTILEG_OPT
-	                request.set("EMSX_BROKER","BMTB")
-	            
-	                print "Request: %s" % request.toString()
-	                    
-	                self.requestID = blpapi.CorrelationId()
-	                
-	                session.sendRequest(request, correlationId=self.requestID )
-	                            
-	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
-	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == GET_BROKER_STRATEGIES_WITH_ASSET_CLASS:
-
-	                    strategies = msg.getElement("EMSX_STRATEGIES")
-
-	                    for s in strategies.values():
-	                        print "EMSX_STRATEGY: %s" % (s)
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - GetBrokerStrategiesWithAssetClass"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
+                #request.set("EMSX_REQUEST_SEQ", 1)
+                
+                request.set("EMSX_ASSET_CLASS","EQTY")  # one of EQTY, OPT, FUT or MULTILEG_OPT
+                request.set("EMSX_BROKER","BMTB")
+            
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
 
 
 
@@ -1670,9 +761,12 @@ Get Broker Strategy Info with Asset Class Request
 
 ``GetBrokerStrategyInfoWithAssetClass`` request provides all broker strategy information fields with asset classdata in a response message.
 
+
+Full code sample:-
+
 ================================================= ================================================
 `Get Broker Strategy Info With Asset Class cpp`_  `Get Broker Strategy Info With Asset Class cs`_ 	
-================================================= ================================================
+------------------------------------------------- ------------------------------------------------
 `Get Broker Strategy Info With Asset Class java`_ `Get Broker Strategy Info With Asset Class py`_
 ================================================= ================================================
 
@@ -1685,156 +779,40 @@ Get Broker Strategy Info with Asset Class Request
 .. _Get Broker Strategy Info With Asset Class py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokerStrategyInfoWithAssetClass.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
 
-	# GetBrokerStrategyInfoWithAssetClass.py
 
-	import sys
-	import blpapi
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
 
+                service = session.getService(d_service)
+    
+                request = service.createRequest("GetBrokerStrategyInfoWithAssetClass")
 
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	GET_BROKER_STRATEGY_INFO_WITH_ASSET_CLASS  = blpapi.Name("GetBrokerStrategyInfoWithAssetClass")
-
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
-
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
-
-	    def processServiceStatusEvent(self,event,session):
-	        print "Processing SERVICE_STATUS event"
-	        
-	        for msg in event:
-	            
-	            if msg.messageType() == SERVICE_OPENED:
-	                print "Service opened..."
-
-	                service = session.getService(d_service)
-	    
-	                request = service.createRequest("GetBrokerStrategyInfoWithAssetClass")
-
-	                request.set("EMSX_REQUEST_SEQ", 1)
-	                
-	                request.set("EMSX_ASSET_CLASS","EQTY")  # one of EQTY, OPT, FUT or MULTILEG_OPT
-	                request.set("EMSX_BROKER","BMTB")
-	                request.set("EMSX_STRATEGY","VWAP")
-	                    
-	                print "Request: %s" % request.toString()
-	                    
-	                self.requestID = blpapi.CorrelationId()
-	                
-	                session.sendRequest(request, correlationId=self.requestID )
-	                            
-	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
-	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == GET_BROKER_STRATEGY_INFO_WITH_ASSET_CLASS:
-
-	                    strategies = msg.getElement("EMSX_STRATEGY_INFO")
-
-	                    for s in strategies.values():
-	                        fieldname = s.getElementAsString("FieldName")
-	                        disable = s.getElementAsString("Disable")
-	                        stringvalue = s.getElementAsString("StringValue")
-	                        
-	                        print "EMSX_STRATEGY_INFO: %s, %s, %s" % (fieldname,disable,stringvalue)
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - GetBrokerStrategyInfoWithAssetClass"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
+                request.set("EMSX_REQUEST_SEQ", 1)
+                
+                request.set("EMSX_ASSET_CLASS","EQTY")  # one of EQTY, OPT, FUT or MULTILEG_OPT
+                request.set("EMSX_BROKER","BMTB")
+                request.set("EMSX_STRATEGY","VWAP")
+                    
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        	    
 
 
 Get Brokers with Asset Class Request
@@ -1844,9 +822,11 @@ Get Brokers with Asset Class Request
 ``GetBrokersWithAssetClass`` request provides all broker information with asset class data in a response message.
 
 
+Full code sample:-
+
 ==================================== ====================================
 `Get Brokers With Asset Class cpp`_  `Get Brokers With Asset Class cs`_ 	
-==================================== ====================================
+------------------------------------ ------------------------------------
 `Get Brokers With Asset Class java`_ `Get Brokers With Asset Class py`_
 ==================================== ====================================
 
@@ -1859,151 +839,39 @@ Get Brokers with Asset Class Request
 .. _Get Brokers With Asset Class py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokersWithAssetClass.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
+                
 
-	# GetBrokersWithAssetClass.py
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
 
-	import sys
-	import blpapi
+                service = session.getService(d_service)
+                
+                request = service.createRequest("GetBrokersWithAssetClass")
 
-
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	GET_BROKERS_WITH_ASSET_CLASS  = blpapi.Name("GetBrokersWithAssetClass")
-
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
-
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
-
-	    def processServiceStatusEvent(self,event,session):
-	        print "Processing SERVICE_STATUS event"
-	        
-	        for msg in event:
-	            
-	            if msg.messageType() == SERVICE_OPENED:
-	                print "Service opened..."
-
-	                service = session.getService(d_service)
-	                
-	                request = service.createRequest("GetBrokersWithAssetClass")
-
-	                #request.set("EMSX_REQUEST_SEQ", 1)
-	                
-	                request.set("EMSX_ASSET_CLASS","EQTY")  # one of EQTY, OPT, FUT or MULTILEG_OPT
-	                    
-	                print "Request: %s" % request.toString()
-	                    
-	                self.requestID = blpapi.CorrelationId()
-	                
-	                session.sendRequest(request, correlationId=self.requestID )
-	                            
-	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                #request.set("EMSX_REQUEST_SEQ", 1)
+                
+                request.set("EMSX_ASSET_CLASS","EQTY")  # one of EQTY, OPT, FUT or MULTILEG_OPT
+                    
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
 	                print >> sys.stderr, "Error: Service failed to open"        
 	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == GET_BROKERS_WITH_ASSET_CLASS:
-	                            
-	                    brokers = msg.getElement("EMSX_BROKERS")
-
-	                    for b in brokers.values():
-	                        print "EMSX_BROKER: %s" % (b)
-	                            
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - GetBrokersWithAssetClass"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
-
 
 Get Field Metadata Request
 ===========================
@@ -2012,9 +880,11 @@ Get Field Metadata Request
 ``GetFieldMetaData`` request provides all field metadata in a response message.
 
 
+Full code sample:-
+
 =========================== ==========================
 `Get Field Meta Data cpp`_  `Get Field Meta Data cs`_ 	
-=========================== ==========================
+--------------------------- --------------------------
 `Get Field Meta Data java`_ `Get Field Meta Data py`_
 =========================== ==========================
 
@@ -2027,158 +897,39 @@ Get Field Metadata Request
 .. _Get Field Meta Data py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetFieldMetaData.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
 
-	# GetFieldMetaData.py
 
-	import sys
-	import blpapi
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
 
+                service = session.getService(d_service)
+    
+                request = service.createRequest("GetFieldMetaData")
 
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	GET_FIELD_METADATA      = blpapi.Name("GetFieldMetaData")
+                #request.set("EMSX_REQUEST_SEQ", 1)
+                
+                request.getElement("EMSX_FIELD_NAMES").appendValue("EMSX_TICKER")
+                request.getElement("EMSX_FIELD_NAMES").appendValue("EMSX_P_A")
 
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
-
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
-
-	    def processServiceStatusEvent(self,event,session):
-	        print "Processing SERVICE_STATUS event"
-	        
-	        for msg in event:
-	            
-	            if msg.messageType() == SERVICE_OPENED:
-	                print "Service opened..."
-
-	                service = session.getService(d_service)
-	    
-	                request = service.createRequest("GetFieldMetaData")
-
-	                #request.set("EMSX_REQUEST_SEQ", 1)
-	                
-	                request.getElement("EMSX_FIELD_NAMES").appendValue("EMSX_TICKER")
-	                request.getElement("EMSX_FIELD_NAMES").appendValue("EMSX_P_A")
-
-	                print "Request: %s" % request.toString()
-	                    
-	                self.requestID = blpapi.CorrelationId()
-	                
-	                session.sendRequest(request, correlationId=self.requestID )
-	                            
-	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
-	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == GET_FIELD_METADATA:
-
-	                    md = msg.getElement("MetaData")
-	                    
-	                    for e in md.values():
-	                        
-	                        emsx_field_name = e.getElementAsString("EMSX_FIELD_NAME")
-	                        emsx_disp_name = e.getElementAsString("EMSX_DISP_NAME")
-	                        emsx_type = e.getElementAsString("EMSX_TYPE")
-	                        emsx_level = e.getElementAsInteger("EMSX_LEVEL")
-	                        emsx_len = e.getElementAsInteger("EMSX_LEN")
-	                        
-	                        print "MetaData: %s,%s,%s,%d,%d" % (emsx_field_name, emsx_disp_name, emsx_type, emsx_level, emsx_len)
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - GetFieldMetaData"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
 
 
 Get Teams Request
@@ -2188,9 +939,11 @@ Get Teams Request
 ``GetTeams`` request provides all the team details in a response message.
 
 
+Full code sample:-
+
 ================= =================
 `Get Teams cpp`_  `Get Teams cs`_ 	
-================= =================
+----------------- -----------------
 `Get Teams java`_ `Get Teams py`_
 ================= =================
 
@@ -2203,149 +956,37 @@ Get Teams Request
 .. _Get Teams py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetTeams.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
 
-	# GetTeams.py
 
-	import sys
-	import blpapi
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
 
+                service = session.getService(d_service)
+    
+                request = service.createRequest("GetTeams")
 
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	GET_TEAMS               = blpapi.Name("GetTeams")
-
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
-
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
-
-	    def processServiceStatusEvent(self,event,session):
-	        print "Processing SERVICE_STATUS event"
-	        
-	        for msg in event:
-	            
-	            if msg.messageType() == SERVICE_OPENED:
-	                print "Service opened..."
-
-	                service = session.getService(d_service)
+                #request.set("EMSX_REQUEST_SEQ", 1)
+                
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
 	    
-	                request = service.createRequest("GetTeams")
-
-	                #request.set("EMSX_REQUEST_SEQ", 1)
-	                
-	                print "Request: %s" % request.toString()
-	                    
-	                self.requestID = blpapi.CorrelationId()
-	                
-	                session.sendRequest(request, correlationId=self.requestID )
-	                            
-	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
-	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == GET_TEAMS:
-
-	                    teams = msg.getElement("TEAMS")
-
-	                    for t in teams.values():
-	                        print "TEAM: %s" % (t)
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - GetTeams"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
-
 
 Group Route Extended Request
 ============================
@@ -2358,9 +999,11 @@ This request should only be used if the intention is to submit an entire list or
 Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use ``CreateOrder`` request to create the order and add the ``EMSX_BASKET_NAME`` in the field. The second step is to submit the list using ``GroupRouteEx`` request and include the ``EMSX_SEQUENCE`` number inside the array. 
 
 
+Full code sample:-
+
 ============================ ===========================
 `Group Route Extended cpp`_  `Group Route Extended cs`_ 	
-============================ ===========================
+---------------------------- ---------------------------
 `Group Route Extended java`_ `Group Route Extended py`_
 ============================ ===========================
 
@@ -2373,61 +1016,13 @@ Currently, this is a two-step process in EMSX API.  The first step is for the us
 .. _Group Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GroupRouteEx.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
 
-	# GroupRoute.py
-
-	import sys
-	import blpapi
-
-
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	GROUP_ROUTE             = blpapi.Name("GroupRouteEx")
-
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
-
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
 
 	    def processServiceStatusEvent(self,event,session):
 	        print "Processing SERVICE_STATUS event"
@@ -2560,90 +1155,6 @@ Currently, this is a two-step process in EMSX API.  The first step is for the us
 	                            
 	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
 	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == GROUP_ROUTE:
-
-	                    if(msg.hasElement("EMSX_SUCCESS_ROUTES")):
-	                        success = msg.getElement("EMSX_SUCCESS_ROUTES")
-
-	                        nV = success.numValues()
-	                        
-	                        for i in range(0,nV):
-	                            e = success.getValueAsElement(i)
-	                            sq = e.getElementAsInteger("EMSX_SEQUENCE")
-	                            rid = e.getElementAsInteger("EMSX_ROUTE_ID")
-
-	                            print "SUCCESS: %d,%d" % (sq,rid)
-	                    
-	                    if(msg.hasElement("EMSX_FAILED_ROUTES")):
-	                        failed = msg.getElement("EMSX_FAILED_ROUTES")
-
-	                        nV = failed.numValues()
-	                        
-	                        for i in range(0,nV):
-	                            e = failed.getValueAsElement(i)
-	                            sq = e.getElementAsInteger("EMSX_SEQUENCE")
-	                            rid = e.getElementAsInteger("EMSX_ROUTE_ID")
-
-	                            print "FAILED: %d,%d" % (sq,rid)                                                            
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - GroupRoute"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
-
 
 
 Modify Order Request
@@ -2653,8 +1164,31 @@ Modify Order Request
 ``ModifyOrder`` request modifies an existing or previously created order in EMSX<GO> or using EMSX API. 
 
 
+Full code sample:-
+
+==================== ===================
+`Modify Order cpp`_  `Modify Order cs`_ 	
+-------------------- -------------------
+`Modify Order java`_ `Modify Order py`_
+==================== ===================
+
+.. _Modify Order cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyOrder.cpp
+
+.. _Modify Order cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyOrder.cs
+
+.. _Modify Order java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyOrder.java
+
+.. _Modify Order py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyOrder.py
+
+
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
 
+	#ModifyOrder.py
 
 
 Modify Route Extended Request
@@ -2664,8 +1198,31 @@ Modify Route Extended Request
 ``ModifyRouteEx`` request modifies an existing or previously created child routes in EMSX<GO> or using EMSX API. 
 
 
+Full code sample:-
+
+============================= ============================
+`Modify Route Extended cpp`_   `Modify Route Extended cs`_ 	
+----------------------------- ----------------------------
+`Modify Route Extended java`_  `Modify Route Extended py`_
+============================= ============================
+
+.. _Modify Route Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyRouteEx.cpp
+
+.. _Modify Route Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyRouteEx.cs
+
+.. _Modify Route Extended java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyRouteEx.java
+
+.. _Modify Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyRouteEx.py
+
+
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
 
+	#ModifyRouteEx.py
 
 
 Route Extended Request
@@ -2675,9 +1232,11 @@ Route Extended Request
 ``RouteEx`` request submits an existing order into various execution veneues. This request is used primarily to submit a child route based on previously created parent order. 
 
 
+Full code sample:-
+
 ======================= ====================
 `Route Extended cpp`_   `Route Extended cs`_ 	
-======================= ====================
+----------------------- --------------------
 `Route Extended java`_  `Route Extended py`_
 ======================= ====================
 
@@ -2690,60 +1249,12 @@ Route Extended Request
 .. _Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteEx.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
-
-	# RouteEx.py
-
-	import sys
-	import blpapi
-
-
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	ROUTE                   = blpapi.Name("Route")
-
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
-
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
 	                
 
 	    def processServiceStatusEvent(self,event,session):
@@ -2796,70 +1307,6 @@ Route Extended Request
 	                            
 	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
 	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == ROUTE:
-	                    emsx_sequence = msg.getElementAsInteger("EMSX_SEQUENCE")
-	                    emsx_route_id = msg.getElementAsInteger("EMSX_ROUTE_ID")
-	                    message = msg.getElementAsString("MESSAGE")
-	                    print "EMSX_SEQUENCE: %d\tEMSX_ROUTE_ID: %d\tMESSAGE: %s" % (emsx_sequence,emsx_route_id,message)
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - Route"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
-
 
 
 Route Manually Extended Request
@@ -2869,9 +1316,11 @@ Route Manually Extended Request
 ``RouteManuallyEx`` requestis generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
 
 
+Full code sample:-
+
 ======================= ====================
 `Route Manually cpp`_   `Route Manually cs`_ 	
-======================= ====================
+----------------------- --------------------
 `Route Manually java`_  `Route Manually py`_
 ======================= ====================
 
@@ -2884,62 +1333,14 @@ Route Manually Extended Request
 .. _Route Manually py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteManually.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
 
-	# RouteManually.py
-
-	import sys
-	import blpapi
-
-
-	SESSION_STARTED         = blpapi.Name("SessionStarted")
-	SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
-	SERVICE_OPENED          = blpapi.Name("ServiceOpened")
-	SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
-	ERROR_INFO              = blpapi.Name("ErrorInfo")
-	ROUTE_MANUALLY          = blpapi.Name("RouteManually")
-
-	d_service="//blp/emapisvc_beta"
-	d_host="localhost"
-	d_port=8194
-	bEnd=False
-
-	class SessionEventHandler():
-
-	    def processEvent(self, event, session):
-	        try:
-	            if event.eventType() == blpapi.Event.SESSION_STATUS:
-	                self.processSessionStatusEvent(event,session)
-	            
-	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
-	                self.processServiceStatusEvent(event,session)
-
-	            elif event.eventType() == blpapi.Event.RESPONSE:
-	                self.processResponseEvent(event)
-	            
-	            else:
-	                self.processMiscEvents(event)
-	                
-	        except blpapi.Exception as e:
-	            print "Exception:  %s" % e.description()
-	        return False
-
-
-	    def processSessionStatusEvent(self,event,session):
-	        print "Processing SESSION_STATUS event"
-
-	        for msg in event:
-	            if msg.messageType() == SESSION_STARTED:
-	                print "Session started..."
-	                session.openServiceAsync(d_service)
-	                
-	            elif msg.messageType() == SESSION_STARTUP_FAILURE:
-	                print >> sys.stderr, "Error: Session startup failed"
-	                
-	            else:
-	                print msg
-	                
-
+	
 	    def processServiceStatusEvent(self,event,session):
 	        print "Processing SERVICE_STATUS event"
 	        
@@ -3040,69 +1441,6 @@ Route Manually Extended Request
 	                            
 	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
 	                print >> sys.stderr, "Error: Service failed to open"        
-	                
-	    def processResponseEvent(self, event):
-	        print "Processing RESPONSE event"
-	        
-	        for msg in event:
-	            
-	            print "MESSAGE: %s" % msg.toString()
-	            print "CORRELATION ID: %d" % msg.correlationIds()[0].value()
-
-
-	            if msg.correlationIds()[0].value() == self.requestID.value():
-	                print "MESSAGE TYPE: %s" % msg.messageType()
-	                
-	                if msg.messageType() == ERROR_INFO:
-	                    errorCode = msg.getElementAsInteger("ERROR_CODE")
-	                    errorMessage = msg.getElementAsString("ERROR_MESSAGE")
-	                    print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
-	                elif msg.messageType() == ROUTE_MANUALLY:
-	                    emsx_sequence = msg.getElementAsInteger("EMSX_SEQUENCE")
-	                    emsx_route_id = msg.getElementAsInteger("EMSX_ROUTE_ID")
-	                    message = msg.getElementAsString("MESSAGE")
-	                    print "EMSX_SEQUENCE: %d\tEMSX_ROUTE_ID: %d\tMESSAGE: %s" % (emsx_sequence,emsx_route_id,message)
-
-	                global bEnd
-	                bEnd = True
-	                
-	    def processMiscEvents(self, event):
-	        
-	        print "Processing " + event.eventType() + " event"
-	        
-	        for msg in event:
-
-	            print "MESSAGE: %s" % (msg.tostring())
-
-
-	def main():
-	    
-	    sessionOptions = blpapi.SessionOptions()
-	    sessionOptions.setServerHost(d_host)
-	    sessionOptions.setServerPort(d_port)
-
-	    print "Connecting to %s:%d" % (d_host,d_port)
-
-	    eventHandler = SessionEventHandler()
-
-	    session = blpapi.Session(sessionOptions, eventHandler.processEvent)
-
-	    if not session.startAsync():
-	        print "Failed to start session."
-	        return
-	    
-	    global bEnd
-	    while bEnd==False:
-	        pass
-	    
-	    session.stop()
-	    
-	if __name__ == "__main__":
-	    print "Bloomberg - EMSX API Example - RouteManually"
-	    try:
-	        main()
-	    except KeyboardInterrupt:
-	        print "Ctrl+C pressed. Stopping..."
 
 
 

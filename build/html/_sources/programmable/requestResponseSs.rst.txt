@@ -42,9 +42,11 @@ Manaul Fill Request
 ===================
 
 
+Full code sample:-
+
 ==================== ===================
 `Manual Fill cpp`_   `Manual Fill cs`_ 
-==================== ===================
+-------------------- -------------------
 `Manual Fill java`_  `Manual Fill py`_
 ==================== ===================
 
@@ -55,6 +57,11 @@ Manaul Fill Request
 .. _Manual Fill java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ManualFill.java
 
 .. _Manual Fill py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py
+
+
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
 
 
 .. code-block:: python
@@ -68,9 +75,11 @@ Sell Side Ack Request
 =====================
 
 
+Full code sample:-
+
 =====================  ===================
 `Sell Side Ack cpp`_   `Sell Side Ack cs`_ 
-=====================  ===================
+---------------------  -------------------
 `Sell Side Ack java`_  `Sell Side Ack py`_
 =====================  ===================
 
@@ -83,6 +92,11 @@ Sell Side Ack Request
 .. _Sell Side Ack py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideAck.py
 
 
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 .. code-block:: python
 
 	# SellSideAck.py
@@ -93,9 +107,11 @@ Sell Side Reject Request
 ========================
 
 
+Full code sample:-
+
 ===================== ===================
 `Sell Side Rej cpp`_  `Sell Side Rej cs`_ 
-===================== ===================
+--------------------- -------------------
 `Sell Side Rej java`_ `Sell Side Rej py`_
 ===================== ===================
 
@@ -106,6 +122,11 @@ Sell Side Reject Request
 .. _Sell Side Rej java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/SellSideRej.java
 
 .. _Sell Side Rej py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideRej.py
+
+
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
 
 
 .. code-block:: python

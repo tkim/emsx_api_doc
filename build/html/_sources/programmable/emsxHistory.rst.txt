@@ -2,7 +2,7 @@ EMSX History Request
 ====================
 
 
-EMSX History service provides individual fill information via request/response service. The service name is 
+EMSX history service provides individual fill information via request/response service. The service name is 
 ``//blp/emsx.history`` for production and ``//blp/emsx.history.uat`` for test environment. 
 
 
@@ -17,91 +17,97 @@ Unlike the ``//blp/emapisvc`` and ``//blp/emapisvc_beta`` service, ``//blp/emsx.
 =================================== =================================================================
 Element             				Description
 =================================== =================================================================
-Account								Trading account used in EMSX<GO>
-Amount 								Total quantity of the order
-AssetClass 							Asset class of the order
-BasketId							ID of the basket
-BasketName 							Name of the basket
-BBGID								BBGID field
-BlockId 							Block ID
-Broker 								Executing broker name
-ClearingAccount 					Clearing account detail
-ClearingFirm 						Clearing firm detail
-ContractExpDate 					Contract expiration date
-CorrectedFillId 					Corrected fill ID
-Currency 							Currency
-Cusip 								CUSIP
-DateTimeOfFill 						Date and time of the fill
-Exchange 							Exchange details
-ExecPrevSeqNo 						Previous sequence number of execution
-ExecType 							Execution type details
-ExecutingBrokers 					Executing broker details
-FillId 								ID of the fill
-FillPrice 							Price of the fill
-FillShare 							Number of share of the fill
-InvestorID 							Investor ID detail
-IsCfd 								CFD flag
-Isin 								ISIN detail
-IsLeg 								Is leg
-LastCapacity 						Last capacity field in EMSX<GO>
-LastMarket 							Last market detail
-LimitPrice 							Limit price detail
-Liquidity 							Liquidity detail
-LocalExchangeSymbol 				Local exchange symbol
-LocateBroker 						Locate broker detail
-LocateId 							Locate ID 
-LocateRequired 						Flag to indicate whether or not short locate is required
-MultilegId 							Multileg ID
-OCCSymbol 							OCC symbol
-OrderExecutionInstruction 			Order execution instruction detail
-OrderHandlingInstruction 			Order handling instruction detail
-OrderId 							Order ID
-OrderInstruction 					Order instruction detail
-OrderOrigin 						Order origin detail
-OrderReferenceId 					Order reference ID detail
-OriginatingTraderUuid 				UUID of the originating trader
-ReroutedBroker 						Rerouted broker details
-RouteCommissionAmount 				Commission amount of the route
-RouteCommissionRate 				Commission rate of the route
-RouteExecutionInstruction 			Route execution instruction
-RouteHandlingInstruction 			Route handling instruction
-RouteId 							Route ID
-RouteNetMoney 						Route net money
-RouteNotes 							Route instructions
-RouteShares 						Route shares
-SecurityName 						Security name detail
-Sedol 								SEDOL
-SettlementDate 						Settlement date detail
-Side 								Side
-StopPrice 							Stop Price 
-StrategyType 						Strategy Type
-Ticker 								Ticker
-TIF 								Time in Force
-TraderName 							Name of the trader
-TraderUuid 							Bloomberg UUID of the trader
-Type 								Order type
-UserCommissionAmount 				User commission amount
-UserCommissionRate 					User commission rate
-UserFees 							User fee detail
-UserNetMoney 						User net money detail
-YellowKey 							Bloomberg yellow key field detail
+``Account``							Trading account used in EMSX<GO>
+``Amount`` 							Total quantity of the order
+``AssetClass`` 						Asset class of the order
+``BasketId``						ID of the basket
+``BasketName`` 						Name of the basket
+``BBGID``							BBGID field
+``BlockId`` 						Block ID
+``Broker`` 							Executing broker name
+``ClearingAccount`` 				Clearing account detail
+``ClearingFirm`` 					Clearing firm detail
+``ContractExpDate`` 				Contract expiration date
+``CorrectedFillId`` 				Corrected fill ID
+``Currency`` 						Currency
+``Cusip`` 							CUSIP
+``DateTimeOfFill`` 					Date and time of the fill
+``Exchange`` 						Exchange details
+``ExecPrevSeqNo`` 					Previous sequence number of execution
+``ExecType`` 						Execution type details
+``ExecutingBrokers`` 				Executing broker details
+``FillId``							ID of the fill
+``FillPrice`` 						Price of the fill
+``FillShare`` 						Number of share of the fill
+``InvestorID`` 						Investor ID detail
+``IsCfd`` 							CFD flag
+``Isin`` 							ISIN detail
+``IsLeg`` 							Is leg
+``LastCapacity`` 					Last capacity field in EMSX<GO>
+``LastMarket`` 						Last market detail
+``LimitPrice`` 						Limit price detail
+``Liquidity`` 						Liquidity detail
+``LocalExchangeSymbol`` 			Local exchange symbol
+``LocateBroker`` 					Locate broker detail
+``LocateId`` 						Locate ID 
+``LocateRequired`` 					Flag to indicate whether or not short locate is required
+``MultilegId`` 						Multileg ID
+``OCCSymbol`` 						OCC symbol
+``OrderExecutionInstruction`` 		Order execution instruction detail
+``OrderHandlingInstruction`` 		Order handling instruction detail
+``OrderId`` 						Order ID
+``OrderInstruction`` 				Order instruction detail
+``OrderOrigin`` 					Order origin detail
+``OrderReferenceId``				Order reference ID detail
+``OriginatingTraderUuid`` 			UUID of the originating trader
+``ReroutedBroker`` 					Rerouted broker details
+``RouteCommissionAmount`` 			Commission amount of the route
+``RouteCommissionRate`` 			Commission rate of the route
+``RouteExecutionInstruction`` 		Route execution instruction
+``RouteHandlingInstruction`` 		Route handling instruction
+``RouteId`` 						Route ID
+``RouteNetMoney`` 					Route net money
+``RouteNotes`` 						Route instructions
+``RouteShares`` 					Route shares
+``SecurityName`` 					Security name detail
+``Sedol`` 							SEDOL
+``SettlementDate`` 					Settlement date detail
+``Side`` 							Side
+``StopPrice`` 						Stop Price 
+``StrategyType``					Strategy Type
+``Ticker`` 							Ticker
+``TIF`` 							Time in Force
+``TraderName`` 						Name of the trader
+``TraderUuid`` 						Bloomberg UUID of the trader
+``Type`` 							Order type
+``UserCommissionAmount`` 			User commission amount
+``UserCommissionRate`` 				User commission rate
+``UserFees``						User fee detail
+``UserNetMoney`` 					User net money detail
+``YellowKey`` 						Bloomberg yellow key field detail
 =================================== =================================================================
 
-Full code sample for the history service:-
+
+Full code sample:-
 
 ==================== ===================
 `EMSX History cpp`_  `EMSX History cs`_ 
-==================== ===================
+-------------------- -------------------
 `EMSX History java`_ `EMSX History py`_
 ==================== ===================
 
-.. _EMSX History cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/EMSXHistory.cpp
+.. _EMSX History cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/EMSXHistory.cpp 
 
 .. _EMSX History cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/EMSXHistory.cs
 
 .. _EMSX History java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/EMSXHistory.java
 
 .. _EMSX History py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/EMSXHistory.py
+
+
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
 
 
 Specify service name and host/port :-

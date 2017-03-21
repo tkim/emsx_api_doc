@@ -105,7 +105,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'emsx_api_docdoc'
+htmlhelp_basename = 'EMSX API Programmers Guide'
 
 
 # -- Options for LaTeX output ---------------------------------------------
