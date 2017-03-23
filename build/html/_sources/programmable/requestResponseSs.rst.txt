@@ -114,19 +114,19 @@ Sell Side Reject Request
 
 Full code sample:-
 
-===================== ===================
-`Sell Side Rej cpp`_  `Sell Side Rej cs`_ 
---------------------- -------------------
-`Sell Side Rej java`_ `Sell Side Rej py`_
-===================== ===================
+======================== ======================
+`Sell Side Reject cpp`_  `Sell Side Reject cs`_ 
+------------------------ ----------------------
+`Sell Side Reject java`_ `Sell Side Reject py`_
+======================== ======================
 
-.. _Sell Side Rej cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideRej.cpp
+.. _Sell Side Reject cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideReject.cpp
 
-.. _Sell Side Rej cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideRej.cs
+.. _Sell Side Reject cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideReject.cs
 
-.. _Sell Side Rej java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/SellSideRej.java
+.. _Sell Side Reject java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/SellSideReject.java
 
-.. _Sell Side Rej py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideRej.py
+.. _Sell Side Reject py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideReject.py
 
 
 .. hint:: 
