@@ -109,6 +109,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#get-field-metadata-request">Get Field Metadata Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get-teams-request">Get Teams Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#group-route-extended-request">Group Route Extended Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manaul-fill-request">Manaul Fill Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modify-order-request">Modify Order Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modify-route-extended-request">Modify Route Extended Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#route-extended-request">Route Extended Request</a></li>
@@ -608,8 +609,9 @@ an order and routing with strategy requires the user to create a request from th
 CreateOrderAndRouteEx`` and fill in the required fields before submitting the request.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>The user will first need to request <code class="docutils literal"><span class="pre">GetBrokers</span></code> to get all the brokers the user is enabled for, returned in response. Subsequently the user can then request <code class="docutils literal"><span class="pre">GetBrokerStrategies</span></code> to get all the broker strategies user is enabled for that particular broker code.</p>
-<p class="last">Lastly, <code class="docutils literal"><span class="pre">GetBrokerStrategyInfo</span></code> will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in <code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code> and <code class="docutils literal"><span class="pre">RouteEx</span></code> requests.</p>
+<blockquote>
+<div>The user will first need to use various <code class="docutils literal"><span class="pre">Get***``requests</span> <span class="pre">to</span> <span class="pre">obtain</span> <span class="pre">all</span> <span class="pre">the</span> <span class="pre">necessary</span> <span class="pre">information</span> <span class="pre">to</span> <span class="pre">use</span> <span class="pre">the</span> <span class="pre">broker</span> <span class="pre">strategies</span> <span class="pre">the</span> <span class="pre">user</span> <span class="pre">is</span> <span class="pre">enabled</span> <span class="pre">for,</span> <span class="pre">returned</span> <span class="pre">in</span> <span class="pre">response.</span> <span class="pre">Subsequently,</span> <span class="pre">the</span> <span class="pre">user</span> <span class="pre">can</span> <span class="pre">then</span> <span class="pre">request</span> <span class="pre">``GetBrokerStrategiesWithAssetClass</span></code> to get all the broker strategies user is enabled for that particular broker code and asset class.</div></blockquote>
+<p class="last">Lastly, <code class="docutils literal"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code> will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in <code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code> and <code class="docutils literal"><span class="pre">RouteEx</span></code> requests.</p>
 </div>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
@@ -736,7 +738,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="delete-order-request">
 <h2>Delete Order Request<a class="headerlink" href="#delete-order-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">DeleteOrder</span></code> request deletes an existing order in EMSX&lt;GO&gt;. This is not the same action as canceling the parent order. In fact, EMSX API does not expose Cancel Order status as in EMSX&lt;GO&gt;.</p>
+<p>The <code class="docutils literal"><span class="pre">DeleteOrder</span></code> request deletes an existing order in EMSX&lt;GO&gt;. This is not the same action as canceling the parent order. In fact, EMSX API does not expose Cancel Order status as in EMSX&lt;GO&gt;.</p>
 <p>The primary reason behind this is because the cancel rrder in EMSX&lt;GO&gt; really just puts an order in an inoperable state and doesn&#8217;t really serve any meaningful function.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
@@ -788,7 +790,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="get-all-field-metadata-request">
 <h2>Get All Field Metadata Request<a class="headerlink" href="#get-all-field-metadata-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">GetAllFiedlMetaData</span></code> request provides all field metadata in a response message.</p>
+<p>The <code class="docutils literal"><span class="pre">GetAllFiedlMetaData</span></code> request provides all field metadata in a response message.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -878,7 +880,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="get-broker-strategies-with-asset-class-request">
 <h2>Get Broker Strategies with Asset Class Request<a class="headerlink" href="#get-broker-strategies-with-asset-class-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">GetBrokerStrategiesWithAssetClass</span></code> request provides all broker strategy fields with asset class data in a response message.</p>
+<p>The <code class="docutils literal"><span class="pre">GetBrokerStrategiesWithAssetClass</span></code> request provides all broker strategy fields with asset class data in a response message.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -928,7 +930,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="get-broker-strategy-info-with-asset-class-request">
 <h2>Get Broker Strategy Info with Asset Class Request<a class="headerlink" href="#get-broker-strategy-info-with-asset-class-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code> request provides all broker strategy information fields with asset classdata in a response message.</p>
+<p>The <code class="docutils literal"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code> request provides all broker strategy information fields with asset classdata in a response message.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -979,7 +981,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="get-brokers-with-asset-class-request">
 <h2>Get Brokers with Asset Class Request<a class="headerlink" href="#get-brokers-with-asset-class-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">GetBrokersWithAssetClass</span></code> request provides all broker information with asset class data in a response message.</p>
+<p>The <code class="docutils literal"><span class="pre">GetBrokersWithAssetClass</span></code> request provides all broker information with asset class data in a response message.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1028,7 +1030,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="get-field-metadata-request">
 <h2>Get Field Metadata Request<a class="headerlink" href="#get-field-metadata-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">GetFieldMetaData</span></code> request provides all field metadata in a response message.</p>
+<p>The <code class="docutils literal"><span class="pre">GetFieldMetaData</span></code> request provides all field metadata in a response message.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1078,7 +1080,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="get-teams-request">
 <h2>Get Teams Request<a class="headerlink" href="#get-teams-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">GetTeams</span></code> request provides all the team details in a response message.</p>
+<p>The <code class="docutils literal"><span class="pre">GetTeams</span></code> request provides all the team details in a response message.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1125,7 +1127,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="group-route-extended-request">
 <h2>Group Route Extended Request<a class="headerlink" href="#group-route-extended-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">GroupRouteEx</span></code> request submits an entire list as a single route to a basket/program broker strategy destination.</p>
+<p>The <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> request submits an entire list as a single route to a basket/program broker strategy destination.</p>
 <p>This request should only be used if the intention is to submit an entire list or basket of securities to a single broker strategy destination. This should not be confused with maintaining a list or a basket from a portfolio perspective.</p>
 <p>Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use <code class="docutils literal"><span class="pre">CreateOrder</span></code> request to create the order and add the <code class="docutils literal"><span class="pre">EMSX_BASKET_NAME</span></code> in the field. The second step is to submit the list using <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> request and include the <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> number inside the array.</p>
 <p>Full code sample:-</p>
@@ -1281,9 +1283,35 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </pre></div>
 </div>
 </div>
+<div class="section" id="manaul-fill-request">
+<h2>Manaul Fill Request<a class="headerlink" href="#manaul-fill-request" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">ManualFill</span></code> request can be used on the sell-side EMSX&lt;GO&gt; settings to create fills and notifies EMSX&lt;GO&gt;.</p>
+<p>Full code sample:-</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp">Manual Fill cpp</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ManualFill.cs">Manual Fill cs</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ManualFill.java">Manual Fill java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py">Manual Fill py</a></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Please right click on the top code sample link to open in a new tab.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># ManualFill.py</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="modify-order-request">
 <h2>Modify Order Request<a class="headerlink" href="#modify-order-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">ModifyOrder</span></code> request modifies an existing or previously created order in EMSX&lt;GO&gt; or using EMSX API.</p>
+<p>The <code class="docutils literal"><span class="pre">ModifyOrder</span></code> request modifies an existing or previously created order in EMSX&lt;GO&gt; or using EMSX API.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>

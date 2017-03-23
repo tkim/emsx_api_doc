@@ -1166,8 +1166,8 @@ Manaul Fill Request
 ===================
 
 
-The ``ManualFill` request can be used on the sell-side EMSX<GO> settings to create fills and notifies EMSX<GO>.
-s
+The ``ManualFill`` request can be used on the sell-side EMSX<GO> settings to create fills and notifies EMSX<GO>.
+
 
 Full code sample:-
 
