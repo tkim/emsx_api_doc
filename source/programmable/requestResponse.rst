@@ -160,9 +160,9 @@ Assign Trader Request
 =====================
 
 
-``AssignTrader`` request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.
+The ``AssignTrader`` request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.
 
-Assigned trader must be in same EMBR group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
+Assigned trader must be in same EMBR<GO> group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
 
 
 Full code sample:-
@@ -385,17 +385,16 @@ Full code sample:-
 Create Order and Route Extended Request
 =======================================
 
-
-Creating an order and routing with strategy requires the user to create a request from the service object of type ``
+The ``CreateOrderAndRouteEx`` request can be used for both strategy and non-strategy broker destinations.  Creating 
+an order and routing with strategy requires the user to create a request from the service object of type ``
 CreateOrderAndRouteEx`` and fill in the required fields before submitting the request. 
-Mandatory fields for the CreateOrderAndRoute requests are the following. 
 
 
 .. note:: 
 
-	The user will first need to request ``GetBrokers`` to get all the brokers the user is enabled for, returned in response. Subsequently the user can then request ``GetBrokerStrategies`` to get all the broker strategies user is enabled for that particular broker code. 
+	The user will first need to use various ``Get***``requests to obtain all the necessary information to use the broker strategies the user is enabled for, returned in response. Subsequently, the user can then request ``GetBrokerStrategiesWithAssetClass`` to get all the broker strategies user is enabled for that particular broker code and asset class. 
 
-	Lastly, ``GetBrokerStrategyInfo`` will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in ``CreateOrderAndRouteEx`` and ``RouteEx`` requests.
+    Lastly, ``GetBrokerStrategyInfoWithAssetClass`` will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in ``CreateOrderAndRouteEx`` and ``RouteEx`` requests.
 
 
 Full code sample:-
@@ -452,7 +451,7 @@ Create Order And Route Manually Request
 =======================================
 
 
-``CreateOrderAndRouteManually`` request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
+The ``CreateOrderAndRouteManually`` request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
 
 
 Full code sample:-
@@ -540,7 +539,7 @@ Delete Order Request
 ====================
 
 
-``DeleteOrder`` request deletes an existing order in EMSX<GO>. This is not the same action as canceling the parent order. In fact, EMSX API does not expose Cancel Order status as in EMSX<GO>. 
+The ``DeleteOrder`` request deletes an existing order in EMSX<GO>. This is not the same action as canceling the parent order. In fact, EMSX API does not expose Cancel Order status as in EMSX<GO>. 
 
 The primary reason behind this is because the cancel rrder in EMSX<GO> really just puts an order in an inoperable state and doesn't really serve any meaningful function.
 
@@ -602,7 +601,7 @@ Get All Field Metadata Request
 ==============================
 
 
-``GetAllFiedlMetaData`` request provides all field metadata in a response message.
+The ``GetAllFiedlMetaData`` request provides all field metadata in a response message.
 
 
 Full code sample:-
@@ -706,7 +705,7 @@ Get Broker Strategies with Asset Class Request
 ==============================================
 
 
-``GetBrokerStrategiesWithAssetClass`` request provides all broker strategy fields with asset class data in a response message.
+The ``GetBrokerStrategiesWithAssetClass`` request provides all broker strategy fields with asset class data in a response message.
 
 
 Full code sample:-
@@ -765,7 +764,7 @@ Get Broker Strategy Info with Asset Class Request
 =================================================
 
 
-``GetBrokerStrategyInfoWithAssetClass`` request provides all broker strategy information fields with asset classdata in a response message.
+The ``GetBrokerStrategyInfoWithAssetClass`` request provides all broker strategy information fields with asset classdata in a response message.
 
 
 Full code sample:-
@@ -825,7 +824,7 @@ Get Brokers with Asset Class Request
 ====================================
 
 
-``GetBrokersWithAssetClass`` request provides all broker information with asset class data in a response message.
+The ``GetBrokersWithAssetClass`` request provides all broker information with asset class data in a response message.
 
 
 Full code sample:-
@@ -883,7 +882,7 @@ Get Field Metadata Request
 ===========================
 
 
-``GetFieldMetaData`` request provides all field metadata in a response message.
+The ``GetFieldMetaData`` request provides all field metadata in a response message.
 
 
 Full code sample:-
@@ -942,7 +941,7 @@ Get Teams Request
 =================
 
 
-``GetTeams`` request provides all the team details in a response message.
+The ``GetTeams`` request provides all the team details in a response message.
 
 
 Full code sample:-
@@ -998,7 +997,7 @@ Group Route Extended Request
 ============================
 
 
-``GroupRouteEx`` request submits an entire list as a single route to a basket/program broker strategy destination.
+The ``GroupRouteEx`` request submits an entire list as a single route to a basket/program broker strategy destination.
 
 This request should only be used if the intention is to submit an entire list or basket of securities to a single broker strategy destination. This should not be confused with maintaining a list or a basket from a portfolio perspective.
 
@@ -1163,11 +1162,45 @@ Full code sample:-
 	                print >> sys.stderr, "Error: Service failed to open"        
 
 
+Manaul Fill Request
+===================
+
+
+The ``ManualFill` request can be used on the sell-side EMSX<GO> settings to create fills and notifies EMSX<GO>.
+s
+
+Full code sample:-
+
+==================== ===================
+`Manual Fill cpp`_   `Manual Fill cs`_ 
+-------------------- -------------------
+`Manual Fill java`_  `Manual Fill py`_
+==================== ===================
+
+.. _Manual Fill cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp
+
+.. _Manual Fill cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ManualFill.cs
+
+.. _Manual Fill java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ManualFill.java
+
+.. _Manual Fill py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py
+
+
+.. hint:: 
+
+    Please right click on the top code sample link to open in a new tab.
+
+
+.. code-block:: python
+    
+    # ManualFill.py
+
+
 Modify Order Request
 ====================
 
 
-``ModifyOrder`` request modifies an existing or previously created order in EMSX<GO> or using EMSX API. 
+The ``ModifyOrder`` request modifies an existing or previously created order in EMSX<GO> or using EMSX API. 
 
 
 Full code sample:-

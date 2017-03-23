@@ -160,9 +160,9 @@ Assign Trader Request
 =====================
 
 
-``AssignTrader`` request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.
+The ``AssignTrader`` request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.
 
-Assigned trader must be in same EMBR group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
+Assigned trader must be in same EMBR<GO> group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
 
 
 Full code sample:-
@@ -385,10 +385,9 @@ Full code sample:-
 Create Order and Route Extended Request
 =======================================
 
-
-Creating an order and routing with strategy requires the user to create a request from the service object of type ``
+The ``CreateOrderAndRouteEx`` request can be used for both strategy and non-strategy broker destinations.  Creating 
+an order and routing with strategy requires the user to create a request from the service object of type ``
 CreateOrderAndRouteEx`` and fill in the required fields before submitting the request. 
-Mandatory fields for the CreateOrderAndRoute requests are the following. 
 
 
 .. note:: 
@@ -452,7 +451,7 @@ Create Order And Route Manually Request
 =======================================
 
 
-``CreateOrderAndRouteManually`` request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
+The ``CreateOrderAndRouteManually`` request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
 
 
 Full code sample:-

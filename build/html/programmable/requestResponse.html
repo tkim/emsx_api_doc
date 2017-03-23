@@ -408,8 +408,8 @@ following steps:</p>
 </div>
 <div class="section" id="assign-trader-request">
 <h2>Assign Trader Request<a class="headerlink" href="#assign-trader-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">AssignTrader</span></code> request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.</p>
-<p>Assigned trader must be in same EMBR group for this to work. EMBR&lt;GO&gt; is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.</p>
+<p>The <code class="docutils literal"><span class="pre">AssignTrader</span></code> request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.</p>
+<p>Assigned trader must be in same EMBR&lt;GO&gt; group for this to work. EMBR&lt;GO&gt; is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -603,9 +603,9 @@ of the route.</p>
 </div>
 <div class="section" id="create-order-and-route-extended-request">
 <h2>Create Order and Route Extended Request<a class="headerlink" href="#create-order-and-route-extended-request" title="Permalink to this headline">¶</a></h2>
-<p>Creating an order and routing with strategy requires the user to create a request from the service object of type ``
-CreateOrderAndRouteEx`` and fill in the required fields before submitting the request.
-Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
+<p>The <code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code> request can be used for both strategy and non-strategy broker destinations.  Creating
+an order and routing with strategy requires the user to create a request from the service object of type ``
+CreateOrderAndRouteEx`` and fill in the required fields before submitting the request.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>The user will first need to request <code class="docutils literal"><span class="pre">GetBrokers</span></code> to get all the brokers the user is enabled for, returned in response. Subsequently the user can then request <code class="docutils literal"><span class="pre">GetBrokerStrategies</span></code> to get all the broker strategies user is enabled for that particular broker code.</p>
@@ -658,7 +658,7 @@ Mandatory fields for the CreateOrderAndRoute requests are the following.</p>
 </div>
 <div class="section" id="create-order-and-route-manually-request">
 <h2>Create Order And Route Manually Request<a class="headerlink" href="#create-order-and-route-manually-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">CreateOrderAndRouteManually</span></code> request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX&lt;GO&gt; that this order is routed to the execution venue.</p>
+<p>The <code class="docutils literal"><span class="pre">CreateOrderAndRouteManually</span></code> request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX&lt;GO&gt; that this order is routed to the execution venue.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
