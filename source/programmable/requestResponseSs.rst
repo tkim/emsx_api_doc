@@ -49,36 +49,34 @@ Manaul Fill Request
 ===================
 
 
-The ``ManualFill` request can be used on the sell-side EMSX<GO> settings to create fills and notifies EMSX<GO>.
-s
+The ``ManualFill`` request can be used on the sell-side EMSX<GO> settings to create fills and notifies EMSX<GO>.
+
 
 Full code sample:-
 
 ==================== ===================
-`Manual Fill cpp`_   `Manual Fill cs`_ 
+    
 -------------------- -------------------
-`Manual Fill java`_  `Manual Fill py`_
+`Manual Fill java`_  
 ==================== ===================
 
-.. _Manual Fill cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp
+.. Manual Fill cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp
 
-.. _Manual Fill cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ManualFill.cs
+.. Manual Fill cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ManualFill.cs
 
 .. _Manual Fill java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ManualFill.java
 
-.. _Manual Fill py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py
+.. Manual Fill py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py
 
 
 .. hint:: 
 
-	Please right click on the top code sample link to open in a new tab.
+    Please right click on the top code sample link to open in a new tab.
 
 
 .. code-block:: python
-	
-	# ManualFill.py
-
-
+    
+    # ManualFill.py
 
 
 Sell Side Ack Request
@@ -91,19 +89,19 @@ buy-side EMSX<GO>.
 
 Full code sample:-
 
-=====================  ===================
-`Sell Side Ack cpp`_   `Sell Side Ack cs`_ 
----------------------  -------------------
-`Sell Side Ack java`_  `Sell Side Ack py`_
-=====================  ===================
+=======================  ===================
+    
+-----------------------  -------------------
+`Sell Side Ack java`_  
+=======================  ===================
 
-.. _Sell Side Ack cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideAck.cpp
+.. Sell Side Ack cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideAck.cpp
 
-.. _Sell Side Ack cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideAck.cs
+.. Sell Side Ack cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideAck.cs
 
 .. _Sell Side Ack java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/SellSideAck.java
 
-.. _Sell Side Ack py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideAck.py
+.. Sell Side Ack py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideAck.py
 
 
 .. hint:: 
@@ -128,18 +126,18 @@ buy-side EMSX<GO>.
 Full code sample:-
 
 ======================== ======================
-`Sell Side Reject cpp`_  `Sell Side Reject cs`_ 
+ 
 ------------------------ ----------------------
-`Sell Side Reject java`_ `Sell Side Reject py`_
+`Sell Side Reject java`_ 
 ======================== ======================
 
-.. _Sell Side Reject cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideReject.cpp
+.. Sell Side Reject cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideReject.cpp
 
-.. _Sell Side Reject cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideReject.cs
+.. Sell Side Reject cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideReject.cs
 
 .. _Sell Side Reject java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/SellSideReject.java
 
-.. _Sell Side Reject py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideReject.py
+.. Sell Side Reject py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideReject.py
 
 
 .. hint:: 
@@ -149,7 +147,7 @@ Full code sample:-
 
 .. code-block:: python
 
-	SellSideRej.py
+	# SellSideRej.py
 
 
 

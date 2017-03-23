@@ -1172,18 +1172,18 @@ The ``ManualFill`` request can be used on the sell-side EMSX<GO> settings to cre
 Full code sample:-
 
 ==================== ===================
-`Manual Fill cpp`_   `Manual Fill cs`_ 
+    
 -------------------- -------------------
-`Manual Fill java`_  `Manual Fill py`_
+`Manual Fill java`_  
 ==================== ===================
 
-.. _Manual Fill cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp
+.. Manual Fill cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp
 
-.. _Manual Fill cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ManualFill.cs
+.. Manual Fill cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ManualFill.cs
 
 .. _Manual Fill java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ManualFill.java
 
-.. _Manual Fill py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py
+.. Manual Fill py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py
 
 
 .. hint:: 
@@ -1200,24 +1200,24 @@ Modify Order Request
 ====================
 
 
-The ``ModifyOrder`` request modifies an existing or previously created order in EMSX<GO> or using EMSX API. 
+The ``ModifyOrderEx`` request modifies an existing or previously created order in EMSX<GO> or using EMSX API. 
 
 
 Full code sample:-
 
-==================== ===================
-`Modify Order cpp`_  `Modify Order cs`_ 	
--------------------- -------------------
-`Modify Order java`_ `Modify Order py`_
-==================== ===================
+============================= ===========================
+ 	
+----------------------------- ---------------------------
+`Modify Order Extended java`_ 
+============================= ===========================
 
-.. _Modify Order cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyOrder.cpp
+.. Modify Order Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyOrderEx.cpp
 
-.. _Modify Order cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyOrder.cs
+.. Modify Order Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyOrderEx.cs
 
-.. _Modify Order java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyOrder.java
+.. _Modify Order Extended java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyOrderEx.java
 
-.. _Modify Order py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyOrder.py
+.. Modify Order Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyOrderEx.py
 
 
 .. hint:: 
@@ -1234,24 +1234,24 @@ Modify Route Extended Request
 =============================
 
 
-``ModifyRouteEx`` request modifies an existing or previously created child routes in EMSX<GO> or using EMSX API. 
+The ``ModifyRouteEx`` request modifies an existing or previously created child routes in EMSX<GO> or using EMSX API. 
 
 
 Full code sample:-
 
 ============================= ============================
-`Modify Route Extended cpp`_   `Modify Route Extended cs`_ 	
+    	
 ----------------------------- ----------------------------
-`Modify Route Extended java`_  `Modify Route Extended py`_
+`Modify Route Extended java`_  
 ============================= ============================
 
-.. _Modify Route Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyRouteEx.cpp
+.. Modify Route Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyRouteEx.cpp
 
-.. _Modify Route Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyRouteEx.cs
+.. Modify Route Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyRouteEx.cs
 
 .. _Modify Route Extended java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyRouteEx.java
 
-.. _Modify Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyRouteEx.py
+.. Modify Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyRouteEx.py
 
 
 .. hint:: 
@@ -1268,7 +1268,7 @@ Route Extended Request
 ======================
 
 
-``RouteEx`` request submits an existing order into various execution veneues. This request is used primarily to submit a child route based on previously created parent order. 
+The ``RouteEx`` request submits an existing order into various execution veneues. This request is used primarily to submit a child route based on previously created parent order. 
 
 
 Full code sample:-
@@ -1352,7 +1352,7 @@ Route Manually Extended Request
 ===============================
 
 
-``RouteManuallyEx`` requestis generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
+The ``RouteManuallyEx`` requestis generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
 
 
 Full code sample:-

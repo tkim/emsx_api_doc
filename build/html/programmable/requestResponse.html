@@ -1293,11 +1293,11 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <col width="49%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp">Manual Fill cpp</a></td>
-<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ManualFill.cs">Manual Fill cs</a></td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ManualFill.java">Manual Fill java</a></td>
-<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py">Manual Fill py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -1311,19 +1311,19 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="modify-order-request">
 <h2>Modify Order Request<a class="headerlink" href="#modify-order-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">ModifyOrder</span></code> request modifies an existing or previously created order in EMSX&lt;GO&gt; or using EMSX API.</p>
+<p>The <code class="docutils literal"><span class="pre">ModifyOrderEx</span></code> request modifies an existing or previously created order in EMSX&lt;GO&gt; or using EMSX API.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="51%" />
-<col width="49%" />
+<col width="52%" />
+<col width="48%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyOrder.cpp">Modify Order cpp</a></td>
-<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyOrder.cs">Modify Order cs</a></td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyOrder.java">Modify Order java</a></td>
-<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyOrder.py">Modify Order py</a></td>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyOrderEx.java">Modify Order Extended java</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -1337,7 +1337,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="modify-route-extended-request">
 <h2>Modify Route Extended Request<a class="headerlink" href="#modify-route-extended-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">ModifyRouteEx</span></code> request modifies an existing or previously created child routes in EMSX&lt;GO&gt; or using EMSX API.</p>
+<p>The <code class="docutils literal"><span class="pre">ModifyRouteEx</span></code> request modifies an existing or previously created child routes in EMSX&lt;GO&gt; or using EMSX API.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1345,11 +1345,11 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <col width="49%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyRouteEx.cpp">Modify Route Extended cpp</a></td>
-<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyRouteEx.cs">Modify Route Extended cs</a></td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyRouteEx.java">Modify Route Extended java</a></td>
-<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyRouteEx.py">Modify Route Extended py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -1363,7 +1363,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="route-extended-request">
 <h2>Route Extended Request<a class="headerlink" href="#route-extended-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">RouteEx</span></code> request submits an existing order into various execution veneues. This request is used primarily to submit a child route based on previously created parent order.</p>
+<p>The <code class="docutils literal"><span class="pre">RouteEx</span></code> request submits an existing order into various execution veneues. This request is used primarily to submit a child route based on previously created parent order.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1438,7 +1438,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="route-manually-extended-request">
 <h2>Route Manually Extended Request<a class="headerlink" href="#route-manually-extended-request" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">RouteManuallyEx</span></code> requestis generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX&lt;GO&gt; that this order is routed to the execution venue.</p>
+<p>The <code class="docutils literal"><span class="pre">RouteManuallyEx</span></code> requestis generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX&lt;GO&gt; that this order is routed to the execution venue.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
