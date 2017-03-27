@@ -3,6 +3,8 @@ Sell-Side Request/Response Service
 ##################################
 
 
+The sell-side Request/Response service is specifically used for EMSX to EMSX (E2E) setting where the sell-side EMSX is used to capture order flow from other buy-side EMSX users.
+
 The EMSX API allows developers to use the Request/Response services for order and route creation, modification, 
 queries related to orders and routes (placements) as well as EMSX Team details. Depending on the type of action 
 required, the application programmer must create a specific request, populate it with required parameters and send 
@@ -23,8 +25,6 @@ requires the following steps:
 
 These are initialized in the constructor as below and are then available for the life of the application for 
 submission of various requests. 
-
-The sell-side Request/Response service is specifically used for EMSX to EMSX (E2E) setting where the sell-side EMSX is used to capture order flow from other buy-side EMSX users.
 
 
 Manaul Fill Request

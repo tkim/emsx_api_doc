@@ -91,7 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable EMSX API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="session.html">Session Object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="description.html">Description of Buy-Side Request/Response Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html">Description of Request/Response Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponse.html">Buy-Side Request/Response Service</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Sell-Side Request/Response Service</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#manaul-fill-request">Manaul Fill Request</a></li>
@@ -153,6 +153,7 @@
             
   <div class="section" id="sell-side-request-response-service">
 <h1>Sell-Side Request/Response Service<a class="headerlink" href="#sell-side-request-response-service" title="Permalink to this headline">¶</a></h1>
+<p>The sell-side Request/Response service is specifically used for EMSX to EMSX (E2E) setting where the sell-side EMSX is used to capture order flow from other buy-side EMSX users.</p>
 <p>The EMSX API allows developers to use the Request/Response services for order and route creation, modification,
 queries related to orders and routes (placements) as well as EMSX Team details. Depending on the type of action
 required, the application programmer must create a specific request, populate it with required parameters and send
@@ -170,7 +171,6 @@ requires the following steps:</p>
 </div></blockquote>
 <p>These are initialized in the constructor as below and are then available for the life of the application for
 submission of various requests.</p>
-<p>The sell-side Request/Response service is specifically used for EMSX to EMSX (E2E) setting where the sell-side EMSX is used to capture order flow from other buy-side EMSX users.</p>
 <div class="section" id="manaul-fill-request">
 <h2>Manaul Fill Request<a class="headerlink" href="#manaul-fill-request" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">ManualFill</span></code> request can be used on the sell-side EMSX&lt;GO&gt; settings to create fills and notifies EMSX&lt;GO&gt;.</p>

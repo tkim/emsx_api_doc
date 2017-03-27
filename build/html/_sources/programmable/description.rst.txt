@@ -1,7 +1,10 @@
-################################################
-Description of Buy-Side Request/Response Service
-################################################
+#######################################
+Description of Request/Response Service
+#######################################
 
+
+Buy-Side Request/Response Service
+=================================
 
 EMSX API supports the following Request/Response services.
 
@@ -45,8 +48,8 @@ Request Name             			    Action
 	``SellSideReject`` is used for EMSX to EMSX or E2E settings where sell-side EMSX<GO> is used to receive order from buy-side EMSX.
 
 
-Description of Sell-Side Request/Response Service
-=================================================
+Sell-Side Request/Response Service
+==================================
 
 
 EMSX API supports the following Request/Response services:-
