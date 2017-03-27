@@ -144,7 +144,7 @@
 <h2>General FAQ<a class="headerlink" href="#general-faq" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><dl class="first docutils">
-<dt><strong>Why can I not subscribe using ticker and fields like other APIs?</strong></dt>
+<dt>Why can I not subscribe using ticker and fields like other APIs?</dt>
 <dd><p class="first last">The EMSX service only allows users to subscribe to their own Orders and Routes (placements). Most applications
 will use only two subscriptions, one for Orders and one for Routes (placements). A list of EMSX fields is required
 when creating the subscriptions.</p>
@@ -152,7 +152,7 @@ when creating the subscriptions.</p>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Why can’t I see my orders and or routes in EMSX?</strong></dt>
+<dt>Why can’t I see my orders and or routes in EMSX?</dt>
 <dd><p class="first last">The most common cause is that the user is connected to the BETA machines on the API side, whilst using the PROD
 machine on the terminal. Switching one of these will normally resolve the problem.</p>
 </dd>
@@ -167,19 +167,19 @@ PROD system on the terminal, type DGRT OFF&lt;GO&gt;</p>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>How do I connect to PROD or BETA in the API?</strong></dt>
+<dt>How do I connect to PROD or BETA in the API?</dt>
 <dd><p class="first last">Two separate services are provided. These are <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> (PROD) and <code class="docutils literal"><span class="pre">//blp/emapisvc_beta</span></code> (TEST)</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>How do I match my requests to responses?</strong></dt>
+<dt>How do I match my requests to responses?</dt>
 <dd><p class="first last">This is done in the same was as for other Bloomberg API services, with the use of CorrelationID.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>What broker or simulator do I use?</strong></dt>
+<dt>What broker or simulator do I use?</dt>
 <dd><p class="first last">When first enabled for BETA access, client will generally be enabled for BMTB or other internal Bloomberg
 simulator codes. A new development broker has recently been added called the API. To be enabled for other brokers
 in the LIVE environment, clients should contact the EMSX Help Desk.</p>
@@ -187,7 +187,7 @@ in the LIVE environment, clients should contact the EMSX Help Desk.</p>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>How do I test my application with these simulators?</strong></dt>
+<dt>How do I test my application with these simulators?</dt>
 <dd><p class="first last">Test brokers (BB, BMTB, EFIX and API) are automated systems that respond a request in a predetermined way, based
 on the specified security in the request. Each test broker has a set of documented behaviors that clients can take
 advantage of to create test cases. These documents are currently provided on request.</p>
@@ -195,14 +195,14 @@ advantage of to create test cases. These documents are currently provided on req
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Why am I not seeing events that affect my Routes?</strong></dt>
+<dt>Why am I not seeing events that affect my Routes?</dt>
 <dd><p class="first last">This is normally caused by only having a subscription for Orders. A separate subscription is needed for route
 messages when using our programmable interface.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Why am I still seeing orders that I deleted or have completed?</strong></dt>
+<dt>Why am I still seeing orders that I deleted or have completed?</dt>
 <dd><p class="first last">Orders that were manually deleted, or completed in a previous session, will continue to transmit on the order.
 Check the EMSX_STATUS of the returned message to confirm if this is a live order. These orders will cease to
 report between 24 and 48 hours after they are deleted depending on the nature of the order.</p>
@@ -210,14 +210,14 @@ report between 24 and 48 hours after they are deleted depending on the nature of
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Why is the value of a field returned as blank / zero?</strong></dt>
+<dt>Why is the value of a field returned as blank / zero?</dt>
 <dd><p class="first last">This normally means that the user has not subscribed to that field in the original subscription. This can also
 mean that the user did not subscribe to the filed in the first place or is requesting for a static field.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Why is a field not being returned?</strong></dt>
+<dt>Why is a field not being returned?</dt>
 <dd><p class="first">Some fields are specific to either Orders or Routes. You cannot subscribe to an Order field in the Route
 subscription and vice versa.</p>
 <p>The type of message will also dictate which fields will be returned. For <code class="docutils literal"><span class="pre">NEW_ORDER_ROUTE</span></code> and <code class="docutils literal"><span class="pre">INIT_PAINT</span></code>
@@ -230,7 +230,7 @@ their application.</p>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>How do I receive Fill messages?</strong></dt>
+<dt>How do I receive Fill messages?</dt>
 <dd><p class="first last">Currently, Fill level messaging is not supported. A fill event will generate a <code class="docutils literal"><span class="pre">UPD_ORDER_ROUTE</span></code> message, with
 the applicable changes to the order and route data and these are not guaranteed update for the fills. The only way
 to track individual fills is to use the <code class="docutils literal"><span class="pre">//blp/emsx.history</span></code> service using request/response service calls.</p>
@@ -238,7 +238,7 @@ to track individual fills is to use the <code class="docutils literal"><span cla
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>How do I route a complete basket?</strong></dt>
+<dt>How do I route a complete basket?</dt>
 <dd><p class="first">The term basket here is defined as a way to send the entire group of order into a single basket to a broker
 destination or to a broker algorithm, which supports basket. The term basket here is not intended for those who
 want to tie a particular group of orders into a trading strategy.</p>
@@ -251,7 +251,7 @@ be sent as part of the basket.</p>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>How long do DAY orders and complete orders stay on the blotter and in the API?</strong> (Status = 8)</dt>
+<dt>How long do DAY orders and complete orders stay on the blotter and in the API?** (Status = 8)</dt>
 <dd><p class="first">In the old logic, the DAY orders stayed 4 hours after the exchange closed. The new logic is to extend this to 8
 hours after the exchange closed. Expired orders are deleted after 2 days. For expired orders, when user gets
 INIT_PAINT, the will get updates for those expired orders with status=8.</p>
@@ -261,33 +261,33 @@ and will be treated as a filled order. The Excel Add-In currently removes anythi
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Why do I get “Internal error. Please contact customer support”?</strong></dt>
+<dt>Why do I get “Internal error. Please contact customer support”?</dt>
 <dd><p class="first last">Unfortunately, this is a generic error message, which can be caused by a number of reasons. However, the most
 common is that the user has failed to provide a mandatory field with a request.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Why do I get “Customer ABCDE is not validated for ETORSA”?</strong></dt>
+<dt>Why do I get “Customer ABCDE is not validated for ETORSA”?</dt>
 <dd><p class="first last">Client must sign a Bloomberg Electronic Trading &amp; Order Routing Service Agreement before they can be enabled for
 EMSX API access.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Why do I get “User ABCDE is not permitted for the API”?</strong></dt>
+<dt>Why do I get “User ABCDE is not permitted for the API”?</dt>
 <dd><p class="first last">EMSX Help Desk must enable users for EMSX API access via EMSS.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Why do I get “User NOT Enabled to route to this broker by EOR (ENAB).”?</strong></dt>
+<dt>Why do I get “User NOT Enabled to route to this broker by EOR (ENAB).”?</dt>
 <dd><p class="first last">Users must be enabled for specific brokers. This is done by EMSX Help Desk support for internal simulator codes
 and by the broker for their own production codes.</p>
 </dd>
 </dl>
 </li>
-<li><p class="first"><strong>I am enabled but I get a red bar on the bottom when I click on the EMSX button.</strong></p>
+<li><p class="first">I am enabled but I get a red bar on the bottom when I click on the EMSX button.</p>
 <blockquote>
 <div><p>This is usually due to the following issues.</p>
 <ul class="simple">
@@ -297,7 +297,7 @@ and by the broker for their own production codes.</p>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>How do I restart bbcomm?</strong></p>
+<li><p class="first">How do I restart bbcomm?</p>
 <blockquote>
 <div><ul class="simple">
 <li>Close all instances of Excel, Word and PowerPoint.</li>
@@ -307,7 +307,7 @@ and by the broker for their own production codes.</p>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>How do I regenerate apiregistry.ini file?</strong></p>
+<li><p class="first">How do I regenerate apiregistry.ini file?</p>
 <blockquote>
 <div><p>Open regedit from RUN window and Clear the &#8220;APIRegistryCRC32&#8221; registry value located at
 &#8220;HKEY_LOCAL_MACHINESOFTWAREBloomberg L.P.Office ToolsSettings&#8221; or
@@ -315,46 +315,46 @@ and by the broker for their own production codes.</p>
 </div></blockquote>
 </li>
 <li><dl class="first docutils">
-<dt><strong>How do I modify GTD to day order?</strong></dt>
+<dt>How do I modify GTD to day order?</dt>
 <dd><p class="first last">Set <code class="docutils literal"><span class="pre">EMSX_GTD_DATE</span></code> to &#8220;-1&#8221; or -1 or any negative GTD date will reset the order to day order.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>How do I modify or reset the stop price of an order?</strong></dt>
+<dt>How do I modify or reset the stop price of an order?</dt>
 <dd><p class="first last">Set <code class="docutils literal"><span class="pre">EMSX_STOP_PRICE</span></code> to &#8220;-1&#8221; or -1</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>How do I reset my order from Limit to Market?</strong></dt>
-<dd><p class="first last"><code class="docutils literal"><span class="pre">EMSX_LIMIT_PRICE</span></code> =-99999 is only required when modifying <em>from</em> LMT to something else</p>
+<dt>How do I reset my order from Limit to Market?</dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">EMSX_LIMIT_PRICE</span> <span class="pre">=-99999</span></code> is only required when modifying <em>from</em> LMT to something else</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>How is ``EMSX_RELEASE_TIME`` used?</strong></dt>
+<dt>How is <code class="docutils literal"><span class="pre">EMSX_RELEASE_TIME</span></code> used?</dt>
 <dd><p class="first last"><code class="docutils literal"><span class="pre">EMSX_RELEASE_TIME</span></code> is in <code class="docutils literal"><span class="pre">HH:MM</span></code> format. For the API it is defaulted to the exchange time. This only works on
 requests that are routable from EMSX API. Thus, it will not work on CreateOrder request. Since the field is an
-integer, it should be forammted as 1101 for 11:01,</p>
+integer, it should be forammted as <code class="docutils literal"><span class="pre">1101</span></code> for <code class="docutils literal"><span class="pre">11:01</span></code>.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Are ``EMSX_TICKER`` and ``EMSX_SIDE`` elements always available on the subscription service?</strong></dt>
+<dt>Are <code class="docutils literal"><span class="pre">EMSX_TICKER</span></code> and <code class="docutils literal"><span class="pre">EMSX_SIDE</span></code> elements always available on the subscription service?</dt>
 <dd><p class="first last">No, any fields that are static are not always returned.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Can update events come before the INITIAL_PAINT or new event?</strong></dt>
+<dt>Can update events come before the <code class="docutils literal"><span class="pre">INITIAL_PAINT</span></code> or new event?</dt>
 <dd><p class="first last">Yes, this wasn’t the original intention, however, due to current EMSX back-end, the update <code class="docutils literal"><span class="pre">Event</span> <span class="pre">Status</span> <span class="pre">=</span> <span class="pre">7</span></code>
 messages can come before <code class="docutils literal"><span class="pre">INITIAL_PAINT</span></code> <code class="docutils literal"><span class="pre">Event</span> <span class="pre">Status=4</span></code> or New <code class="docutils literal"><span class="pre">Event</span> <span class="pre">Status</span> <span class="pre">=</span> <span class="pre">6</span></code></p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><strong>Are ``INITIAL_PAINT`` messages always first?</strong></dt>
+<dt>Are <code class="docutils literal"><span class="pre">INITIAL_PAINT</span></code> messages always first?</dt>
 <dd><p class="first last">No, you can receive any route messages before the order message with <code class="docutils literal"><span class="pre">INITIAL_PAINT</span></code>.</p>
 </dd>
 </dl>
