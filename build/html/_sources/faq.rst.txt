@@ -148,34 +148,34 @@ General FAQ
 	No, you can receive any route messages before the order message with ``INITIAL_PAINT``.
 
 
-..Excel Add-In FAQ
-..================
+.. Excel Add-In FAQ
+.. ================
 
-..* **I don't see the EMSX button on my Excel Add-In**
+.. * **I don't see the EMSX button on my Excel Add-In**
 
-..This is mostly due to the user not being enabled for EMSX API. Click Help Help on EMSX<GO> and ask the EMSX Help Desk personnel to see if your UUID is enabled for EMSX API Excel Add-In. If the user has multiple Excel Add-Ins, the EMSX button will be under the Trading Icon. 
+.. This is mostly due to the user not being enabled for EMSX API. Click Help Help on EMSX<GO> and ask the EMSX Help Desk personnel to see if your UUID is enabled for EMSX API Excel Add-In. If the user has multiple Excel Add-Ins, the EMSX button will be under the Trading Icon. 
 
 .. image: /image/excelAddIn.png
 
 .. image: /image/trading.png
 
-..* **I am a Bloomberg AIM user and I am not able to connect from the Excel Add-In.**
+.. * **I am a Bloomberg AIM user and I am not able to connect from the Excel Add-In.**
 
-..This is mostly often due to the AIM user not being able to connect to the beta environment (Y087).  For AIM, users they will need to test in production since there are no AIM instance in the beta environment (Y087). 
+.. This is mostly often due to the AIM user not being able to connect to the beta environment (Y087).  For AIM, users they will need to test in production since there are no AIM instance in the beta environment (Y087). 
 
 .. image: /image/registry.png
 
-..One of the ways to solve this is by going into the registry edit by clicking Start and type “regedit”.
+.. One of the ways to solve this is by going into the registry edit by clicking Start and type “regedit”.
 
 .. image: /image/regedit.png
 
-..Once in the regedit.exe, click Alt-F and type “EmsxSystem”.
+.. Once in the regedit.exe, click Alt-F and type “EmsxSystem”.
 
 .. image: /image/emsxSystem.png
 
-..Double Click EmsxSystem
+.. Double Click EmsxSystem
 
 .. image: /image/editString.png
 
-..Type the word Production in the Value Data column and Click OK.
+.. Type the word Production in the Value Data column and Click OK.
 
