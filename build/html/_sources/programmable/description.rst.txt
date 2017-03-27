@@ -3,10 +3,15 @@ Description of Request/Response Service
 #######################################
 
 
+The request/response service can be used for both buy-side EMSX<GO> workflows or sell-side EMSX to EMSX (E2E) workflows.
+
+The buy-side EMSX request/response supports all the basic buy-side execution management control via request/response service where the sell-side EMSX request/response supports additional sell-side workflow for acknowledging or rejecting an order coming in via E2E workflow.
+
+
 Buy-Side Request/Response Service
 =================================
 
-EMSX API supports the following Request/Response services.
+EMSX API supports the following buy-side Request/Response services:-
 
 *Please note, the descriptions to the legacy request/response services are omitted from the description section.*
 
@@ -43,16 +48,12 @@ Request Name             			    Action
 
 	``RouteManuallyEx`` is generally used for phone orders to manually enter back the execution to EMSX<GO>.
 
-	``SellSideAck`` is used for EMSX to EMSX or E2E settings where sell-side EMSX<GO> is used to receive order from buy-side EMSX.
-
-	``SellSideReject`` is used for EMSX to EMSX or E2E settings where sell-side EMSX<GO> is used to receive order from buy-side EMSX.
-
 
 Sell-Side Request/Response Service
 ==================================
 
 
-EMSX API supports the following Request/Response services:-
+EMSX API supports the following sell-side Request/Response services:-
 
 *Please note, the descriptions to the legacy request/response services are omitted from the description section.*
 
@@ -64,6 +65,13 @@ Request Name             			Action
 ``SellSideAck`` 					Request to acknowlede an order on EMSX to EMSX setting.
 ``SellSideReject`` 					Request to reject an order on EMSX to EMSX setting.
 =================================== =================================================================
+
+
+.. note::
+
+	``SellSideAck`` is used for EMSX to EMSX or E2E settings where sell-side EMSX<GO> is used to receive order from buy-side EMSX.
+
+	``SellSideReject`` is used for EMSX to EMSX or E2E settings where sell-side EMSX<GO> is used to receive order from buy-side EMSX.
 
 
 CFD & Odd Lot Flag

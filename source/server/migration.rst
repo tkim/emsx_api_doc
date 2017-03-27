@@ -2,13 +2,13 @@ Creating User Identities
 ========================
 
 
-The steps involved in connecting to the EMSX API on the desktop are as follows.
+The steps involved in connecting to the EMSX API on the desktop are as follows:-
 
 
 .. image:: /image/userIdentity.png
 
 
-In the server environment, the user identities must be created and cached prior to the making requests.  Therefore, the process would look as follows.
+In the server environment, the user identities must be created and cached prior to the making requests.  Therefore, the process would look as follows:-
 
 
 .. image:: /image/userIdentity2.png
@@ -28,7 +28,7 @@ The first new step is to open the authentication service. This is done in the sa
 		session.openServiceAsync(d_authsvc);
 
 
-Once the service is opened, we need to create and send an authorization request. To create an identity for a specific user, you will need the AuthID for the user. This is the name the user is known by in the EMRS system for your server. The values for these names will have been agreed with you as part of the implementation of the server, or subsequently when adding a new user. Also, an IP address is required. The only requirement for this IP address is that it is unique amongst all the identities generated for a session. You can create and send the request as follows.
+Once the service is opened, we need to create and send an authorization request. To create an identity for a specific user, you will need the AuthID for the user. This is the name the user is known by in the EMRS system for your server. The values for these names will have been agreed with you as part of the implementation of the server, or subsequently when adding a new user. Also, an IP address is required. The only requirement for this IP address is that it is unique amongst all the identities generated for a session. You can create and send the request as follows:-
 
 
 .. code-block:: none

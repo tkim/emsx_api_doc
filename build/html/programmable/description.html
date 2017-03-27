@@ -156,9 +156,11 @@
             
   <div class="section" id="description-of-request-response-service">
 <h1>Description of Request/Response Service<a class="headerlink" href="#description-of-request-response-service" title="Permalink to this headline">¶</a></h1>
+<p>The request/response service can be used for both buy-side EMSX&lt;GO&gt; workflows or sell-side EMSX to EMSX (E2E) workflows.</p>
+<p>The buy-side EMSX request/response supports all the basic buy-side execution management control via request/response service where the sell-side EMSX request/response supports additional sell-side workflow for acknowledging or rejecting an order coming in via E2E workflow.</p>
 <div class="section" id="buy-side-request-response-service">
 <h2>Buy-Side Request/Response Service<a class="headerlink" href="#buy-side-request-response-service" title="Permalink to this headline">¶</a></h2>
-<p>EMSX API supports the following Request/Response services.</p>
+<p>EMSX API supports the following buy-side Request/Response services:-</p>
 <p><em>Please note, the descriptions to the legacy request/response services are omitted from the description section.</em></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -229,14 +231,12 @@
 <p><code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code> can be used for both strategy and non-strategy broker destinations.</p>
 <p><code class="docutils literal"><span class="pre">CreateOrderAndRouteManually</span></code> is generally used for phone orders to brokers, where the actual placement is outside of EMSX&lt;GO&gt;.</p>
 <p><code class="docutils literal"><span class="pre">RouteEx</span></code> can be used for both strategy and non-strategy broker destinations.</p>
-<p><code class="docutils literal"><span class="pre">RouteManuallyEx</span></code> is generally used for phone orders to manually enter back the execution to EMSX&lt;GO&gt;.</p>
-<p><code class="docutils literal"><span class="pre">SellSideAck</span></code> is used for EMSX to EMSX or E2E settings where sell-side EMSX&lt;GO&gt; is used to receive order from buy-side EMSX.</p>
-<p class="last"><code class="docutils literal"><span class="pre">SellSideReject</span></code> is used for EMSX to EMSX or E2E settings where sell-side EMSX&lt;GO&gt; is used to receive order from buy-side EMSX.</p>
+<p class="last"><code class="docutils literal"><span class="pre">RouteManuallyEx</span></code> is generally used for phone orders to manually enter back the execution to EMSX&lt;GO&gt;.</p>
 </div>
 </div>
 <div class="section" id="sell-side-request-response-service">
 <h2>Sell-Side Request/Response Service<a class="headerlink" href="#sell-side-request-response-service" title="Permalink to this headline">¶</a></h2>
-<p>EMSX API supports the following Request/Response services:-</p>
+<p>EMSX API supports the following sell-side Request/Response services:-</p>
 <p><em>Please note, the descriptions to the legacy request/response services are omitted from the description section.</em></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -260,6 +260,11 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">SellSideAck</span></code> is used for EMSX to EMSX or E2E settings where sell-side EMSX&lt;GO&gt; is used to receive order from buy-side EMSX.</p>
+<p class="last"><code class="docutils literal"><span class="pre">SellSideReject</span></code> is used for EMSX to EMSX or E2E settings where sell-side EMSX&lt;GO&gt; is used to receive order from buy-side EMSX.</p>
+</div>
 </div>
 <div class="section" id="cfd-odd-lot-flag">
 <h2>CFD &amp; Odd Lot Flag<a class="headerlink" href="#cfd-odd-lot-flag" title="Permalink to this headline">¶</a></h2>
