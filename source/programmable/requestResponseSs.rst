@@ -27,24 +27,6 @@ submission of various requests.
 The sell-side Request/Response service is specifically used for EMSX to EMSX (E2E) setting where the sell-side EMSX is used to capture order flow from other buy-side EMSX users.
 
 
-Description of Request/Response Service
-=======================================
-
-
-EMSX API supports the following Request/Response services:-
-
-*Please note, the descriptions to the legacy request/response services are omitted from the description section.*
-
-
-=================================== =================================================================
-Request Name             			Action
-=================================== =================================================================
-``ManualFill``						Request to manually fill a child route.
-``SellSideAck`` 					Request to acknowlede an order on EMSX to EMSX setting.
-``SellSideReject`` 					Request to reject an order on EMSX to EMSX setting.
-=================================== =================================================================
-
-
 Manaul Fill Request
 ===================
 

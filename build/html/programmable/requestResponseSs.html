@@ -91,9 +91,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable EMSX API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="session.html">Session Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html">Description of Buy-Side Request/Response Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponse.html">Buy-Side Request/Response Service</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Sell-Side Request/Response Service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#description-of-request-response-service">Description of Request/Response Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#manaul-fill-request">Manaul Fill Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sell-side-ack-request">Sell Side Ack Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sell-side-reject-request">Sell Side Reject Request</a></li>
@@ -103,7 +103,6 @@
 <li class="toctree-l2"><a class="reference internal" href="emsxHistory.html">EMSX History Request</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../excel/index.html">Excel COM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
@@ -172,33 +171,6 @@ requires the following steps:</p>
 <p>These are initialized in the constructor as below and are then available for the life of the application for
 submission of various requests.</p>
 <p>The sell-side Request/Response service is specifically used for EMSX to EMSX (E2E) setting where the sell-side EMSX is used to capture order flow from other buy-side EMSX users.</p>
-<div class="section" id="description-of-request-response-service">
-<h2>Description of Request/Response Service<a class="headerlink" href="#description-of-request-response-service" title="Permalink to this headline">¶</a></h2>
-<p>EMSX API supports the following Request/Response services:-</p>
-<p><em>Please note, the descriptions to the legacy request/response services are omitted from the description section.</em></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="32%" />
-<col width="68%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Request Name</th>
-<th class="head">Action</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ManualFill</span></code></td>
-<td>Request to manually fill a child route.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">SellSideAck</span></code></td>
-<td>Request to acknowlede an order on EMSX to EMSX setting.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">SellSideReject</span></code></td>
-<td>Request to reject an order on EMSX to EMSX setting.</td>
-</tr>
-</tbody>
-</table>
-</div>
 <div class="section" id="manaul-fill-request">
 <h2>Manaul Fill Request<a class="headerlink" href="#manaul-fill-request" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">ManualFill</span></code> request can be used on the sell-side EMSX&lt;GO&gt; settings to create fills and notifies EMSX&lt;GO&gt;.</p>

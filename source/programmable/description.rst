@@ -1,6 +1,6 @@
-#######################################
-Description of Request/Response Service
-#######################################
+################################################
+Description of Buy-Side Request/Response Service
+################################################
 
 
 EMSX API supports the following Request/Response services.
@@ -43,6 +43,24 @@ Request Name             			    Action
 	``SellSideAck`` is used for EMSX to EMSX or E2E settings where sell-side EMSX<GO> is used to receive order from buy-side EMSX.
 
 	``SellSideReject`` is used for EMSX to EMSX or E2E settings where sell-side EMSX<GO> is used to receive order from buy-side EMSX.
+
+
+Description of Sell-Side Request/Response Service
+=================================================
+
+
+EMSX API supports the following Request/Response services:-
+
+*Please note, the descriptions to the legacy request/response services are omitted from the description section.*
+
+
+=================================== =================================================================
+Request Name             			Action
+=================================== =================================================================
+``ManualFill``						Request to manually fill a child route.
+``SellSideAck`` 					Request to acknowlede an order on EMSX to EMSX setting.
+``SellSideReject`` 					Request to reject an order on EMSX to EMSX setting.
+=================================== =================================================================
 
 
 CFD & Odd Lot Flag
