@@ -113,7 +113,7 @@ Element								Description
 The ``//blp/emsx.history`` and ``//blp/emsx.history.uat`` are set in date time objects unlike the ``//blp/emapisvc`` or ``//blp/emapisvc_beta.``
 
 
-Custome Notes & Free Text Fields
+Custom Notes & Free Text Fields
 ================================
 
 
