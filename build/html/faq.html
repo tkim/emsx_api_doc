@@ -174,7 +174,7 @@ PROD system on the terminal, type DGRT OFF&lt;GO&gt;</p>
 </li>
 <li><dl class="first docutils">
 <dt>How do I match my requests to responses?</dt>
-<dd><p class="first last">This is done in the same was as for other Bloomberg API services, with the use of CorrelationID.</p>
+<dd><p class="first last">This is done in the same was as for other Bloomberg API services, with the use of <code class="docutils literal"><span class="pre">CorrelationID</span></code>.</p>
 </dd>
 </dl>
 </li>
@@ -204,7 +204,7 @@ messages when using our programmable interface.</p>
 <li><dl class="first docutils">
 <dt>Why am I still seeing orders that I deleted or have completed?</dt>
 <dd><p class="first last">Orders that were manually deleted, or completed in a previous session, will continue to transmit on the order.
-Check the EMSX_STATUS of the returned message to confirm if this is a live order. These orders will cease to
+Check the <code class="docutils literal"><span class="pre">EMSX_STATUS</span></code> of the returned message to confirm if this is a live order. These orders will cease to
 report between 24 and 48 hours after they are deleted depending on the nature of the order.</p>
 </dd>
 </dl>
@@ -254,7 +254,7 @@ be sent as part of the basket.</p>
 <dt>How long do DAY orders and complete orders stay on the blotter and in the API?** (Status = 8)</dt>
 <dd><p class="first">In the old logic, the DAY orders stayed 4 hours after the exchange closed. The new logic is to extend this to 8
 hours after the exchange closed. Expired orders are deleted after 2 days. For expired orders, when user gets
-INIT_PAINT, the will get updates for those expired orders with status=8.</p>
+<code class="docutils literal"><span class="pre">INIT_PAINT</span></code>, the will get updates for those expired orders with status=8.</p>
 <p class="last">For partially filled orders delete will modify amount down to the filled amount and that order will not disappear
 and will be treated as a filled order. The Excel Add-In currently removes anything in the blotter with Status=8.</p>
 </dd>

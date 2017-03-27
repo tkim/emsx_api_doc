@@ -23,7 +23,7 @@ General FAQ
 	Two separate services are provided. These are ``//blp/emapisvc`` (PROD) and ``//blp/emapisvc_beta`` (TEST)
 
 * How do I match my requests to responses?
-	This is done in the same was as for other Bloomberg API services, with the use of CorrelationID.
+	This is done in the same was as for other Bloomberg API services, with the use of ``CorrelationID``.
 
 * What broker or simulator do I use?
 	When first enabled for BETA access, client will generally be enabled for BMTB or other internal Bloomberg 
@@ -41,7 +41,7 @@ General FAQ
 
 * Why am I still seeing orders that I deleted or have completed?
 	Orders that were manually deleted, or completed in a previous session, will continue to transmit on the order. 
-	Check the EMSX_STATUS of the returned message to confirm if this is a live order. These orders will cease to 
+	Check the ``EMSX_STATUS`` of the returned message to confirm if this is a live order. These orders will cease to 
 	report between 24 and 48 hours after they are deleted depending on the nature of the order.
 
 * Why is the value of a field returned as blank / zero?
@@ -80,7 +80,7 @@ General FAQ
 * How long do DAY orders and complete orders stay on the blotter and in the API?** (Status = 8)
 	In the old logic, the DAY orders stayed 4 hours after the exchange closed. The new logic is to extend this to 8 
 	hours after the exchange closed. Expired orders are deleted after 2 days. For expired orders, when user gets 
-	INIT_PAINT, the will get updates for those expired orders with status=8.
+	``INIT_PAINT``, the will get updates for those expired orders with status=8.
 
 	For partially filled orders delete will modify amount down to the filled amount and that order will not disappear 
 	and will be treated as a filled order. The Excel Add-In currently removes anything in the blotter with Status=8.
