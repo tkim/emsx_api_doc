@@ -2,11 +2,13 @@
 Introduction
 ############
 
+
 The EMSX API is available as programmable and with Excel as both COM and Add-In.  The EMSX API provides Bloomberg users with the ability to manage and automate Equities, Futures and Options trading using Microsoft Excel/VBA or creating a custom application in C++, C# (.NET), Python and Java. You can also use Matlab using Trading Toolbox and R.
 
 It also allows users to access the full 2000+ global execution venues available through EMSX. 
 
 The EMSX API requires separate authorization by the receiving broker on top of the Bloomberg Authorization.  
+
 
 .. note::
 
@@ -29,23 +31,21 @@ For general programming support, please open an account through the following UR
 https://service.bloomberg.com
 
 
-.. warning:: 
+Microsoft Excel (COM)
+=====================
 
-		Copyright 2017. Bloomberg Finance L.P.
 
-		Permission is hereby granted, free of charge, to any person obtaining a copy
-		of this software and associated documentation files (the "Software"), to
-		deal in the Software without restriction, including without limitation the
-		rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-		sell copies of the Software, and to permit persons to whom the Software is
-		furnished to do so, subject to the following conditions:  The above
-		copyright notice and this permission notice shall be included in all copies
-		or substantial portions of the Software.
+The EMSX API for Excel is accessible using Microsoft Component Object Model (COM) or as part of Bloomberg ribbon within Bloomberg Excel Add-In.  
 
-		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-		FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-		IN THE SOFTWARE.
+The Microsoft Component Object Model (COM) is a platform-independent, distributed, object-oriented system for creating binary software component that can interact with Bloomberg EMSX API services from your desktop where Bloomberg terminal is installed.
+
+
+:ref: https://msdn.microsoft.com/en-us/library/windows/desktop/ms694363(v=vs.85).aspx
+
+
+.. important::
+
+			EMSX API Code samples can be found `here`_.
+
+			.. _here: https://github.com/tkim/emsx_api_repository
+
