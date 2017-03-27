@@ -8,7 +8,6 @@ This document is for developers who will use the Bloomberg EMSX API to develop c
 
 The Bloomberg EMSX API is available as desktop API and server-side API. The desktop API requires full Bloomberg terminal to use.
 
-This information could include technical inaccuracies or typographical errors. Changes are periodically made to the information herein. The sample codes are to demonstrate a particular function using EMSX API and should not be used or replicated in the production environment.
 
 .. toctree::
    :maxdepth: 3
@@ -17,7 +16,6 @@ This information could include technical inaccuracies or typographical errors. C
    introduction
    server/index
    programmable/index
-   excel/index
    faq
    glossary
 

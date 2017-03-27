@@ -88,7 +88,6 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server/index.html">Server Side EMSX API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programmable/index.html">Programmable EMSX API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="excel/index.html">Excel COM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
@@ -139,14 +138,13 @@
 <h1>EMSX API Programmers Guide<a class="headerlink" href="#emsx-api-programmers-guide" title="Permalink to this headline">¶</a></h1>
 <p>This document is for developers who will use the Bloomberg EMSX API to develop custom applications.</p>
 <p>The Bloomberg EMSX API is available as desktop API and server-side API. The desktop API requires full Bloomberg terminal to use.</p>
-<p>This information could include technical inaccuracies or typographical errors. Changes are periodically made to the information herein. The sample codes are to demonstrate a particular function using EMSX API and should not be used or replicated in the production environment.</p>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server/index.html">Server Side EMSX API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="server/migration.html">Using User Identities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="server/migration.html#creating-user-identities">Creating User Identities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server/migration.html">Creating User Identities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server/migration.html#using-user-identities">Using User Identities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="server/migration.html#server-side-request-response">Server Side Request/Response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="server/serverApiInstallation.html">How to install serverapi.exe</a></li>
 </ul>
@@ -156,11 +154,14 @@
 <li class="toctree-l3"><a class="reference internal" href="programmable/session.html#emsx-api-correlation-id">EMSX API &amp; Correlation ID</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="programmable/description.html">Description of Request/Response Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programmable/description.html#cfd-odd-lot-flag">CFD &amp; Odd Lot Flag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programmable/description.html#date-time-format">Date &amp; Time Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programmable/description.html#custome-notes-free-text-fields">Custome Notes &amp; Free Text Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programmable/description.html#microsoft-excel-com">Microsoft Excel (COM)</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="programmable/requestResponse.html">Buy-Side Request/Response Service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="programmable/requestResponse.html#description-of-request-response-service">Description of Request/Response Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programmable/requestResponse.html#cfd-odd-lot-flag">CFD &amp; Odd Lot Flag</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programmable/requestResponse.html#date-time-format">Date &amp; Time Format</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programmable/requestResponse.html#custome-notes-free-text-fields">Custome Notes &amp; Free Text Fields</a></li>
 <li class="toctree-l3"><a class="reference internal" href="programmable/requestResponse.html#assign-trader-request">Assign Trader Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="programmable/requestResponse.html#cancel-route-extended-request">Cancel Route Extended Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="programmable/requestResponse.html#create-order-request">Create Order Request</a></li>
@@ -190,43 +191,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="programmable/emsxSubscription.html">EMSX Subscription</a></li>
 <li class="toctree-l2"><a class="reference internal" href="programmable/emsxHistory.html">EMSX History Request</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="excel/index.html">Excel COM</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="excel/requestResponseCom.html">Buy-Side Request/Response Service (COM)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#description-of-request-response-service">Description of Request/Response Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#cfd-odd-lot-flag">CFD &amp; Odd Lot Flag</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#date-time-format">Date &amp; Time Format</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#custome-notes-free-text-fields">Custome Notes &amp; Free Text Fields</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#assign-trader-request-com">Assign Trader Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#cancel-route-extended-request-com">Cancel Route Extended Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#create-order-request">Create Order Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#create-order-and-route-extended-request-com">Create Order And Route Extended Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#create-order-and-route-manually-extended-request-com">Create Order And Route Manually Extended Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#delete-order-request-com">Delete Order Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#get-all-field-meta-data-request-com">Get All Field Meta Data Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#get-broker-strategies-with-asset-class-request-com">Get Broker Strategies With Asset Class Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#get-broker-strategy-info-with-asset-class-request-com">Get Broker Strategy Info With Asset Class Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#get-brokers-with-asset-class-request-com">Get Brokers With Asset Class Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#get-field-meta-data-request-com">Get Field Meta Data Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#get-teams-request-com">Get Teams Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#group-route-extended-request-com">Group Route Extended Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#manaul-fill-request">Manaul Fill Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#modify-order-request-com">Modify Order Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#modify-route-extended-request-com">Modify Route Extended Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#route-extended-request-com">Route Extended Request (COM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseCom.html#route-manually-request-com">Route Manually Request (COM)</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="excel/requestResponseSsCOM.html">Sell-Side Request/Response Service (COM)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseSsCOM.html#description-of-request-response-service">Description of Request/Response Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseSsCOM.html#manaul-fill-request">Manaul Fill Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseSsCOM.html#sell-side-ack-request">Sell Side Ack Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="excel/requestResponseSsCOM.html#sell-side-reject-request">Sell Side Reject Request</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="excel/emsxSubscriptionCom.html">EMSX Subscription (COM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="excel/emsxHistoryCom.html">EMSX History Service (COM)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a><ul>

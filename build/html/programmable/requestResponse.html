@@ -36,7 +36,7 @@
     <link rel="top" title="EMSX API Programmers Guide 0.0.5 documentation" href="../index.html"/>
         <link rel="up" title="Programmable EMSX API" href="index.html"/>
         <link rel="next" title="Sell-Side Request/Response Service" href="requestResponseSs.html"/>
-        <link rel="prev" title="Session Object" href="session.html"/> 
+        <link rel="prev" title="Description of Request/Response Service" href="description.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -91,11 +91,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable EMSX API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="session.html">Session Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html">Description of Request/Response Service</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Buy-Side Request/Response Service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#description-of-request-response-service">Description of Request/Response Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cfd-odd-lot-flag">CFD &amp; Odd Lot Flag</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#date-time-format">Date &amp; Time Format</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#custome-notes-free-text-fields">Custome Notes &amp; Free Text Fields</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#assign-trader-request">Assign Trader Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cancel-route-extended-request">Cancel Route Extended Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-order-request">Create Order Request</a></li>
@@ -121,7 +118,6 @@
 <li class="toctree-l2"><a class="reference internal" href="emsxHistory.html">EMSX History Request</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../excel/index.html">Excel COM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
@@ -188,225 +184,6 @@ following steps:</p>
 </ol>
 </div></blockquote>
 <p>These are initialized in the constructor as below and are then available for the life of the application for submission of various requests.</p>
-<div class="section" id="description-of-request-response-service">
-<h2>Description of Request/Response Service<a class="headerlink" href="#description-of-request-response-service" title="Permalink to this headline">¶</a></h2>
-<p>EMSX API supports the following Request/Response services.</p>
-<p><em>Please note, the descriptions to the legacy request/response services are omitted from the description section.</em></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="31%" />
-<col width="69%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Request Name</th>
-<th class="head">Action</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">AssignTrader</span></code></td>
-<td>Assign an order to another UUID.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CancelRouteEx</span></code></td>
-<td>Cancel outstanding routes (placements).</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">CreateOrder</span></code></td>
-<td>Create an order or stage an order into EMSX&lt;GO&gt;.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code></td>
-<td>Create a new order and route in a single request.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">CreateOrderAndRouteManually</span></code></td>
-<td>Create the order and notify EMSX this is routed.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">DeleteOrder</span></code></td>
-<td>Delete an existing order in EMSX&lt;GO&gt;.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">GetAllFieldMetaData</span></code></td>
-<td>Get all field meta data in a response message.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">GetBrokerStrategiesWithAssetClass</span></code></td>
-<td>Get all broker strategy information and asset class data.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code></td>
-<td>Get all broker strategy info and asset class data.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">GetBrokerWithAssetClass</span></code></td>
-<td>Get all broker data with asset class in a response message.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">GetFieldMetaData</span></code></td>
-<td>Get field meta data in a reponse message.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">GetTeams</span></code></td>
-<td>Get team data in a response message.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">GroupRouteEx</span></code></td>
-<td>Submit the entire list as a single route to a basket algorithm.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ModifyOrder</span></code></td>
-<td>Modify parent order.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ModifyRouteEx</span></code></td>
-<td>Modify child route.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RouteEx</span></code></td>
-<td>Route existing order.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RouteManuallyEx</span></code></td>
-<td>Route manually and notify EMSX that it is routed.</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p><code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code> can be used for both strategy and non-strategy broker destinations.</p>
-<p><code class="docutils literal"><span class="pre">CreateOrderAndRouteManually</span></code> is generally used for phone orders to brokers, where the actual placement is outside of EMSX&lt;GO&gt;.</p>
-<p><code class="docutils literal"><span class="pre">RouteEx</span></code> can be used for both strategy and non-strategy broker destinations.</p>
-<p><code class="docutils literal"><span class="pre">RouteManuallyEx</span></code> is generally used for phone orders to manually enter back the execution to EMSX&lt;GO&gt;.</p>
-<p><code class="docutils literal"><span class="pre">SellSideAck</span></code> is used for EMSX to EMSX or E2E settings where sell-side EMSX&lt;GO&gt; is used to receive order from buy-side EMSX.</p>
-<p class="last"><code class="docutils literal"><span class="pre">SellSideReject</span></code> is used for EMSX to EMSX or E2E settings where sell-side EMSX&lt;GO&gt; is used to receive order from buy-side EMSX.</p>
-</div>
-</div>
-<div class="section" id="cfd-odd-lot-flag">
-<h2>CFD &amp; Odd Lot Flag<a class="headerlink" href="#cfd-odd-lot-flag" title="Permalink to this headline">¶</a></h2>
-<p>This is a feature that indicates CFD orders or to flag an odd lot in EMSX API.</p>
-<p><code class="docutils literal"><span class="pre">EMSX_CFD_FLAG</span></code>  is used to flag a particular order as CFD</p>
-<blockquote>
-<div><ul class="simple">
-<li>0 = not flagged</li>
-<li>1 = flagged</li>
-</ul>
-</div></blockquote>
-<p><code class="docutils literal"><span class="pre">EMSX_ODD_LOT_FLAG</span></code>  is an odd lot is a quantity of stock that is less than 100 shares. A deal involving 100 shares or more is considered a round-lot transactions.</p>
-<blockquote>
-<div><ul class="simple">
-<li>0 = not an odd lot / it won&#8217;t fill odd lots</li>
-<li>1 = odd lot</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="date-time-format">
-<h2>Date &amp; Time Format<a class="headerlink" href="#date-time-format" title="Permalink to this headline">¶</a></h2>
-<p>All date format except <code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME</span></code> are in yyyymmdd format. All time format except <code class="docutils literal"><span class="pre">EMSX_STRATEGY_END_TIME</span></code> and <code class="docutils literal"><span class="pre">EMSX_STRATEGY_START_TIME</span></code> are in number of seconds from midnight.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="35%" />
-<col width="65%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Element</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_DATE</span></code></td>
-<td>yyyymmdd</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_GTD_DATE</span></code></td>
-<td>yyyymmdd</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_DATE</span></code></td>
-<td>yyyymmdd</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_QUEUED_DATE</span></code></td>
-<td>yyyymmdd</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_DATE</span></code></td>
-<td>yyyymmdd</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_SETTLE_DATE</span></code></td>
-<td>yyyymmdd</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME</span></code></td>
-<td>hhmm</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_END_TIME</span></code></td>
-<td>hhmmss</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_START_TIME</span></code></td>
-<td>hhmmss</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_TIME</span></code></td>
-<td>Number of seconds from midnight</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_TIME</span></code></td>
-<td>Number of seconds from midnight</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME</span></code></td>
-<td>Number of seconds from midnight</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP</span></code></td>
-<td>Number of seconds from midnight</td>
-</tr>
-</tbody>
-</table>
-<p>The <code class="docutils literal"><span class="pre">//blp/emsx.history</span></code> and <code class="docutils literal"><span class="pre">//blp/emsx.history.uat</span></code> are set in date time objects unlike the <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> or <code class="docutils literal"><span class="pre">//blp/emapisvc_beta.</span></code></p>
-</div>
-<div class="section" id="custome-notes-free-text-fields">
-<h2>Custome Notes &amp; Free Text Fields<a class="headerlink" href="#custome-notes-free-text-fields" title="Permalink to this headline">¶</a></h2>
-<p>The EMSX API provides several different EMSX options for entering and using free text fields. Some of these free text fields can be used for an internal only workflow where the others can be used to communicate with the various execution counterparts.</p>
-<p>The following elements are available on order and/or route subscription services. These elements will be passed to the external trading counterparts.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="31%" />
-<col width="69%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Element</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ACCOUNT</span></code></td>
-<td>30-character free text field (29+1 check digit), FIX Tag 1</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_NOTE</span></code></td>
-<td>44-character free text field (43+1 check digit), FIX Tag 58</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ORDER_REF_ID</span></code></td>
-<td>16-character field (15+1 check digit) <em>order subscription only</em></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_REF_ID</span></code></td>
-<td>16-character field (15+1 check digit) <em>route subscription only</em></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TRADER_NOTES</span></code></td>
-<td>44-character free text field (43+1 check digit), <strong>internal only</strong></td>
-</tr>
-</tbody>
-</table>
-<p>The following elements are available only for internal fields unless custom mapped to a custom FIX tag to a particular trading counterparty.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The following <code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE*</span></code> elements are not available on either order or route subscription service.</p>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="35%" />
-<col width="65%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Element</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE1</span></code></td>
-<td>80-character free text field (79+1 check digit)</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE2</span></code></td>
-<td>80-character free text field (79+1 check digit)</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE3</span></code></td>
-<td>80-character free text field (79+1 check digit)</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE4</span></code></td>
-<td>80-character free text field (79+1 check digit)</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE5</span></code></td>
-<td>80-character free text field (79+1 check digit)</td>
-</tr>
-</tbody>
-</table>
-</div>
 <div class="section" id="assign-trader-request">
 <h2>Assign Trader Request<a class="headerlink" href="#assign-trader-request" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">AssignTrader</span></code> request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.</p>
@@ -414,15 +191,18 @@ following steps:</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="54%" />
-<col width="46%" />
+<col width="36%" />
+<col width="31%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/AssignTrader.cpp">Assign Trader cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/AssignTrader.cs">Assign Trader cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/AssignTrader.cls">Assign Trader vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/AssignTrader.java">Assign Trader java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/AssignTrader.py">Assign Trader py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -467,15 +247,18 @@ of the route.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="53%" />
-<col width="48%" />
+<col width="36%" />
+<col width="32%" />
+<col width="32%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CancelRoute.cpp">Cancel Route cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CancelRoute.cs">Cancel Route cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/AssignTrader.cls">Cancel Route vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CancelRoute.java">Cancel Route java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CancelRoute.py">Cancel Route py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -522,15 +305,18 @@ of the route.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="53%" />
-<col width="48%" />
+<col width="36%" />
+<col width="32%" />
+<col width="32%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateOrder.cpp">Create Order cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateOrder.cs">Create Order cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/CreateOrder.cls">Create Order vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrder.java">Create Order java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrder.py">Create Order py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -616,15 +402,18 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="51%" />
-<col width="49%" />
+<col width="34%" />
+<col width="32%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateOrderAndRouteEx.cpp">Create Order And Route Extended cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateOrderAndRouteEx.cs">Create Order And Route Extended cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/CreateOrderAndRouteEx.cls">Create Order And Route Extended vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrderAndRouteEx.java">Create Order And Route Extended java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrderAndRouteEx.py">Create Order And Route Extended py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -664,15 +453,18 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="51%" />
-<col width="49%" />
+<col width="34%" />
+<col width="32%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateOrderAndRouteManually.cpp">Create Order And Route Manually cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateOrderAndRouteManually.cs">Create Order And Route Manually cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/CreateOrderAndRouteManually.cls">Create Order And Route Manually vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrderAndRouteManually.java">Create Order And Route Manually java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrderAndRouteManually.py">Create Order And Route Manually py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -743,15 +535,18 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="51%" />
-<col width="49%" />
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/DeleteOrder.cpp">Delete Order cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/DeleteOrder.cs">Delete Order cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/DeleteOrder.cls">Delete Order vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/DeleteOrder.java">Delete Order java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/DeleteOrder.py">Delete Order py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -794,15 +589,18 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="52%" />
-<col width="48%" />
+<col width="34%" />
+<col width="32%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetAllFieldMetaData.cpp">Get All Field Meta Data cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetAllFieldMetaData.cs">Get All Field Meta Data cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/GetAllFieldMetaData.cls">Get All Field Meta Data vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetAllFieldMetaData.java">Get All Field Meta Data java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetAllFieldMetaData.py">Get All Field Meta Data py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -884,15 +682,18 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="51%" />
-<col width="49%" />
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetBrokerStrategiesWithAssetClass.cpp">Get Broker Strategies With Asset Class cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetBrokerStrategiesWithAssetClass.cs">Get Broker Strategies With Asset Class cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/GetBrokerStrategiesWithAssetClass.cls">Get Broker Strategies With Asset Class vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetBrokerStrategiesWithAssetClass.java">Get Broker Strategies With Asset Class java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokerStrategiesWithAssetClass.py">Get Broker Strategies With Asset Class py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -934,15 +735,18 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="51%" />
-<col width="49%" />
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetBrokerStrategyInfoWithAssetClass.cpp">Get Broker Strategy Info With Asset Class cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetBrokerStrategyInfoWithAssetClass.cs">Get Broker Strategy Info With Asset Class cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/GetBrokerStrategyInfoWithAssetClass.cls">Get Broker Strategy Info With Asset Class vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetBrokerStrategyInfoWithAssetClass.java">Get Broker Strategy Info With Asset Class java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokerStrategyInfoWithAssetClass.py">Get Broker Strategy Info With Asset Class py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -985,15 +789,18 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col width="34%" />
+<col width="34%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetBrokersWithAssetClass.cpp">Get Brokers With Asset Class cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetBrokersWithAssetClass.cs">Get Brokers With Asset Class cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/GetBrokersWithAssetClass.cls">Get Brokers With Asset Class vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetBrokersWithAssetClass.java">Get Brokers With Asset Class java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokersWithAssetClass.py">Get Brokers With Asset Class py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -1034,15 +841,18 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="51%" />
-<col width="49%" />
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetFieldMetaData.cpp">Get Field Meta Data cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetFieldMetaData.cs">Get Field Meta Data cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/GetFieldMetaData.cls">Get Field Meta Data vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetFieldMetaData.java">Get Field Meta Data java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetFieldMetaData.py">Get Field Meta Data py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -1084,15 +894,18 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col width="31%" />
+<col width="31%" />
+<col width="37%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GetTeams.cpp">Get Teams cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetTeams.cs">Get Teams cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/GetTeams.cls">Get Teams vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetTeams.java">Get Teams java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetTeams.py">Get Teams py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -1133,15 +946,18 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="51%" />
-<col width="49%" />
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/GroupRouteEx.cpp">Group Route Extended cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GroupRouteEx.cs">Group Route Extended cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/GroupRouteEx.cls">Group Route Extended vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GroupRouteEx.java">Group Route Extended java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GroupRouteEx.py">Group Route Extended py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -1367,15 +1183,18 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="53%" />
-<col width="47%" />
+<col width="36%" />
+<col width="31%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/RouteEx.cpp">Route Extended cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/RouteEx.cs">Route Extended cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/RouteEx.cls">Route Extended vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/RouteEx.java">Route Extended java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteEx.py">Route Extended py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -1442,15 +1261,18 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="53%" />
-<col width="47%" />
+<col width="36%" />
+<col width="31%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/RouteManually.cpp">Route Manually cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/RouteManually.cs">Route Manually cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/RouteManually.cls">Route Manually vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/RouteManually.java">Route Manually java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteManually.py">Route Manually py</a></td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -1573,7 +1395,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
         <a href="requestResponseSs.html" class="btn btn-neutral float-right" title="Sell-Side Request/Response Service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="session.html" class="btn btn-neutral" title="Session Object" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="description.html" class="btn btn-neutral" title="Description of Request/Response Service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

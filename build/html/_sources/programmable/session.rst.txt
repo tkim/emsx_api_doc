@@ -16,4 +16,3 @@ EMSX API & Correlation ID
 
 The ``CorrelationID`` s are set when you send the request or submit the subscription. The ``CorrelationID`` s belong to the message.  When an event fires, which is passed to the handler, this opens up the event and iterate through the message(s). There can be more than one message per event. Each message (MessageDataType) has a ``.correlationID`` property.  The ``CorrelationID`` (CorrelationID datatype) is specified to a value and once the user submit it with the request in ``sendRequest`` call or when the user adds it to the individual subscription in the subscriptions list prior to the ``session.subscribe`` call. 
 
-

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using User Identities &mdash; EMSX API Programmers Guide 0.0.5 documentation</title>
+  <title>Creating User Identities &mdash; EMSX API Programmers Guide 0.0.5 documentation</title>
   
 
   
@@ -89,14 +89,13 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Server Side EMSX API</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using User Identities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#creating-user-identities">Creating User Identities</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating User Identities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-user-identities">Using User Identities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#server-side-request-response">Server Side Request/Response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="serverApiInstallation.html">How to install serverapi.exe</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../programmable/index.html">Programmable EMSX API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../excel/index.html">Excel COM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
@@ -131,7 +130,7 @@
       
           <li><a href="index.html">Server Side EMSX API</a> &raquo;</li>
       
-    <li>Using User Identities</li>
+    <li>Creating User Identities</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -145,25 +144,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="using-user-identities">
-<h1>Using User Identities<a class="headerlink" href="#using-user-identities" title="Permalink to this headline">¶</a></h1>
-<p>When a client application connects to EMSX via the API on DAPI, it does so by leveraging the identity of the logged in Bloomberg terminal user. This means that when a request or subscription object is received by the Bloomberg infrastructure, the target EMSX blotter can be identified.</p>
-<p>In the server environment, there is no Bloomberg terminal, and therefore no implied user can be identified.  Moreover, the server is capable of connecting to any number of EMSX user blotters, simultaneously. Therefore, the application making the call must indicate which user is the intended target. This is done through the creation and use of Identity object.</p>
-<p>An Identity object represents a specific Bloomberg UUID.  Once created, an Identity object can be cached for 24hrs, and used with every <code class="docutils literal"><span class="pre">sendRequest()</span></code> and <code class="docutils literal"><span class="pre">subscribe()</span></code> call.</p>
-<p>Identity objects are live, that is they remain connected to Bloomberg in real-time and are capable of receiving events. We recommend that an identity is recreated every 24hrs, to ensure that it picks up the latest changes to any user settings, including access to EMSX.</p>
-<p>Any number of user Identity object can be created by a server-side application. If the application uses the identities of real traders within a firm, then each trader would have an identity created to represent them in the server application. The server application would, perhaps, receive an instruction from the upstream client-side application to create an order in a trader’s blotter. The server application would select the appropriate user identity from the cache and add it to the request.</p>
-<p>Migrating the existing desktop application call to a server application simply involves changing all <code class="docutils literal"><span class="pre">sendRequest()</span></code> and <code class="docutils literal"><span class="pre">subscribe()</span></code> calls to include the appropriate identity, as follows:-</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>DAPI:
-        session.sendRequest(request, requestID);
-        session.subscribe(subscriptions);
-
-Server:
-        session.sendRequest(request, Identity, requestID);
-        session.subscribe(subscriptions, Identity);
-</pre></div>
-</div>
-</div>
-<div class="section" id="creating-user-identities">
+  <div class="section" id="creating-user-identities">
 <h1>Creating User Identities<a class="headerlink" href="#creating-user-identities" title="Permalink to this headline">¶</a></h1>
 <p>The steps involved in connecting to the EMSX API on the desktop are as follows.</p>
 <img alt="../_images/userIdentity.png" src="../_images/userIdentity.png" />
@@ -228,6 +209,24 @@ catch (Exception e)
 </div>
 <p>When we receive the successful authorization, we can continue with opening the usual EMSX service. If multiple authorization requests have been sent, for a number of different UUIDs, it is necessary to wait for all the responses before being able to use all the identity objects.</p>
 <p>In the above code, you will see that we examine the ‘seatType’ of the identity. The seat type in this case will be either BPS or non-BPS.</p>
+</div>
+<div class="section" id="using-user-identities">
+<h1>Using User Identities<a class="headerlink" href="#using-user-identities" title="Permalink to this headline">¶</a></h1>
+<p>When a client application connects to EMSX via the API on DAPI, it does so by leveraging the identity of the logged in Bloomberg terminal user. This means that when a request or subscription object is received by the Bloomberg infrastructure, the target EMSX blotter can be identified.</p>
+<p>In the server environment, there is no Bloomberg terminal, and therefore no implied user can be identified.  Moreover, the server is capable of connecting to any number of EMSX user blotters, simultaneously. Therefore, the application making the call must indicate which user is the intended target. This is done through the creation and use of Identity object.</p>
+<p>An Identity object represents a specific Bloomberg UUID.  Once created, an Identity object can be cached for 24hrs, and used with every <code class="docutils literal"><span class="pre">sendRequest()</span></code> and <code class="docutils literal"><span class="pre">subscribe()</span></code> call.</p>
+<p>Identity objects are live, that is they remain connected to Bloomberg in real-time and are capable of receiving events. We recommend that an identity is recreated every 24hrs, to ensure that it picks up the latest changes to any user settings, including access to EMSX.</p>
+<p>Any number of user Identity object can be created by a server-side application. If the application uses the identities of real traders within a firm, then each trader would have an identity created to represent them in the server application. The server application would, perhaps, receive an instruction from the upstream client-side application to create an order in a trader’s blotter. The server application would select the appropriate user identity from the cache and add it to the request.</p>
+<p>Migrating the existing desktop application call to a server application simply involves changing all <code class="docutils literal"><span class="pre">sendRequest()</span></code> and <code class="docutils literal"><span class="pre">subscribe()</span></code> calls to include the appropriate identity, as follows:-</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>DAPI:
+        session.sendRequest(request, requestID);
+        session.subscribe(subscriptions);
+
+Server:
+        session.sendRequest(request, Identity, requestID);
+        session.subscribe(subscriptions, Identity);
+</pre></div>
+</div>
 </div>
 <div class="section" id="server-side-request-response">
 <h1>Server Side Request/Response<a class="headerlink" href="#server-side-request-response" title="Permalink to this headline">¶</a></h1>

@@ -90,11 +90,11 @@ Element             				Description
 
 Full code sample:-
 
-==================== ===================
-`EMSX History cpp`_  `EMSX History cs`_ 
--------------------- -------------------
+==================== =================== ===================
+`EMSX History cpp`_  `EMSX History cs`_  `EMSX History vba`_
+-------------------- ------------------- -------------------
 `EMSX History java`_ `EMSX History py`_
-==================== ===================
+==================== =================== ===================
 
 .. _EMSX History cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/EMSXHistory.cpp 
 
@@ -104,6 +104,7 @@ Full code sample:-
 
 .. _EMSX History py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/EMSXHistory.py
 
+.. _EMSX History vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Vba/EMSXHistory.cls
 
 .. hint:: 
 

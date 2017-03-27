@@ -1,33 +1,3 @@
-
-Using User Identities
-=====================
-
-
-When a client application connects to EMSX via the API on DAPI, it does so by leveraging the identity of the logged in Bloomberg terminal user. This means that when a request or subscription object is received by the Bloomberg infrastructure, the target EMSX blotter can be identified.
-
-In the server environment, there is no Bloomberg terminal, and therefore no implied user can be identified.  Moreover, the server is capable of connecting to any number of EMSX user blotters, simultaneously. Therefore, the application making the call must indicate which user is the intended target. This is done through the creation and use of Identity object.
-
-An Identity object represents a specific Bloomberg UUID.  Once created, an Identity object can be cached for 24hrs, and used with every ``sendRequest()`` and ``subscribe()`` call. 
-
-Identity objects are live, that is they remain connected to Bloomberg in real-time and are capable of receiving events. We recommend that an identity is recreated every 24hrs, to ensure that it picks up the latest changes to any user settings, including access to EMSX. 
-
-Any number of user Identity object can be created by a server-side application. If the application uses the identities of real traders within a firm, then each trader would have an identity created to represent them in the server application. The server application would, perhaps, receive an instruction from the upstream client-side application to create an order in a trader’s blotter. The server application would select the appropriate user identity from the cache and add it to the request.
-
-Migrating the existing desktop application call to a server application simply involves changing all ``sendRequest()`` and ``subscribe()`` calls to include the appropriate identity, as follows:-
-
-
-.. code-block:: none
-
-		DAPI:
-			session.sendRequest(request, requestID);
-			session.subscribe(subscriptions);
-
-		Server:
-			session.sendRequest(request, Identity, requestID);
-			session.subscribe(subscriptions, Identity);
-
-
-
 Creating User Identities
 ========================
 
@@ -118,6 +88,34 @@ We will receive a Response event for the Authentication service. In the example 
 When we receive the successful authorization, we can continue with opening the usual EMSX service. If multiple authorization requests have been sent, for a number of different UUIDs, it is necessary to wait for all the responses before being able to use all the identity objects.
 
 In the above code, you will see that we examine the ‘seatType’ of the identity. The seat type in this case will be either BPS or non-BPS.
+
+
+Using User Identities
+=====================
+
+
+When a client application connects to EMSX via the API on DAPI, it does so by leveraging the identity of the logged in Bloomberg terminal user. This means that when a request or subscription object is received by the Bloomberg infrastructure, the target EMSX blotter can be identified.
+
+In the server environment, there is no Bloomberg terminal, and therefore no implied user can be identified.  Moreover, the server is capable of connecting to any number of EMSX user blotters, simultaneously. Therefore, the application making the call must indicate which user is the intended target. This is done through the creation and use of Identity object.
+
+An Identity object represents a specific Bloomberg UUID.  Once created, an Identity object can be cached for 24hrs, and used with every ``sendRequest()`` and ``subscribe()`` call. 
+
+Identity objects are live, that is they remain connected to Bloomberg in real-time and are capable of receiving events. We recommend that an identity is recreated every 24hrs, to ensure that it picks up the latest changes to any user settings, including access to EMSX. 
+
+Any number of user Identity object can be created by a server-side application. If the application uses the identities of real traders within a firm, then each trader would have an identity created to represent them in the server application. The server application would, perhaps, receive an instruction from the upstream client-side application to create an order in a trader’s blotter. The server application would select the appropriate user identity from the cache and add it to the request.
+
+Migrating the existing desktop application call to a server application simply involves changing all ``sendRequest()`` and ``subscribe()`` calls to include the appropriate identity, as follows:-
+
+
+.. code-block:: none
+
+		DAPI:
+			session.sendRequest(request, requestID);
+			session.subscribe(subscriptions);
+
+		Server:
+			session.sendRequest(request, Identity, requestID);
+			session.subscribe(subscriptions, Identity);
 
 
 Server Side Request/Response

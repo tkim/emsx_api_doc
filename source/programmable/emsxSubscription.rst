@@ -18,11 +18,11 @@ Additionally, any changes to these orders and/or routes will generate events tha
 
 Full code sample:-
 
-========================== ========================
-`EMSX Subscriptions cpp`_  `EMSX Subscriptions cs`_ 	
--------------------------- ------------------------
+========================== ======================== ========================
+`EMSX Subscriptions cpp`_  `EMSX Subscriptions cs`_ `EMSX Subscription vba`_	
+-------------------------- ------------------------ ------------------------
 `EMSX Subscriptions java`_ `EMSX Subscriptions py`_
-========================== ========================
+========================== ======================== ========================
 
 .. _EMSX Subscriptions cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/EMSXSubscriptions.cpp
 
@@ -31,6 +31,8 @@ Full code sample:-
 .. _EMSX Subscriptions java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/EMSXSubscriptions.java
 
 .. _EMSX Subscriptions py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/EMSXSubscriptions.py
+
+.. _EMSX Subscription vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Vba/EMSXSubscriptions.cls
 
 
 .. hint:: 
