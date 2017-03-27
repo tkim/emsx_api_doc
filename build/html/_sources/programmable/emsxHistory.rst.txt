@@ -104,7 +104,7 @@ Full code sample:-
 
 .. _EMSX History py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/EMSXHistory.py
 
-.. _EMSX History vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Vba/EMSXHistory.cls
+.. _EMSX History vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/EMSXHistory.cls
 
 .. hint:: 
 

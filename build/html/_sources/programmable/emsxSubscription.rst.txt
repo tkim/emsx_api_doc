@@ -32,7 +32,7 @@ Full code sample:-
 
 .. _EMSX Subscriptions py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/EMSXSubscriptions.py
 
-.. _EMSX Subscription vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Vba/EMSXSubscriptions.cls
+.. _EMSX Subscription vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/EMSXSubscriptions.cls
 
 
 .. hint:: 
