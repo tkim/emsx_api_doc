@@ -94,7 +94,11 @@
 <li class="toctree-l2"><a class="reference internal" href="description.html">Description of Request/Response Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponse.html">Buy-Side Request/Response Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponseSs.html">Sell-Side Request/Response Service</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">EMSX Subscription</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EMSX Subscription</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-subscription-messages">Description of Subscription Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-event-status-message">Description of EVENT_STATUS Message</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="emsxHistory.html">EMSX History Request</a></li>
 </ul>
 </li>
@@ -156,6 +160,76 @@
 <p class="first admonition-title">Warning</p>
 <p class="last">When implementing subscription service, it&#8217;s important to write the code using two separate .subscribe() events for the order and route subscriptions.</p>
 </div>
+<div class="section" id="description-of-subscription-messages">
+<h2>Description of Subscription Messages<a class="headerlink" href="#description-of-subscription-messages" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Element Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">MSG_TYPE</span></code></td>
+<td><code class="docutils literal"><span class="pre">MSG_TYPE=E</span></code>, this indicates the message is an EMSX API message.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">MSG_SUBTYPE</span></code></td>
+<td>O = Order &amp; R = Route</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EVENT_STATUS</span></code></td>
+<td>Event status messages (e.g <code class="docutils literal"><span class="pre">INIT_PAINT</span></code>, <code class="docutils literal"><span class="pre">NEW_ORDER_ROUTE</span></code> and etc.)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">API_SEQ_NUM</span></code></td>
+<td>Unique API sequence number to help detect gaps in the events.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code></td>
+<td>Unique order number in EMSX&lt;GO&gt;.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_ID</span></code></td>
+<td>Route number, always 0 for order subscription events.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_FILL_ID</span></code></td>
+<td>Fill number on routess.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-event-status-message">
+<h2>Description of EVENT_STATUS Message<a class="headerlink" href="#description-of-event-status-message" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><code class="docutils literal"><span class="pre">EVENT_STATUS</span></code></th>
+<th class="head">Message Type / Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EVENT_STATUS</span> <span class="pre">=</span> <span class="pre">1</span></code></td>
+<td>Heartbeat Message  <code class="docutils literal"><span class="pre">HB_MESSAGE</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EVENT_STATUS</span> <span class="pre">=</span> <span class="pre">4</span></code></td>
+<td>Initial Paint Message on all subscription fields <code class="docutils literal"><span class="pre">INIT_PAINT</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EVENT_STATUS</span> <span class="pre">=</span> <span class="pre">6</span></code></td>
+<td>New Order or Route Message  on all subscription fields <code class="docutils literal"><span class="pre">NEW_ORDER_ROUTE</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EVENT_STATUS</span> <span class="pre">=</span> <span class="pre">7</span></code></td>
+<td>This field dynamically updates for existing Order and route <code class="docutils literal"><span class="pre">UPD_ORDER_ROUTE</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EVENT_STATUS</span> <span class="pre">=</span> <span class="pre">8</span></code></td>
+<td>Order and route deletion message, <code class="docutils literal"><span class="pre">DELETION_MESSAGE</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EVENT_STATUS</span> <span class="pre">=</span> <span class="pre">11</span></code></td>
+<td>The end of the initial paint message, <code class="docutils literal"><span class="pre">INIT_PAINT_END</span></code></td>
+</tr>
+</tbody>
+</table>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -351,6 +425,7 @@
 
     <span class="n">session</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">subscriptions</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 

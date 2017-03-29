@@ -16,6 +16,51 @@ Additionally, any changes to these orders and/or routes will generate events tha
     When implementing subscription service, it's important to write the code using two separate .subscribe() events for the order and route subscriptions.
 
 
+Description of Subscription Messages
+====================================
+
+
+================== =========================================================================
+Element Name        Description
+================== =========================================================================
+``MSG_TYPE``		``MSG_TYPE=E``, this indicates the message is an EMSX API message.	
+------------------ -------------------------------------------------------------------------		
+``MSG_SUBTYPE``		O = Order & R = Route
+------------------ -------------------------------------------------------------------------				
+``EVENT_STATUS``    Event status messages (e.g ``INIT_PAINT``, ``NEW_ORDER_ROUTE`` and etc.)
+------------------ -------------------------------------------------------------------------
+``API_SEQ_NUM``		Unique API sequence number to help detect gaps in the events.		 
+------------------ -------------------------------------------------------------------------
+``EMSX_SEQUENCE``	Unique order number in EMSX<GO>. 					
+------------------ -------------------------------------------------------------------------
+``EMSX_ROUTE_ID`` 	Route number, always 0 for order subscription events.			
+------------------ -------------------------------------------------------------------------
+``EMSX_FILL_ID``	Fill number on routess.
+================== =========================================================================
+
+
+Description of EVENT_STATUS Message
+===================================
+
+
+===================== ===================================================================================
+``EVENT_STATUS``   	   Message Type / Description          		  	
+===================== ===================================================================================
+``EVENT_STATUS = 1``   Heartbeat Message  ``HB_MESSAGE``
+--------------------- -----------------------------------------------------------------------------------
+``EVENT_STATUS = 4``   Initial Paint Message on all subscription fields ``INIT_PAINT`` 
+--------------------- -----------------------------------------------------------------------------------
+``EVENT_STATUS = 6``   New Order or Route Message  on all subscription fields ``NEW_ORDER_ROUTE``
+--------------------- -----------------------------------------------------------------------------------
+``EVENT_STATUS = 7``   This field dynamically updates for existing Order and route ``UPD_ORDER_ROUTE``	
+--------------------- -----------------------------------------------------------------------------------
+``EVENT_STATUS = 8``   Order and route deletion message, ``DELETION_MESSAGE`` 	
+--------------------- -----------------------------------------------------------------------------------
+``EVENT_STATUS = 11``  The end of the initial paint message, ``INIT_PAINT_END``
+===================== ===================================================================================
+	
+
+
 Full code sample:-
 
 ========================== ======================== ========================
