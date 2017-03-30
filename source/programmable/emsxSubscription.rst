@@ -39,8 +39,8 @@ Element Name        Description
 ================== =========================================================================
 
 
-Description of EVENT_STATUS Messages
-====================================
+Description of Event Status Messages
+========================================
 
 
 ===================== ===================================================================================
@@ -59,6 +59,103 @@ Description of EVENT_STATUS Messages
 ``EVENT_STATUS = 11``  The end of the initial paint message, ``INIT_PAINT_END``
 ===================== ===================================================================================
 	
+
+Description of Order Status  Messages
+========================================
+
+
+===================== ===================================================================================
+Order Status    	   Description          		  	
+===================== ===================================================================================
+``ASSIGN``  		  The route has been cancelled or rejected without fills.
+					  Applicable Child Route Status: ``CANCEL`` or ``REJECTED``.
+--------------------- -----------------------------------------------------------------------------------
+``CANCEL`` 			  The order has been cancelled, no shares filled. 
+					  Applicable Child Route Status: ``CANCEL`` or ``REJECTED``.
+--------------------- -----------------------------------------------------------------------------------
+``COMPLETED``		  All Shares have been filled and allocated in OAX for Bloomberg AIM users.
+					  Applicable Child Route Status: ``CANCEL``, ``FILLED``, or ``PARTFILLED``. 
+--------------------- -----------------------------------------------------------------------------------
+``CXL-PEND``		  The Sell-Side EMSX to EMSX (E2E), order pending cancel acknowledgement. 
+--------------------- -----------------------------------------------------------------------------------
+``EXPIRED``			  The order is expired.
+					  Applicable Child Route Status: ``CANCEL``, ``FILLED``, or ``PARTFILLED``.
+--------------------- -----------------------------------------------------------------------------------
+``FILLED`` 			  All shares have been filled, no idle quantity.
+					  Applicable Child Route Status: ``FILLED``.
+--------------------- -----------------------------------------------------------------------------------
+``MOD-PEND``		  The Sell-Side EMSX to EMSX (E2E), order modification pending acknowledgement. 
+--------------------- -----------------------------------------------------------------------------------
+``NEW``				  The order has been added/staged; no routes have been created.
+--------------------- -----------------------------------------------------------------------------------
+``ORD-PEND``		  The Sell-Side EMSX to EMSX (E2E), new order pending acknowledgement. 
+--------------------- -----------------------------------------------------------------------------------
+``PARTFILLED``		  The order has idle or unfilled shares.
+					  Applicable Child Route Status: ``CANCEL``, ``FILLED``, or ``PARTFILLED``.
+--------------------- -----------------------------------------------------------------------------------
+``SENT`` 			  The route has been sent to the broker but has not been acknowledged. 
+					  Applicable Child Route Status: ``SENT``.
+--------------------- -----------------------------------------------------------------------------------
+``WORKING``			  The route has been sent and acknowledged by the broker or the route has been
+					  partially filled or route has a cancel request pending or rejected. 
+
+					  Applicable Child Route Status: ``CXLREJ``, ``CXLREQ``, ``CXLRPRQ``, ``CXLRPRJ``, 
+					  
+					  ``HOLD``, ``PARTFILLED``, or ``WORKING``.  
+===================== ===================================================================================
+
+	
+Description of the Child Route Status Messages
+==============================================
+
+
+===================== =====================================================================================
+Route Status    	   Description          		  	
+===================== =====================================================================================
+``A-SENT``			  The route has been sent for allocation for Bloomberg STP users.
+--------------------- -------------------------------------------------------------------------------------
+``ALLOCATED`` 		  The route has been allocated for Bloomberg STP users.
+--------------------- -------------------------------------------------------------------------------------
+``BUST``			  The route fill has been busted by the execution broker.
+--------------------- -------------------------------------------------------------------------------------
+``CANCEL``  		  The order has been added and assigned to a trader.
+--------------------- -------------------------------------------------------------------------------------
+``CORRECTED`` 		  The route fill has been corrected by the execution broker.
+--------------------- -------------------------------------------------------------------------------------
+``CXLREJ`` 			  The cancel request is rejected by the execution broker. 
+--------------------- -------------------------------------------------------------------------------------
+``CXLREP``			  The cancel replace request is accepted by the execution broker.
+--------------------- -------------------------------------------------------------------------------------
+``CXLREQ`` 			  The cancel request is sent and is pending with the execution broker.
+--------------------- -------------------------------------------------------------------------------------
+``CXLRPRJ`` 		  The cancel replace request is rejected by the execution broker.
+--------------------- -------------------------------------------------------------------------------------
+``CXLRPRQ``			  The cancel replace request is sent and is pending with the execution broker.
+--------------------- -------------------------------------------------------------------------------------
+``DONE`` 			  The route has been marked done for the day by the execution broker. 
+--------------------- -------------------------------------------------------------------------------------
+``FILLED`` 			  The route has been completely filled.
+--------------------- -------------------------------------------------------------------------------------
+``HOLD`` 			  The shared are committed to a dark pool. 
+--------------------- -------------------------------------------------------------------------------------
+``OA-SENT`` 		  The route has been sent for allocation in OAX for Bloomberg AIM users
+--------------------- -------------------------------------------------------------------------------------
+``OMS PEND`` 		  The route has been sent to buy-side OMS for compliance check, pending acknowledgement
+--------------------- -------------------------------------------------------------------------------------
+``PARTFILLED`` 		  The route has been partilly filled. 
+--------------------- -------------------------------------------------------------------------------------
+``QUEUED`` 			  The route is created but not released until the defined time in release time.
+--------------------- -------------------------------------------------------------------------------------
+``REJECTED`` 		  The route has been rejected by the execution broker.
+--------------------- -------------------------------------------------------------------------------------
+``REPPEN`` 			  The route replace request is pending with the execution broker.
+--------------------- -------------------------------------------------------------------------------------
+``ROUTE-ERR`` 		  The route has an error, please check with EMSX trade desk and/or executing broker. 
+--------------------- -------------------------------------------------------------------------------------
+``SENT`` 			  The route has been sent to the broker but have not been acknowledged by the broker.
+--------------------- -------------------------------------------------------------------------------------
+``WORKING`` 		  The route has been sent and acknowledged by the executing broker.
+===================== =====================================================================================
 
 
 Full code sample:-
