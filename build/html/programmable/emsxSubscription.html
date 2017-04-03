@@ -249,75 +249,100 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">ASSIGN</span></code></td>
-<td><dl class="first last docutils">
-<dt>The route has been cancelled or rejected without fills.</dt>
-<dd>Applicable Child Route Status: <code class="docutils literal"><span class="pre">CANCEL</span></code> or <code class="docutils literal"><span class="pre">REJECTED</span></code>.</dd>
-</dl>
-</td>
+<td>The route has been cancelled or rejected without fills.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CANCEL</span></code></td>
-<td><dl class="first last docutils">
-<dt>The order has been cancelled, no shares filled.</dt>
-<dd>Applicable Child Route Status: <code class="docutils literal"><span class="pre">CANCEL</span></code> or <code class="docutils literal"><span class="pre">REJECTED</span></code>.</dd>
-</dl>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
 </td>
+<td>Applicable Child Route Status: <code class="docutils literal"><span class="pre">CANCEL</span></code> or <code class="docutils literal"><span class="pre">REJECTED</span></code>.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">CANCEL</span></code></td>
+<td>The order has been cancelled, no shares filled.</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td>Applicable Child Route Status: <code class="docutils literal"><span class="pre">CANCEL</span></code> or <code class="docutils literal"><span class="pre">REJECTED</span></code>.</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">COMPLETED</span></code></td>
-<td><dl class="first last docutils">
-<dt>All Shares have been filled and allocated in OAX for Bloomberg AIM users.</dt>
-<dd>Applicable Child Route Status: <code class="docutils literal"><span class="pre">CANCEL</span></code>, <code class="docutils literal"><span class="pre">FILLED</span></code>, or <code class="docutils literal"><span class="pre">PARTFILLED</span></code>.</dd>
-</dl>
-</td>
+<td>All Shares have been filled and allocated in OAX for Bloomberg AIM users.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CXL-PEND</span></code></td>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td>Applicable Child Route Status: <code class="docutils literal"><span class="pre">CANCEL</span></code>, <code class="docutils literal"><span class="pre">FILLED</span></code>, or <code class="docutils literal"><span class="pre">PARTFILLED</span></code>.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">CXL-PEND</span></code></td>
 <td>The Sell-Side EMSX to EMSX (E2E), order pending cancel acknowledgement.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
-<td><dl class="first last docutils">
-<dt>The order is expired.</dt>
-<dd>Applicable Child Route Status: <code class="docutils literal"><span class="pre">CANCEL</span></code>, <code class="docutils literal"><span class="pre">FILLED</span></code>, or <code class="docutils literal"><span class="pre">PARTFILLED</span></code>.</dd>
-</dl>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
+<td>The order is expired.</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
 </td>
+<td>Applicable Child Route Status: <code class="docutils literal"><span class="pre">CANCEL</span></code>, <code class="docutils literal"><span class="pre">FILLED</span></code>, or <code class="docutils literal"><span class="pre">PARTFILLED</span></code>.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">FILLED</span></code></td>
-<td><dl class="first last docutils">
-<dt>All shares have been filled, no idle quantity.</dt>
-<dd>Applicable Child Route Status: <code class="docutils literal"><span class="pre">FILLED</span></code>.</dd>
-</dl>
-</td>
+<td>All shares have been filled, no idle quantity.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">MOD-PEND</span></code></td>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td>Applicable Child Route Status: <code class="docutils literal"><span class="pre">FILLED</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">MOD-PEND</span></code></td>
 <td>The Sell-Side EMSX to EMSX (E2E), order modification pending acknowledgement.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">NEW</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">NEW</span></code></td>
 <td>The order has been added/staged; no routes have been created.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ORD-PEND</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ORD-PEND</span></code></td>
 <td>The Sell-Side EMSX to EMSX (E2E), new order pending acknowledgement.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">PARTFILLED</span></code></td>
-<td><dl class="first last docutils">
-<dt>The order has idle or unfilled shares.</dt>
-<dd>Applicable Child Route Status: <code class="docutils literal"><span class="pre">CANCEL</span></code>, <code class="docutils literal"><span class="pre">FILLED</span></code>, or <code class="docutils literal"><span class="pre">PARTFILLED</span></code>.</dd>
-</dl>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">PARTFILLED</span></code></td>
+<td>The order has idle or unfilled shares.</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
 </td>
+<td>Applicable Child Route Status: <code class="docutils literal"><span class="pre">CANCEL</span></code>, <code class="docutils literal"><span class="pre">FILLED</span></code>, or <code class="docutils literal"><span class="pre">PARTFILLED</span></code>.</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">SENT</span></code></td>
-<td><dl class="first last docutils">
-<dt>The route has been sent to the broker but has not been acknowledged.</dt>
-<dd>Applicable Child Route Status: <code class="docutils literal"><span class="pre">SENT</span></code>.</dd>
-</dl>
-</td>
+<td>The route has been sent to the broker but has not been acknowledged.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">WORKING</span></code></td>
-<td><dl class="first last docutils">
-<dt>The route has been sent and acknowledged by the broker or the route has been</dt>
-<dd><p class="first">partially filled or route has a cancel request pending or rejected.</p>
-<p>Applicable Child Route Status: <code class="docutils literal"><span class="pre">CXLREJ</span></code>, <code class="docutils literal"><span class="pre">CXLREQ</span></code>, <code class="docutils literal"><span class="pre">CXLRPRQ</span></code>, <code class="docutils literal"><span class="pre">CXLRPRJ</span></code>,</p>
-<p class="last"><code class="docutils literal"><span class="pre">HOLD</span></code>, <code class="docutils literal"><span class="pre">PARTFILLED</span></code>, or <code class="docutils literal"><span class="pre">WORKING</span></code>.</p>
-</dd>
-</dl>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
 </td>
+<td>Applicable Child Route Status: <code class="docutils literal"><span class="pre">SENT</span></code>.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">WORKING</span></code></td>
+<td>The route has been sent and acknowledged by the broker or the route has been</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td>partially filled or route has a cancel request pending or rejected.</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td>Applicable Child Route Status: <code class="docutils literal"><span class="pre">CXLREJ</span></code>, <code class="docutils literal"><span class="pre">CXLREQ</span></code>, <code class="docutils literal"><span class="pre">CXLRPRQ</span></code>, <code class="docutils literal"><span class="pre">CXLRPRJ</span></code>,</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td><code class="docutils literal"><span class="pre">HOLD</span></code>, <code class="docutils literal"><span class="pre">PARTFILLED</span></code>, or <code class="docutils literal"><span class="pre">WORKING</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -378,7 +403,7 @@
 <td>The route has been sent for allocation in OAX for Bloomberg AIM users</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">OMS</span> <span class="pre">PEND</span></code></td>
-<td>The route has been sent to buy-side OMS for compliance check, pending acknowledgement</td>
+<td>The route has been sent to buy-side OMS for compliance check, pending acknowledgement.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">PARTFILLED</span></code></td>
 <td>The route has been partilly filled.</td>
