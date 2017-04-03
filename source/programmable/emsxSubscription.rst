@@ -2,6 +2,7 @@
 EMSX Subscription
 #################
 
+
 EMSX subscription service provides a way of accessing and monitoring real-time updates on orders and routes in the user's blotter outside of ``EMSX<GO>`` function in your Bloomberg terminal.
 
 EMSX subscription sample illustrates how to use both Order and Route subscription service for EMSX API.
@@ -156,6 +157,51 @@ Route Status    	   Description
 --------------------- -------------------------------------------------------------------------------------
 ``WORKING`` 		  The route has been sent and acknowledged by the executing broker.
 ===================== =====================================================================================
+
+
+Description of Order Expiration Logic
+=====================================
+
+
+The parent orders in EMSX follow an expiration logic that first puts orders into view only mode before it gets removed from 
+EMSX blotter.
+
+
+======== ==== =========== ======================================================================
+Asset    TIF   Event       Description
+-------- ---- ----------- ----------------------------------------------------------------------
+Equities Day  ``EXPIRED`` Exchange cloes + 8 hours
+-------- ---- ----------- ----------------------------------------------------------------------
+Equities Day  ``DELETED`` Exchange close + 8 hours + 16 hours
+-------- ---- ----------- ----------------------------------------------------------------------
+Equities GTC  ``EXPIRED`` On GTD date it's same as day order if there are no open routes
+-------- ---- ----------- ----------------------------------------------------------------------
+Equities GTC  ``EXPIRED`` On GTD date if open routes, then redated to current GTD date+24 hours	
+-------- ---- ----------- ----------------------------------------------------------------------
+Futures	 Day  ``EXPIRED`` Exchange close + 4 hours or start of the 2nd session
+-------- ---- ----------- ----------------------------------------------------------------------
+Futures  Day  ``DELETED`` Exchange close + 4 hours or start of the 2nd session+20 hours
+-------- ---- ----------- ----------------------------------------------------------------------
+Futures  GTC  ``EXPIRED`` On GTD date it's same as day order if there are no open routes
+-------- ---- ----------- ----------------------------------------------------------------------
+Futures  GTC  ``EXPIRED`` On GTD date if open routes, then redated to current GTD date+24 hours
+-------- ---- ----------- ----------------------------------------------------------------------
+Options	 Day  ``EXPIRED`` Exchange close + 4 hours
+-------- ---- ----------- ----------------------------------------------------------------------
+Options  Day  ``DELETED`` Exchange close + 4 hours + 20 hours
+-------- ---- ----------- ----------------------------------------------------------------------
+Options  GTC  ``EXPIRED`` On GTD date it's same as day order if there are no open routes.
+-------- ---- ----------- ----------------------------------------------------------------------
+Options  GTC  ``EXPIRED`` On GTD date if open routes, then redated to current GTD date+24 hours
+======== ==== =========== ======================================================================
+
+
+Description of Route Expiration Logic
+=====================================
+
+
+All equities routes in EMSX will expire 8 hours after the exchange midnight. All futures and options routes in EMSX will 
+expire 24 hours after exchange close time.
 
 
 Full code sample:-

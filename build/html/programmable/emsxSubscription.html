@@ -99,6 +99,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#description-of-event-status-messages">Description of Event Status Messages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description-of-order-status-messages">Description of Order Status  Messages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description-of-the-child-route-status-messages">Description of the Child Route Status Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-order-expiration-logic">Description of Order Expiration Logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-route-expiration-logic">Description of Route Expiration Logic</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="emsxHistory.html">EMSX History Request</a></li>
@@ -401,6 +403,91 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="description-of-order-expiration-logic">
+<h2>Description of Order Expiration Logic<a class="headerlink" href="#description-of-order-expiration-logic" title="Permalink to this headline">¶</a></h2>
+<p>The parent orders in EMSX follow an expiration logic that first puts orders into view only mode before it gets removed from
+EMSX blotter.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="4%" />
+<col width="12%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Asset</td>
+<td>TIF</td>
+<td>Event</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>Equities</td>
+<td>Day</td>
+<td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
+<td>Exchange cloes + 8 hours</td>
+</tr>
+<tr class="row-odd"><td>Equities</td>
+<td>Day</td>
+<td><code class="docutils literal"><span class="pre">DELETED</span></code></td>
+<td>Exchange close + 8 hours + 16 hours</td>
+</tr>
+<tr class="row-even"><td>Equities</td>
+<td>GTC</td>
+<td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
+<td>On GTD date it&#8217;s same as day order if there are no open routes</td>
+</tr>
+<tr class="row-odd"><td>Equities</td>
+<td>GTC</td>
+<td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
+<td>On GTD date if open routes, then redated to current GTD date+24 hours</td>
+</tr>
+<tr class="row-even"><td>Futures</td>
+<td>Day</td>
+<td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
+<td>Exchange close + 4 hours or start of the 2nd session</td>
+</tr>
+<tr class="row-odd"><td>Futures</td>
+<td>Day</td>
+<td><code class="docutils literal"><span class="pre">DELETED</span></code></td>
+<td>Exchange close + 4 hours or start of the 2nd session+20 hours</td>
+</tr>
+<tr class="row-even"><td>Futures</td>
+<td>GTC</td>
+<td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
+<td>On GTD date it&#8217;s same as day order if there are no open routes</td>
+</tr>
+<tr class="row-odd"><td>Futures</td>
+<td>GTC</td>
+<td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
+<td>On GTD date if open routes, then redated to current GTD date+24 hours</td>
+</tr>
+<tr class="row-even"><td>Options</td>
+<td>Day</td>
+<td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
+<td>Exchange close + 4 hours</td>
+</tr>
+<tr class="row-odd"><td>Options</td>
+<td>Day</td>
+<td><code class="docutils literal"><span class="pre">DELETED</span></code></td>
+<td>Exchange close + 4 hours + 20 hours</td>
+</tr>
+<tr class="row-even"><td>Options</td>
+<td>GTC</td>
+<td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
+<td>On GTD date it&#8217;s same as day order if there are no open routes.</td>
+</tr>
+<tr class="row-odd"><td>Options</td>
+<td>GTC</td>
+<td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
+<td>On GTD date if open routes, then redated to current GTD date+24 hours</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-route-expiration-logic">
+<h2>Description of Route Expiration Logic<a class="headerlink" href="#description-of-route-expiration-logic" title="Permalink to this headline">¶</a></h2>
+<p>All equities routes in EMSX will expire 8 hours after the exchange midnight. All futures and options routes in EMSX will
+expire 24 hours after exchange close time.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
