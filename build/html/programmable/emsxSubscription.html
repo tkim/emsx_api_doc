@@ -156,9 +156,9 @@
             
   <div class="section" id="emsx-subscription">
 <h1>EMSX Subscription<a class="headerlink" href="#emsx-subscription" title="Permalink to this headline">¶</a></h1>
-<p>EMSX subscription service provides a way of accessing and monitoring real-time updates on orders and routes in the user&#8217;s blotter outside of <code class="docutils literal"><span class="pre">EMSX&lt;GO&gt;</span></code> function in your Bloomberg terminal.</p>
+<p>EMSX subscription service provides a way of accessing and monitoring real-time updates on orders and routes in the user&#8217;s blotter outside of EMSX&lt;GO&gt; function in your Bloomberg terminal.</p>
 <p>EMSX subscription sample illustrates how to use both Order and Route subscription service for EMSX API.</p>
-<p>Once the subscription is established all the orders and routes in the user&#8217;s blotter are returned via one or more <code class="docutils literal"><span class="pre">BLP</span> <span class="pre">API</span></code> events of type <code class="docutils literal"><span class="pre">SUBSCRIPTION</span></code>. Each event is further composed of one or more messages where each message contains all the subscribed fields for a single order or route.</p>
+<p>Once the subscription is established all the orders and routes in the user&#8217;s blotter are returned via one or more Bloomberg API events of type <code class="docutils literal"><span class="pre">SUBSCRIPTION</span></code>. Each event is further composed of one or more messages where each message contains all the subscribed fields for a single order or route.</p>
 <p>Additionally, any changes to these orders and/or routes will generate events that are passed along as they occur.  These subscriptions can be asynchronous or synchronous but it is best to always approach this with asynchronous event-driven architecture in mind.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
