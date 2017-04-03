@@ -26,9 +26,42 @@ The EMSX API requires separate authorization by the receiving broker on top of t
 
 To get access to EMSX API in UAT and production, please click <Help><Help> on EMSX<GO>.
 
-For general programming support, please open an account through the following URL. 
+
+Accessing service.bloomberg.com
+===============================
+
+
+For general programming support, please open an account through the following URL:- 
 
 https://service.bloomberg.com
+
+
+For a new user, you will need to first start by creating the account in https://service.bloomberg.com  and select “Request a new account”.
+
+
+.. image:: /image/signIn.png
+	:width: 300pt
+
+
+Select Enterprise Solution:-
+
+
+.. image:: /image/accountType.png
+	:width: 300pt
+
+
+Fill out the details on Account registration:- 
+
+
+.. image:: /image/accountReg.png
+	:width: 300pt
+
+Select B-Pipe, select the role as Technical Contact, and insert Customer #.  The Customer # can be found in the terminal by 
+typing IAM<GO>. Select production information as B-Pipe and click register to finish:-
+
+
+.. image:: /image/register.png
+	:width: 300pt
 
 
 Microsoft Excel (COM)

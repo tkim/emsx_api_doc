@@ -436,7 +436,8 @@ EMSX blotter.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>TIF = Time in force</p>
-<p class="last">h = hours</p>
+<p>h = hours</p>
+<p class="last">GT covers both GTC and GTD.</p>
 </div>
 <table border="1" class="docutils">
 <colgroup>
@@ -454,7 +455,7 @@ EMSX blotter.</p>
 <tr class="row-even"><td>Equity</td>
 <td>Day</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
-<td>Exchange cloes + 8h</td>
+<td>Exchange close + 8h</td>
 </tr>
 <tr class="row-odd"><td>Equity</td>
 <td>Day</td>
@@ -462,32 +463,32 @@ EMSX blotter.</p>
 <td>Exchange close + 8h  + 16h</td>
 </tr>
 <tr class="row-even"><td>Equity</td>
-<td>GTC</td>
+<td>GT</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
 <td>On GTD date it&#8217;s same as day order if there are no open routes</td>
 </tr>
 <tr class="row-odd"><td>Equity</td>
-<td>GTC</td>
+<td>GT</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
 <td>On GTD date if open routes, then redated to current GTD date + 24h</td>
 </tr>
 <tr class="row-even"><td>Future</td>
 <td>Day</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
-<td>Exchange close + 4h  or start of the 2nd session</td>
+<td>Earlier of Exchange close + 4h  or start of the next session</td>
 </tr>
 <tr class="row-odd"><td>Future</td>
 <td>Day</td>
 <td><code class="docutils literal"><span class="pre">DELETED</span></code></td>
-<td>Exchange close + 4h or start of the 2nd session + 20h</td>
+<td>Earlier of Exchange close + 4h or start of the next session + 20h</td>
 </tr>
 <tr class="row-even"><td>Future</td>
-<td>GTC</td>
+<td>GT</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
 <td>On GTD date it&#8217;s same as day order if there are no open routes</td>
 </tr>
 <tr class="row-odd"><td>Future</td>
-<td>GTC</td>
+<td>GT</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
 <td>On GTD date if open routes, then redated to current GTD date + 24h</td>
 </tr>
@@ -502,12 +503,12 @@ EMSX blotter.</p>
 <td>Exchange close + 4h + 20h</td>
 </tr>
 <tr class="row-even"><td>Option</td>
-<td>GTC</td>
+<td>GT</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
 <td>On GTD date it&#8217;s same as day order if there are no open routes.</td>
 </tr>
 <tr class="row-odd"><td>Option</td>
-<td>GTC</td>
+<td>GT</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
 <td>On GTD date if open routes, then redated to current GTD date + 24h</td>
 </tr>

@@ -180,33 +180,35 @@ EMSX blotter.
 	
 	h = hours
 
+	GT covers both GTC and GTD.
+
 
 ====== ==== =========== ==================================================================
 Asset  TIF   Event      Description
 ------ ---- ----------- ------------------------------------------------------------------
-Equity Day  ``EXPIRED`` Exchange cloes + 8h
+Equity Day  ``EXPIRED`` Exchange close + 8h
 ------ ---- ----------- ------------------------------------------------------------------
 Equity Day  ``DELETED`` Exchange close + 8h  + 16h
 ------ ---- ----------- ------------------------------------------------------------------
-Equity GTC  ``EXPIRED`` On GTD date it's same as day order if there are no open routes
+Equity GT   ``EXPIRED`` On GTD date it's same as day order if there are no open routes
 ------ ---- ----------- ------------------------------------------------------------------
-Equity GTC  ``EXPIRED`` On GTD date if open routes, then redated to current GTD date + 24h	
+Equity GT   ``EXPIRED`` On GTD date if open routes, then redated to current GTD date + 24h	
 ------ ---- ----------- ------------------------------------------------------------------
-Future Day  ``EXPIRED`` Exchange close + 4h  or start of the 2nd session
+Future Day  ``EXPIRED`` Earlier of Exchange close + 4h  or start of the next session
 ------ ---- ----------- ------------------------------------------------------------------
-Future Day  ``DELETED`` Exchange close + 4h or start of the 2nd session + 20h
+Future Day  ``DELETED`` Earlier of Exchange close + 4h or start of the next session + 20h
 ------ ---- ----------- ------------------------------------------------------------------
-Future GTC  ``EXPIRED`` On GTD date it's same as day order if there are no open routes
+Future GT   ``EXPIRED`` On GTD date it's same as day order if there are no open routes
 ------ ---- ----------- ------------------------------------------------------------------
-Future GTC  ``EXPIRED`` On GTD date if open routes, then redated to current GTD date + 24h
+Future GT   ``EXPIRED`` On GTD date if open routes, then redated to current GTD date + 24h
 ------ ---- ----------- ------------------------------------------------------------------
 Option Day  ``EXPIRED`` Exchange close + 4h
 ------ ---- ----------- ------------------------------------------------------------------
 Option Day  ``DELETED`` Exchange close + 4h + 20h
 ------ ---- ----------- ------------------------------------------------------------------
-Option GTC  ``EXPIRED`` On GTD date it's same as day order if there are no open routes.
+Option GT   ``EXPIRED`` On GTD date it's same as day order if there are no open routes.
 ------ ---- ----------- ------------------------------------------------------------------
-Option GTC  ``EXPIRED`` On GTD date if open routes, then redated to current GTD date + 24h
+Option GT   ``EXPIRED`` On GTD date if open routes, then redated to current GTD date + 24h
 ====== ==== =========== ==================================================================
 
 
