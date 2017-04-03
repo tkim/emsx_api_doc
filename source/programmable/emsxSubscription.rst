@@ -174,33 +174,40 @@ The parent orders in EMSX follow an expiration logic that first puts orders into
 EMSX blotter.
 
 
-======== ==== =========== ======================================================================
-Asset    TIF   Event       Description
--------- ---- ----------- ----------------------------------------------------------------------
-Equities Day  ``EXPIRED`` Exchange cloes + 8 hours
--------- ---- ----------- ----------------------------------------------------------------------
-Equities Day  ``DELETED`` Exchange close + 8 hours + 16 hours
--------- ---- ----------- ----------------------------------------------------------------------
-Equities GTC  ``EXPIRED`` On GTD date it's same as day order if there are no open routes
--------- ---- ----------- ----------------------------------------------------------------------
-Equities GTC  ``EXPIRED`` On GTD date if open routes, then redated to current GTD date+24 hours	
--------- ---- ----------- ----------------------------------------------------------------------
-Futures	 Day  ``EXPIRED`` Exchange close + 4 hours or start of the 2nd session
--------- ---- ----------- ----------------------------------------------------------------------
-Futures  Day  ``DELETED`` Exchange close + 4 hours or start of the 2nd session+20 hours
--------- ---- ----------- ----------------------------------------------------------------------
-Futures  GTC  ``EXPIRED`` On GTD date it's same as day order if there are no open routes
--------- ---- ----------- ----------------------------------------------------------------------
-Futures  GTC  ``EXPIRED`` On GTD date if open routes, then redated to current GTD date+24 hours
--------- ---- ----------- ----------------------------------------------------------------------
-Options	 Day  ``EXPIRED`` Exchange close + 4 hours
--------- ---- ----------- ----------------------------------------------------------------------
-Options  Day  ``DELETED`` Exchange close + 4 hours + 20 hours
--------- ---- ----------- ----------------------------------------------------------------------
-Options  GTC  ``EXPIRED`` On GTD date it's same as day order if there are no open routes.
--------- ---- ----------- ----------------------------------------------------------------------
-Options  GTC  ``EXPIRED`` On GTD date if open routes, then redated to current GTD date+24 hours
-======== ==== =========== ======================================================================
+.. note::
+
+	TIF = Time in force
+	
+	h = hours
+
+
+====== ==== =========== ==================================================================
+Asset  TIF   Event      Description
+------ ---- ----------- ------------------------------------------------------------------
+Equity Day  ``EXPIRED`` Exchange cloes + 8h
+------ ---- ----------- ------------------------------------------------------------------
+Equity Day  ``DELETED`` Exchange close + 8h  + 16h
+------ ---- ----------- ------------------------------------------------------------------
+Equity GTC  ``EXPIRED`` On GTD date it's same as day order if there are no open routes
+------ ---- ----------- ------------------------------------------------------------------
+Equity GTC  ``EXPIRED`` On GTD date if open routes, then redated to current GTD date + 24h	
+------ ---- ----------- ------------------------------------------------------------------
+Future Day  ``EXPIRED`` Exchange close + 4h  or start of the 2nd session
+------ ---- ----------- ------------------------------------------------------------------
+Future Day  ``DELETED`` Exchange close + 4h or start of the 2nd session + 20h
+------ ---- ----------- ------------------------------------------------------------------
+Future GTC  ``EXPIRED`` On GTD date it's same as day order if there are no open routes
+------ ---- ----------- ------------------------------------------------------------------
+Future GTC  ``EXPIRED`` On GTD date if open routes, then redated to current GTD date + 24h
+------ ---- ----------- ------------------------------------------------------------------
+Option Day  ``EXPIRED`` Exchange close + 4h
+------ ---- ----------- ------------------------------------------------------------------
+Option Day  ``DELETED`` Exchange close + 4h + 20h
+------ ---- ----------- ------------------------------------------------------------------
+Option GTC  ``EXPIRED`` On GTD date it's same as day order if there are no open routes.
+------ ---- ----------- ------------------------------------------------------------------
+Option GTC  ``EXPIRED`` On GTD date if open routes, then redated to current GTD date + 24h
+====== ==== =========== ==================================================================
 
 
 Description of Route Expiration Logic

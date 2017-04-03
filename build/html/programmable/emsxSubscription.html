@@ -433,12 +433,17 @@
 <h2>Description of Order Expiration Logic<a class="headerlink" href="#description-of-order-expiration-logic" title="Permalink to this headline">¶</a></h2>
 <p>The parent orders in EMSX follow an expiration logic that first puts orders into view only mode before it gets removed from
 EMSX blotter.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>TIF = Time in force</p>
+<p class="last">h = hours</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="9%" />
-<col width="4%" />
-<col width="12%" />
-<col width="75%" />
+<col width="7%" />
+<col width="5%" />
+<col width="13%" />
+<col width="76%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Asset</td>
@@ -446,65 +451,65 @@ EMSX blotter.</p>
 <td>Event</td>
 <td>Description</td>
 </tr>
-<tr class="row-even"><td>Equities</td>
+<tr class="row-even"><td>Equity</td>
 <td>Day</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
-<td>Exchange cloes + 8 hours</td>
+<td>Exchange cloes + 8h</td>
 </tr>
-<tr class="row-odd"><td>Equities</td>
+<tr class="row-odd"><td>Equity</td>
 <td>Day</td>
 <td><code class="docutils literal"><span class="pre">DELETED</span></code></td>
-<td>Exchange close + 8 hours + 16 hours</td>
+<td>Exchange close + 8h  + 16h</td>
 </tr>
-<tr class="row-even"><td>Equities</td>
+<tr class="row-even"><td>Equity</td>
 <td>GTC</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
 <td>On GTD date it&#8217;s same as day order if there are no open routes</td>
 </tr>
-<tr class="row-odd"><td>Equities</td>
+<tr class="row-odd"><td>Equity</td>
 <td>GTC</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
-<td>On GTD date if open routes, then redated to current GTD date+24 hours</td>
+<td>On GTD date if open routes, then redated to current GTD date + 24h</td>
 </tr>
-<tr class="row-even"><td>Futures</td>
+<tr class="row-even"><td>Future</td>
 <td>Day</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
-<td>Exchange close + 4 hours or start of the 2nd session</td>
+<td>Exchange close + 4h  or start of the 2nd session</td>
 </tr>
-<tr class="row-odd"><td>Futures</td>
+<tr class="row-odd"><td>Future</td>
 <td>Day</td>
 <td><code class="docutils literal"><span class="pre">DELETED</span></code></td>
-<td>Exchange close + 4 hours or start of the 2nd session+20 hours</td>
+<td>Exchange close + 4h or start of the 2nd session + 20h</td>
 </tr>
-<tr class="row-even"><td>Futures</td>
+<tr class="row-even"><td>Future</td>
 <td>GTC</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
 <td>On GTD date it&#8217;s same as day order if there are no open routes</td>
 </tr>
-<tr class="row-odd"><td>Futures</td>
+<tr class="row-odd"><td>Future</td>
 <td>GTC</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
-<td>On GTD date if open routes, then redated to current GTD date+24 hours</td>
+<td>On GTD date if open routes, then redated to current GTD date + 24h</td>
 </tr>
-<tr class="row-even"><td>Options</td>
+<tr class="row-even"><td>Option</td>
 <td>Day</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
-<td>Exchange close + 4 hours</td>
+<td>Exchange close + 4h</td>
 </tr>
-<tr class="row-odd"><td>Options</td>
+<tr class="row-odd"><td>Option</td>
 <td>Day</td>
 <td><code class="docutils literal"><span class="pre">DELETED</span></code></td>
-<td>Exchange close + 4 hours + 20 hours</td>
+<td>Exchange close + 4h + 20h</td>
 </tr>
-<tr class="row-even"><td>Options</td>
+<tr class="row-even"><td>Option</td>
 <td>GTC</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
 <td>On GTD date it&#8217;s same as day order if there are no open routes.</td>
 </tr>
-<tr class="row-odd"><td>Options</td>
+<tr class="row-odd"><td>Option</td>
 <td>GTC</td>
 <td><code class="docutils literal"><span class="pre">EXPIRED</span></code></td>
-<td>On GTD date if open routes, then redated to current GTD date+24 hours</td>
+<td>On GTD date if open routes, then redated to current GTD date + 24h</td>
 </tr>
 </tbody>
 </table>
