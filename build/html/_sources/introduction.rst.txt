@@ -43,14 +43,14 @@ For a new user, you will need to first start by creating the account in https://
 	:width: 300pt
 
 
-Select Enterprise Solution:-
+Select Enterprise Solutions:-
 
 
 .. image:: /image/accountType.png
 	:width: 300pt
 
 
-Fill out the details on Account registration:- 
+Fill out the details on Account Registration:- 
 
 
 .. image:: /image/accountReg.png
