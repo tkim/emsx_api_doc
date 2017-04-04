@@ -19,11 +19,9 @@ The Bloomberg EMSX API is available as desktop API and server-side API. The desk
    faq
    glossary
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. :ref:`genindex`
+.. :ref:`modindex`
+.. :ref:`search`
 
 
