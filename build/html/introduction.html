@@ -87,8 +87,11 @@
                 <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#accessing-service-bloomberg-com">Accessing service.bloomberg.com</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#microsoft-excel-com">Microsoft Excel (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sign-up-programming-support">Sign Up - Programming Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#emsx-api-code-samples">EMSX API Code Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#emsx-api-access-from-microsoft-excel-com">EMSX API access from Microsoft Excel (COM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#emsx-api-access-from-matlab">EMSX API access from MATLAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#emsx-api-access-from-r">EMSX API access from R</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="server/index.html">Server Side EMSX API</a></li>
@@ -164,8 +167,8 @@
 </div></blockquote>
 </div>
 <p>To get access to EMSX API in UAT and production, please click &lt;Help&gt;&lt;Help&gt; on EMSX&lt;GO&gt;.</p>
-<div class="section" id="accessing-service-bloomberg-com">
-<h2>Accessing service.bloomberg.com<a class="headerlink" href="#accessing-service-bloomberg-com" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sign-up-programming-support">
+<h2>Sign Up - Programming Support<a class="headerlink" href="#sign-up-programming-support" title="Permalink to this headline">¶</a></h2>
 <p>For general programming support, please open an account through the following URL:-</p>
 <p><a class="reference external" href="https://service.bloomberg.com">https://service.bloomberg.com</a></p>
 <p>For a new user, you will need to first start by creating the account in <a class="reference external" href="https://service.bloomberg.com">https://service.bloomberg.com</a>  and select “Request a new account”.</p>
@@ -178,8 +181,15 @@
 typing IAM&lt;GO&gt;. Select production information as B-Pipe and click register to finish:-</p>
 <a class="reference internal image-reference" href="_images/register.png"><img alt="_images/register.png" src="_images/register.png" style="width: 300pt;" /></a>
 </div>
-<div class="section" id="microsoft-excel-com">
-<h2>Microsoft Excel (COM)<a class="headerlink" href="#microsoft-excel-com" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="emsx-api-code-samples">
+<h2>EMSX API Code Samples<a class="headerlink" href="#emsx-api-code-samples" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The latest EMSX API Code samples can be found <a class="reference external" href="https://github.com/tkim/emsx_api_repository">here</a>.</p>
+</div>
+</div>
+<div class="section" id="emsx-api-access-from-microsoft-excel-com">
+<h2>EMSX API access from Microsoft Excel (COM)<a class="headerlink" href="#emsx-api-access-from-microsoft-excel-com" title="Permalink to this headline">¶</a></h2>
 <p>The EMSX API for Excel is accessible using Microsoft Component Object Model (COM) or as part of Bloomberg ribbon within Bloomberg Excel Add-In.</p>
 <p>The Microsoft Component Object Model (COM) is a platform-independent, distributed, object-oriented system for creating binary software component that can interact with Bloomberg EMSX API services from your desktop where Bloomberg terminal is installed.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -190,10 +200,19 @@ typing IAM&lt;GO&gt;. Select production information as B-Pipe and click register
 </tr>
 </tbody>
 </table>
-<div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">EMSX API Code samples can be found <a class="reference external" href="https://github.com/tkim/emsx_api_repository">here</a>.</p>
 </div>
+<div class="section" id="emsx-api-access-from-matlab">
+<h2>EMSX API access from MATLAB<a class="headerlink" href="#emsx-api-access-from-matlab" title="Permalink to this headline">¶</a></h2>
+<p>The EMSX API for MATLAB is accessible by using MATLAB Trading Toolbox in addition to the standard MATLAB package. The matlab samples for EMSX API can be found in both MATLAB Central <a class="reference external" href="https://www.mathworks.com/matlabcentral/fileexchange/43869-algorithmic-trading-with-bloomberg-emsx-and-matlab?focused=3799740&amp;tab=example">file exchange</a>.</p>
+<p>Please contact your local MATLAB representative for more details on the MATLAB Trading Toolbox.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+<div class="section" id="emsx-api-access-from-r">
+<h2>EMSX API access from R<a class="headerlink" href="#emsx-api-access-from-r" title="Permalink to this headline">¶</a></h2>
+<p>The  EMSX API can also be accessed via <a class="reference external" href="https://github.com/Rblp/Rblpapi/blob/master/README.md">R</a> language. The current R repository is designed for general Bloomberg API usage using both the subscription and request/response services. The EMSX API uses both services and thus even though the current sample illustrates //blp/mktdata and //blp/refdata, this can easily be repurposed for //blp/emapisvc which refers to the EMSX API service name.</p>
+<blockquote>
+<div></div></blockquote>
 </div>
 </div>
 

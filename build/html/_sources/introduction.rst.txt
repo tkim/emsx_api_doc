@@ -27,8 +27,8 @@ The EMSX API requires separate authorization by the receiving broker on top of t
 To get access to EMSX API in UAT and production, please click <Help><Help> on EMSX<GO>.
 
 
-Accessing service.bloomberg.com
-===============================
+Sign Up - Programming Support
+=============================
 
 
 For general programming support, please open an account through the following URL:- 
@@ -64,8 +64,20 @@ typing IAM<GO>. Select production information as B-Pipe and click register to fi
 	:width: 300pt
 
 
-Microsoft Excel (COM)
+EMSX API Code Samples
 =====================
+
+
+.. important::
+
+			The latest EMSX API Code samples can be found `here`_.
+
+			.. _here: https://github.com/tkim/emsx_api_repository
+
+
+
+EMSX API access from Microsoft Excel (COM)
+==========================================
 
 
 The EMSX API for Excel is accessible using Microsoft Component Object Model (COM) or as part of Bloomberg ribbon within Bloomberg Excel Add-In.  
@@ -76,9 +88,26 @@ The Microsoft Component Object Model (COM) is a platform-independent, distribute
 :ref: https://msdn.microsoft.com/en-us/library/windows/desktop/ms694363(v=vs.85).aspx
 
 
-.. important::
+EMSX API access from MATLAB
+==============================
 
-			EMSX API Code samples can be found `here`_.
 
-			.. _here: https://github.com/tkim/emsx_api_repository
+The EMSX API for MATLAB is accessible by using MATLAB Trading Toolbox in addition to the standard MATLAB package. The matlab samples for EMSX API can be found in both MATLAB Central `file exchange`_. 
+
+Please contact your local MATLAB representative for more details on the MATLAB Trading Toolbox.
+
+
+	.. _file exchange: https://www.mathworks.com/matlabcentral/fileexchange/43869-algorithmic-trading-with-bloomberg-emsx-and-matlab?focused=3799740&tab=example
+
+
+
+EMSX API access from R
+=======================
+
+
+The  EMSX API can also be accessed via `R`_ language. The current R repository is designed for general Bloomberg API usage using both the subscription and request/response services. The EMSX API uses both services and thus even though the current sample illustrates //blp/mktdata and //blp/refdata, this can easily be repurposed for //blp/emapisvc which refers to the EMSX API service name. 
+
+
+	.. _R: https://github.com/Rblp/Rblpapi/blob/master/README.md
+
 
