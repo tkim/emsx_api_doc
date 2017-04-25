@@ -87,6 +87,32 @@ Full code sample:-
                 print >> sys.stderr, "Error: Service failed to open"        
 
 
+Broker Spec Request
+=====================
+
+
+The ``BrokerSpec`` request allows EMSX API users to call all the production broker strategy name and fields and FIX tags 
+associated with the broker strategies. Unfortunately, this is currently only available for production broker strategy 
+fields. The service name is ``\\blp\emsx.brokerspec``.
+
+
+Full code sample:-
+
+==================== ================= ==================
+`Broker Spec cs`_                      `Broker Spec vba`_ 
+-------------------- ----------------- ------------------
+`Broker Spec java`_  `Broker Spec py`_
+==================== ================= ==================
+
+.. _Broker Spec cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/BrokerSpec.cs
+
+.. _Broker Spec java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/AssignTrader.java
+
+.. _Broker Spec py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/BrokerSpec.py
+
+.. _Broker Spec vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/BrokerSpec.cls
+
+
 Cancel Route Extended Request
 ==============================
 
@@ -266,7 +292,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 
 .. note:: 
 
-	The user will first need to use various ``Get***``requests to obtain all the necessary information to use the broker strategies the user is enabled for, returned in response. Subsequently, the user can then request ``GetBrokerStrategiesWithAssetClass`` to get all the broker strategies user is enabled for that particular broker code and asset class. 
+	The user will first need to use various ``Get___`` requests to obtain all the necessary information to use the broker strategies the user is enabled for, returned in response. Subsequently, the user can then request ``GetBrokerStrategiesWithAssetClass`` to get all the broker strategies user is enabled for that particular broker code and asset class. 
 
     Lastly, ``GetBrokerStrategyInfoWithAssetClass`` will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in ``CreateOrderAndRouteEx`` and ``RouteEx`` requests.
 

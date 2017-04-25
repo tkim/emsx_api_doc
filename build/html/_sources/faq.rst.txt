@@ -147,6 +147,8 @@ General FAQ
 * Are ``INITIAL_PAINT`` messages always first?
 	No, you can receive any route messages before the order message with ``INITIAL_PAINT``.
 
+* Is there any downtime for EMSX API service?
+	Yes, generally for EMSX services, it is down during machin maintenance on Saturday from 1pm to 5pm Eastern Standard Time. For API routers, the routers are turned from Sunday US between 9am-1pm US Eastern Standard Time. During the weekend turnaround, services are  down during this time time and there will be no access to the service. The dependencies here are on the the machines the services resides and not the service itself.
 
 .. Excel Add-In FAQ
 .. ================

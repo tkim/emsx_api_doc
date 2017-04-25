@@ -94,6 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="description.html">Description of Request/Response Service</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Buy-Side Request/Response Service</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#assign-trader-request">Assign Trader Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#broker-spec-request">Broker Spec Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cancel-route-extended-request">Cancel Route Extended Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-order-request">Create Order Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-order-and-route-extended-request">Create Order and Route Extended Request</a></li>
@@ -237,6 +238,30 @@ following steps:</p>
             <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="broker-spec-request">
+<h2>Broker Spec Request<a class="headerlink" href="#broker-spec-request" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">BrokerSpec</span></code> request allows EMSX API users to call all the production broker strategy name and fields and FIX tags
+associated with the broker strategies. Unfortunately, this is currently only available for production broker strategy
+fields. The service name is <code class="docutils literal"><span class="pre">\\blp\emsx.brokerspec</span></code>.</p>
+<p>Full code sample:-</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="31%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/BrokerSpec.cs">Broker Spec cs</a></td>
+<td>&nbsp;</td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/BrokerSpec.cls">Broker Spec vba</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/AssignTrader.java">Broker Spec java</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/BrokerSpec.py">Broker Spec py</a></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="cancel-route-extended-request">
 <h2>Cancel Route Extended Request<a class="headerlink" href="#cancel-route-extended-request" title="Permalink to this headline">¶</a></h2>
@@ -396,7 +421,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <blockquote>
-<div>The user will first need to use various <code class="docutils literal"><span class="pre">Get***``requests</span> <span class="pre">to</span> <span class="pre">obtain</span> <span class="pre">all</span> <span class="pre">the</span> <span class="pre">necessary</span> <span class="pre">information</span> <span class="pre">to</span> <span class="pre">use</span> <span class="pre">the</span> <span class="pre">broker</span> <span class="pre">strategies</span> <span class="pre">the</span> <span class="pre">user</span> <span class="pre">is</span> <span class="pre">enabled</span> <span class="pre">for,</span> <span class="pre">returned</span> <span class="pre">in</span> <span class="pre">response.</span> <span class="pre">Subsequently,</span> <span class="pre">the</span> <span class="pre">user</span> <span class="pre">can</span> <span class="pre">then</span> <span class="pre">request</span> <span class="pre">``GetBrokerStrategiesWithAssetClass</span></code> to get all the broker strategies user is enabled for that particular broker code and asset class.</div></blockquote>
+<div>The user will first need to use various <code class="docutils literal"><span class="pre">Get___</span></code> requests to obtain all the necessary information to use the broker strategies the user is enabled for, returned in response. Subsequently, the user can then request <code class="docutils literal"><span class="pre">GetBrokerStrategiesWithAssetClass</span></code> to get all the broker strategies user is enabled for that particular broker code and asset class.</div></blockquote>
 <p class="last">Lastly, <code class="docutils literal"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code> will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in <code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code> and <code class="docutils literal"><span class="pre">RouteEx</span></code> requests.</p>
 </div>
 <p>Full code sample:-</p>
