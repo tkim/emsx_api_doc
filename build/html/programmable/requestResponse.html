@@ -262,6 +262,122 @@ fields. The service name is <code class="docutils literal"><span class="pre">\\b
 </tr>
 </tbody>
 </table>
+<p>Call <code class="docutils literal"><span class="pre">//blp/emsx.brokerspec</span></code> service:-</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">SESSION_STARTED</span>         <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionStarted&quot;</span><span class="p">)</span>
+<span class="n">SESSION_STARTUP_FAILURE</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionStartupFailure&quot;</span><span class="p">)</span>
+<span class="n">SERVICE_OPENED</span>          <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ServiceOpened&quot;</span><span class="p">)</span>
+<span class="n">SERVICE_OPEN_FAILURE</span>    <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ServiceOpenFailure&quot;</span><span class="p">)</span>
+<span class="n">ERROR_INFO</span>              <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ErrorInfo&quot;</span><span class="p">)</span>
+<span class="n">BROKER_SPEC</span>             <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;BrokerSpec&quot;</span><span class="p">)</span>
+
+<span class="n">d_service</span><span class="o">=</span><span class="s2">&quot;//blp/emsx.brokerspec&quot;</span> <span class="c1"># The BrokerSpec service is only available in the production environment</span>
+<span class="n">d_host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span>
+<span class="n">d_port</span><span class="o">=</span><span class="mi">8194</span>
+<span class="n">bEnd</span><span class="o">=</span><span class="bp">False</span>
+</pre></div>
+</div>
+<p>Specify the UUID:-</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
+
+    <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPENED</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Service opened...&quot;</span>
+
+            <span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
+
+            <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;GetBrokerSpecForUuid&quot;</span><span class="p">)</span>
+
+            <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span> <span class="mi">8049857</span><span class="p">)</span>
+
+            <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
+
+            <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
+</pre></div>
+</div>
+<p>Get broker code, strategy name, and strategy parameters</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>    <span class="n">brokers</span><span class="o">=</span><span class="n">msg</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;brokers&quot;</span><span class="p">)</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="n">brokers</span><span class="o">.</span><span class="n">numValues</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="s2">&quot;Number of Brokers: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">num</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">broker</span> <span class="ow">in</span> <span class="n">brokers</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">broker</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;code&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+    <span class="n">assetClass</span> <span class="o">=</span> <span class="n">broker</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;assetClass&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">broker</span><span class="o">.</span><span class="n">hasElement</span><span class="p">(</span><span class="s2">&quot;strategyFixTag&quot;</span><span class="p">):</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="n">broker</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;strategyFixTag&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Broker code: </span><span class="si">%s</span><span class="se">\t</span><span class="s2">class: </span><span class="si">%s</span><span class="se">\t</span><span class="s2">tag: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="n">assetClass</span><span class="p">,</span><span class="n">tag</span><span class="p">)</span>
+        <span class="n">strats</span> <span class="o">=</span> <span class="n">broker</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;strategies&quot;</span><span class="p">)</span>
+        <span class="n">numStrats</span> <span class="o">=</span> <span class="n">strats</span><span class="o">.</span><span class="n">numValues</span><span class="p">()</span>
+        <span class="k">print</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">No. of Strategies: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">numStrats</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">strat</span> <span class="ow">in</span> <span class="n">strats</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">strat</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+            <span class="n">fixVal</span> <span class="o">=</span> <span class="n">strat</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;fixValue&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+            <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">Strategy Name: </span><span class="si">%s</span><span class="se">\t</span><span class="s2">Fix Value: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">fixVal</span><span class="p">)</span>
+
+            <span class="n">parameters</span> <span class="o">=</span> <span class="n">strat</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;parameters&quot;</span><span class="p">)</span>
+
+            <span class="n">numParams</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">numValues</span><span class="p">()</span>
+
+            <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">No. of Parameters: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">numParams</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">pname</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+                <span class="n">tag</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;fixTag&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+                <span class="n">required</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;isRequired&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+                <span class="n">replaceable</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;isReplaceable&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+                <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">Parameter: </span><span class="si">%s</span><span class="se">\t</span><span class="s2">Tag: </span><span class="si">%d</span><span class="se">\t</span><span class="s2">Required: </span><span class="si">%s</span><span class="se">\t</span><span class="s2">Replaceable: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">pname</span><span class="p">,</span><span class="n">tag</span><span class="p">,</span><span class="n">required</span><span class="p">,</span><span class="n">replaceable</span><span class="p">)</span>
+
+                <span class="n">typeName</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+
+                <span class="n">vals</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+                <span class="k">if</span> <span class="n">typeName</span><span class="o">==</span><span class="s2">&quot;enumeration&quot;</span><span class="p">:</span>
+
+                    <span class="n">enumerators</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;enumerators&quot;</span><span class="p">)</span>
+
+                    <span class="k">for</span> <span class="n">enum</span> <span class="ow">in</span> <span class="n">enumerators</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                        <span class="n">vals</span> <span class="o">=</span> <span class="n">vals</span> <span class="o">+</span> <span class="n">enum</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="n">enum</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;fixValue&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;],&quot;</span>
+
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">vals</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+
+                <span class="k">elif</span> <span class="n">typeName</span><span class="o">==</span><span class="s2">&quot;range&quot;</span><span class="p">:</span>
+                    <span class="n">rng</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">mn</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;min&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+                    <span class="n">mx</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;max&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+                    <span class="n">st</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;step&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+                    <span class="n">vals</span> <span class="o">=</span> <span class="s2">&quot;min:</span><span class="si">%d</span><span class="s2"> max:</span><span class="si">%d</span><span class="s2"> step:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mn</span><span class="p">,</span><span class="n">mx</span><span class="p">,</span><span class="n">st</span><span class="p">)</span>
+
+
+                <span class="k">elif</span> <span class="n">typeName</span><span class="o">==</span><span class="s2">&quot;string&quot;</span><span class="p">:</span>
+                    <span class="n">possVals</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;possibleValues&quot;</span><span class="p">)</span>
+
+
+                    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">possVals</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                        <span class="n">vals</span> <span class="o">=</span> <span class="n">vals</span> <span class="o">+</span> <span class="n">val</span> <span class="o">+</span><span class="s2">&quot;,&quot;</span>
+
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">vals</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\t\t\t</span><span class="s2">Type: </span><span class="si">%s</span><span class="s2"> (</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">typeName</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\t\t\t</span><span class="s2">Type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">typeName</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Broker code: </span><span class="si">%s</span><span class="se">\t</span><span class="s2">class: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="n">assetClass</span><span class="p">)</span>
+        <span class="k">print</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">No strategies</span><span class="se">\n</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="cancel-route-extended-request">
 <h2>Cancel Route Extended Request<a class="headerlink" href="#cancel-route-extended-request" title="Permalink to this headline">¶</a></h2>

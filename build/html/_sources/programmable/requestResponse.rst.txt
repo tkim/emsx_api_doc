@@ -113,6 +113,138 @@ Full code sample:-
 .. _Broker Spec vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/BrokerSpec.cls
 
 
+Call ``//blp/emsx.brokerspec`` service:-
+
+
+.. code-block:: python
+
+        
+    SESSION_STARTED         = blpapi.Name("SessionStarted")
+    SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
+    SERVICE_OPENED          = blpapi.Name("ServiceOpened")
+    SERVICE_OPEN_FAILURE    = blpapi.Name("ServiceOpenFailure")
+    ERROR_INFO              = blpapi.Name("ErrorInfo")
+    BROKER_SPEC             = blpapi.Name("BrokerSpec")
+
+    d_service="//blp/emsx.brokerspec" # The BrokerSpec service is only available in the production environment
+    d_host="localhost"
+    d_port=8194
+    bEnd=False
+
+
+Specify the UUID:-
+
+
+.. code-block:: python
+
+    
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
+
+                service = session.getService(d_service)
+    
+                request = service.createRequest("GetBrokerSpecForUuid")
+
+                request.set("uuid", 8049857)
+
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
+
+
+Get broker code, strategy name, and strategy parameters
+
+
+.. code-block:: python
+
+                        brokers=msg.getElement("brokers")
+                    
+                    num = brokers.numValues()
+                    
+                    print "Number of Brokers: %d\n" % (num)
+                    
+                    for broker in brokers.values():
+                        code = broker.getElement("code").getValue()
+                        assetClass = broker.getElement("assetClass").getValue()
+                        
+                        if broker.hasElement("strategyFixTag"):
+                            tag = broker.getElement("strategyFixTag").getValue()
+                            print "\nBroker code: %s\tclass: %s\ttag: %s" % (code,assetClass,tag)
+                            strats = broker.getElement("strategies")
+                            numStrats = strats.numValues()
+                            print"\tNo. of Strategies: %d" % (numStrats)
+                            for strat in strats.values():
+                                name = strat.getElement("name").getValue()
+                                fixVal = strat.getElement("fixValue").getValue()
+                                print "\n\tStrategy Name: %s\tFix Value: %s" % (name,fixVal)
+                                
+                                parameters = strat.getElement("parameters")
+                                
+                                numParams = parameters.numValues()
+                                
+                                print "\t\tNo. of Parameters: %d\n" % (numParams)
+                                
+                                for param in parameters.values():
+                                    pname = param.getElement("name").getValue()
+                                    tag = param.getElement("fixTag").getValue()
+                                    required = param.getElement("isRequired").getValue()
+                                    replaceable = param.getElement("isReplaceable").getValue()
+                                    print "\t\tParameter: %s\tTag: %d\tRequired: %s\tReplaceable: %s" % (pname,tag,required,replaceable)
+                                    
+                                    typeName = param.getElement("type").getElement(0).name()
+                                    
+                                    vals = ""
+                                    
+                                    if typeName=="enumeration":
+                                        
+                                        enumerators = param.getElement("type").getElement(0).getElement("enumerators")
+                                        
+                                        for enum in enumerators.values():
+                                            vals = vals + enum.getElement("name").getValue() + "[" + enum.getElement("fixValue").getValue() + "],"
+
+                                        if len(vals) > 0: vals = vals[:-1]
+                                        
+                                    
+                                    elif typeName=="range":
+                                        rng = param.getElement("type").getElement(0)
+                                        mn = rng.getElement("min").getValue()
+                                        mx = rng.getElement("max").getValue()
+                                        st = rng.getElement("step").getValue()
+                                        vals = "min:%d max:%d step:%d" % (mn,mx,st)
+                                        
+                                        
+                                    elif typeName=="string":
+                                        possVals = param.getElement("type").getElement(0).getElement("possibleValues")
+                                        
+                                        
+                                        for val in possVals.values():
+                                            vals = vals + val +","
+                                            
+                                        if len(vals) > 0: vals = vals[:-1]
+                                        
+                                    
+                                    if len(vals) > 0:
+                                        print "\t\t\tType: %s (%s)" % (typeName, vals)           
+                                    else:
+                                        print "\t\t\tType: %s" % (typeName)           
+
+                        else:
+                            print "\nBroker code: %s\tclass: %s" % (code,assetClass)
+                            print"\tNo strategies\n"
+
+
+
+
 Cancel Route Extended Request
 ==============================
 
