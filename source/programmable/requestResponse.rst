@@ -104,6 +104,8 @@ Full code sample:-
 `Broker Spec java`_  `Broker Spec py`_
 ==================== ================= ==================
 
+.. Broker Spec cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/BrokerSpec.cpp
+
 .. _Broker Spec cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/BrokerSpec.cs
 
 .. _Broker Spec java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/AssignTrader.java
@@ -271,7 +273,7 @@ Full code sample:-
 
 .. _Cancel Route py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CancelRoute.py
 
-.. _Cancel Route vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/AssignTrader.cls
+.. _Cancel Route vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/CancelRoute.cls
 
 
 .. hint:: 
@@ -1237,7 +1239,7 @@ Full code sample:-
 
 .. _Manual Fill py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py
     
-.. _Manual Fill vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.cls
+.. _Manual Fill vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/ManualFill.cls
 
 .. hint:: 
 
@@ -1246,11 +1248,56 @@ Full code sample:-
 
 .. code-block:: python
     
-    # ManualFill.py
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
+
+                service = session.getService(d_service)
+    
+                request = service.createRequest("ManualFill");
+
+                #request.set("EMSX_REQUEST_SEQ", 1)
+
+                request.set("EMSX_TRADER_UUID", 12109783)
+
+                routeToFill = request.getElement("ROUTE_TO_FILL")
+                    
+                routeToFill.setElement("EMSX_SEQUENCE", 1234567)
+                routeToFill.setElement("EMSX_ROUTE_ID", 1)
+                    
+                fills = request.getElement("FILLS")
+                    
+                fills.setElement("EMSX_FILL_AMOUNT", 1000)
+                fills.setElement("EMSX_FILL_PRICE", 123.4)
+                fills.setElement("EMSX_LAST_MARKET", "XLON")
+                    
+                fills.setElement("EMSX_INDIA_EXCHANGE","BGL")
+                    
+                fillDateTime = fills.getElement("EMSX_FILL_DATE_TIME")
+                    
+                fillDateTime.setChoice("Legacy");
+                    
+                fillDateTime.setElement("EMSX_FILL_DATE",20172203)
+                fillDateTime.setElement("EMSX_FILL_TIME",17054)
+                fillDateTime.setElement("EMSX_FILL_TIME_FORMAT","SecondsFromMidnight")
+
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
 
 
-Modify Order Request
-====================
+
+Modify Order Extended Request
+=============================
 
 
 The ``ModifyOrderEx`` request modifies an existing or previously created order in EMSX<GO> or using EMSX API. 
@@ -1258,19 +1305,21 @@ The ``ModifyOrderEx`` request modifies an existing or previously created order i
 
 Full code sample:-
 
-============================= ===========================
- 	
------------------------------ ---------------------------
-`Modify Order Extended java`_ 
-============================= ===========================
+============================= ============================
+`Modify Order Extended cs`_   `Modify Order Extended vba`_ 	
+----------------------------- ----------------------------
+`Modify Order Extended java`_ `Modify Order Extended py`_
+============================= ============================
 
 .. Modify Order Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyOrderEx.cpp
 
-.. Modify Order Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyOrderEx.cs
+.. _Modify Order Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyOrderEx.cs
 
 .. _Modify Order Extended java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyOrderEx.java
 
-.. Modify Order Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyOrderEx.py
+.. _Modify Order Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyOrderEx.py
+
+.. _Modify Order Extended vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/ModifyOrderEx.cls
 
 
 .. hint:: 
@@ -1280,7 +1329,56 @@ Full code sample:-
 
 .. code-block:: python
 
-	#ModifyOrder.py
+	 def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
+
+                service = session.getService(d_service)
+    
+                request = service.createRequest("ModifyOrderEx")
+
+                # The fields below are mandatory
+                request.set("EMSX_SEQUENCE", 3834157)
+                request.set("EMSX_AMOUNT", 1300)
+                request.set("EMSX_ORDER_TYPE", "MKT")
+                request.set("EMSX_TIF", "DAY")
+                request.set("EMSX_TICKER", "IBM US Equity")
+            
+                # The fields below are optional
+                #request.set("EMSX_HAND_INSTRUCTION", "ANY")
+                #request.set("EMSX_ACCOUNT","TestAccount")
+                #request.set("EMSX_CFD_FLAG", "1")
+                #request.set("EMSX_EXEC_INSTRUCTIONS", "AnyInst")
+                #request.set("EMSX_GET_WARNINGS", "0")
+                #request.set("EMSX_GTD_DATE", "20170105")
+                #request.set("EMSX_INVESTOR_ID", "InvID")
+                #request.set("EMSX_LIMIT_PRICE", 123.45)
+                #request.set("EMSX_NOTES", "Some notes")
+                #request.set("EMSX_REQUEST_SEQ", 1001)
+                #request.set("EMSX_STOP_PRICE", 123.5)
+
+                # Note: When changing order type to a LMT order, you will need to provide the EMSX_LIMIT_PRICE value.
+                #       When changing order type away from LMT order, you will need to reset the EMSX_LIMIT_PRICE value
+                #       by setting the content to -99999
+                
+                # Note: To clear down the stop price, set the content to -1
+                
+                # If modifying on behalf of another trader, set the order owner's UUID
+                #request.set("EMSX_TRADER_UUID", 1234567)
+                            
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
+
 
 
 Modify Route Extended Request
@@ -1293,18 +1391,21 @@ The ``ModifyRouteEx`` request modifies an existing or previously created child r
 Full code sample:-
 
 ============================= ============================
-    	
+`Modify Route Extended cs`_   `Modify Route Extended vba`_    	
 ----------------------------- ----------------------------
-`Modify Route Extended java`_  
+`Modify Route Extended java`_ `Modify Route Extended py`_ 
 ============================= ============================
 
 .. Modify Route Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyRouteEx.cpp
 
-.. Modify Route Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyRouteEx.cs
+.. _Modify Route Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyRouteEx.cs
 
 .. _Modify Route Extended java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyRouteEx.java
 
-.. Modify Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyRouteEx.py
+.. _Modify Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyRouteEx.py
+
+.. _Modify Route Extended vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/ModifyRouteEx.cls
+
 
 
 .. hint:: 
@@ -1314,7 +1415,119 @@ Full code sample:-
 
 .. code-block:: python
 
-	#ModifyRouteEx.py
+	 def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                
+                print "Service opened..."
+
+                service = session.getService(d_service)
+    
+                request = service.createRequest("ModifyRouteEx")
+
+                # The fields below are mandatory
+                request.set("EMSX_SEQUENCE", 3834157)
+                request.set("EMSX_ROUTE_ID", 1)
+                request.set("EMSX_AMOUNT", 1000)
+                request.set("EMSX_ORDER_TYPE", "MKT")
+                request.set("EMSX_TIF", "DAY")
+            
+                # The fields below are optional
+                #request.set("EMSX_ACCOUNT","TestAccount")
+                #request.set("EMSX_CLEARING_ACCOUNT", "ClearingAcnt")
+                #request.set("EMSX_CLEARING_FIRM", "ClearingFirm")
+                #request.set("EMSX_COMM_TYPE", "Absolute")
+                #request.set("EMSX_EXCHANGE_DESTINATION", "DEST")
+                #request.set("EMSX_GET_WARNINGS", "0")
+                #request.set("EMSX_GTD_DATE", "20170105")
+                #request.set("EMSX_LIMIT_PRICE", 123.45)
+                #request.set("EMSX_LOC_BROKER", "ABCD")
+                #request.set("EMSX_LOC_ID", "1234567")
+                #request.set("EMSX_LOC_REQ", "Y")
+                #request.set("EMSX_NOTES", "Some notes")
+                #request.set("EMSX_ODD_LOT", "" )
+                #request.set("EMSX_P_A", "P")
+                #request.set("EMSX_REQUEST_SEQ", 1001)
+                #request.set("EMSX_STOP_PRICE", 123.5)
+                #request.set("EMSX_TRADER_NOTES", "Trader notes")
+                #request.set("EMSX_USER_COMM_RATE", 0.02)
+                #request.set("EMSX_USER_FEES", "1.5")
+
+                # Note: When changing order type to a LMT order, you will need to provide the EMSX_LIMIT_PRICE value.
+                #       When changing order type away from LMT order, you will need to reset the EMSX_LIMIT_PRICE value
+                #       by setting the content to -99999
+                
+                # Note: To clear down the stop price, set the content to -1
+                
+                # Set the strategy parameters, if required
+                
+                '''
+                strategy = request.getElement("EMSX_STRATEGY_PARAMS")
+                strategy.setElement("EMSX_STRATEGY_NAME", "VWAP")
+                
+                indicator = strategy.getElement("EMSX_STRATEGY_FIELD_INDICATORS")
+                data = strategy.getElement("EMSX_STRATEGY_FIELDS")
+                
+                # Strategy parameters must be appended in the correct order. See the output 
+                # of GetBrokerStrategyInfo request for the order. The indicator value is 0 for 
+                # a field that carries a value, and 1 where the field should be ignored
+                
+                data.appendElement().setElement("EMSX_FIELD_DATA", "09:30:00") # StartTime
+                indicator.appendElement().setElement("EMSX_FIELD_INDICATOR", 0)
+
+                data.appendElement().setElement("EMSX_FIELD_DATA", "10:30:00") # EndTime
+                indicator.appendElement().setElement("EMSX_FIELD_INDICATOR", 0)
+
+                data.appendElement().setElement("EMSX_FIELD_DATA", "")         # Max%Volume
+                indicator.appendElement().setElement("EMSX_FIELD_INDICATOR", 1)
+
+                data.appendElement().setElement("EMSX_FIELD_DATA", "")         # %AMSession
+                indicator.appendElement().setElement("EMSX_FIELD_INDICATOR", 1)
+
+                data.appendElement().setElement("EMSX_FIELD_DATA", "")         # OPG
+                indicator.appendElement().setElement("EMSX_FIELD_INDICATOR", 1)
+
+                data.appendElement().setElement("EMSX_FIELD_DATA", "")         # MOC
+                indicator.appendElement().setElement("EMSX_FIELD_INDICATOR", 1)
+
+                data.appendElement().setElement("EMSX_FIELD_DATA", "")         # CompletePX
+                indicator.appendElement().setElement("EMSX_FIELD_INDICATOR", 1)
+                   
+                data.appendElement().setElement("EMSX_FIELD_DATA", "")         # TriggerPX
+                indicator.appendElement().setElement("EMSX_FIELD_INDICATOR", 1)
+
+                data.appendElement().setElement("EMSX_FIELD_DATA", "")         # DarkComplete
+                indicator.appendElement().setElement("EMSX_FIELD_INDICATOR", 1)
+
+                data.appendElement().setElement("EMSX_FIELD_DATA", "")         # DarkCompPX
+                indicator.appendElement().setElement("EMSX_FIELD_INDICATOR", 1)
+
+                data.appendElement().setElement("EMSX_FIELD_DATA", "")         # RefIndex
+                indicator.appendElement().setElement("EMSX_FIELD_INDICATOR", 1)
+
+                data.appendElement().setElement("EMSX_FIELD_DATA", "")         # Discretion
+                indicator.appendElement().setElement("EMSX_FIELD_INDICATOR", 1)
+                '''
+                
+                # If modifying on behalf of another trader, set the order owner's UUID
+                #request.set("EMSX_TRADER_UUID", 1234567)
+                
+                # If modifying a multi-leg route, indicate the Multileg ID 
+                #request.getElement("EMSX_REQUEST_TYPE").setChoice("Multileg").setElement("EMSX_ML_ID", "123456")
+                            
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"  
+
+
 
 
 Route Extended Request

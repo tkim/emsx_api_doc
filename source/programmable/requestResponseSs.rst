@@ -37,18 +37,21 @@ The ``ManualFill`` request can be used on the sell-side EMSX<GO> settings to cre
 Full code sample:-
 
 ==================== ===================
-    
+`Manual Fill cs`_    `Manual Fill vba`_    
 -------------------- -------------------
-`Manual Fill java`_  
+`Manual Fill java`_  `Manual Fill py`_ 
 ==================== ===================
 
 .. Manual Fill cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp
 
-.. Manual Fill cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ManualFill.cs
+.. _Manual Fill cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C#/ManualFill.cs
 
 .. _Manual Fill java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ManualFill.java
 
-.. Manual Fill py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py
+.. _Manual Fill py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py
+
+.. _Manual Fill vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/ManualFill.cls
+
 
 
 .. hint:: 
@@ -58,7 +61,53 @@ Full code sample:-
 
 .. code-block:: python
     
-    # ManualFill.py
+
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
+
+                service = session.getService(d_service)
+    
+                request = service.createRequest("ManualFill");
+
+                #request.set("EMSX_REQUEST_SEQ", 1)
+
+                request.set("EMSX_TRADER_UUID", 12109783)
+
+                routeToFill = request.getElement("ROUTE_TO_FILL")
+                    
+                routeToFill.setElement("EMSX_SEQUENCE", 1234567)
+                routeToFill.setElement("EMSX_ROUTE_ID", 1)
+                    
+                fills = request.getElement("FILLS")
+                    
+                fills.setElement("EMSX_FILL_AMOUNT", 1000)
+                fills.setElement("EMSX_FILL_PRICE", 123.4)
+                fills.setElement("EMSX_LAST_MARKET", "XLON")
+                    
+                fills.setElement("EMSX_INDIA_EXCHANGE","BGL")
+                    
+                fillDateTime = fills.getElement("EMSX_FILL_DATE_TIME")
+                    
+                fillDateTime.setChoice("Legacy");
+                    
+                fillDateTime.setElement("EMSX_FILL_DATE",20172203)
+                fillDateTime.setElement("EMSX_FILL_TIME",17054)
+                fillDateTime.setElement("EMSX_FILL_TIME_FORMAT","SecondsFromMidnight")
+
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
+
 
 
 Sell Side Ack Request
@@ -71,19 +120,22 @@ buy-side EMSX<GO>.
 
 Full code sample:-
 
-=======================  ===================
-    
------------------------  -------------------
-`Sell Side Ack java`_  
-=======================  ===================
+=======================  ====================
+`Sell Side Ack cs`_      `Sell Side Ack vba`_  
+-----------------------  --------------------
+`Sell Side Ack java`_    `Sell Side Ack py`_ 
+=======================  ====================
 
 .. Sell Side Ack cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideAck.cpp
 
-.. Sell Side Ack cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideAck.cs
+.. _Sell Side Ack cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideAck.cs
 
 .. _Sell Side Ack java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/SellSideAck.java
 
-.. Sell Side Ack py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideAck.py
+.. _Sell Side Ack py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideAck.py
+
+.. _Sell Side Ack vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/SellSideAck.cls
+
 
 
 .. hint:: 
@@ -93,8 +145,34 @@ Full code sample:-
 
 .. code-block:: python
 
-	# SellSideAck.py
+	
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
 
+                service = session.getService(d_service)
+    
+                request = service.createRequest("SellSideAck");
+
+                #request.set("EMSX_REQUEST_SEQ", 1)
+
+                request.setElement("EMSX_SEQUENCE", 1234567)
+                    
+                # If performing the ack on an order owned by another team member, provide owner's UUID
+                #request.set("EMSX_TRADER_UUID", 7654321)
+
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"      
 
 
 Sell Side Reject Request
@@ -107,19 +185,21 @@ buy-side EMSX<GO>.
 
 Full code sample:-
 
-======================== ======================
- 
------------------------- ----------------------
-`Sell Side Reject java`_ 
-======================== ======================
+======================== =======================
+`Sell Side Reject cs`_   `Sell Side Reject vba`_ 
+------------------------ -----------------------
+`Sell Side Reject java`_ `Sell Side Reject py`_
+======================== =======================
 
 .. Sell Side Reject cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideReject.cpp
 
-.. Sell Side Reject cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideReject.cs
+.. _Sell Side Reject cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideReject.cs
 
 .. _Sell Side Reject java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/SellSideReject.java
 
-.. Sell Side Reject py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideReject.py
+.. _Sell Side Reject py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideReject.py
+
+.. _Sell Side Reject vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/SellSideReject.cls
 
 
 .. hint:: 
@@ -129,7 +209,37 @@ Full code sample:-
 
 .. code-block:: python
 
-	# SellSideRej.py
+	
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
+
+                service = session.getService(d_service)
+    
+                request = service.createRequest("SellSideReject");
+
+                #request.set("EMSX_REQUEST_SEQ", 1)
+
+                request.setElement("EMSX_SEQUENCE", 1234567)
+                    
+                # If performing the reject on an order owned by another team member, provide owner's UUID
+                #request.set("EMSX_TRADER_UUID", 7654321)
+
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"        
+
+
+
 
 
 

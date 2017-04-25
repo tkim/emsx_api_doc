@@ -108,7 +108,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#get-teams-request">Get Teams Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#group-route-extended-request">Group Route Extended Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#manaul-fill-request">Manaul Fill Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#modify-order-request">Modify Order Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modify-order-extended-request">Modify Order Extended Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modify-route-extended-request">Modify Route Extended Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#route-extended-request">Route Extended Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#route-manually-extended-request">Route Manually Extended Request</a></li>
@@ -395,7 +395,7 @@ of the route.</p>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CancelRoute.cpp">Cancel Route cpp</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CancelRoute.cs">Cancel Route cs</a></td>
-<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/AssignTrader.cls">Cancel Route vba</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/CancelRoute.cls">Cancel Route vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CancelRoute.java">Cancel Route java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CancelRoute.py">Cancel Route py</a></td>
@@ -1250,11 +1250,11 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <col width="49%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>&nbsp;</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ManualFill.cs">Manual Fill cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/ManualFill.cls">Manual Fill vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ManualFill.java">Manual Fill java</a></td>
-<td>&nbsp;</td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py">Manual Fill py</a></td>
 </tr>
 </tbody>
 </table>
@@ -1262,25 +1262,69 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># ManualFill.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
+
+    <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPENED</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Service opened...&quot;</span>
+
+            <span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
+
+            <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;ManualFill&quot;</span><span class="p">);</span>
+
+            <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1)</span>
+
+            <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_TRADER_UUID&quot;</span><span class="p">,</span> <span class="mi">12109783</span><span class="p">)</span>
+
+            <span class="n">routeToFill</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;ROUTE_TO_FILL&quot;</span><span class="p">)</span>
+
+            <span class="n">routeToFill</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">1234567</span><span class="p">)</span>
+            <span class="n">routeToFill</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_ROUTE_ID&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="n">fills</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;FILLS&quot;</span><span class="p">)</span>
+
+            <span class="n">fills</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_AMOUNT&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+            <span class="n">fills</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_PRICE&quot;</span><span class="p">,</span> <span class="mf">123.4</span><span class="p">)</span>
+            <span class="n">fills</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_LAST_MARKET&quot;</span><span class="p">,</span> <span class="s2">&quot;XLON&quot;</span><span class="p">)</span>
+
+            <span class="n">fills</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_INDIA_EXCHANGE&quot;</span><span class="p">,</span><span class="s2">&quot;BGL&quot;</span><span class="p">)</span>
+
+            <span class="n">fillDateTime</span> <span class="o">=</span> <span class="n">fills</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_DATE_TIME&quot;</span><span class="p">)</span>
+
+            <span class="n">fillDateTime</span><span class="o">.</span><span class="n">setChoice</span><span class="p">(</span><span class="s2">&quot;Legacy&quot;</span><span class="p">);</span>
+
+            <span class="n">fillDateTime</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_DATE&quot;</span><span class="p">,</span><span class="mi">20172203</span><span class="p">)</span>
+            <span class="n">fillDateTime</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_TIME&quot;</span><span class="p">,</span><span class="mi">17054</span><span class="p">)</span>
+            <span class="n">fillDateTime</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_TIME_FORMAT&quot;</span><span class="p">,</span><span class="s2">&quot;SecondsFromMidnight&quot;</span><span class="p">)</span>
+
+            <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
+
+            <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
+            <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="modify-order-request">
-<h2>Modify Order Request<a class="headerlink" href="#modify-order-request" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="modify-order-extended-request">
+<h2>Modify Order Extended Request<a class="headerlink" href="#modify-order-extended-request" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">ModifyOrderEx</span></code> request modifies an existing or previously created order in EMSX&lt;GO&gt; or using EMSX API.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="52%" />
-<col width="48%" />
+<col width="51%" />
+<col width="49%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>&nbsp;</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyOrderEx.cs">Modify Order Extended cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/ModifyOrderEx.cls">Modify Order Extended vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyOrderEx.java">Modify Order Extended java</a></td>
-<td>&nbsp;</td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyOrderEx.py">Modify Order Extended py</a></td>
 </tr>
 </tbody>
 </table>
@@ -1288,7 +1332,55 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#ModifyOrder.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
+
+<span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+
+    <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPENED</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;Service opened...&quot;</span>
+
+        <span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
+
+        <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;ModifyOrderEx&quot;</span><span class="p">)</span>
+
+        <span class="c1"># The fields below are mandatory</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">3834157</span><span class="p">)</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_AMOUNT&quot;</span><span class="p">,</span> <span class="mi">1300</span><span class="p">)</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_ORDER_TYPE&quot;</span><span class="p">,</span> <span class="s2">&quot;MKT&quot;</span><span class="p">)</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_TIF&quot;</span><span class="p">,</span> <span class="s2">&quot;DAY&quot;</span><span class="p">)</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_TICKER&quot;</span><span class="p">,</span> <span class="s2">&quot;IBM US Equity&quot;</span><span class="p">)</span>
+
+        <span class="c1"># The fields below are optional</span>
+        <span class="c1">#request.set(&quot;EMSX_HAND_INSTRUCTION&quot;, &quot;ANY&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_ACCOUNT&quot;,&quot;TestAccount&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_CFD_FLAG&quot;, &quot;1&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_EXEC_INSTRUCTIONS&quot;, &quot;AnyInst&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_GET_WARNINGS&quot;, &quot;0&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_GTD_DATE&quot;, &quot;20170105&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_INVESTOR_ID&quot;, &quot;InvID&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_LIMIT_PRICE&quot;, 123.45)</span>
+        <span class="c1">#request.set(&quot;EMSX_NOTES&quot;, &quot;Some notes&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1001)</span>
+        <span class="c1">#request.set(&quot;EMSX_STOP_PRICE&quot;, 123.5)</span>
+
+        <span class="c1"># Note: When changing order type to a LMT order, you will need to provide the EMSX_LIMIT_PRICE value.</span>
+        <span class="c1">#       When changing order type away from LMT order, you will need to reset the EMSX_LIMIT_PRICE value</span>
+        <span class="c1">#       by setting the content to -99999</span>
+
+        <span class="c1"># Note: To clear down the stop price, set the content to -1</span>
+
+        <span class="c1"># If modifying on behalf of another trader, set the order owner&#39;s UUID</span>
+        <span class="c1">#request.set(&quot;EMSX_TRADER_UUID&quot;, 1234567)</span>
+
+        <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
+
+        <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
+        <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1302,11 +1394,11 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <col width="49%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>&nbsp;</td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyRouteEx.cs">Modify Route Extended cs</a></td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/ModifyRouteEx.cls">Modify Route Extended vba</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyRouteEx.java">Modify Route Extended java</a></td>
-<td>&nbsp;</td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyRouteEx.py">Modify Route Extended py</a></td>
 </tr>
 </tbody>
 </table>
@@ -1314,7 +1406,117 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#ModifyRouteEx.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
+
+<span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+
+    <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPENED</span><span class="p">:</span>
+
+        <span class="k">print</span> <span class="s2">&quot;Service opened...&quot;</span>
+
+        <span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
+
+        <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;ModifyRouteEx&quot;</span><span class="p">)</span>
+
+        <span class="c1"># The fields below are mandatory</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">3834157</span><span class="p">)</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_ROUTE_ID&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_AMOUNT&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_ORDER_TYPE&quot;</span><span class="p">,</span> <span class="s2">&quot;MKT&quot;</span><span class="p">)</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_TIF&quot;</span><span class="p">,</span> <span class="s2">&quot;DAY&quot;</span><span class="p">)</span>
+
+        <span class="c1"># The fields below are optional</span>
+        <span class="c1">#request.set(&quot;EMSX_ACCOUNT&quot;,&quot;TestAccount&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_CLEARING_ACCOUNT&quot;, &quot;ClearingAcnt&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_CLEARING_FIRM&quot;, &quot;ClearingFirm&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_COMM_TYPE&quot;, &quot;Absolute&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_EXCHANGE_DESTINATION&quot;, &quot;DEST&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_GET_WARNINGS&quot;, &quot;0&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_GTD_DATE&quot;, &quot;20170105&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_LIMIT_PRICE&quot;, 123.45)</span>
+        <span class="c1">#request.set(&quot;EMSX_LOC_BROKER&quot;, &quot;ABCD&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_LOC_ID&quot;, &quot;1234567&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_LOC_REQ&quot;, &quot;Y&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_NOTES&quot;, &quot;Some notes&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_ODD_LOT&quot;, &quot;&quot; )</span>
+        <span class="c1">#request.set(&quot;EMSX_P_A&quot;, &quot;P&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1001)</span>
+        <span class="c1">#request.set(&quot;EMSX_STOP_PRICE&quot;, 123.5)</span>
+        <span class="c1">#request.set(&quot;EMSX_TRADER_NOTES&quot;, &quot;Trader notes&quot;)</span>
+        <span class="c1">#request.set(&quot;EMSX_USER_COMM_RATE&quot;, 0.02)</span>
+        <span class="c1">#request.set(&quot;EMSX_USER_FEES&quot;, &quot;1.5&quot;)</span>
+
+        <span class="c1"># Note: When changing order type to a LMT order, you will need to provide the EMSX_LIMIT_PRICE value.</span>
+        <span class="c1">#       When changing order type away from LMT order, you will need to reset the EMSX_LIMIT_PRICE value</span>
+        <span class="c1">#       by setting the content to -99999</span>
+
+        <span class="c1"># Note: To clear down the stop price, set the content to -1</span>
+
+        <span class="c1"># Set the strategy parameters, if required</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        strategy = request.getElement(&quot;EMSX_STRATEGY_PARAMS&quot;)</span>
+<span class="sd">        strategy.setElement(&quot;EMSX_STRATEGY_NAME&quot;, &quot;VWAP&quot;)</span>
+
+<span class="sd">        indicator = strategy.getElement(&quot;EMSX_STRATEGY_FIELD_INDICATORS&quot;)</span>
+<span class="sd">        data = strategy.getElement(&quot;EMSX_STRATEGY_FIELDS&quot;)</span>
+
+<span class="sd">        # Strategy parameters must be appended in the correct order. See the output</span>
+<span class="sd">        # of GetBrokerStrategyInfo request for the order. The indicator value is 0 for</span>
+<span class="sd">        # a field that carries a value, and 1 where the field should be ignored</span>
+
+<span class="sd">        data.appendElement().setElement(&quot;EMSX_FIELD_DATA&quot;, &quot;09:30:00&quot;) # StartTime</span>
+<span class="sd">        indicator.appendElement().setElement(&quot;EMSX_FIELD_INDICATOR&quot;, 0)</span>
+
+<span class="sd">        data.appendElement().setElement(&quot;EMSX_FIELD_DATA&quot;, &quot;10:30:00&quot;) # EndTime</span>
+<span class="sd">        indicator.appendElement().setElement(&quot;EMSX_FIELD_INDICATOR&quot;, 0)</span>
+
+<span class="sd">        data.appendElement().setElement(&quot;EMSX_FIELD_DATA&quot;, &quot;&quot;)         # Max%Volume</span>
+<span class="sd">        indicator.appendElement().setElement(&quot;EMSX_FIELD_INDICATOR&quot;, 1)</span>
+
+<span class="sd">        data.appendElement().setElement(&quot;EMSX_FIELD_DATA&quot;, &quot;&quot;)         # %AMSession</span>
+<span class="sd">        indicator.appendElement().setElement(&quot;EMSX_FIELD_INDICATOR&quot;, 1)</span>
+
+<span class="sd">        data.appendElement().setElement(&quot;EMSX_FIELD_DATA&quot;, &quot;&quot;)         # OPG</span>
+<span class="sd">        indicator.appendElement().setElement(&quot;EMSX_FIELD_INDICATOR&quot;, 1)</span>
+
+<span class="sd">        data.appendElement().setElement(&quot;EMSX_FIELD_DATA&quot;, &quot;&quot;)         # MOC</span>
+<span class="sd">        indicator.appendElement().setElement(&quot;EMSX_FIELD_INDICATOR&quot;, 1)</span>
+
+<span class="sd">        data.appendElement().setElement(&quot;EMSX_FIELD_DATA&quot;, &quot;&quot;)         # CompletePX</span>
+<span class="sd">        indicator.appendElement().setElement(&quot;EMSX_FIELD_INDICATOR&quot;, 1)</span>
+
+<span class="sd">        data.appendElement().setElement(&quot;EMSX_FIELD_DATA&quot;, &quot;&quot;)         # TriggerPX</span>
+<span class="sd">        indicator.appendElement().setElement(&quot;EMSX_FIELD_INDICATOR&quot;, 1)</span>
+
+<span class="sd">        data.appendElement().setElement(&quot;EMSX_FIELD_DATA&quot;, &quot;&quot;)         # DarkComplete</span>
+<span class="sd">        indicator.appendElement().setElement(&quot;EMSX_FIELD_INDICATOR&quot;, 1)</span>
+
+<span class="sd">        data.appendElement().setElement(&quot;EMSX_FIELD_DATA&quot;, &quot;&quot;)         # DarkCompPX</span>
+<span class="sd">        indicator.appendElement().setElement(&quot;EMSX_FIELD_INDICATOR&quot;, 1)</span>
+
+<span class="sd">        data.appendElement().setElement(&quot;EMSX_FIELD_DATA&quot;, &quot;&quot;)         # RefIndex</span>
+<span class="sd">        indicator.appendElement().setElement(&quot;EMSX_FIELD_INDICATOR&quot;, 1)</span>
+
+<span class="sd">        data.appendElement().setElement(&quot;EMSX_FIELD_DATA&quot;, &quot;&quot;)         # Discretion</span>
+<span class="sd">        indicator.appendElement().setElement(&quot;EMSX_FIELD_INDICATOR&quot;, 1)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="c1"># If modifying on behalf of another trader, set the order owner&#39;s UUID</span>
+        <span class="c1">#request.set(&quot;EMSX_TRADER_UUID&quot;, 1234567)</span>
+
+        <span class="c1"># If modifying a multi-leg route, indicate the Multileg ID</span>
+        <span class="c1">#request.getElement(&quot;EMSX_REQUEST_TYPE&quot;).setChoice(&quot;Multileg&quot;).setElement(&quot;EMSX_ML_ID&quot;, &quot;123456&quot;)</span>
+
+        <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
+
+        <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
+        <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
 </pre></div>
 </div>
 </div>
