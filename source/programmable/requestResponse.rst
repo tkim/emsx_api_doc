@@ -99,12 +99,12 @@ fields. The service name is ``\\blp\emsx.brokerspec``.
 Full code sample:-
 
 ==================== ================= ==================
-`Broker Spec cs`_                      `Broker Spec vba`_ 
+`Broker Spec cpp`_   `Broker Spec cs`_ `Broker Spec vba`_ 
 -------------------- ----------------- ------------------
 `Broker Spec java`_  `Broker Spec py`_
 ==================== ================= ==================
 
-.. Broker Spec cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/BrokerSpec.cpp
+.. _Broker Spec cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/BrokerSpec.cpp
 
 .. _Broker Spec cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/BrokerSpec.cs
 
@@ -1225,13 +1225,13 @@ The ``ManualFill`` request can be used on the sell-side EMSX<GO> settings to cre
 
 Full code sample:-
 
-==================== ===================  
-`Manual Fill cs`_    `Manual Fill vba`_
--------------------- -------------------
+==================== =================== ================== 
+`Manual Fill cpp`_   `Manual Fill cs`_   `Manual Fill vba`_
+-------------------- ------------------- ------------------
 `Manual Fill java`_  `Manual Fill py`_
-==================== =================== 
+==================== =================== ==================
 
-.. Manual Fill cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp
+.. _Manual Fill cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp
 
 .. _Manual Fill cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ManualFill.cs
 
@@ -1305,13 +1305,13 @@ The ``ModifyOrderEx`` request modifies an existing or previously created order i
 
 Full code sample:-
 
-============================= ============================
-`Modify Order Extended cs`_   `Modify Order Extended vba`_ 	
------------------------------ ----------------------------
+============================= ============================ ============================
+`Modify Order Extended cpp`_  `Modify Order Extended cs`_  `Modify Order Extended vba`_ 	
+----------------------------- ---------------------------- ----------------------------
 `Modify Order Extended java`_ `Modify Order Extended py`_
-============================= ============================
+============================= ============================ ============================
 
-.. Modify Order Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyOrderEx.cpp
+.. _Modify Order Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyOrderEx.cpp
 
 .. _Modify Order Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyOrderEx.cs
 
@@ -1390,13 +1390,13 @@ The ``ModifyRouteEx`` request modifies an existing or previously created child r
 
 Full code sample:-
 
-============================= ============================
-`Modify Route Extended cs`_   `Modify Route Extended vba`_    	
------------------------------ ----------------------------
+============================= ============================ ============================
+`Modify Route Extended cpp`_  `Modify Route Extended cs`_  `Modify Route Extended vba`_    	
+----------------------------- ---------------------------- ----------------------------
 `Modify Route Extended java`_ `Modify Route Extended py`_ 
-============================= ============================
+============================= ============================ ============================
 
-.. Modify Route Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyRouteEx.cpp
+.. _Modify Route Extended cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ModifyRouteEx.cpp
 
 .. _Modify Route Extended cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/ModifyRouteEx.cs
 

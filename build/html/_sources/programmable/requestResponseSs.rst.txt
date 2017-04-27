@@ -36,13 +36,13 @@ The ``ManualFill`` request can be used on the sell-side EMSX<GO> settings to cre
 
 Full code sample:-
 
-==================== ===================
-`Manual Fill cs`_    `Manual Fill vba`_    
--------------------- -------------------
+==================== =================== ==================
+`Manual Fill cpp`_   `Manual Fill cs`_   `Manual Fill vba`_    
+-------------------- ------------------- ------------------
 `Manual Fill java`_  `Manual Fill py`_ 
-==================== ===================
+==================== =================== ==================
 
-.. Manual Fill cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp
+.. _Manual Fill cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/ManualFill.cpp
 
 .. _Manual Fill cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C#/ManualFill.cs
 
@@ -120,13 +120,13 @@ buy-side EMSX<GO>.
 
 Full code sample:-
 
-=======================  ====================
-`Sell Side Ack cs`_      `Sell Side Ack vba`_  
------------------------  --------------------
-`Sell Side Ack java`_    `Sell Side Ack py`_ 
-=======================  ====================
+====================== =================== ====================
+`Sell Side Ack cpp`_   `Sell Side Ack cs`_ `Sell Side Ack vba`_  
+---------------------- ------------------- --------------------
+`Sell Side Ack java`_  `Sell Side Ack py`_ 
+====================== =================== ====================
 
-.. Sell Side Ack cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideAck.cpp
+.. _Sell Side Ack cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideAck.cpp
 
 .. _Sell Side Ack cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideAck.cs
 
@@ -185,13 +185,13 @@ buy-side EMSX<GO>.
 
 Full code sample:-
 
-======================== =======================
-`Sell Side Reject cs`_   `Sell Side Reject vba`_ 
------------------------- -----------------------
+======================== ====================== =======================
+`Sell Side Reject cpp`_  `Sell Side Reject cs`_ `Sell Side Reject vba`_ 
+------------------------ ---------------------- -----------------------
 `Sell Side Reject java`_ `Sell Side Reject py`_
-======================== =======================
+======================== ====================== =======================
 
-.. Sell Side Reject cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideReject.cpp
+.. _Sell Side Reject cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/SellSideReject.cpp
 
 .. _Sell Side Reject cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/SellSideReject.cs
 
