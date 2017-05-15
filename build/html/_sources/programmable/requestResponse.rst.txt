@@ -1053,7 +1053,15 @@ The ``GroupRouteEx`` request submits an entire list as a single route to a baske
 
 This request should only be used if the intention is to submit an entire list or basket of securities to a single broker strategy destination. This should not be confused with maintaining a list or a basket from a portfolio perspective.
 
-Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use ``CreateOrder`` request to create the order and add the ``EMSX_BASKET_NAME`` in the field. The second step is to submit the list using ``GroupRouteEx`` request and include the ``EMSX_SEQUENCE`` number inside the array. 
+Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use ``CreateOrder`` request 
+to create the order and add the ``EMSX_BASKET_NAME`` in the field. The second step is to submit the list using ``
+GroupRouteEx`` request and include the ``EMSX_SEQUENCE`` number inside the array. 
+
+As of 15th of May, 2017 there also will be an ability to use GroupRouteEx to route two non-ticker as spread ticker in EMSX. 
+
+The underlying concept remains the same and the only difference is to use ``EMSX_REQUEST_TYPE`` as a ``spread`` instead of 
+multileg and for ``EMSX_TICKER`` use one of the two tickers that makes the spread ticker. The ``EMSX_SEQUENCE`` inside the 
+array to submit the list remains the same for using ``GroupRouteEx`` to route as a spread.
 
 
 Full code sample:-

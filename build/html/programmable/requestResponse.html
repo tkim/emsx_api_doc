@@ -1083,7 +1083,13 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <h2>Group Route Extended Request<a class="headerlink" href="#group-route-extended-request" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> request submits an entire list as a single route to a basket/program broker strategy destination.</p>
 <p>This request should only be used if the intention is to submit an entire list or basket of securities to a single broker strategy destination. This should not be confused with maintaining a list or a basket from a portfolio perspective.</p>
-<p>Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use <code class="docutils literal"><span class="pre">CreateOrder</span></code> request to create the order and add the <code class="docutils literal"><span class="pre">EMSX_BASKET_NAME</span></code> in the field. The second step is to submit the list using <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> request and include the <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> number inside the array.</p>
+<p>Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use <code class="docutils literal"><span class="pre">CreateOrder</span></code> request
+to create the order and add the <code class="docutils literal"><span class="pre">EMSX_BASKET_NAME</span></code> in the field. The second step is to submit the list using ``
+GroupRouteEx`` request and include the <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> number inside the array.</p>
+<p>As of 15th of May, 2017 there also will be an ability to use GroupRouteEx to route two non-ticker as spread ticker in EMSX.</p>
+<p>The underlying concept remains the same and the only difference is to use <code class="docutils literal"><span class="pre">EMSX_REQUEST_TYPE</span></code> as a <code class="docutils literal"><span class="pre">spread</span></code> instead of
+multileg and for <code class="docutils literal"><span class="pre">EMSX_TICKER</span></code> use one of the two tickers that makes the spread ticker. The <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> inside the
+array to submit the list remains the same for using <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> to route as a spread.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
