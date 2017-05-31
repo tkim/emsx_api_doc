@@ -1057,12 +1057,6 @@ Currently, this is a two-step process in EMSX API.  The first step is for the us
 to create the order and add the ``EMSX_BASKET_NAME`` in the field. The second step is to submit the list using ``
 GroupRouteEx`` request and include the ``EMSX_SEQUENCE`` number inside the array. 
 
-As of 15th of May, 2017 there also will be an ability to use GroupRouteEx to route two non-ticker as spread ticker in EMSX. 
-
-The underlying concept remains the same and the only difference is to use ``EMSX_REQUEST_TYPE`` as a ``spread`` instead of 
-multileg and for ``EMSX_TICKER`` use one of the two tickers that makes the spread ticker. The ``EMSX_SEQUENCE`` inside the 
-array to submit the list remains the same for using ``GroupRouteEx`` to route as a spread.
-
 
 Full code sample:-
 
@@ -1222,6 +1216,64 @@ Full code sample:-
 	                            
 	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
 	                print >> sys.stderr, "Error: Service failed to open"        
+
+
+Group Route Extended Request - Route As Spread
+==============================================
+
+As of 15th of May, 2017 there also will be an ability to use GroupRouteEx to route two non-ticker as spread ticker in 
+EMSX. 
+
+The underlying concept remains the same and the only difference is to use ``EMSX_REQUEST_TYPE`` as a ``spread`` instead 
+of multileg and for ``EMSX_TICKER`` use one of the two tickers that makes the spread ticker. The ``EMSX_SEQUENCE`` 
+inside the array to submit the list remains the same for using ``GroupRouteEx`` to route as a spread.
+
+
+.. note::
+
+    The ``EMSX_AMOUNT_PERCENT`` element for this request is used strictly for the amount in shares. 
+
+    e.g. ``EMSX_AMOUNT_PERCENT``, 100 means it'll send 100 shares from each ticker.
+
+
+
+Full code sample:-
+
+`Route As Spread py`_   
+
+
+.. _Route As Spread py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteAsSpread.py
+
+
+.. hint:: 
+
+    Please right click on the top code sample link to open in a new tab.
+
+
+.. code-block:: python
+
+    def routeSpread(self, session):
+        
+        request = self.service.createRequest("GroupRouteEx")
+
+        request.append("EMSX_SEQUENCE", self.buySeqNo) 
+        request.append("EMSX_SEQUENCE", self.sellSeqNo) 
+        request.set("EMSX_AMOUNT_PERCENT", 100)
+        request.set("EMSX_BROKER", "ETI");
+        request.set("EMSX_HAND_INSTRUCTION", "ANY")
+        request.set("EMSX_ORDER_TYPE", "MKT")
+        request.set("EMSX_TIF", "DAY")
+        request.set("EMSX_TICKER","CLN7 Comdty")
+        request.set("EMSX_RELEASE_TIME",-1)
+        requestType = request.getElement("EMSX_REQUEST_TYPE") 
+        requestType.setChoice("Spread")
+    
+        print "Request: %s" % request.toString()
+            
+        self.requestID = blpapi.CorrelationId()
+        
+        session.sendRequest(request, correlationId=self.requestID )
+
 
 
 Manaul Fill Request

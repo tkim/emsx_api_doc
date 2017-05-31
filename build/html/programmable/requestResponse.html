@@ -107,6 +107,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#get-field-metadata-request">Get Field Metadata Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get-teams-request">Get Teams Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#group-route-extended-request">Group Route Extended Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-route-extended-request-route-as-spread">Group Route Extended Request - Route As Spread</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#manaul-fill-request">Manaul Fill Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modify-order-extended-request">Modify Order Extended Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modify-route-extended-request">Modify Route Extended Request</a></li>
@@ -1086,10 +1087,6 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use <code class="docutils literal"><span class="pre">CreateOrder</span></code> request
 to create the order and add the <code class="docutils literal"><span class="pre">EMSX_BASKET_NAME</span></code> in the field. The second step is to submit the list using ``
 GroupRouteEx`` request and include the <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> number inside the array.</p>
-<p>As of 15th of May, 2017 there also will be an ability to use GroupRouteEx to route two non-ticker as spread ticker in EMSX.</p>
-<p>The underlying concept remains the same and the only difference is to use <code class="docutils literal"><span class="pre">EMSX_REQUEST_TYPE</span></code> as a <code class="docutils literal"><span class="pre">spread</span></code> instead of
-multileg and for <code class="docutils literal"><span class="pre">EMSX_TICKER</span></code> use one of the two tickers that makes the spread ticker. The <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> inside the
-array to submit the list remains the same for using <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> to route as a spread.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1243,6 +1240,48 @@ array to submit the list remains the same for using <code class="docutils litera
 
         <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
             <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="group-route-extended-request-route-as-spread">
+<h2>Group Route Extended Request - Route As Spread<a class="headerlink" href="#group-route-extended-request-route-as-spread" title="Permalink to this headline">¶</a></h2>
+<p>As of 15th of May, 2017 there also will be an ability to use GroupRouteEx to route two non-ticker as spread ticker in
+EMSX.</p>
+<p>The underlying concept remains the same and the only difference is to use <code class="docutils literal"><span class="pre">EMSX_REQUEST_TYPE</span></code> as a <code class="docutils literal"><span class="pre">spread</span></code> instead
+of multileg and for <code class="docutils literal"><span class="pre">EMSX_TICKER</span></code> use one of the two tickers that makes the spread ticker. The <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code>
+inside the array to submit the list remains the same for using <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> to route as a spread.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The <code class="docutils literal"><span class="pre">EMSX_AMOUNT_PERCENT</span></code> element for this request is used strictly for the amount in shares.</p>
+<p class="last">e.g. <code class="docutils literal"><span class="pre">EMSX_AMOUNT_PERCENT</span></code>, 100 means it&#8217;ll send 100 shares from each ticker.</p>
+</div>
+<p>Full code sample:-</p>
+<p><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteAsSpread.py">Route As Spread py</a></p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Please right click on the top code sample link to open in a new tab.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">routeSpread</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
+
+    <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;GroupRouteEx&quot;</span><span class="p">)</span>
+
+    <span class="n">request</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buySeqNo</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sellSeqNo</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_AMOUNT_PERCENT&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_BROKER&quot;</span><span class="p">,</span> <span class="s2">&quot;ETI&quot;</span><span class="p">);</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_HAND_INSTRUCTION&quot;</span><span class="p">,</span> <span class="s2">&quot;ANY&quot;</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_ORDER_TYPE&quot;</span><span class="p">,</span> <span class="s2">&quot;MKT&quot;</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_TIF&quot;</span><span class="p">,</span> <span class="s2">&quot;DAY&quot;</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_TICKER&quot;</span><span class="p">,</span><span class="s2">&quot;CLN7 Comdty&quot;</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_RELEASE_TIME&quot;</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">requestType</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;EMSX_REQUEST_TYPE&quot;</span><span class="p">)</span>
+    <span class="n">requestType</span><span class="o">.</span><span class="n">setChoice</span><span class="p">(</span><span class="s2">&quot;Spread&quot;</span><span class="p">)</span>
+
+    <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
+
+    <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
