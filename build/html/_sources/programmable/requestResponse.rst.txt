@@ -1080,7 +1080,7 @@ Full code sample:-
 
 .. _Group Route Extended py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GroupRouteEx.py
 
-.. _Group Route Extended vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/GroupRouteEx.cls
+.. _Group Route Extended vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/GroupRoute.cls
 
 
 .. hint:: 

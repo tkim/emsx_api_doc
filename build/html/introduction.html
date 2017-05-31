@@ -92,6 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#emsx-api-access-from-microsoft-excel-com">EMSX API access from Microsoft Excel (COM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#emsx-api-access-from-matlab">EMSX API access from MATLAB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#emsx-api-access-from-r">EMSX API access from R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#easymsx">EasyMSX</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="server/index.html">Server Side EMSX API</a></li>
@@ -210,7 +211,19 @@ typing IAM&lt;GO&gt;. Select production information as B-Pipe and click register
 </div>
 <div class="section" id="emsx-api-access-from-r">
 <h2>EMSX API access from R<a class="headerlink" href="#emsx-api-access-from-r" title="Permalink to this headline">¶</a></h2>
-<p>The  EMSX API can also be accessed via <a class="reference external" href="https://github.com/Rblp/Rblpapi/blob/master/README.md">R</a> language. The current <a class="reference external" href="https://github.com/Rblp/Rblpapi">R repository</a> is designed for general Bloomberg API usage using both the subscription and request/response services. The EMSX API uses both services and thus even though the current sample illustrates //blp/mktdata and //blp/refdata, this can easily be repurposed for //blp/emapisvc which refers to the EMSX API service name.</p>
+<p>The EMSX API can also be accessed via <a class="reference external" href="https://github.com/Rblp/Rblpapi/blob/master/README.md">R</a> language. The current <a class="reference external" href="https://github.com/Rblp/Rblpapi">R repository</a> is designed for general Bloomberg API usage using both the subscription and request/response services. The EMSX API uses both services and thus even though the current sample illustrates //blp/mktdata and //blp/refdata, this can easily be repurposed for //blp/emapisvc which refers to the EMSX API service name.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+<div class="section" id="easymsx">
+<h2>EasyMSX<a class="headerlink" href="#easymsx" title="Permalink to this headline">¶</a></h2>
+<p>The EasyMSX is a supplemental code sample for developers who will use the Bloomberg EMSX API to develop custom applications.</p>
+<p>The EasyMSX wrapper is a code sample that can be compiled into a library. The EasyMSX are set of files to build a project that demonstrates one possible way to build caching data or a starting place to work with Bloomberg EMSX API.</p>
+<p>Please note this is not a compiled binary. This is a CODE SAMPLE. There is no SLA (Service Level Agreement) or quality assessment or guarantees.</p>
+<p>The EasyMSX allows getting orders, routes, and static data from EMSX API service. The EasyMSX allows adding notification handler on the real-time events. There is an observer pattern that can throw exceptions as illustrated in the <code class="docutils literal"><span class="pre">EasyMSXSample.py</span></code>.</p>
+<p>EasyMSX folder consists of the core code samples. The <code class="docutils literal"><span class="pre">EasyMSXSample.py</span></code> is the sample to use.</p>
+<p><a class="reference external" href="http://easymsx.readthedocs.io/en/latest/">EasyMSX Documentation</a></p>
+<p><a class="reference external" href="https://github.com/tkim/EasyMSXRepository.git">EasyMSX Code Sample in Python</a></p>
 <blockquote>
 <div></div></blockquote>
 </div>
