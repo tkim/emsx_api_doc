@@ -126,7 +126,7 @@ Route Status    	   Description
 --------------------- --------------------------------------------------------------------------------------
 ``BUST``			  The route fill has been busted by the execution broker.
 --------------------- --------------------------------------------------------------------------------------
-``CANCEL``  		  The order has been added and assigned to a trader.
+``CANCEL``  		  The route has been canceled.
 --------------------- --------------------------------------------------------------------------------------
 ``CORRECTED`` 		  The route fill has been corrected by the execution broker.
 --------------------- --------------------------------------------------------------------------------------
