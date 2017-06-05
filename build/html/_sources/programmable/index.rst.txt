@@ -22,6 +22,7 @@ The ``EMSX_REQUEST_SEQ`` should also be added to every request. The ``EMSX_REQUE
 .. toctree::
 	   :maxdepth: 3
 
+	   stateDiagram
 	   session
 	   description
 	   requestResponse

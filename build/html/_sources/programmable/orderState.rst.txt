@@ -1,0 +1,6 @@
+Order State Diagram
+===================
+
+Following is an order state diagram for EMSX API:-
+
+.. image:: /image/order_states.png
