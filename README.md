@@ -1,6 +1,6 @@
 # EMSX API Programmers Guide
 
-EMSX API Programmers Guide (draft)
+EMSX API Programmers Guide
 
 http://emsx-api-doc.readthedocs.io/en/latest/index.html
 
