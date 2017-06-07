@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Order State Diagram &mdash; EMSX API Programmers Guide 0.0.5 documentation</title>
+  <title>Accessing the Test Environment &mdash; EMSX API Programmers Guide 0.0.5 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="EMSX API Programmers Guide 0.0.5 documentation" href="../index.html"/>
         <link rel="up" title="Programmable EMSX API" href="index.html"/>
-        <link rel="next" title="Session Object" href="session.html"/>
-        <link rel="prev" title="Accessing the Test Environment" href="testEnv.html"/> 
+        <link rel="next" title="Accessing the Test Environment" href="stateDiagram.html"/>
+        <link rel="prev" title="Programmable EMSX API" href="index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -90,9 +90,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable EMSX API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="testEnv.html">Accessing the Test Environment</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Order State Diagram</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#route-state-diagram">Route State Diagram</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Accessing the Test Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stateDiagram.html">Accessing the Test Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stateDiagram.html#order-state-diagram">Order State Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stateDiagram.html#route-state-diagram">Route State Diagram</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">Session Object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="description.html">Description of Request/Response Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponse.html">Buy-Side Request/Response Service</a></li>
@@ -135,11 +136,11 @@
       
           <li><a href="index.html">Programmable EMSX API</a> &raquo;</li>
       
-    <li>Order State Diagram</li>
+    <li>Accessing the Test Environment</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/programmable/stateDiagram.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/programmable/testEnv.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -149,15 +150,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="order-state-diagram">
-<h1>Order State Diagram<a class="headerlink" href="#order-state-diagram" title="Permalink to this headline">¶</a></h1>
-<p>Following is an order state diagram for EMSX API:-</p>
-<img alt="../_images/order_states.png" src="../_images/order_states.png" />
-</div>
-<div class="section" id="route-state-diagram">
-<h1>Route State Diagram<a class="headerlink" href="#route-state-diagram" title="Permalink to this headline">¶</a></h1>
-<p>Following is a route state diagram for EMSX API:-</p>
-<p><em>Coming soon...</em></p>
+  <div class="section" id="accessing-the-test-environment">
+<h1>Accessing the Test Environment<a class="headerlink" href="#accessing-the-test-environment" title="Permalink to this headline">¶</a></h1>
+<p>Bloomberg provides a test environment for clients to build and test their strategies using the EMSX API.</p>
+<p>This is accomplished by referencing //blp/emapisvc_beta as the service name in your program. This command will allow your service  to
+redirect all EMSX API requests and subscriptions to the test environment.</p>
+<p>Once the client has thoroughly tested the custom-built strategies, they can access the production environment by changing the service
+name from //blp/emapisvc_beta to //blp/emapisvc.</p>
+<p>Inside the Bloomberg Terminal type DGRT Y087&lt;GO&gt; {Y (number zero) 87} This command allows the particular terminal window to log into the
+beta environment. Please note, when a user is remote into the beta environment it only affects that particular terminal window and the
+other screens will not be affected by the DGRT command.</p>
+<p>To check which environment your current view is in, type VSAT &lt;GO&gt; inside the Bloomberg terminal.</p>
+<p>To get back to production type DGRT OFF &lt;GO&gt;. Please note that the testing environment in Beta will not operate in the exact same way as
+the production environment. Also, please note that the beta environment is a lot slower than the production environment.</p>
+<p>To launch the ticket using limited functional terminal will require different command once inside the Y087 environment. EMSX /NOLP &lt;GO&gt; -
+This command disables Launchpad ticket from EMSX.</p>
 </div>
 
 
@@ -167,10 +174,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="session.html" class="btn btn-neutral float-right" title="Session Object" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="stateDiagram.html" class="btn btn-neutral float-right" title="Accessing the Test Environment" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="testEnv.html" class="btn btn-neutral" title="Accessing the Test Environment" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Programmable EMSX API" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
