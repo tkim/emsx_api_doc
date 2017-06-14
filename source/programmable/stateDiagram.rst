@@ -3,6 +3,12 @@ Order State Diagram
 
 Following is an order state diagram for EMSX API:-
 
+
+`Order State PDF`_
+
+.. _Order State PDF: https://github.com/tkim/emsx_api_repository/order_state.pdf
+
+
 .. image:: /image/order_states.png
 
 
@@ -11,4 +17,10 @@ Route State Diagram
 
 Following is a route state diagram for EMSX API:-
 
-.. image:: /image/order_states.png
+
+`Route State PDF`_
+
+.. _Route State PDF: https://github.com/tkim/emsx_api_repository/route_state.pdf
+
+
+.. image:: /image/route_states.png
