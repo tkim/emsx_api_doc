@@ -11,4 +11,4 @@ Route State Diagram
 
 Following is a route state diagram for EMSX API:-
 
-*Coming soon...*
+.. image:: /image/order_states.png
