@@ -90,6 +90,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable EMSX API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="testEnv.html">Accessing the Test Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stateDiagram.html">Order State Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stateDiagram.html#route-state-diagram">Route State Diagram</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">Session Object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="description.html">Description of Request/Response Service</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Buy-Side Request/Response Service</a><ul>
@@ -107,6 +110,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#get-field-metadata-request">Get Field Metadata Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get-teams-request">Get Teams Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#group-route-extended-request">Group Route Extended Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-route-extended-request-multi-leg-options">Group Route Extended Request - Multi-Leg Options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#group-route-extended-request-route-as-spread">Group Route Extended Request - Route As Spread</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#manaul-fill-request">Manaul Fill Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modify-order-extended-request">Modify Order Extended Request</a></li>
@@ -1243,6 +1247,28 @@ GroupRouteEx`` request and include the <code class="docutils literal"><span clas
 </pre></div>
 </div>
 </div>
+<div class="section" id="group-route-extended-request-multi-leg-options">
+<h2>Group Route Extended Request - Multi-Leg Options<a class="headerlink" href="#group-route-extended-request-multi-leg-options" title="Permalink to this headline">¶</a></h2>
+<p>The multi-leg options can be traded using <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> request. The first step is to create the
+options and if need be equities leg using <code class="docutils literal"><span class="pre">CreateOrder</span></code> request. Once this is completed, create a
+request object for <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> and submit it to the session with all the fields necessary for the
+multi-leg options routing.</p>
+<p>The overall workflow for multi-leg options is similar to how you create and submit a basket or a list in
+EMSX.</p>
+<p>The <code class="docutils literal"><span class="pre">CreateOrder</span></code> request will essentially stage the multi-leg options orders into EMSX.
+(e.g. B/O on AAPL US 11/20/15 C121 Equity and B/O on AAPL US 11/20/15 P119 Equity. )</p>
+<p>The multi-leg request is an array and similar to submitting a basket order, it is important to make sure
+the <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> matches in the <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> with the orders created using <code class="docutils literal"><span class="pre">CreateOrder</span></code>
+request. For the subscription services, there will initially be eight elements to subscribe at the Route
+level subscription.  They are <code class="docutils literal"><span class="pre">EMSX_ML_ID</span></code>, <code class="docutils literal"><span class="pre">EMSX_ML_LEG_QUANTITY</span></code>, <code class="docutils literal"><span class="pre">EMSX_ML_NUM_LEGS</span></code>, <code class="docutils literal"><span class="pre">EMSX_ML_PERCENT_FILLED</span></code>, <code class="docutils literal"><span class="pre">EMSX_ML_RATIO</span></code>, <code class="docutils literal"><span class="pre">EMSX_ML_REMAIN_BALANCE</span></code>, <code class="docutils literal"><span class="pre">EMSX_ML_STRATEGY</span></code>, and <code class="docutils literal"><span class="pre">EMSX_ML_TOTAL_QUANTITY</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The Debit and Credit is indicated by the  net price. Credit is indicated by using the negative sign
+in the net price where the Debit is indicated by the positive net price.</p>
+<p class="last">Debit = positive for the net price
+Credit = negative for the net price</p>
+</div>
+</div>
 <div class="section" id="group-route-extended-request-route-as-spread">
 <h2>Group Route Extended Request - Route As Spread<a class="headerlink" href="#group-route-extended-request-route-as-spread" title="Permalink to this headline">¶</a></h2>
 <p>As of 15th of May, 2017 there also will be an ability to use GroupRouteEx to route two non-ticker as spread ticker in
@@ -1287,7 +1313,8 @@ inside the array to submit the list remains the same for using <code class="docu
 </div>
 <div class="section" id="manaul-fill-request">
 <h2>Manaul Fill Request<a class="headerlink" href="#manaul-fill-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">ManualFill</span></code> request can be used on the sell-side EMSX&lt;GO&gt; settings to create fills and notifies EMSX&lt;GO&gt;.</p>
+<p>The <code class="docutils literal"><span class="pre">ManualFill</span></code> request can be used on the sell-side EMSX&lt;GO&gt; settings to create fills and notifies
+EMSX&lt;GO&gt;.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>

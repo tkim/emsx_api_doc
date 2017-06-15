@@ -1218,8 +1218,39 @@ Full code sample:-
 	                print >> sys.stderr, "Error: Service failed to open"        
 
 
+Group Route Extended Request - Multi-Leg Options
+================================================
+
+
+The multi-leg options can be traded using ``GroupRouteEx`` request. The first step is to create the 
+options and if need be equities leg using ``CreateOrder`` request. Once this is completed, create a 
+request object for ``GroupRouteEx`` and submit it to the session with all the fields necessary for the 
+multi-leg options routing.
+
+The overall workflow for multi-leg options is similar to how you create and submit a basket or a list in 
+EMSX.
+
+The ``CreateOrder`` request will essentially stage the multi-leg options orders into EMSX.  
+(e.g. B/O on AAPL US 11/20/15 C121 Equity and B/O on AAPL US 11/20/15 P119 Equity. )
+
+The multi-leg request is an array and similar to submitting a basket order, it is important to make sure 
+the ``EMSX_SEQUENCE`` matches in the ``GroupRouteEx`` with the orders created using ``CreateOrder`` 
+request. For the subscription services, there will initially be eight elements to subscribe at the Route 
+level subscription.  They are ``EMSX_ML_ID``, ``EMSX_ML_LEG_QUANTITY``, ``EMSX_ML_NUM_LEGS``, ``EMSX_ML_PERCENT_FILLED``, ``EMSX_ML_RATIO``, ``EMSX_ML_REMAIN_BALANCE``, ``EMSX_ML_STRATEGY``, and ``EMSX_ML_TOTAL_QUANTITY``.
+
+
+.. note::
+
+    The Debit and Credit is indicated by the  net price. Credit is indicated by using the negative sign 
+    in the net price where the Debit is indicated by the positive net price.
+
+    Debit = positive for the net price
+    Credit = negative for the net price
+
+
 Group Route Extended Request - Route As Spread
 ==============================================
+
 
 As of 15th of May, 2017 there also will be an ability to use GroupRouteEx to route two non-ticker as spread ticker in 
 EMSX. 
@@ -1275,12 +1306,12 @@ Full code sample:-
         session.sendRequest(request, correlationId=self.requestID )
 
 
-
 Manaul Fill Request
 ===================
 
 
-The ``ManualFill`` request can be used on the sell-side EMSX<GO> settings to create fills and notifies EMSX<GO>.
+The ``ManualFill`` request can be used on the sell-side EMSX<GO> settings to create fills and notifies 
+EMSX<GO>.
 
 
 Full code sample:-
