@@ -1244,8 +1244,9 @@ level subscription.  They are ``EMSX_ML_ID``, ``EMSX_ML_LEG_QUANTITY``, ``EMSX_M
     The Debit and Credit is indicated by the  net price. Credit is indicated by using the negative sign 
     in the net price where the Debit is indicated by the positive net price.
 
-    Debit = positive for the net price
-    Credit = negative for the net price
+    ``Debit`` = positive for the net price
+    
+    ``Credit`` = negative for the net price
 
 
 Group Route Extended Request - Route As Spread
