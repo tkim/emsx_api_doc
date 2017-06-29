@@ -12,7 +12,7 @@ General FAQ
 	delaying a fast stream with slow one. For most design, it's best to have separte session for 
 	real-time data vs. EMSX API or reference data service. 
 
-* Can I open and close sessions?
+* Should I open and close sessions as needed?
 	Yes but typically opening and closing a session is expensive for both the client's application and for Bloomberg back-end and thus unnecessary for most designs. 
 
 * Why can I not subscribe using ticker and fields like other APIs?
