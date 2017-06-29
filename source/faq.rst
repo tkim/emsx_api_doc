@@ -13,7 +13,7 @@ General FAQ
 	real-time data vs. EMSX API or reference data service. 
 
 * Should I open and close sessions as needed?
-	Yes but typically opening and closing a session is expensive for both the client's application and for Bloomberg back-end and thus unnecessary for most designs. 
+	No, typically opening and closing a session is expensive for both the client's application and for Bloomberg back-end and thus unnecessary for most application designs while using EMSX API. 
 
 * Why can I not subscribe using ticker and fields like other APIs?
 	The EMSX service only allows users to subscribe to their own Orders and Routes (placements). Most 
