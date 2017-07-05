@@ -5,6 +5,9 @@ Glossary
 **AIM**
 	Bloomberg Asset and Investment Manager (OMS).
 
+**APA**
+	Approved Publication Arrangement in MiFID II.
+	
 **API**
 	Application Programming Interface. The definition of the way in which two applicaitons can communciate with each other.
 
@@ -40,12 +43,21 @@ Glossary
 	FIX network offering from Bloomberg that allows clients to transmit data in the FIX protocol across Bloomberg    
 	network infrastructure.
 
+**GPI**
+	Global Personal Identifier in MiFID II.
+
+**LEI**
+	Legal Entity Identifier in MiFID II.
+
 **LMNU terminal**
 	The limited functionality terminal. There are temporary terminals provided to clients for specific task. For EMSX 
 	API, the LMNU needed is 20025.
 
 **Market Data**
 	The market data service of Bloomberg API: ``//blp/mktdata``
+
+**MIC**
+	Market Identifier Code.
 
 **Non-BPS**
 	Any user who does not use a Bloomberg terminal, but has access to the Bloomberg API.
@@ -71,6 +83,9 @@ Glossary
 	Refers to the different types of data connections available via the Bloomberg API. Each service has its own schema 
 	that describes what can be done, and what data fields are available to the application, For example, market data, 
 	reference data, EMSX API, and etc.
+
+**SI**
+	Systematic Internalizer in MiFID II.
 
 **SLA**
 	Service level agreement

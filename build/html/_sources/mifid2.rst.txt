@@ -45,16 +45,8 @@ MiFID II Field Names 						Type
 	to the millisecond precision in cases when the microsecond timestamp from the back-end is not 
 	available. (e.g. 0.001)  	
 
-	(LEI) Legal Entity Identifier
-	
-	(MIC) Market Identifier Code
-	
-	(SI) Systematic Internalizer
+	MiFID II acrynom definitions can be found in `Glossary`_ section of the document.
 
-	(GPI) Global Personal Identifier
-
-	(APA) Approved Publication Arrangement
-
-
+	.. _Glossary: http://emsx-api-doc.readthedocs.io/en/latest/glossary.html
 
 	
