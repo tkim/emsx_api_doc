@@ -51,33 +51,15 @@ MiFID II Field Names 						Type
 
 
 The new requests with the MIFID II fields are:
-``CreateOrder``, ``CreateOrderAndRouteEx``, , ``GroupRouteRequestEx``,  ``ManualFill``, ``ManualRouteEx``, ``ModifyOrderRequestEx``, ``ModifyRouteRequestEx``, and ``RouteOrderRequestsEx``.
+``CreateOrder``, ``CreateOrderAndRouteEx``, , ``GroupRouteRequestEx``,  ``ManualFill``, ``ManualRouteEx``, ``ModifyOrderRequestEx``, 
+``ModifyRouteRequestEx``, and ``RouteOrderRequestsEx``.
 
 
-Elements available on Order Subscription:
-``EMSX_BUYSIDE_LEI``
-``EMSX_CLIENT_IDENTIFICATION``
-``EMSX_SI``
-``EMSX_MIFID_II_INSTRUCTION``
-``EMSX_TIME_STAMP_MICROSEC``
-``EMSX_QUEUED_TIME_MICROSEC``
-``EMSX_GPI``
+Elements available on Order Subscription: ``EMSX_BUYSIDE_LEI``, ``EMSX_CLIENT_IDENTIFICATION``, ``EMSX_SI``, 
+``EMSX_MIFID_II_INSTRUCTION``, ``EMSX_TIME_STAMP_MICROSEC``, ``EMSX_QUEUED_TIME_MICROSEC``, and ``EMSX_GPI``
 
-Elements availabe on Route Subscription:
-``EMSX_BUYSIDE_LEI``
-``EMSX_BROKER_LEI``
-``EMSX_TRADE_REPORTING_INDICATOR``
-``EMSX_TRANSACTION_REPORTING_MIC``
-``EMSX_APA_MIC``
-``EMSX_OTC_FLAG``
-``EMSX_WAIVER_FLAG``
-``EMSX_LAST_CAPACITY``	
-``EMSX_CLIENT_IDENTIFICATION``
-``EMSX_MIFID_II_INSTRUCTION``
-``EMSX_BROKER_SI``
-``EMSX_ROUTE_CREATE_TIME_MICROSEC``
-``EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC``
-``EMSX_TIME_STAMP_MICROSEC``
-``EMSX_QUEUED_TIME_MICROSEC``
-``EMSX_LAST_FILL_TIME_MICROSEC``
-``EMSX_GPI``	
+Elements availabe on Route Subscription: ``EMSX_BUYSIDE_LEI``, ``EMSX_BROKER_LEI``, ``EMSX_TRADE_REPORTING_INDICATOR``, 
+``EMSX_TRANSACTION_REPORTING_MIC``, ``EMSX_APA_MIC``, ``EMSX_OTC_FLAG``, ``EMSX_WAIVER_FLAG``, ``EMSX_LAST_CAPACITY``,
+``EMSX_CLIENT_IDENTIFICATION``, ``EMSX_MIFID_II_INSTRUCTION``, ``EMSX_BROKER_SI``, ``EMSX_ROUTE_CREATE_TIME_MICROSEC``, 
+``EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC``, ``EMSX_TIME_STAMP_MICROSEC``, ``EMSX_QUEUED_TIME_MICROSEC``, ``EMSX_LAST_FILL_TIME_MICROSEC``, 
+and ``EMSX_GPI``	
