@@ -208,15 +208,32 @@ Bvalut) and best execution (BTCA).</p>
 </tr>
 </tbody>
 </table>
+<p>New time stamp elements:-</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_TIME_MICROSEC</span></code></td>
+<td><code class="docutils literal"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
+<td><code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_TIME_MICROSEC</span></code></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>The new timestamps for <code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_TIME_MICROSEC</span></code>, <code class="docutils literal"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC</span></code>,
-<code class="docutils literal"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code>, <code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code>, <code class="docutils literal"><span class="pre">EMSX_LAST_FILL_TIME_MICROSEC</span></code> are only
-microseconds if they extend out to full digits. (e.g. 0.000001) From time to time they will be printed
-to the millisecond precision in cases when the microsecond timestamp from the back-end is not
-available. (e.g. 0.001)</p>
-<p class="last">MiFID II acrynom definitions can be found in <a class="reference external" href="http://emsx-api-doc.readthedocs.io/en/latest/glossary.html">Glossary</a> section of the document.</p>
+<p>The new timestamps for the new elements are only microseconds if they extend out to full digits.
+(e.g. 0.000001)</p>
+<p class="last">From time to time they will be printed to the millisecond precision in cases when the microsecond
+timestamp from the back-end is not available. (e.g. 0.001)</p>
 </div>
+<p>New requests with the MIFID II elements:-</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="53%" />
@@ -294,6 +311,10 @@ available. (e.g. 0.001)</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">MiFID II acrynom definitions can be found in <a class="reference external" href="http://emsx-api-doc.readthedocs.io/en/latest/glossary.html">Glossary</a> section of the document.</p>
+</div>
 </div>
 
 

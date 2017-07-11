@@ -33,18 +33,25 @@ MiFID II Field Names 						Type
 =========================================== ======= 
 
 
+New time stamp elements:-
+
+===================================  ========================================
+``EMSX_ROUTE_CREATE_TIME_MICROSEC``  ``EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC``
+``EMSX_TIME_STAMP_MICROSEC``         ``EMSX_QUEUED_TIME_MICROSEC`` 
+``EMSX_LAST_FILL_TIME_MICROSEC`` 
+===================================  ========================================
+
+
 .. warning::
 
-	The new timestamps for ``EMSX_ROUTE_CREATE_TIME_MICROSEC``, ``EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC``, 
-	``EMSX_TIME_STAMP_MICROSEC``, ``EMSX_QUEUED_TIME_MICROSEC``, ``EMSX_LAST_FILL_TIME_MICROSEC`` are only 
-	microseconds if they extend out to full digits. (e.g. 0.000001) From time to time they will be printed 
-	to the millisecond precision in cases when the microsecond timestamp from the back-end is not 
-	available. (e.g. 0.001)  	
+	The new timestamps for the new elements are only microseconds if they extend out to full digits. 
+	(e.g. 0.000001) 
 
-	MiFID II acrynom definitions can be found in `Glossary`_ section of the document.
+	From time to time they will be printed to the millisecond precision in cases when the microsecond 
+	timestamp from the back-end is not available. (e.g. 0.001)  	
 
-	.. _Glossary: http://emsx-api-doc.readthedocs.io/en/latest/glossary.html
 
+New requests with the MIFID II elements:-
 
 ============================ =========================
 ``CreateOrder``              ``CreateOrderAndRouteEx`` 
@@ -77,4 +84,11 @@ Elements availabe on Route Subscription:-
 ``EMSX_TRANSACTION_REPORTING_MIC``       ``EMSX_TIME_STAMP_MICROSEC``
 ``EMSX_WAIVER_FLAG``
 ======================================== ===================================
+
+
+.. note::
+
+	MiFID II acrynom definitions can be found in `Glossary`_ section of the document.
+
+	.. _Glossary: http://emsx-api-doc.readthedocs.io/en/latest/glossary.html
 
