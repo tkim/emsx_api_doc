@@ -89,10 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server/index.html">Server Side EMSX API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programmable/index.html">Programmable EMSX API</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">MiFID II</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#mifid-ii-fields">MiFID II Fields</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MiFID II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
@@ -146,8 +143,6 @@ needed data and solutions to fulfill MiFID II obligations (Trade reporting, Tran
 execution and order record keeping). Bloomberg EMSX API as part of Bloomberg EMSX will connect to
 Bloomberg RHUB to support client&#8217;s regulatory obligations through a centralized access for ARM, APA, ORK (
 Bvalut) and best execution (BTCA).</p>
-<div class="section" id="mifid-ii-fields">
-<h2>MiFID II Fields<a class="headerlink" href="#mifid-ii-fields" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="52%" />
@@ -213,8 +208,8 @@ Bvalut) and best execution (BTCA).</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
 <p>The new timestamps for <code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_TIME_MICROSEC</span></code>, <code class="docutils literal"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC</span></code>,
 <code class="docutils literal"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code>, <code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code>, <code class="docutils literal"><span class="pre">EMSX_LAST_FILL_TIME_MICROSEC</span></code> are only
 microseconds if they extend out to full digits. (e.g. 0.000001) From time to time they will be printed
@@ -222,7 +217,84 @@ to the millisecond precision in cases when the microsecond timestamp from the ba
 available. (e.g. 0.001)</p>
 <p class="last">MiFID II acrynom definitions can be found in <a class="reference external" href="http://emsx-api-doc.readthedocs.io/en/latest/glossary.html">Glossary</a> section of the document.</p>
 </div>
-</div>
+<p>New requests with the MIFID II fields:-</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CreateOrder</span></code></td>
+<td><code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">GroupRouteRequestEx</span></code></td>
+<td><code class="docutils literal"><span class="pre">ManualFill</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ManualRouteEx</span></code></td>
+<td><code class="docutils literal"><span class="pre">ModifyOrderRequestEx</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ModifyTheRouteRequestEx</span></code></td>
+<td><code class="docutils literal"><span class="pre">RouteOrderRequestsEx</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>Elements available on Order Subscription:-</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="49%" />
+<col width="51%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_BUYSIDE_LEI</span></code></td>
+<td><code class="docutils literal"><span class="pre">EMSX_CLIENT_IDENTIFICATION</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_GPI</span></code></td>
+<td><code class="docutils literal"><span class="pre">EMSX_MIFID_II_INSTRUCTION</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code></td>
+<td><code class="docutils literal"><span class="pre">EMSX_SI</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>Elements availabe on Route Subscription:-</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_APA_MIC</span></code>.</td>
+<td><code class="docutils literal"><span class="pre">EMSX_BUYSIDE_LEI</span></code>.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_BROKER_LEI</span></code></td>
+<td><code class="docutils literal"><span class="pre">EMSX_BROKER_SI</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_CLIENT_IDENTIFICATION</span></code></td>
+<td><code class="docutils literal"><span class="pre">EMSX_GPI</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_LAST_CAPACITY</span></code>.</td>
+<td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_TIME_MICROSEC</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_MIFID_II_INSTRUCTION</span></code></td>
+<td><code class="docutils literal"><span class="pre">EMSX_OTC_FLAG</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code></td>
+<td><code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_TIME_MICROSEC</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC</span></code></td>
+<td><code class="docutils literal"><span class="pre">EMSX_TRADE_REPORTING_INDICATOR</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TRANSACTION_REPORTING_MIC</span></code></td>
+<td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_WAIVER_FLAG</span></code></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 

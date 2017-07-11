@@ -1,6 +1,5 @@
-########
 MiFID II
-########
+========
 
 
 In preparation for the MiFID II, Bloomberg EMSX API is enhancing its workflow to provide clients with the 
@@ -9,9 +8,6 @@ execution and order record keeping). Bloomberg EMSX API as part of Bloomberg EMS
 Bloomberg RHUB to support client's regulatory obligations through a centralized access for ARM, APA, ORK (
 Bvalut) and best execution (BTCA).
 
-
-MiFID II Fields
-===============
 
 =========================================== ======= 
 MiFID II Field Names 						Type	
@@ -37,7 +33,7 @@ MiFID II Field Names 						Type
 =========================================== ======= 
 
 
-.. note::
+.. warning::
 
 	The new timestamps for ``EMSX_ROUTE_CREATE_TIME_MICROSEC``, ``EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC``, 
 	``EMSX_TIME_STAMP_MICROSEC``, ``EMSX_QUEUED_TIME_MICROSEC``, ``EMSX_LAST_FILL_TIME_MICROSEC`` are only 
@@ -49,4 +45,51 @@ MiFID II Field Names 						Type
 
 	.. _Glossary: http://emsx-api-doc.readthedocs.io/en/latest/glossary.html
 
+
+
+New requests with the MIFID II fields:-
+
+============================ =========================
+``CreateOrder``              ``CreateOrderAndRouteEx`` 
+``GroupRouteRequestEx``      ``ManualFill``
+``ManualRouteEx``            ``ModifyOrderRequestEx`` 
+``ModifyTheRouteRequestEx``  ``RouteOrderRequestsEx``
+============================ =========================
+
+
+Elements available on Order Subscription:- 
+
+============================= ==============================
+``EMSX_BUYSIDE_LEI``          ``EMSX_CLIENT_IDENTIFICATION`` 
+``EMSX_GPI``                  ``EMSX_MIFID_II_INSTRUCTION``
+``EMSX_QUEUED_TIME_MICROSEC`` ``EMSX_SI``                    
+``EMSX_TIME_STAMP_MICROSEC``  
+============================= ==============================
+
+
+Elements availabe on Route Subscription:- 
+
+======================================== ===================================
+``EMSX_APA_MIC``.                        ``EMSX_BUYSIDE_LEI``.         
+``EMSX_BROKER_LEI``                      ``EMSX_BROKER_SI``
+``EMSX_CLIENT_IDENTIFICATION``           ``EMSX_GPI``          
+``EMSX_LAST_CAPACITY``.                  ``EMSX_LAST_FILL_TIME_MICROSEC``
+``EMSX_MIFID_II_INSTRUCTION``            ``EMSX_OTC_FLAG``
+``EMSX_QUEUED_TIME_MICROSEC``            ``EMSX_ROUTE_CREATE_TIME_MICROSEC``
+``EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC`` ``EMSX_TRADE_REPORTING_INDICATOR`` 
+``EMSX_TRANSACTION_REPORTING_MIC``       ``EMSX_TIME_STAMP_MICROSEC``
+``EMSX_WAIVER_FLAG``
+======================================== ===================================
+
+
+
+
+
+
+
+ 
+
 	
+
+
+
