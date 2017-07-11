@@ -46,9 +46,6 @@ MiFID II Field Names 						Type
 	.. _Glossary: http://emsx-api-doc.readthedocs.io/en/latest/glossary.html
 
 
-
-New requests with the MIFID II fields:-
-
 ============================ =========================
 ``CreateOrder``              ``CreateOrderAndRouteEx`` 
 ``GroupRouteRequestEx``      ``ManualFill``
@@ -80,16 +77,4 @@ Elements availabe on Route Subscription:-
 ``EMSX_TRANSACTION_REPORTING_MIC``       ``EMSX_TIME_STAMP_MICROSEC``
 ``EMSX_WAIVER_FLAG``
 ======================================== ===================================
-
-
-
-
-
-
-
- 
-
-	
-
-
 
