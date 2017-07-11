@@ -42,7 +42,7 @@ New time stamp elements:-
 ===================================  ========================================
 
 
-.. warning::
+.. important::
 
 	The new timestamps for the new elements are only microseconds if they extend out to full digits. 
 	(e.g. 0.000001) 
@@ -51,7 +51,7 @@ New time stamp elements:-
 	timestamp from the back-end is not available. (e.g. 0.001)  	
 
 
-New requests with the MIFID II elements:-
+New requests with the MiFID II elements:-
 
 ============================ =========================
 ``CreateOrder``              ``CreateOrderAndRouteEx`` 
@@ -61,7 +61,7 @@ New requests with the MIFID II elements:-
 ============================ =========================
 
 
-Elements available on Order Subscription:- 
+Order subscription with the MiFID II elements:- 
 
 ============================= ==============================
 ``EMSX_BUYSIDE_LEI``          ``EMSX_CLIENT_IDENTIFICATION`` 
@@ -71,7 +71,7 @@ Elements available on Order Subscription:-
 ============================= ==============================
 
 
-Elements availabe on Route Subscription:- 
+Route subscription with the MiFID II elements:- 
 
 ======================================== ===================================
 ``EMSX_APA_MIC``.                        ``EMSX_BUYSIDE_LEI``.         
