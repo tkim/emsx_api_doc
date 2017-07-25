@@ -27,6 +27,39 @@ The EMSX API requires separate authorization by the receiving broker on top of t
 To get access to EMSX API in UAT and production, please click <Help><Help> on EMSX<GO>.
 
 
+Support
+=======
+
+
+For General EMSX functionality inquires please contact the EMSX Trade Desk. They are available 24/6 and please ensure you provide your Bloomberg UUID.
+
+
+By Bloomberg Terminal:
+
+HELP 2x (F1 key) on your terminal, ask to speak to the EMSX Trade Desk
+HELP 1x (F1 key) on your terminal, to compose an email message to the EMSX Trade Desk.
+
+
+By email: 
+
+emsx@bloomberg.net
+
+
+By Phone: 
+
+Please call your local global customer support number and ask to speak to the EMSX Trade Desk 
+
+=============== ================ =============
++1-212-617-2000 +44-20-7330-7500 +65-6212-1000
+=============== ================ =============
+
+
+For programming Support please update the existing link or use the https://service.bloomberg.com
+
+Please provide the BMDS number if this is in regards to EMSX API Server.  The BMDS information is sent 
+with the CPSH documentation prior to going live.
+
+
 Sign Up - Programming Support
 =============================
 
