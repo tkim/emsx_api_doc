@@ -1,6 +1,14 @@
 MiFID II
 ========
 
+.. warning::
+
+	Please be aware that the MIFID II fields illustrated below are not released to the public for testing. 
+
+	This is for your reference on the upcoming changes, we will update shortly once these fields are available for testing.
+
+
+
 
 In preparation for the MiFID II, Bloomberg EMSX API is enhancing its workflow to provide clients with the 
 needed data and solutions to fulfill MiFID II obligations (Trade reporting, Transaction reporting, best 
