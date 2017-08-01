@@ -82,10 +82,10 @@ Order subscription with the MiFID II elements:-
 Route subscription with the MiFID II elements:- 
 
 ======================================== ===================================
-``EMSX_APA_MIC``.                        ``EMSX_BUYSIDE_LEI``.         
+``EMSX_APA_MIC``                         ``EMSX_BUYSIDE_LEI``         
 ``EMSX_BROKER_LEI``                      ``EMSX_BROKER_SI``
 ``EMSX_CLIENT_IDENTIFICATION``           ``EMSX_GPI``          
-``EMSX_LAST_CAPACITY``.                  ``EMSX_LAST_FILL_TIME_MICROSEC``
+``EMSX_LAST_CAPACITY``                   ``EMSX_LAST_FILL_TIME_MICROSEC``
 ``EMSX_MIFID_II_INSTRUCTION``            ``EMSX_OTC_FLAG``
 ``EMSX_QUEUED_TIME_MICROSEC``            ``EMSX_ROUTE_CREATE_TIME_MICROSEC``
 ``EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC`` ``EMSX_TRADE_REPORTING_INDICATOR`` 
