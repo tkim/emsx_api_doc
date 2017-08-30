@@ -3,9 +3,7 @@ MiFID II
 
 .. warning::
 
-	Please be aware that the MIFID II fields illustrated below are not released to the public for testing. 
-
-	This is for your reference on the upcoming changes, we will update shortly once these fields are available for testing.
+	Please be aware that the MIFID II fields illustrated below are only available in the test environment. ``//blp/emapisvc_beta``
 
 
 
