@@ -39,3 +39,6 @@ For information on accessing field meta data, this is currently only supported w
 The user will need to access FLDS<GO> function within the Bloomberg terminal. Once in FLDS<GO>, type EMSX underneath the security section and choose EMSX under the filter. The source is Calcrt and should select All for Field Type.
 
 
+.. image:: /image/flds.jpg
+
+
