@@ -8,6 +8,11 @@ This document is for developers who will use the Bloomberg EMSX API to develop c
 
 The Bloomberg EMSX API is available as desktop API and server-side API. The desktop API requires full Bloomberg terminal to use.
 
+.. important::
+   
+  EMSX API requires the full understanding of how Bloomberg EMSX<GO> function works within the Bloomberg terminal. Before starting on EMSX 
+  API, please have your local EMSX representative provide a full training of EMSX<GO> function. This documentation does not include any 
+  details on how EMSX<GO> works.
 
 .. toctree::
    :maxdepth: 3
