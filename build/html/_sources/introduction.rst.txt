@@ -155,17 +155,19 @@ The EasyMSX wrapper is a code sample that can be compiled into a library. The Ea
 
 Please note this is not a compiled binary. This is a CODE SAMPLE. There is no SLA (Service Level Agreement) or quality assessment or guarantees.
 
-The EasyMSX allows getting orders, routes, and static data from EMSX API service. The EasyMSX allows adding notification handler on the real-time events. There is an observer pattern that can throw exceptions as illustrated in the ``EasyMSXSample.py``.
+The EasyMSX allows getting orders, routes, and static data from EMSX API service. 
 
-EasyMSX folder consists of the core code samples. The ``EasyMSXSample.py`` is the sample to use.
+The EasyMSX allows adding notification handler on the real-time events. There is an observer pattern that can throw exceptions as illustrated in the ``EasyMSXSample.py``.
+
+EasyMSX folder consists of the core code samples.
 
 `EasyMSX Documentation`_
 
-`EasyMSX Code Sample in Python`_
+`EasyMSX Code Sample`_
 
 	.. _EasyMSX Documentation: http://easymsx.readthedocs.io/en/latest/
 
-	.. _EasyMSX Code Sample in Python: https://github.com/tkim/EasyMSXRepository.git
+	.. _EasyMSX Code Sample: https://github.com/tkim/EasyMSXRepository.git
 
 
 
