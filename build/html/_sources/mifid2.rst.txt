@@ -53,6 +53,8 @@ New time stamp elements:-
 	The new timestamps for the new elements are only microseconds if they extend out to full digits. 
 	(e.g. 0.000001) 
 
+	Please note that all microsecond timestamp is in float64 type, [second].[microsecond] format.
+
 	From time to time they will be printed to the millisecond precision in cases when the microsecond 
 	timestamp from the back-end is not available. (e.g. 0.001)  	
 
