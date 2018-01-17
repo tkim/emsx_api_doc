@@ -18,7 +18,7 @@ For EMSX API, This offers flexibilities within the application design. For examp
 
 .. important::
 
-	//blp/emaspivc/order; **team=my_team_name** ?fields=EMSX_ASSIGNED_TRADER, EMSX_BASKET_NAME, EMSX_CFD_FLAG, EMSX_AMOUNT
+	//blp/emaspivc_beta/order; **team=my_team_name** ?fields=EMSX_ASSIGNED_TRADER, EMSX_BASKET_NAME, EMSX_CFD_FLAG, EMSX_AMOUNT
 
 
 Trading on behalf of team members from ``TEAMVIEW`` requires creating a route on behalf of the team member. The service object of type ``RouteEx`` and fill in the required fields before submitting the request.
