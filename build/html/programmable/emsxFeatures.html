@@ -166,7 +166,7 @@ However, most EMSX API users are still able to trade pairs using the old EMSX ti
 <p>For EMSX API, This offers flexibilities within the application design. For example, a single subscription with the team name can capture all the events for the team members. The topic string for using team remains the same as non-team with the exception of adding team name on the topic string as illustrated below.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">//blp/emaspivc/order; <strong>team=my_team_name</strong> ?fields=EMSX_ASSIGNED_TRADER, EMSX_BASKET_NAME, EMSX_CFD_FLAG, EMSX_AMOUNT</p>
+<p class="last">//blp/emaspivc_beta/order; <strong>team=my_team_name</strong> ?fields=EMSX_ASSIGNED_TRADER, EMSX_BASKET_NAME, EMSX_CFD_FLAG, EMSX_AMOUNT</p>
 </div>
 <p>Trading on behalf of team members from <code class="docutils literal"><span class="pre">TEAMVIEW</span></code> requires creating a route on behalf of the team member. The service object of type <code class="docutils literal"><span class="pre">RouteEx</span></code> and fill in the required fields before submitting the request.</p>
 <p>Within <code class="docutils literal"><span class="pre">RouteEx</span></code>, there is an element <code class="docutils literal"><span class="pre">EMSX_TRADER_UUID</span></code> where the user can enter the order owner&#8217;s Bloomberg UUID. Bloomberg will do the validation against the user privilege setup via

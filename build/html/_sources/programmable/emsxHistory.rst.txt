@@ -14,9 +14,9 @@ EMSX history service provides individual fill information via request/response s
 Unlike the ``//blp/emapisvc`` and ``//blp/emapisvc_beta`` service, ``//blp/emsx.history`` and ``//blp/emsx.history.uat`` service uses semi-camel character for the element names.
 
 
-=================================== =================================================================
+=================================== ===================================================================
 Element             				Description
-=================================== =================================================================
+=================================== ===================================================================
 ``Account``							Trading account used in EMSX<GO>
 ``Amount`` 							Total quantity of the order
 ``AssetClass`` 						Asset class of the order
@@ -34,7 +34,7 @@ Element             				Description
 ``DateTimeOfFill`` 					Date and time of the fill
 ``Exchange`` 						Exchange details
 ``ExecPrevSeqNo`` 					Previous sequence number of execution
-``ExecType`` 						Execution type details
+``ExecType`` 						Execution type details (FILL,CANCEL,CORRECT and DFD)
 ``ExecutingBrokers`` 				Executing broker details
 ``FillId``							ID of the fill
 ``FillPrice`` 						Price of the fill
@@ -85,7 +85,7 @@ Element             				Description
 ``UserFees``						User fee detail
 ``UserNetMoney`` 					User net money detail
 ``YellowKey`` 						Bloomberg yellow key field detail
-=================================== =================================================================
+=================================== ===================================================================
 
 
 Full code sample:-

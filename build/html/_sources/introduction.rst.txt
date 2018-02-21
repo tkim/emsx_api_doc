@@ -138,8 +138,7 @@ EMSX API access from R
 =======================
 
 
-The EMSX API can also be accessed via `R`_ language. The current `R repository`_ is designed for general Bloomberg API usage using both the subscription and request/response services. The EMSX API uses both services and thus even though the current sample illustrates //blp/mktdata and //blp/refdata, this can easily be repurposed for //blp/emapisvc which refers to the EMSX API service name. 
-
+The EMSX API currently can not be accessed via `R`_ language. The current `R repository`_ is designed for market data Bloomberg API usage using both the subscription and request/response services. Unfortunately, this is not a generic Bloomberg API wrapper for R in its current state. 
 
 	.. _R: https://github.com/Rblp/Rblpapi/blob/master/README.md
 

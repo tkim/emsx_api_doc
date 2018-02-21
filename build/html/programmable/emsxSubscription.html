@@ -90,25 +90,29 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable EMSX API</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#order-state-diagram">Order State Diagram</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="session.html">Session Object</a></li>
-<li class="toctree-l3"><a class="reference internal" href="description.html">Description of Request/Response Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="requestResponse.html">Buy-Side Request/Response Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="requestResponseSs.html">Sell-Side Request/Response Service</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">EMSX Subscription</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#description-of-subscription-messages">Description of Subscription Messages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description-of-event-status-messages">Description of Event Status Messages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description-of-order-status-messages">Description of Order Status  Messages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description-of-the-child-route-status-messages">Description of the Child Route Status Messages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description-of-order-expiration-logic">Description of Order Expiration Logic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description-of-route-expiration-logic">Description of Route Expiration Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html">EMSX Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#emsx-teams">EMSX Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#emsx-element-definitions">EMSX Element Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testEnv.html">Accessing the Test Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stateDiagram.html">Order State Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stateDiagram.html#route-state-diagram">Route State Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session.html">Session Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description.html">Description of Request/Response Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponse.html">Buy-Side Request/Response Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requestResponseSs.html">Sell-Side Request/Response Service</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EMSX Subscription</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-subscription-messages">Description of Subscription Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-event-status-messages">Description of Event Status Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-order-status-messages">Description of Order Status  Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-the-child-route-status-messages">Description of the Child Route Status Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-order-expiration-logic">Description of Order Expiration Logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-route-expiration-logic">Description of Route Expiration Logic</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="emsxHistory.html">EMSX History Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxHistory.html">EMSX History Request</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../mifid2.html">MiFID II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
@@ -527,7 +531,7 @@ expire 24 hours after exchange close time.</p>
 <colgroup>
 <col width="35%" />
 <col width="32%" />
-<col width="32%" />
+<col width="33%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/EMSXSubscriptions.cpp">EMSX Subscriptions cpp</a></td>
@@ -536,7 +540,7 @@ expire 24 hours after exchange close time.</p>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/EMSXSubscriptions.java">EMSX Subscriptions java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/EMSXSubscriptions.py">EMSX Subscriptions py</a></td>
-<td>&nbsp;</td>
+<td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/py2_EMSXSubscriptions.py">EMSX Subscriptions py2</a></td>
 </tr>
 </tbody>
 </table>
