@@ -1,13 +1,6 @@
 MiFID II
 ========
 
-.. warning::
-
-	Please be aware that the MIFID II fields illustrated below are only available in the test environment. ``//blp/emapisvc_beta``
-
-
-
-
 In preparation for the MiFID II, Bloomberg EMSX API is enhancing its workflow to provide clients with the 
 needed data and solutions to fulfill MiFID II obligations (Trade reporting, Transaction reporting, best 
 execution and order record keeping). Bloomberg EMSX API as part of Bloomberg EMSX will connect to 
