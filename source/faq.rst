@@ -84,13 +84,14 @@ General FAQ
 	broker destination or to a broker algorithm, which supports basket. The term basket here is not 
 	intended for those who want to tie a particular group of orders into a trading strategy.
 
-	Currently routing a basket is a two-step process in EMSX API. First, the user will need to use ``
-	CreateOrder`` request to create the order and include the ``EMSX_BASKET_NAME`` in the field. To route 
-	the order, the user can use either ``GroupRouteEx`` or ``GroupRouteWithStrat`` and include the ``
-	EMSX_SEQUENCE`` number inside the array.
+	Currently routing a basket is a two-step process in EMSX API. First, the user will need to use 
+	``CreateOrder`` request to create the order and include the ``EMSX_BASKET_NAME`` in the field. To route 
+	the order, the user can use either ``GroupRouteEx`` or ``GroupRouteWithStrat`` and include the 
+	``EMSX_SEQUENCE`` number inside the array.
 
 	If the user misses an ``EMSX_SEQUENCE`` number inside the specified basket, the particular missing 
-	order will not be sent as part of the basket.
+	order will not be sent as part of the basket. This is the same logic used on EMSX<GO> for basket creation
+	and basket submission.
 
 * How long do DAY orders and complete orders stay on the blotter and in the API?** (Status = 8)
 	In the old logic, the DAY orders stayed 4 hours after the exchange closed. The new logic is to extend 

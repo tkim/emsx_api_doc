@@ -14,6 +14,12 @@ EMSX history service provides individual fill information via request/response s
 Unlike the ``//blp/emapisvc`` and ``//blp/emapisvc_beta`` service, ``//blp/emsx.history`` and ``//blp/emsx.history.uat`` service uses semi-camel character for the element names.
 
 
+.. important::
+	
+	Please note that the timezone of this service will always be in US EST timezone for the fills regardless of the TZDF setting for the UUID.
+
+
+
 =================================== ===================================================================
 Element             				Description
 =================================== ===================================================================
