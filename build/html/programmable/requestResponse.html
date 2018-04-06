@@ -90,6 +90,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Programmable EMSX API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html">EMSX Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#emsx-teams">EMSX Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#emsx-element-definitions">EMSX Element Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testEnv.html">Accessing the Test Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stateDiagram.html">Order State Diagram</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stateDiagram.html#route-state-diagram">Route State Diagram</a></li>
@@ -124,6 +127,7 @@
 <li class="toctree-l2"><a class="reference internal" href="emsxHistory.html">EMSX History Request</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../mifid2.html">MiFID II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
@@ -516,7 +520,7 @@ of the route.</p>
             <span class="c1">#request.set(&quot;EMSX_ORDER_ORIGIN&quot;, &quot;&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_ORDER_REF_ID&quot;, &quot;UniqueID&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_P_A&quot;, &quot;P&quot;)</span>
-            <span class="c1">#request.set(&quot;EMSX_RELEASE_TIME&quot;, 34341)</span>
+            <span class="c1">#request.set(&quot;EMSX_RELEASE_TIME&quot;, 1259)</span>
             <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1001)</span>
             <span class="c1">#request.set(&quot;EMSX_SETTLE_CURRENCY&quot;, &quot;USD&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_SETTLE_DATE&quot;, 20170106)</span>
@@ -658,7 +662,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
             <span class="c1">#request.set(&quot;EMSX_ORDER_ORIGIN&quot;, &quot;&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_ORDER_REF_ID&quot;, &quot;UniqueID&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_P_A&quot;, &quot;P&quot;)</span>
-            <span class="c1">#request.set(&quot;EMSX_RELEASE_TIME&quot;, 34341)</span>
+            <span class="c1">#request.set(&quot;EMSX_RELEASE_TIME&quot;, 1259)</span>
             <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1001)</span>
             <span class="c1">#request.set(&quot;EMSX_SETTLE_DATE&quot;, 20170106)</span>
             <span class="c1">#request.set(&quot;EMSX_STOP_PRICE&quot;, 123.5)</span>
@@ -1157,7 +1161,7 @@ GroupRouteEx`` request and include the <code class="docutils literal"><span clas
             <span class="c1">#request.set(&quot;EMSX_NOTES&quot;, &quot;Some notes&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_ODD_LOT&quot;, &quot;0&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_P_A&quot;, &quot;P&quot;)</span>
-            <span class="c1">#request.set(&quot;EMSX_RELEASE_TIME&quot;, 34341)</span>
+            <span class="c1">#request.set(&quot;EMSX_RELEASE_TIME&quot;, 1259)</span>
             <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1001)</span>
             <span class="c1">#request.set(&quot;EMSX_STOP_PRICE&quot;, 123.5)</span>
             <span class="c1">#request.set(&quot;EMSX_TRADER_UUID&quot;, 1234567)</span>
@@ -1662,7 +1666,7 @@ EMSX&lt;GO&gt;.</p>
             <span class="c1">#request.set(&quot;EMSX_NOTES&quot;, &quot;Some notes&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_ODD_LOT&quot;, &quot;0&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_P_A&quot;, &quot;P&quot;)</span>
-            <span class="c1">#request.set(&quot;EMSX_RELEASE_TIME&quot;, 34341)</span>
+            <span class="c1">#request.set(&quot;EMSX_RELEASE_TIME&quot;, 1259)</span>
             <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1001)</span>
             <span class="c1">#request.set(&quot;EMSX_ROUTE_REF_ID&quot;, &quot;UniqueRef&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_STOP_PRICE&quot;, 123.5)</span>
@@ -1741,7 +1745,7 @@ EMSX&lt;GO&gt;.</p>
             <span class="c1">#request.set(&quot;EMSX_NOTES&quot;, &quot;Some notes&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_ODD_LOT&quot;, &quot;0&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_P_A&quot;, &quot;P&quot;)</span>
-            <span class="c1">#request.set(&quot;EMSX_RELEASE_TIME&quot;, 34341)</span>
+            <span class="c1">#request.set(&quot;EMSX_RELEASE_TIME&quot;, 1259)</span>
             <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1001)</span>
             <span class="c1">#request.set(&quot;EMSX_ROUTE_REF_ID&quot;, &quot;UniqueRef&quot;)</span>
             <span class="c1">#request.set(&quot;EMSX_STOP_PRICE&quot;, 123.5)</span>

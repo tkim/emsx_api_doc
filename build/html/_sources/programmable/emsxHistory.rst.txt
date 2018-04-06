@@ -18,6 +18,8 @@ Unlike the ``//blp/emapisvc`` and ``//blp/emapisvc_beta`` service, ``//blp/emsx.
 	
 	Please note that the timezone of this service will always be in US EST timezone for the fills regardless of the TZDF setting for the UUID.
 
+	Please note that EMSX History should never be used as a replacement for route subscription for real-time fills and updates to routes.
+
 
 
 =================================== ===================================================================
