@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -23,28 +25,21 @@
   
 
   
-  
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="EMSX API Programmers Guide 0.0.5 documentation" href="../index.html"/>
-        <link rel="up" title="Programmable EMSX API" href="index.html"/>
-        <link rel="next" title="MiFID II" href="../mifid2.html"/>
-        <link rel="prev" title="EMSX Subscription" href="emsxSubscription.html"/> 
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MiFID II" href="../mifid2.html" />
+    <link rel="prev" title="EMSX Subscription" href="emsxSubscription.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -85,7 +80,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
@@ -118,36 +116,56 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">EMSX API Programmers Guide</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EMSX API Programmers Guide</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="index.html">Programmable EMSX API</a> &raquo;</li>
-      
-    <li>EMSX History Request</li>
+        
+      <li>EMSX History Request</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/programmable/emsxHistory.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -156,12 +174,12 @@
   <div class="section" id="emsx-history-request">
 <h1>EMSX History Request<a class="headerlink" href="#emsx-history-request" title="Permalink to this headline">¶</a></h1>
 <p>EMSX history service provides individual fill information via request/response service. The service name is
-<code class="docutils literal"><span class="pre">//blp/emsx.history</span></code> for production and <code class="docutils literal"><span class="pre">//blp/emsx.history.uat</span></code> for test environment.</p>
+<code class="docutils literal notranslate"><span class="pre">//blp/emsx.history</span></code> for production and <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history.uat</span></code> for test environment.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Please note this service will not be available as part of <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> or <code class="docutils literal"><span class="pre">//blp/emapisvc_beta</span></code> service.</p>
+<p class="last">Please note this service will not be available as part of <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc</span></code> or <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc_beta</span></code> service.</p>
 </div>
-<p>Unlike the <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> and <code class="docutils literal"><span class="pre">//blp/emapisvc_beta</span></code> service, <code class="docutils literal"><span class="pre">//blp/emsx.history</span></code> and <code class="docutils literal"><span class="pre">//blp/emsx.history.uat</span></code> service uses semi-camel character for the element names.</p>
+<p>Unlike the <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc</span></code> and <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc_beta</span></code> service, <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history</span></code> and <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history.uat</span></code> service uses semi-camel character for the element names.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p>Please note that the timezone of this service will always be in US EST timezone for the fills regardless of the TZDF setting for the UUID.</p>
@@ -178,208 +196,208 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Account</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Account</span></code></td>
 <td>Trading account used in EMSX&lt;GO&gt;</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Amount</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Amount</span></code></td>
 <td>Total quantity of the order</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">AssetClass</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">AssetClass</span></code></td>
 <td>Asset class of the order</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">BasketId</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">BasketId</span></code></td>
 <td>ID of the basket</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">BasketName</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">BasketName</span></code></td>
 <td>Name of the basket</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">BBGID</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">BBGID</span></code></td>
 <td>BBGID field</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">BlockId</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">BlockId</span></code></td>
 <td>Block ID</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Broker</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Broker</span></code></td>
 <td>Executing broker name</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ClearingAccount</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ClearingAccount</span></code></td>
 <td>Clearing account detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ClearingFirm</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ClearingFirm</span></code></td>
 <td>Clearing firm detail</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ContractExpDate</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ContractExpDate</span></code></td>
 <td>Contract expiration date</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CorrectedFillId</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">CorrectedFillId</span></code></td>
 <td>Corrected fill ID</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Currency</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Currency</span></code></td>
 <td>Currency</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Cusip</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Cusip</span></code></td>
 <td>CUSIP</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">DateTimeOfFill</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">DateTimeOfFill</span></code></td>
 <td>Date and time of the fill</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Exchange</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Exchange</span></code></td>
 <td>Exchange details</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ExecPrevSeqNo</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ExecPrevSeqNo</span></code></td>
 <td>Previous sequence number of execution</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ExecType</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ExecType</span></code></td>
 <td>Execution type details (FILL,CANCEL,CORRECT and DFD)</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ExecutingBrokers</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ExecutingBrokers</span></code></td>
 <td>Executing broker details</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">FillId</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">FillId</span></code></td>
 <td>ID of the fill</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">FillPrice</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">FillPrice</span></code></td>
 <td>Price of the fill</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">FillShare</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">FillShare</span></code></td>
 <td>Number of share of the fill</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">InvestorID</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">InvestorID</span></code></td>
 <td>Investor ID detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">IsCfd</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">IsCfd</span></code></td>
 <td>CFD flag</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Isin</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Isin</span></code></td>
 <td>ISIN detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">IsLeg</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">IsLeg</span></code></td>
 <td>Is leg</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">LastCapacity</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">LastCapacity</span></code></td>
 <td>Last capacity field in EMSX&lt;GO&gt;</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">LastMarket</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">LastMarket</span></code></td>
 <td>Last market detail</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">LimitPrice</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">LimitPrice</span></code></td>
 <td>Limit price detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Liquidity</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Liquidity</span></code></td>
 <td>Liquidity detail</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">LocalExchangeSymbol</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">LocalExchangeSymbol</span></code></td>
 <td>Local exchange symbol</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">LocateBroker</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">LocateBroker</span></code></td>
 <td>Locate broker detail</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">LocateId</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">LocateId</span></code></td>
 <td>Locate ID</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">LocateRequired</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">LocateRequired</span></code></td>
 <td>Flag to indicate whether or not short locate is required</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">MultilegId</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MultilegId</span></code></td>
 <td>Multileg ID</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">OCCSymbol</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">OCCSymbol</span></code></td>
 <td>OCC symbol</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">OrderExecutionInstruction</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">OrderExecutionInstruction</span></code></td>
 <td>Order execution instruction detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">OrderHandlingInstruction</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">OrderHandlingInstruction</span></code></td>
 <td>Order handling instruction detail</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">OrderId</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">OrderId</span></code></td>
 <td>Order ID</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">OrderInstruction</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">OrderInstruction</span></code></td>
 <td>Order instruction detail</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">OrderOrigin</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">OrderOrigin</span></code></td>
 <td>Order origin detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">OrderReferenceId</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">OrderReferenceId</span></code></td>
 <td>Order reference ID detail</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">OriginatingTraderUuid</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">OriginatingTraderUuid</span></code></td>
 <td>UUID of the originating trader</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ReroutedBroker</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ReroutedBroker</span></code></td>
 <td>Rerouted broker details</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RouteCommissionAmount</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteCommissionAmount</span></code></td>
 <td>Commission amount of the route</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RouteCommissionRate</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteCommissionRate</span></code></td>
 <td>Commission rate of the route</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RouteExecutionInstruction</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteExecutionInstruction</span></code></td>
 <td>Route execution instruction</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RouteHandlingInstruction</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteHandlingInstruction</span></code></td>
 <td>Route handling instruction</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RouteId</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteId</span></code></td>
 <td>Route ID</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RouteNetMoney</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteNetMoney</span></code></td>
 <td>Route net money</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RouteNotes</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteNotes</span></code></td>
 <td>Route instructions</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RouteShares</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteShares</span></code></td>
 <td>Route shares</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">SecurityName</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">SecurityName</span></code></td>
 <td>Security name detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Sedol</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Sedol</span></code></td>
 <td>SEDOL</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">SettlementDate</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">SettlementDate</span></code></td>
 <td>Settlement date detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Side</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Side</span></code></td>
 <td>Side</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">StopPrice</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">StopPrice</span></code></td>
 <td>Stop Price</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">StrategyType</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">StrategyType</span></code></td>
 <td>Strategy Type</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Ticker</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Ticker</span></code></td>
 <td>Ticker</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">TIF</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">TIF</span></code></td>
 <td>Time in Force</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">TraderName</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">TraderName</span></code></td>
 <td>Name of the trader</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">TraderUuid</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">TraderUuid</span></code></td>
 <td>Bloomberg UUID of the trader</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Type</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Type</span></code></td>
 <td>Order type</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">UserCommissionAmount</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">UserCommissionAmount</span></code></td>
 <td>User commission amount</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">UserCommissionRate</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">UserCommissionRate</span></code></td>
 <td>User commission rate</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">UserFees</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">UserFees</span></code></td>
 <td>User fee detail</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">UserNetMoney</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">UserNetMoney</span></code></td>
 <td>User net money detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">YellowKey</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">YellowKey</span></code></td>
 <td>Bloomberg yellow key field detail</td>
 </tr>
 </tbody>
@@ -398,7 +416,7 @@
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/EMSXHistory.java">EMSX History java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/EMSXHistory.py">EMSX History py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -407,14 +425,14 @@
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
 <p>Specify service name and host/port :-</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">d_service</span><span class="o">=</span><span class="s2">&quot;//blp/emsx.history.uat&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d_service</span><span class="o">=</span><span class="s2">&quot;//blp/emsx.history.uat&quot;</span>
 <span class="n">d_host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span>
 <span class="n">d_port</span><span class="o">=</span><span class="mi">8194</span>
 <span class="n">bEnd</span><span class="o">=</span><span class="bp">False</span>
 </pre></div>
 </div>
 <p>Connect and create a session object:-</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SessionEventHandler</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SessionEventHandler</span><span class="p">():</span>
 
     <span class="k">def</span> <span class="nf">processEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
@@ -436,7 +454,7 @@
 </pre></div>
 </div>
 <p>Set elements (e.g. UUID, team name, and Date/Time range):-</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
 
 <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;GetFills&quot;</span><span class="p">)</span>
 
@@ -462,7 +480,7 @@
 </pre></div>
 </div>
 <p>Process response events:-</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processResponseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processResponseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing RESPONSE event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -481,15 +499,16 @@
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../mifid2.html" class="btn btn-neutral float-right" title="MiFID II" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../mifid2.html" class="btn btn-neutral float-right" title="MiFID II" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="emsxSubscription.html" class="btn btn-neutral" title="EMSX Subscription" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="emsxSubscription.html" class="btn btn-neutral" title="EMSX Subscription" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -502,7 +521,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -521,9 +540,11 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'0.0.5',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -537,14 +558,13 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

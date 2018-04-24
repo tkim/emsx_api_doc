@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -23,28 +25,21 @@
   
 
   
-  
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="EMSX API Programmers Guide 0.0.5 documentation" href="../index.html"/>
-        <link rel="up" title="Server Side EMSX API" href="index.html"/>
-        <link rel="next" title="How to install serverapi.exe" href="serverApiInstallation.html"/>
-        <link rel="prev" title="Server Side EMSX API" href="index.html"/> 
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How to install serverapi.exe" href="serverApiInstallation.html" />
+    <link rel="prev" title="Server Side EMSX API" href="index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -85,7 +80,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Server Side EMSX API</a><ul class="current">
@@ -110,36 +108,56 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">EMSX API Programmers Guide</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EMSX API Programmers Guide</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="index.html">Server Side EMSX API</a> &raquo;</li>
-      
-    <li>Creating User Identities</li>
+        
+      <li>Creating User Identities</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/server/migration.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -156,12 +174,12 @@
 <p class="last">Note: The EMSX API Server code samples demonstrate how to create identity object.</p>
 </div>
 <p>The first new step is to open the authentication service. This is done in the same way as for any other service in the Bloomberg API. For example:-</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>d_authsvc = &quot;//blp/apiauth&quot;;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>d_authsvc = &quot;//blp/apiauth&quot;;
 session.openServiceAsync(d_authsvc);
 </pre></div>
 </div>
 <p>Once the service is opened, we need to create and send an authorization request. To create an identity for a specific user, you will need the AuthID for the user. This is the name the user is known by in the EMRS system for your server. The values for these names will have been agreed with you as part of the implementation of the server, or subsequently when adding a new user. Also, an IP address is required. The only requirement for this IP address is that it is unique amongst all the identities generated for a session. You can create and send the request as follows:-</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>private Identity userIdentity;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>private Identity userIdentity;
 
 *
 *
@@ -187,9 +205,9 @@ catch (Exception e)
 }
 </pre></div>
 </div>
-<p>In the above code, you can see that an empty identity object is created using <code class="docutils literal"><span class="pre">session.createIdentity()</span></code>. This is the object that will be populated once successful authentication has been achieved, and it is the object that will need to be cached.</p>
-<p>We will receive a Response event for the Authentication service. In the example below, we use a <code class="docutils literal"><span class="pre">CorrelationID</span></code> to identify messages from the Authentication service, and check for success or failure:-</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>        if(msg.correlationID()==authRequestID) {
+<p>In the above code, you can see that an empty identity object is created using <code class="docutils literal notranslate"><span class="pre">session.createIdentity()</span></code>. This is the object that will be populated once successful authentication has been achieved, and it is the object that will need to be cached.</p>
+<p>We will receive a Response event for the Authentication service. In the example below, we use a <code class="docutils literal notranslate"><span class="pre">CorrelationID</span></code> to identify messages from the Authentication service, and check for success or failure:-</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        if(msg.correlationID()==authRequestID) {
 
         if(msg.messageType().equals(AUTHORIZATION_SUCCESS)) {
                 System.out.println(&quot;Authorised...Opening EMSX service...&quot;);
@@ -215,11 +233,11 @@ catch (Exception e)
 <h1>Using User Identities<a class="headerlink" href="#using-user-identities" title="Permalink to this headline">¶</a></h1>
 <p>When a client application connects to EMSX via the API on DAPI, it does so by leveraging the identity of the logged in Bloomberg terminal user. This means that when a request or subscription object is received by the Bloomberg infrastructure, the target EMSX blotter can be identified.</p>
 <p>In the server environment, there is no Bloomberg terminal, and therefore no implied user can be identified.  Moreover, the server is capable of connecting to any number of EMSX user blotters, simultaneously. Therefore, the application making the call must indicate which user is the intended target. This is done through the creation and use of Identity object.</p>
-<p>An Identity object represents a specific Bloomberg UUID.  Once created, an Identity object can be cached for 24hrs, and used with every <code class="docutils literal"><span class="pre">sendRequest()</span></code> and <code class="docutils literal"><span class="pre">subscribe()</span></code> call.</p>
+<p>An Identity object represents a specific Bloomberg UUID.  Once created, an Identity object can be cached for 24hrs, and used with every <code class="docutils literal notranslate"><span class="pre">sendRequest()</span></code> and <code class="docutils literal notranslate"><span class="pre">subscribe()</span></code> call.</p>
 <p>Identity objects are live, that is they remain connected to Bloomberg in real-time and are capable of receiving events. We recommend that an identity is recreated every 24hrs, to ensure that it picks up the latest changes to any user settings, including access to EMSX.</p>
 <p>Any number of user Identity object can be created by a server-side application. If the application uses the identities of real traders within a firm, then each trader would have an identity created to represent them in the server application. The server application would, perhaps, receive an instruction from the upstream client-side application to create an order in a trader’s blotter. The server application would select the appropriate user identity from the cache and add it to the request.</p>
-<p>Migrating the existing desktop application call to a server application simply involves changing all <code class="docutils literal"><span class="pre">sendRequest()</span></code> and <code class="docutils literal"><span class="pre">subscribe()</span></code> calls to include the appropriate identity, as follows:-</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>DAPI:
+<p>Migrating the existing desktop application call to a server application simply involves changing all <code class="docutils literal notranslate"><span class="pre">sendRequest()</span></code> and <code class="docutils literal notranslate"><span class="pre">subscribe()</span></code> calls to include the appropriate identity, as follows:-</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>DAPI:
         session.sendRequest(request, requestID);
         session.subscribe(subscriptions);
 
@@ -231,7 +249,7 @@ Server:
 </div>
 <div class="section" id="server-side-request-response">
 <h1>Server Side Request/Response<a class="headerlink" href="#server-side-request-response" title="Permalink to this headline">¶</a></h1>
-<p>As of today, the following <code class="docutils literal"><span class="pre">emapisvc</span></code> and <code class="docutils literal"><span class="pre">emapisvc_beta</span></code> requests are available from the server side access.</p>
+<p>As of today, the following <code class="docutils literal notranslate"><span class="pre">emapisvc</span></code> and <code class="docutils literal notranslate"><span class="pre">emapisvc_beta</span></code> requests are available from the server side access.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="30%" />
@@ -297,22 +315,23 @@ Server:
 </tbody>
 </table>
 <p>Any other requests will return the following error:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>&quot;Obsolete request type: &quot; &lt;&lt; request_type
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;Obsolete request type: &quot; &lt;&lt; request_type
 </pre></div>
 </div>
 </div>
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="serverApiInstallation.html" class="btn btn-neutral float-right" title="How to install serverapi.exe" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="serverApiInstallation.html" class="btn btn-neutral float-right" title="How to install serverapi.exe" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Server Side EMSX API" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Server Side EMSX API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -325,7 +344,7 @@ Server:
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -344,9 +363,11 @@ Server:
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'0.0.5',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -360,14 +381,13 @@ Server:
     <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

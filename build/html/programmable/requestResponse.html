@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -23,28 +25,21 @@
   
 
   
-  
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="EMSX API Programmers Guide 0.0.5 documentation" href="../index.html"/>
-        <link rel="up" title="Programmable EMSX API" href="index.html"/>
-        <link rel="next" title="Sell-Side Request/Response Service" href="requestResponseSs.html"/>
-        <link rel="prev" title="Description of Request/Response Service" href="description.html"/> 
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sell-Side Request/Response Service" href="requestResponseSs.html" />
+    <link rel="prev" title="Description of Request/Response Service" href="description.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -85,7 +80,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
@@ -141,36 +139,56 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">EMSX API Programmers Guide</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EMSX API Programmers Guide</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="index.html">Programmable EMSX API</a> &raquo;</li>
-      
-    <li>Buy-Side Request/Response Service</li>
+        
+      <li>Buy-Side Request/Response Service</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/programmable/requestResponse.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -186,17 +204,17 @@ following steps:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>Create a session (if session does not yet exist).</li>
-<li>Connect session to <code class="docutils literal"><span class="pre">//blp/emapisvc_beta</span></code> or <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> service and start it.</li>
+<li>Connect session to <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc_beta</span></code> or <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc</span></code> service and start it.</li>
 <li>Fetch a service object from the session representing emapisvc.</li>
 <li>Use the service object from above to create a Request object of the desired type</li>
 <li>Send request object via sendRequest method of session object, pass object of type EventQueue to the sendRequest.</li>
-<li>Loop through the EventQueue object until event of type <code class="docutils literal"><span class="pre">Event::RESPONSE</span></code> is read.</li>
+<li>Loop through the EventQueue object until event of type <code class="docutils literal notranslate"><span class="pre">Event::RESPONSE</span></code> is read.</li>
 </ol>
 </div></blockquote>
 <p>These are initialized in the constructor as below and are then available for the life of the application for submission of various requests.</p>
 <div class="section" id="assign-trader-request">
 <h2>Assign Trader Request<a class="headerlink" href="#assign-trader-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">AssignTrader</span></code> request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">AssignTrader</span></code> request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.</p>
 <p>Assigned trader must be in same EMBR&lt;GO&gt; group for this to work. EMBR&lt;GO&gt; is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
@@ -212,7 +230,7 @@ following steps:</p>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/AssignTrader.java">Assign Trader java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/AssignTrader.py">Assign Trader py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -220,7 +238,7 @@ following steps:</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -250,9 +268,9 @@ following steps:</p>
 </div>
 <div class="section" id="broker-spec-request">
 <h2>Broker Spec Request<a class="headerlink" href="#broker-spec-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">BrokerSpec</span></code> request allows EMSX API users to call all the production broker strategy name and fields and FIX tags
+<p>The <code class="docutils literal notranslate"><span class="pre">BrokerSpec</span></code> request allows EMSX API users to call all the production broker strategy name and fields and FIX tags
 associated with the broker strategies. Unfortunately, this is currently only available for production broker strategy
-fields. The service name is <code class="docutils literal"><span class="pre">\\blp\emsx.brokerspec</span></code>.</p>
+fields. The service name is <code class="docutils literal notranslate"><span class="pre">\\blp\emsx.brokerspec</span></code>.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -267,12 +285,12 @@ fields. The service name is <code class="docutils literal"><span class="pre">\\b
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/AssignTrader.java">Broker Spec java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/BrokerSpec.py">Broker Spec py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
-<p>Call <code class="docutils literal"><span class="pre">//blp/emsx.brokerspec</span></code> service:-</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">SESSION_STARTED</span>         <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionStarted&quot;</span><span class="p">)</span>
+<p>Call <code class="docutils literal notranslate"><span class="pre">//blp/emsx.brokerspec</span></code> service:-</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SESSION_STARTED</span>         <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionStarted&quot;</span><span class="p">)</span>
 <span class="n">SESSION_STARTUP_FAILURE</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionStartupFailure&quot;</span><span class="p">)</span>
 <span class="n">SERVICE_OPENED</span>          <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ServiceOpened&quot;</span><span class="p">)</span>
 <span class="n">SERVICE_OPEN_FAILURE</span>    <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ServiceOpenFailure&quot;</span><span class="p">)</span>
@@ -286,7 +304,7 @@ fields. The service name is <code class="docutils literal"><span class="pre">\\b
 </pre></div>
 </div>
 <p>Specify the UUID:-</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -311,7 +329,7 @@ fields. The service name is <code class="docutils literal"><span class="pre">\\b
 </pre></div>
 </div>
 <p>Get broker code, strategy name, and strategy parameters</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>    <span class="n">brokers</span><span class="o">=</span><span class="n">msg</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;brokers&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">brokers</span><span class="o">=</span><span class="n">msg</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;brokers&quot;</span><span class="p">)</span>
 
 <span class="n">num</span> <span class="o">=</span> <span class="n">brokers</span><span class="o">.</span><span class="n">numValues</span><span class="p">()</span>
 
@@ -390,8 +408,8 @@ fields. The service name is <code class="docutils literal"><span class="pre">\\b
 </div>
 <div class="section" id="cancel-route-extended-request">
 <h2>Cancel Route Extended Request<a class="headerlink" href="#cancel-route-extended-request" title="Permalink to this headline">¶</a></h2>
-<p>In EMSX&lt;GO&gt; we have a notion of parent order and child routes. The <code class="docutils literal"><span class="pre">CancelRoute</span></code> request is to effectively send out
-a cancellation request to the execution venue of the current live route. Submission of <code class="docutils literal"><span class="pre">CancelRoute</span></code> does not
+<p>In EMSX&lt;GO&gt; we have a notion of parent order and child routes. The <code class="docutils literal notranslate"><span class="pre">CancelRoute</span></code> request is to effectively send out
+a cancellation request to the execution venue of the current live route. Submission of <code class="docutils literal notranslate"><span class="pre">CancelRoute</span></code> does not
 automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue
 of the route.</p>
 <p>Full code sample:-</p>
@@ -408,7 +426,7 @@ of the route.</p>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CancelRoute.java">Cancel Route java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CancelRoute.py">Cancel Route py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -416,7 +434,7 @@ of the route.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -450,7 +468,7 @@ of the route.</p>
 </div>
 <div class="section" id="create-order-request">
 <h2>Create Order Request<a class="headerlink" href="#create-order-request" title="Permalink to this headline">¶</a></h2>
-<p>Creating an order requires the user to create a request from the service object of type <code class="docutils literal"><span class="pre">CreateOrder</span></code> and fill in the required fields before submitting the request.</p>
+<p>Creating an order requires the user to create a request from the service object of type <code class="docutils literal notranslate"><span class="pre">CreateOrder</span></code> and fill in the required fields before submitting the request.</p>
 <p>If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is also true for custom Time in Force fields. Any non-standard TIF will also be restricted from staging unless the broker enables the broker code for EMSX API.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
@@ -466,7 +484,7 @@ of the route.</p>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrder.java">Create Order java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrder.py">Create Order py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -474,7 +492,7 @@ of the route.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -540,14 +558,14 @@ of the route.</p>
 </div>
 <div class="section" id="create-order-and-route-extended-request">
 <h2>Create Order and Route Extended Request<a class="headerlink" href="#create-order-and-route-extended-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code> request can be used for both strategy and non-strategy broker destinations.  Creating
+<p>The <code class="docutils literal notranslate"><span class="pre">CreateOrderAndRouteEx</span></code> request can be used for both strategy and non-strategy broker destinations.  Creating
 an order and routing with strategy requires the user to create a request from the service object of type ``
 CreateOrderAndRouteEx`` and fill in the required fields before submitting the request.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <blockquote>
-<div>The user will first need to use various <code class="docutils literal"><span class="pre">Get___</span></code> requests to obtain all the necessary information to use the broker strategies the user is enabled for, returned in response. Subsequently, the user can then request <code class="docutils literal"><span class="pre">GetBrokerStrategiesWithAssetClass</span></code> to get all the broker strategies user is enabled for that particular broker code and asset class.</div></blockquote>
-<p class="last">Lastly, <code class="docutils literal"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code> will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in <code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code> and <code class="docutils literal"><span class="pre">RouteEx</span></code> requests.</p>
+<div>The user will first need to use various <code class="docutils literal notranslate"><span class="pre">Get___</span></code> requests to obtain all the necessary information to use the broker strategies the user is enabled for, returned in response. Subsequently, the user can then request <code class="docutils literal notranslate"><span class="pre">GetBrokerStrategiesWithAssetClass</span></code> to get all the broker strategies user is enabled for that particular broker code and asset class.</div></blockquote>
+<p class="last">Lastly, <code class="docutils literal notranslate"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code> will get all the fields for the provided broker strategy in the particular order in which they need to be submitted in <code class="docutils literal notranslate"><span class="pre">CreateOrderAndRouteEx</span></code> and <code class="docutils literal notranslate"><span class="pre">RouteEx</span></code> requests.</p>
 </div>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
@@ -563,7 +581,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrderAndRouteEx.java">Create Order And Route Extended java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrderAndRouteEx.py">Create Order And Route Extended py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -571,7 +589,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -599,7 +617,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="create-order-and-route-manually-request">
 <h2>Create Order And Route Manually Request<a class="headerlink" href="#create-order-and-route-manually-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">CreateOrderAndRouteManually</span></code> request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX&lt;GO&gt; that this order is routed to the execution venue.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CreateOrderAndRouteManually</span></code> request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX&lt;GO&gt; that this order is routed to the execution venue.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -614,7 +632,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateOrderAndRouteManually.java">Create Order And Route Manually java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateOrderAndRouteManually.py">Create Order And Route Manually py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -622,7 +640,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -680,8 +698,8 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="delete-order-request">
 <h2>Delete Order Request<a class="headerlink" href="#delete-order-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">DeleteOrder</span></code> request deletes an existing order in EMSX&lt;GO&gt;. This is not the same action as canceling the parent order. In fact, EMSX API does not expose Cancel Order status as in EMSX&lt;GO&gt;.</p>
-<p>The primary reason behind this is because the cancel rrder in EMSX&lt;GO&gt; really just puts an order in an inoperable state and doesn&#8217;t really serve any meaningful function.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">DeleteOrder</span></code> request deletes an existing order in EMSX&lt;GO&gt;. This is not the same action as canceling the parent order. In fact, EMSX API does not expose Cancel Order status as in EMSX&lt;GO&gt;.</p>
+<p>The primary reason behind this is because the cancel rrder in EMSX&lt;GO&gt; really just puts an order in an inoperable state and doesn’t really serve any meaningful function.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -696,7 +714,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/DeleteOrder.java">Delete Order java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/DeleteOrder.py">Delete Order py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -704,7 +722,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -735,7 +753,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="get-all-field-metadata-request">
 <h2>Get All Field Metadata Request<a class="headerlink" href="#get-all-field-metadata-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">GetAllFiedlMetaData</span></code> request provides all field metadata in a response message.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">GetAllFiedlMetaData</span></code> request provides all field metadata in a response message.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -750,7 +768,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetAllFieldMetaData.java">Get All Field Meta Data java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetAllFieldMetaData.py">Get All Field Meta Data py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -758,7 +776,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -783,7 +801,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </pre></div>
 </div>
 <p>Process response messages:-</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processResponseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processResponseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing RESPONSE event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -828,7 +846,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="get-broker-strategies-with-asset-class-request">
 <h2>Get Broker Strategies with Asset Class Request<a class="headerlink" href="#get-broker-strategies-with-asset-class-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">GetBrokerStrategiesWithAssetClass</span></code> request provides all broker strategy fields with asset class data in a response message.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">GetBrokerStrategiesWithAssetClass</span></code> request provides all broker strategy fields with asset class data in a response message.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -843,7 +861,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetBrokerStrategiesWithAssetClass.java">Get Broker Strategies With Asset Class java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokerStrategiesWithAssetClass.py">Get Broker Strategies With Asset Class py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -851,7 +869,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -881,7 +899,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="get-broker-strategy-info-with-asset-class-request">
 <h2>Get Broker Strategy Info with Asset Class Request<a class="headerlink" href="#get-broker-strategy-info-with-asset-class-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code> request provides all broker strategy information fields with asset classdata in a response message.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code> request provides all broker strategy information fields with asset classdata in a response message.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -896,7 +914,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetBrokerStrategyInfoWithAssetClass.java">Get Broker Strategy Info With Asset Class java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokerStrategyInfoWithAssetClass.py">Get Broker Strategy Info With Asset Class py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -904,7 +922,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -935,7 +953,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="get-brokers-with-asset-class-request">
 <h2>Get Brokers with Asset Class Request<a class="headerlink" href="#get-brokers-with-asset-class-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">GetBrokersWithAssetClass</span></code> request provides all broker information with asset class data in a response message.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">GetBrokersWithAssetClass</span></code> request provides all broker information with asset class data in a response message.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -950,7 +968,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetBrokersWithAssetClass.java">Get Brokers With Asset Class java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetBrokersWithAssetClass.py">Get Brokers With Asset Class py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -958,7 +976,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -987,7 +1005,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="get-field-metadata-request">
 <h2>Get Field Metadata Request<a class="headerlink" href="#get-field-metadata-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">GetFieldMetaData</span></code> request provides all field metadata in a response message.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">GetFieldMetaData</span></code> request provides all field metadata in a response message.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1002,7 +1020,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetFieldMetaData.java">Get Field Meta Data java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetFieldMetaData.py">Get Field Meta Data py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -1010,7 +1028,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -1040,7 +1058,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="get-teams-request">
 <h2>Get Teams Request<a class="headerlink" href="#get-teams-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">GetTeams</span></code> request provides all the team details in a response message.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">GetTeams</span></code> request provides all the team details in a response message.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1055,7 +1073,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GetTeams.java">Get Teams java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetTeams.py">Get Teams py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -1063,7 +1081,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -1090,11 +1108,11 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 </div>
 <div class="section" id="group-route-extended-request">
 <h2>Group Route Extended Request<a class="headerlink" href="#group-route-extended-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> request submits an entire list as a single route to a basket/program broker strategy destination.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code> request submits an entire list as a single route to a basket/program broker strategy destination.</p>
 <p>This request should only be used if the intention is to submit an entire list or basket of securities to a single broker strategy destination. This should not be confused with maintaining a list or a basket from a portfolio perspective.</p>
-<p>Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use <code class="docutils literal"><span class="pre">CreateOrder</span></code> request
-to create the order and add the <code class="docutils literal"><span class="pre">EMSX_BASKET_NAME</span></code> in the field. The second step is to submit the list using ``
-GroupRouteEx`` request and include the <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> number inside the array.</p>
+<p>Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use <code class="docutils literal notranslate"><span class="pre">CreateOrder</span></code> request
+to create the order and add the <code class="docutils literal notranslate"><span class="pre">EMSX_BASKET_NAME</span></code> in the field. The second step is to submit the list using ``
+GroupRouteEx`` request and include the <code class="docutils literal notranslate"><span class="pre">EMSX_SEQUENCE</span></code> number inside the array.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1109,7 +1127,7 @@ GroupRouteEx`` request and include the <code class="docutils literal"><span clas
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/GroupRouteEx.java">Group Route Extended java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GroupRouteEx.py">Group Route Extended py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -1117,7 +1135,7 @@ GroupRouteEx`` request and include the <code class="docutils literal"><span clas
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -1253,37 +1271,37 @@ GroupRouteEx`` request and include the <code class="docutils literal"><span clas
 </div>
 <div class="section" id="group-route-extended-request-multi-leg-options">
 <h2>Group Route Extended Request - Multi-Leg Options<a class="headerlink" href="#group-route-extended-request-multi-leg-options" title="Permalink to this headline">¶</a></h2>
-<p>The multi-leg options can be traded using <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> request. The first step is to create the
-options and if need be equities leg using <code class="docutils literal"><span class="pre">CreateOrder</span></code> request. Once this is completed, create a
-request object for <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> and submit it to the session with all the fields necessary for the
+<p>The multi-leg options can be traded using <code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code> request. The first step is to create the
+options and if need be equities leg using <code class="docutils literal notranslate"><span class="pre">CreateOrder</span></code> request. Once this is completed, create a
+request object for <code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code> and submit it to the session with all the fields necessary for the
 multi-leg options routing.</p>
 <p>The overall workflow for multi-leg options is similar to how you create and submit a basket or a list in
 EMSX.</p>
-<p>The <code class="docutils literal"><span class="pre">CreateOrder</span></code> request will essentially stage the multi-leg options orders into EMSX.
+<p>The <code class="docutils literal notranslate"><span class="pre">CreateOrder</span></code> request will essentially stage the multi-leg options orders into EMSX.
 (e.g. B/O on AAPL US 11/20/15 C121 Equity and B/O on AAPL US 11/20/15 P119 Equity. )</p>
 <p>The multi-leg request is an array and similar to submitting a basket order, it is important to make sure
-the <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> matches in the <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> with the orders created using <code class="docutils literal"><span class="pre">CreateOrder</span></code>
+the <code class="docutils literal notranslate"><span class="pre">EMSX_SEQUENCE</span></code> matches in the <code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code> with the orders created using <code class="docutils literal notranslate"><span class="pre">CreateOrder</span></code>
 request. For the subscription services, there will initially be eight elements to subscribe at the Route
-level subscription.  They are <code class="docutils literal"><span class="pre">EMSX_ML_ID</span></code>, <code class="docutils literal"><span class="pre">EMSX_ML_LEG_QUANTITY</span></code>, <code class="docutils literal"><span class="pre">EMSX_ML_NUM_LEGS</span></code>, <code class="docutils literal"><span class="pre">EMSX_ML_PERCENT_FILLED</span></code>, <code class="docutils literal"><span class="pre">EMSX_ML_RATIO</span></code>, <code class="docutils literal"><span class="pre">EMSX_ML_REMAIN_BALANCE</span></code>, <code class="docutils literal"><span class="pre">EMSX_ML_STRATEGY</span></code>, and <code class="docutils literal"><span class="pre">EMSX_ML_TOTAL_QUANTITY</span></code>.</p>
+level subscription.  They are <code class="docutils literal notranslate"><span class="pre">EMSX_ML_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">EMSX_ML_LEG_QUANTITY</span></code>, <code class="docutils literal notranslate"><span class="pre">EMSX_ML_NUM_LEGS</span></code>, <code class="docutils literal notranslate"><span class="pre">EMSX_ML_PERCENT_FILLED</span></code>, <code class="docutils literal notranslate"><span class="pre">EMSX_ML_RATIO</span></code>, <code class="docutils literal notranslate"><span class="pre">EMSX_ML_REMAIN_BALANCE</span></code>, <code class="docutils literal notranslate"><span class="pre">EMSX_ML_STRATEGY</span></code>, and <code class="docutils literal notranslate"><span class="pre">EMSX_ML_TOTAL_QUANTITY</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>The Debit and Credit is indicated by the  net price. Credit is indicated by using the negative sign
 in the net price where the Debit is indicated by the positive net price.</p>
-<p><code class="docutils literal"><span class="pre">Debit</span></code> = positive for the net price</p>
-<p class="last"><code class="docutils literal"><span class="pre">Credit</span></code> = negative for the net price</p>
+<p><code class="docutils literal notranslate"><span class="pre">Debit</span></code> = positive for the net price</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">Credit</span></code> = negative for the net price</p>
 </div>
 </div>
 <div class="section" id="group-route-extended-request-route-as-spread">
 <h2>Group Route Extended Request - Route As Spread<a class="headerlink" href="#group-route-extended-request-route-as-spread" title="Permalink to this headline">¶</a></h2>
 <p>As of 15th of May, 2017 there also will be an ability to use GroupRouteEx to route two non-ticker as spread ticker in
 EMSX.</p>
-<p>The underlying concept remains the same and the only difference is to use <code class="docutils literal"><span class="pre">EMSX_REQUEST_TYPE</span></code> as a <code class="docutils literal"><span class="pre">spread</span></code> instead
-of multileg and for <code class="docutils literal"><span class="pre">EMSX_TICKER</span></code> use one of the two tickers that makes the spread ticker. The <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code>
-inside the array to submit the list remains the same for using <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> to route as a spread.</p>
+<p>The underlying concept remains the same and the only difference is to use <code class="docutils literal notranslate"><span class="pre">EMSX_REQUEST_TYPE</span></code> as a <code class="docutils literal notranslate"><span class="pre">spread</span></code> instead
+of multileg and for <code class="docutils literal notranslate"><span class="pre">EMSX_TICKER</span></code> use one of the two tickers that makes the spread ticker. The <code class="docutils literal notranslate"><span class="pre">EMSX_SEQUENCE</span></code>
+inside the array to submit the list remains the same for using <code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code> to route as a spread.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>The <code class="docutils literal"><span class="pre">EMSX_AMOUNT_PERCENT</span></code> element for this request is used strictly for the amount in shares.</p>
-<p class="last">e.g. <code class="docutils literal"><span class="pre">EMSX_AMOUNT_PERCENT</span></code>, 100 means it&#8217;ll send 100 shares from each ticker.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">EMSX_AMOUNT_PERCENT</span></code> element for this request is used strictly for the amount in shares.</p>
+<p class="last">e.g. <code class="docutils literal notranslate"><span class="pre">EMSX_AMOUNT_PERCENT</span></code>, 100 means it’ll send 100 shares from each ticker.</p>
 </div>
 <p>Full code sample:-</p>
 <p><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteAsSpread.py">Route As Spread py</a></p>
@@ -1291,7 +1309,7 @@ inside the array to submit the list remains the same for using <code class="docu
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">routeSpread</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">routeSpread</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
 
     <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;GroupRouteEx&quot;</span><span class="p">)</span>
 
@@ -1317,7 +1335,7 @@ inside the array to submit the list remains the same for using <code class="docu
 </div>
 <div class="section" id="manaul-fill-request">
 <h2>Manaul Fill Request<a class="headerlink" href="#manaul-fill-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">ManualFill</span></code> request can be used on the sell-side EMSX&lt;GO&gt; settings to create fills and notifies
+<p>The <code class="docutils literal notranslate"><span class="pre">ManualFill</span></code> request can be used on the sell-side EMSX&lt;GO&gt; settings to create fills and notifies
 EMSX&lt;GO&gt;.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
@@ -1333,7 +1351,7 @@ EMSX&lt;GO&gt;.</p>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ManualFill.java">Manual Fill java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py">Manual Fill py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -1341,7 +1359,7 @@ EMSX&lt;GO&gt;.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -1391,7 +1409,7 @@ EMSX&lt;GO&gt;.</p>
 </div>
 <div class="section" id="modify-order-extended-request">
 <h2>Modify Order Extended Request<a class="headerlink" href="#modify-order-extended-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">ModifyOrderEx</span></code> request modifies an existing or previously created order in EMSX&lt;GO&gt; or using EMSX API.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ModifyOrderEx</span></code> request modifies an existing or previously created order in EMSX&lt;GO&gt; or using EMSX API.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1406,7 +1424,7 @@ EMSX&lt;GO&gt;.</p>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyOrderEx.java">Modify Order Extended java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyOrderEx.py">Modify Order Extended py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -1414,7 +1432,7 @@ EMSX&lt;GO&gt;.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
 <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
 <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -1468,7 +1486,7 @@ EMSX&lt;GO&gt;.</p>
 </div>
 <div class="section" id="modify-route-extended-request">
 <h2>Modify Route Extended Request<a class="headerlink" href="#modify-route-extended-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">ModifyRouteEx</span></code> request modifies an existing or previously created child routes in EMSX&lt;GO&gt; or using EMSX API.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ModifyRouteEx</span></code> request modifies an existing or previously created child routes in EMSX&lt;GO&gt; or using EMSX API.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1483,7 +1501,7 @@ EMSX&lt;GO&gt;.</p>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ModifyRouteEx.java">Modify Route Extended java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ModifyRouteEx.py">Modify Route Extended py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -1491,7 +1509,7 @@ EMSX&lt;GO&gt;.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
 <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
 <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -1607,7 +1625,7 @@ EMSX&lt;GO&gt;.</p>
 </div>
 <div class="section" id="route-extended-request">
 <h2>Route Extended Request<a class="headerlink" href="#route-extended-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">RouteEx</span></code> request submits an existing order into various execution veneues. This request is used primarily to submit a child route based on previously created parent order.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">RouteEx</span></code> request submits an existing order into various execution veneues. This request is used primarily to submit a child route based on previously created parent order.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1622,7 +1640,7 @@ EMSX&lt;GO&gt;.</p>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/RouteEx.java">Route Extended java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteEx.py">Route Extended py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -1630,7 +1648,7 @@ EMSX&lt;GO&gt;.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -1685,7 +1703,7 @@ EMSX&lt;GO&gt;.</p>
 </div>
 <div class="section" id="route-manually-extended-request">
 <h2>Route Manually Extended Request<a class="headerlink" href="#route-manually-extended-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">RouteManuallyEx</span></code> requestis generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX&lt;GO&gt; that this order is routed to the execution venue.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">RouteManuallyEx</span></code> requestis generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX&lt;GO&gt; that this order is routed to the execution venue.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1700,7 +1718,7 @@ EMSX&lt;GO&gt;.</p>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/RouteManually.java">Route Manually java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/RouteManually.py">Route Manually py</a></td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -1708,7 +1726,7 @@ EMSX&lt;GO&gt;.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
@@ -1815,15 +1833,16 @@ EMSX&lt;GO&gt;.</p>
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="requestResponseSs.html" class="btn btn-neutral float-right" title="Sell-Side Request/Response Service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="requestResponseSs.html" class="btn btn-neutral float-right" title="Sell-Side Request/Response Service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="description.html" class="btn btn-neutral" title="Description of Request/Response Service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="description.html" class="btn btn-neutral" title="Description of Request/Response Service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1836,7 +1855,7 @@ EMSX&lt;GO&gt;.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1855,9 +1874,11 @@ EMSX&lt;GO&gt;.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'0.0.5',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -1871,14 +1892,13 @@ EMSX&lt;GO&gt;.</p>
     <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

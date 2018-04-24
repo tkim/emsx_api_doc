@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -23,27 +25,21 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="EMSX API Programmers Guide 0.0.5 documentation" href="index.html"/>
-        <link rel="next" title="FAQ" href="faq.html"/>
-        <link rel="prev" title="EMSX History Request" href="programmable/emsxHistory.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FAQ" href="faq.html" />
+    <link rel="prev" title="EMSX History Request" href="programmable/emsxHistory.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -84,7 +80,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server/index.html">Server Side EMSX API</a></li>
@@ -103,34 +102,54 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">EMSX API Programmers Guide</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EMSX API Programmers Guide</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>MiFID II</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>MiFID II</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/mifid2.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -141,7 +160,7 @@
 <p>In preparation for the MiFID II, Bloomberg EMSX API is enhancing its workflow to provide clients with the
 needed data and solutions to fulfill MiFID II obligations (Trade reporting, Transaction reporting, best
 execution and order record keeping). Bloomberg EMSX API as part of Bloomberg EMSX will connect to
-Bloomberg RHUB to support client&#8217;s regulatory obligations through a centralized access for ARM, APA, ORK (
+Bloomberg RHUB to support client’s regulatory obligations through a centralized access for ARM, APA, ORK (
 Bvalut) and best execution (BTCA).</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -152,58 +171,58 @@ Bvalut) and best execution (BTCA).</p>
 <tr class="row-odd"><td>MiFID II Field Names</td>
 <td>Type</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_BUYSIDE_LEI</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BUYSIDE_LEI</span></code></td>
 <td>String</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_BROKER_LEI</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BROKER_LEI</span></code></td>
 <td>String</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TRADE_REPORTING_INDICATOR</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TRADE_REPORTING_INDICATOR</span></code></td>
 <td>String</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_TRANSACTION_REPORTING_MIC</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TRANSACTION_REPORTING_MIC</span></code></td>
 <td>String</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_APA_MIC</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_APA_MIC</span></code></td>
 <td>String</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_OTC_FLAG</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_OTC_FLAG</span></code></td>
 <td>String</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_WAIVER_FLAG</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_WAIVER_FLAG</span></code></td>
 <td>String</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_LAST_CAPACITY</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_CAPACITY</span></code></td>
 <td>String</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CLIENT_IDENTIFICATION</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_CLIENT_IDENTIFICATION</span></code></td>
 <td>String</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_SI</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_SI</span></code></td>
 <td>Bool</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_MIFID_II_INSTRUCTION</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_MIFID_II_INSTRUCTION</span></code></td>
 <td>String</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_BROKER_SI</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BROKER_SI</span></code></td>
 <td>String</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_TIME_MICROSEC</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_CREATE_TIME_MICROSEC</span></code></td>
 <td>Float64</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC</span></code></td>
 <td>Float64</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
 <td>Float64</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code></td>
 <td>Float64</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_TIME_MICROSEC</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_FILL_TIME_MICROSEC</span></code></td>
 <td>Float64</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_GPI</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_GPI</span></code></td>
 <td>String</td>
 </tr>
 </tbody>
@@ -215,14 +234,14 @@ Bvalut) and best execution (BTCA).</p>
 <col width="53%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_TIME_MICROSEC</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_CREATE_TIME_MICROSEC</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_TIME_MICROSEC</span></code></td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_FILL_TIME_MICROSEC</span></code></td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -241,17 +260,17 @@ timestamp from the back-end is not available. (e.g. 0.001)</p>
 <col width="47%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CreateOrder</span></code></td>
-<td><code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">CreateOrder</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">CreateOrderAndRouteEx</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">GroupRouteRequestEx</span></code></td>
-<td><code class="docutils literal"><span class="pre">ManualFill</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GroupRouteRequestEx</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ManualFill</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ManualRouteEx</span></code></td>
-<td><code class="docutils literal"><span class="pre">ModifyOrderRequestEx</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ManualRouteEx</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ModifyOrderRequestEx</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ModifyTheRouteRequestEx</span></code></td>
-<td><code class="docutils literal"><span class="pre">RouteOrderRequestsEx</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ModifyTheRouteRequestEx</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">RouteOrderRequestsEx</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -262,17 +281,17 @@ timestamp from the back-end is not available. (e.g. 0.001)</p>
 <col width="51%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_BUYSIDE_LEI</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_CLIENT_IDENTIFICATION</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BUYSIDE_LEI</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_CLIENT_IDENTIFICATION</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_GPI</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_MIFID_II_INSTRUCTION</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_GPI</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_MIFID_II_INSTRUCTION</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_SI</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_SI</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
-<td>&nbsp;</td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -283,32 +302,32 @@ timestamp from the back-end is not available. (e.g. 0.001)</p>
 <col width="47%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_APA_MIC</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_BUYSIDE_LEI</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_APA_MIC</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_BUYSIDE_LEI</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_BROKER_LEI</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_BROKER_SI</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BROKER_LEI</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_BROKER_SI</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_CLIENT_IDENTIFICATION</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_GPI</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_CLIENT_IDENTIFICATION</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_GPI</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_LAST_CAPACITY</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_TIME_MICROSEC</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_CAPACITY</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_FILL_TIME_MICROSEC</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_MIFID_II_INSTRUCTION</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_OTC_FLAG</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_MIFID_II_INSTRUCTION</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_OTC_FLAG</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_TIME_MICROSEC</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_QUEUED_TIME_MICROSEC</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_CREATE_TIME_MICROSEC</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_TRADE_REPORTING_INDICATOR</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME_MICROSEC</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_TRADE_REPORTING_INDICATOR</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TRANSACTION_REPORTING_MIC</span></code></td>
-<td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TRANSACTION_REPORTING_MIC</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_WAIVER_FLAG</span></code></td>
-<td>&nbsp;</td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_WAIVER_FLAG</span></code></td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -320,15 +339,16 @@ timestamp from the back-end is not available. (e.g. 0.001)</p>
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="faq.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="faq.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="programmable/emsxHistory.html" class="btn btn-neutral" title="EMSX History Request" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="programmable/emsxHistory.html" class="btn btn-neutral" title="EMSX History Request" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -341,7 +361,7 @@ timestamp from the back-end is not available. (e.g. 0.001)</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -360,9 +380,11 @@ timestamp from the back-end is not available. (e.g. 0.001)</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'0.0.5',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
@@ -376,14 +398,13 @@ timestamp from the back-end is not available. (e.g. 0.001)</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

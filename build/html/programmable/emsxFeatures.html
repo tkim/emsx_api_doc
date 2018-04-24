@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -23,28 +25,21 @@
   
 
   
-  
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="EMSX API Programmers Guide 0.0.5 documentation" href="../index.html"/>
-        <link rel="up" title="Programmable EMSX API" href="index.html"/>
-        <link rel="next" title="Accessing the Test Environment" href="testEnv.html"/>
-        <link rel="prev" title="Programmable EMSX API" href="index.html"/> 
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Accessing the Test Environment" href="testEnv.html" />
+    <link rel="prev" title="Programmable EMSX API" href="index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -85,7 +80,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
@@ -118,36 +116,56 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">EMSX API Programmers Guide</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EMSX API Programmers Guide</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="index.html">Programmable EMSX API</a> &raquo;</li>
-      
-    <li>EMSX Features</li>
+        
+      <li>EMSX Features</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/programmable/emsxFeatures.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -161,15 +179,15 @@ However, most EMSX API users are still able to trade pairs using the old EMSX ti
 </div>
 <div class="section" id="emsx-teams">
 <h1>EMSX Teams<a class="headerlink" href="#emsx-teams" title="Permalink to this headline">¶</a></h1>
-<p>The EMSX API allows the same action on <code class="docutils literal"><span class="pre">TEAMVIEW</span></code> as you would have permission on EMSX&lt;GO&gt; function.</p>
-<p>The <code class="docutils literal"><span class="pre">TEAMVIEW</span></code> feature in EMSX&lt;GO&gt; allows a team member to view or take action on behalf of the team members based on the team setting within EMSX&lt;GO&gt;.</p>
+<p>The EMSX API allows the same action on <code class="docutils literal notranslate"><span class="pre">TEAMVIEW</span></code> as you would have permission on EMSX&lt;GO&gt; function.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">TEAMVIEW</span></code> feature in EMSX&lt;GO&gt; allows a team member to view or take action on behalf of the team members based on the team setting within EMSX&lt;GO&gt;.</p>
 <p>For EMSX API, This offers flexibilities within the application design. For example, a single subscription with the team name can capture all the events for the team members. The topic string for using team remains the same as non-team with the exception of adding team name on the topic string as illustrated below.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">//blp/emapisvc_beta/order; <strong>team=my_team_name</strong> ?fields=EMSX_ASSIGNED_TRADER, EMSX_BASKET_NAME, EMSX_CFD_FLAG, EMSX_AMOUNT</p>
 </div>
-<p>Trading on behalf of team members from <code class="docutils literal"><span class="pre">TEAMVIEW</span></code> requires creating a route on behalf of the team member. The service object of type <code class="docutils literal"><span class="pre">RouteEx</span></code> and fill in the required fields before submitting the request.</p>
-<p>Within <code class="docutils literal"><span class="pre">RouteEx</span></code>, there is an element <code class="docutils literal"><span class="pre">EMSX_TRADER_UUID</span></code> where the user can enter the order owner&#8217;s Bloomberg UUID. Bloomberg will do the validation against the user privilege setup via
+<p>Trading on behalf of team members from <code class="docutils literal notranslate"><span class="pre">TEAMVIEW</span></code> requires creating a route on behalf of the team member. The service object of type <code class="docutils literal notranslate"><span class="pre">RouteEx</span></code> and fill in the required fields before submitting the request.</p>
+<p>Within <code class="docutils literal notranslate"><span class="pre">RouteEx</span></code>, there is an element <code class="docutils literal notranslate"><span class="pre">EMSX_TRADER_UUID</span></code> where the user can enter the order owner’s Bloomberg UUID. Bloomberg will do the validation against the user privilege setup via
 EMT&lt;GO&gt; and EMBR&lt;GO&gt;.</p>
 <p>A user can be part of more than one team on the backend. When the user creates the topic string and does not belong to a team or specify a wrong team,  the user will receive an error.</p>
 <p>In cases where a user is defined as a member of multiple teams, then the user will need to supply multiple subscriptions. (One for each team). These subscriptions should be monitored separately since the user will receive two notifications.</p>
@@ -183,15 +201,16 @@ EMT&lt;GO&gt; and EMBR&lt;GO&gt;.</p>
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="testEnv.html" class="btn btn-neutral float-right" title="Accessing the Test Environment" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="testEnv.html" class="btn btn-neutral float-right" title="Accessing the Test Environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Programmable EMSX API" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Programmable EMSX API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -204,7 +223,7 @@ EMT&lt;GO&gt; and EMBR&lt;GO&gt;.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -223,9 +242,11 @@ EMT&lt;GO&gt; and EMBR&lt;GO&gt;.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'0.0.5',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -239,14 +260,13 @@ EMT&lt;GO&gt; and EMBR&lt;GO&gt;.</p>
     <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
