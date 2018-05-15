@@ -316,6 +316,75 @@ Full code sample:-
 	                	 
 
 
+Create Basket Request
+=====================
+
+Creating a basket requires the user to create a request from the service object of type ``CreateBasket`` and fill in the required fields before submitting the request.
+
+The ``CreateBasket`` request creates a basket with the list of securities. This maintains a list or a basket from a portfolio perspective.
+
+Currently, in EMSX API this is a two-step process.
+
+The first step is for the user to use ``CreateOrder`` request to create the orders and capture the ``EMSX_SEQUENCE`` from the response message. 
+
+The second step is to include the ``EMSX_SEQUENCE`` number inside an array to add the orders into a basket and use the ``EMSX_BASKET_NAME`` element in the ``CreateBasket`` request to specify the name of the basket. 
+
+
+Full code sample:-
+
+===================== =================== ====================
+`Create Basket cpp`   `Create Basket cs`_ `Create Basket vba`_   
+--------------------- ------------------- --------------------
+`Create Basket java`  `Create Basket py`_
+===================== =================== ====================
+
+
+.. _Create Basket cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateBasket.cs
+
+.. _Create Basket py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateBasket.py
+
+.. _Create Basket vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/CreateBasket.cls
+
+
+.. hint:: 
+
+    Please right click on the top code sample link to open in a new tab.
+
+.. code-block:: python
+    
+     def processServiceStatusEvent(self,event,session):
+        print("Processing SERVICE_STATUS event")
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print("Service opened...")
+
+                service = session.getService(d_service)
+    
+                request = service.createRequest("CreateBasket")
+
+                # define the basket name
+                request.set("EMSX_BASKET_NAME", "TestBasket")
+
+                # add any number of orders
+                request.append("EMSX_SEQUENCE", 4313227)
+                request.append("EMSX_SEQUENCE", 4313228)
+                #request.append("EMSX_SEQUENCE", 4313184)
+
+                print("Request: %s" % request.toString())
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                    
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print("Error: Service failed to open")
+                     
+
+
+
+
 Create Order Request
 ====================
 
@@ -1053,9 +1122,16 @@ The ``GroupRouteEx`` request submits an entire list as a single route to a baske
 
 This request should only be used if the intention is to submit an entire list or basket of securities to a single broker strategy destination. This should not be confused with maintaining a list or a basket from a portfolio perspective.
 
-Currently, this is a two-step process in EMSX API.  The first step is for the user will need to use ``CreateOrder`` request 
-to create the order and add the ``EMSX_BASKET_NAME`` in the field. The second step is to submit the list using ``
-GroupRouteEx`` request and include the ``EMSX_SEQUENCE`` number inside the array. 
+Currently, this is a three-step process in EMSX API.  
+
+The first step is for the user will need to use ``CreateOrder`` request to create the order. Once the orders are created, the user will use ``CreateBasket`` request to create the basket or list of orders and use ``EMSX_BASKET_NAME`` element to specify the basket name. 
+
+The next step is to submit the list using ``GroupRouteEx`` request and include the ``EMSX_SEQUENCE`` number inside the array. 
+
+
+.. important::
+
+    Please remember that the application does not need to wait for confirmation of the basket creation to trigger the the ``GroupRouteEx`` request. The ``GroupRouteEx`` request is independent of the basket creation for routing (placements).
 
 
 Full code sample:-
