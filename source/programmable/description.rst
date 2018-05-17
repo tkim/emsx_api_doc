@@ -150,7 +150,7 @@ The following elements are available only for internal fields unless custom mapp
 
 .. warning:: 
 
-	The following ``EMSX_CUSTOM_NOTE*`` elements are not available on either order or route subscription service.
+	The following ``EMSX_CUSTOM_NOTE*`` elements are only available on order subscription service.
 
 
 =================================== ==================================================================
