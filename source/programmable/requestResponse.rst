@@ -333,17 +333,19 @@ The second step is to include the ``EMSX_SEQUENCE`` number inside an array to ad
 Full code sample:-
 
 ===================== =================== ====================
-`Create Basket cpp`   `Create Basket cs`_ `Create Basket vba`_   
+`Create Basket cpp`_  `Create Basket cs`_ `Create Basket vba`_   
 --------------------- ------------------- --------------------
 `Create Basket java`_ `Create Basket py`_
 ===================== =================== ====================
 
 
+.. _Create Basket cpp: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%2B%2B/CreateBasket.cpp
+
 .. _Create Basket cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateBasket.cs
 
 .. _Create Basket vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/CreateBasket.cls
 
-.. _Create Bakset java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateBasket.java
+.. _Create Basket java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateBasket.java
 
 .. _Create Basket py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateBasket.py
 
