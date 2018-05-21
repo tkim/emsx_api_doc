@@ -335,15 +335,17 @@ Full code sample:-
 ===================== =================== ====================
 `Create Basket cpp`   `Create Basket cs`_ `Create Basket vba`_   
 --------------------- ------------------- --------------------
-`Create Basket java`  `Create Basket py`_
+`Create Basket java`_ `Create Basket py`_
 ===================== =================== ====================
 
 
 .. _Create Basket cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CreateBasket.cs
 
-.. _Create Basket py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateBasket.py
-
 .. _Create Basket vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/CreateBasket.cls
+
+.. _Create Bakset java: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/CreateBasket.java
+
+.. _Create Basket py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CreateBasket.py
 
 
 .. hint:: 
