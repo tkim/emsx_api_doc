@@ -1176,7 +1176,7 @@ CreateOrderAndRouteEx`` and fill in the required fields before submitting the re
 <p>The next step is to submit the list using <code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code> request and include the <code class="docutils literal notranslate"><span class="pre">EMSX_SEQUENCE</span></code> number inside the array.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">Please remember that the application does not need to wait for confirmation of the basket creation to trigger the the <code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code> request. The <code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code> request is independent of the basket creation for routing (placements).</p>
+<p class="last">Please remember that the application does need to wait for confirmation of the basket creation to trigger the the <code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code> request. The <code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code> request is NOT independent of the basket creation for routing (placements).</p>
 </div>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">

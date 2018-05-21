@@ -1135,7 +1135,7 @@ The next step is to submit the list using ``GroupRouteEx`` request and include t
 
 .. important::
 
-    Please remember that the application does not need to wait for confirmation of the basket creation to trigger the the ``GroupRouteEx`` request. The ``GroupRouteEx`` request is independent of the basket creation for routing (placements).
+    Please remember that the application does need to wait for confirmation of the basket creation to trigger the the ``GroupRouteEx`` request. The ``GroupRouteEx`` request is NOT independent of the basket creation for routing (placements).
 
 
 Full code sample:-
