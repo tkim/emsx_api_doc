@@ -138,6 +138,7 @@ The following elements are available on order and/or route subscription services
 Element								Description             		
 =================================== ==================================================================
 ``EMSX_ACCOUNT``					30-character free text field (29+1 check digit), FIX Tag 1
+``EMSX_BASKET_NAME``                21-character free text field (20+1 check digit)
 ``EMSX_NOTE``						44-character free text field (43+1 check digit), FIX Tag 58
 ``EMSX_ORDER_REF_ID``				16-character field (15+1 check digit) *order subscription only*
 ``EMSX_ROUTE_REF_ID``				16-character field (15+1 check digit) *route subscription only*
