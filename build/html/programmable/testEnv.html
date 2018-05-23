@@ -179,17 +179,11 @@ command will allow your service  to redirect all EMSX API requests and subscript
 environment.</p>
 <p>Once the client has thoroughly tested the custom-built strategies, they can access the production
 environment by changing the service name from <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc_beta</span></code> to <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc</span></code>.</p>
-<p>Inside the Bloomberg Terminal type DGRT Y087&lt;GO&gt; {Y (number zero) 87} This command allows the particular
-terminal window to log into the beta environment. Please note, when a user is remote into the beta
-environment it only affects that particular terminal window and the other screens will not be affected by
-the DGRT command.</p>
+<p>Inside the Bloomberg Terminal type UAT ON &lt;GO&gt;.This command allows the particular terminal window and launchpad to log into the beta environment. Please note, when a user is remote into the beta environment it only affects that particular terminal window and the other Bloomberg panels will not be affected by the UAT ON &lt;GO&gt; command.</p>
 <p>To check which environment your current view is in, type VSAT &lt;GO&gt; inside the Bloomberg terminal.</p>
-<p>To get back to production type DGRT OFF &lt;GO&gt;. Please note that the testing environment in Beta will not
-operate in the exact same way as
-the production environment. Also, please note that the beta environment is a lot slower than the
-production environment.</p>
-<p>To launch the ticket using limited functional terminal will require different command once inside the Y087
-environment. EMSX /NOLP &lt;GO&gt; - This command disables Launchpad ticket from EMSX.</p>
+<p>To get back to production type UAT OFF &lt;GO&gt;. Please note that the testing environment in Beta will not
+operate in the exact same way as the production environment. Also, please note that the beta environment is a lot slower than the
+production environment and no one should perform any volume or load testing in the beta environment.</p>
 </div>
 
 
