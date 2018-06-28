@@ -132,6 +132,9 @@ Please contact your local MATLAB representative for more details on the MATLAB T
 
 	.. _file exchange: https://www.mathworks.com/matlabcentral/fileexchange/43869-algorithmic-trading-with-bloomberg-emsx-and-matlab?focused=3799740&tab=example
 
+.. important::
+
+		MathWorks should be your first point of contact for any support while using MATLAB Trading Toolbox. Bloomberg Level II Support desk will not support MATLAB scripts.
 
 
 EMSX API access from R
