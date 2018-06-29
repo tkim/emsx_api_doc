@@ -30,6 +30,7 @@ The Bloomberg EMSX API is available as desktop API and server-side API. The desk
    server/index
    programmable/index
    mifid2
+   other
    faq
    glossary
 

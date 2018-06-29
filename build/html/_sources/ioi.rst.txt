@@ -1,0 +1,16 @@
+###############
+IOI API Service
+###############
+
+
+The IOI API Server provides Bloomberg users with the ability to publish IOIs into Bloomberg and 
+to subscribe IOIs from Bloomberg. The IOIs consists of Equities and Derivatives and this utilizes the same Bloomberg API 3.0 to automate the IOI publishing and subscription.
+
+http://ioi-api-doc.readthedocs.io/en/latest/
+
+
+Other Services
+==============
+
+
+The Custom Analytics API allows Bloomberg users to publish their own data or analytics into Bloomberg Graphic Dashboard. Please reach out to your local EMSX Sales representatitve for more details on the product offering.
