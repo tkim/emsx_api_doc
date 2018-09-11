@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>EMSX Features &mdash; EMSX API Programmers Guide 1.1.0 documentation</title>
+  <title>EMSX Features &mdash; EMSX API Programmers Guide 1.2.0 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.1.0
+                1.2.0
               </div>
             
           
@@ -91,6 +91,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">EMSX Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#emsx-teams">EMSX Teams</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#emsx-element-definitions">EMSX Element Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#emsx-element-definition-a-to-m">EMSX Element Definition (A to M)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-leg-elements-definition">Multi-Leg Elements Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#emsx-element-definition-n-to-z">EMSX Element Definition (N to Z)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testEnv.html">Accessing the Test Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stateDiagram.html">Order State Diagram</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stateDiagram.html#route-state-diagram">Route State Diagram</a></li>
@@ -196,8 +199,939 @@ EMT&lt;GO&gt; and EMBR&lt;GO&gt;.</p>
 <div class="section" id="emsx-element-definitions">
 <h1>EMSX Element Definitions<a class="headerlink" href="#emsx-element-definitions" title="Permalink to this headline">¶</a></h1>
 <p>For information on accessing field meta data, this is currently only supported within Bloomberg terminal.</p>
-<p>The user will need to access FLDS&lt;GO&gt; function within the Bloomberg terminal. Once in FLDS&lt;GO&gt;, type EMSX underneath the security section and choose EMSX under the filter. The source is Calcrt and should select All for Field Type.</p>
+<p>The user will need to access <code class="docutils literal notranslate"><span class="pre">FLDS&lt;GO&gt;</span></code> function within the Bloomberg terminal. Once in <code class="docutils literal notranslate"><span class="pre">FLDS&lt;GO&gt;</span></code>, type EMSX underneath the security section and choose EMSX under the filter. The source is Calcrt and should select All for Field Type.</p>
 <img alt="../_images/flds.jpg" src="../_images/flds.jpg" />
+</div>
+<div class="section" id="emsx-element-definition-a-to-m">
+<h1>EMSX Element Definition (A to M)<a class="headerlink" href="#emsx-element-definition-a-to-m" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Definition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ACCOUNT</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The account of the routing firm as designated by the broker chosen.</div>
+<div class="line">This field is applicable to trades on an order and/or route level,</div>
+<div class="line">and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_AMOUNT</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The total amount of the order or route. This field is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ARRIVAL_PRICE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The arrival price benchmark for order.The arrival price is the</div>
+<div class="line">midpoint during market hours, and the next opening price between</div>
+<div class="line">exchange sessions. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ASSET_CLASS</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The asset class of the order. This field is applicable to trades on</div>
+<div class="line">an order and/or route level, and does not populate on a per security</div>
+<div class="line">basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ASSIGNED_TRADER</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The name of the trader assigned to the order. This field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_AVG_PRICE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The average price for one share executed with the</div>
+<div class="line">order, calculated over the life of the order. This field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BASKET_NAME</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The name assigned to a group of related orders contained in a</div>
+<div class="line">basket. This field is applicable to trades on an order and/or route</div>
+<div class="line">level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BASKET_NUM</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The number corresponding to the <code class="docutils literal notranslate"><span class="pre">EMSX_BASKET_NAME</span></code> assigned to a</div>
+<div class="line">group of related orders. This field is applicable to trades on an</div>
+<div class="line">order and/or route level, and does not populate on a per security</div>
+<div class="line">basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BROKER</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The code for the broker with whom the order is routed. This field</div>
+<div class="line">is applicable to trades on an order and/or route level, and does</div>
+<div class="line">not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BROKER_COMM</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The amount of commission charged by the broker for the order or</div>
+<div class="line">route. This field is applicable to trades on an order and/or route</div>
+<div class="line">level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BSE_AVG_PRICE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Bombay Stock Exchange Average Price. Average price of the</div>
+<div class="line">fills completed for the order or route on the Bombay Stock Exchange</div>
+<div class="line">(BSE). This field is applicable to trades on an order and/or route</div>
+<div class="line">level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BSE_FILLED</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Bombay Stock Exchange Filled.  Total quantity of the fills</div>
+<div class="line">completed for the order or route on the Bombay Stock Exchange (BSE).</div>
+<div class="line">This field is applicable to trades on an order and/or route level,</div>
+<div class="line">and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_CFD_FLAG</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Contract For Difference Flag. Indicates if the order is a</div>
+<div class="line">contract for differences (CFD) trade. This field is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_CLEARING_ACCOUNT</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The clearing account defined on a futures or option route. This</div>
+<div class="line">field is applicable to trades on an order and/or route level, and</div>
+<div class="line">does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_CLEARING_FIRM</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The clearing firm defined on a futures or options route. This field</div>
+<div class="line">is applicable to trades on an order and/or route level, and does</div>
+<div class="line">not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_COMM_DIFF_FLAG</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Commission Difference between broker commission and AIM</div>
+<div class="line">(Asset and Investment Manager) commission values. This field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_COMM_RATE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Commission Rate of commission charged on the trade. This</div>
+<div class="line">field is applicable to trades on an order and/or route level, and</div>
+<div class="line">does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_CURRENCY_PAIR</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Currency Pair which provides the spot rate to convert the</div>
+<div class="line">security’s currency and the user’s currency. This field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_CUSTOM_ACCOUNT</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Route Account, is the account value at the level of the</div>
+<div class="line">route. This field is applicable to trades on an order and/or route</div>
+<div class="line">level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_DATE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Order Creation Date is the date on which the order is</div>
+<div class="line">created. This field is applicable to trades on an order and/or</div>
+<div class="line">route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_DAY_AVG_PRICE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Day Average Price is the average price for one share</div>
+<div class="line">executed with the order, based on shares filled today. This field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_DAY_FILL</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Day Fill is the total quantity of shares filled today for</div>
+<div class="line">this order/security, across any number of brokers. This field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_DIR_BROKER_FLAG</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Directed Brokers is an indicator of whether the order has</div>
+<div class="line">funds with the directed brokers defined. This field is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_EXCHANGE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Exchange is the exchange code for the where the security in</div>
+<div class="line">the order is listed. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_EXCHANGE_DESTINATION</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Exchange Destination is the Exchange destination of the</div>
+<div class="line">security for the order or route. This field is applicable to trades</div>
+<div class="line">on an order and/or route level, and does not populate on a per</div>
+<div class="line">security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_EXECUTE_BROKER</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Execution Broker is the executing broker on the trade for</div>
+<div class="line">the route. This field is applicable to trades on an order and/or</div>
+<div class="line">route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_FILLED</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The quantity of shares which have been executed by broker. This</div>
+<div class="line">field is applicable to trades on an order and/or route level, and</div>
+<div class="line">does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_FILL_ID</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The fill number associated with a route. This field is applicable</div>
+<div class="line">to trades on an order and/or route level, and does not populate</div>
+<div class="line">on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_GTD_DATE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Good to Date is the date the order is in force until, based</div>
+<div class="line">on local exchange date and time. This field is applicable to trades</div>
+<div class="line">on an order and/or route level, and does not populate on a per</div>
+<div class="line">security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_HAND_INSTRUCTION</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Handling Instruction is the instructions for handling the</div>
+<div class="line">order or route. The values can be preconfigured or a value</div>
+<div class="line">customized by the broker. This field is applicable to trades on an</div>
+<div class="line">order and/or route level, and does not populate on a per security</div>
+<div class="line">basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_IDLE_AMOUNT</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The quantity of shares yet to be routed or executed, equal to the</div>
+<div class="line">order quantity minus amounts filled, unreleased, and routed. This</div>
+<div class="line">field is applicable to trades on an order and/or route level, and</div>
+<div class="line">does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_INVESTOR_ID</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The identifier for the buy side investor as used for markets such as</div>
+<div class="line">Korea and Taiwan. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ISIN</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX International Securities Identification Number os the ISIN</div>
+<div class="line">(International Securities Identification Number) of the security in</div>
+<div class="line">the order. This field is applicable to trades on an order and/or</div>
+<div class="line">route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_IS_MANUAL_ROUTE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Manual Route indicates that the route was not communicated</div>
+<div class="line">electronically to the broker. This field is applicable to trades on</div>
+<div class="line">an order and/or route level, and does not populate on a per security</div>
+<div class="line">basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_FILL_DATE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The date of the last fill based on the user’s time zone. This field</div>
+<div class="line">is applicable to trades on an order and/or route level, and does</div>
+<div class="line">not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_MAREKT</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The last market of execution for a trade as returned by the broker.</div>
+<div class="line">This field is applicable to trades on an order and/or route level,</div>
+<div class="line">and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_PRICE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The last execution price for a trade. This field is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_SHARES</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The last executed quantity for a trade. This field is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_FILL_TIME</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The time of the last fill based on seconds from midnight in the</div>
+<div class="line">user’s time zone. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The price which is the maximum the order to buy securities or</div>
+<div class="line">commodities should be executed at; or the minimum at which</div>
+<div class="line">securities or commodities should be sold. This field is applicable</div>
+<div class="line">to trades on an order and/or route level, and does not populate on</div>
+<div class="line">a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_MISC_FEES</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Miscellaneous Fees is the assorted fees associated with a</div>
+<div class="line">trade, such as regulatory fees and taxes. This field is applicable</div>
+<div class="line">to trades on an order and/or route level, and does not populate on</div>
+<div class="line">a per security basis.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="multi-leg-elements-definition">
+<h1>Multi-Leg Elements Definition<a class="headerlink" href="#multi-leg-elements-definition" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Definition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ML_LEG_QUANTITY</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Multi-Leg Shares per Leg is the number of shares per leg in</div>
+<div class="line">the multi-leg strategy. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ML_NUM_LEGS</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Multi-Leg Number Legs is the number of legs in the multi-leg</div>
+<div class="line">strategy. This field is applicable to trades on an order and/or route</div>
+<div class="line">level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ML_PERCENT_FILLED</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Multi-Leg Percent Filled is the percent of legs filled in a</div>
+<div class="line">multi-leg strategy. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ML_RATIO</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Multi-Leg Ratio is the factor that controls the number of</div>
+<div class="line">securities in each leg. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ML_REMAIN_BALANCE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Multi-Leg Remaining Balance is the balance yet to be filled</div>
+<div class="line">across the legs of a multi-leg strategy. This field is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a per</div>
+<div class="line">security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ML_STRATEGY</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Multi-Leg Strategy Name is the name of the multi-leg strategy</div>
+<div class="line">for the route. This field is applicable to trades on an order and/or</div>
+<div class="line">route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ML_TOTAL_QUANTITY</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Multi-Leg Quantity is the total number of mutli-leg packages</div>
+<div class="line">in the order. One package consists of several legs with individual</div>
+<div class="line">quantities of certain options for each leg. This field is applicable</div>
+<div class="line">to trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="emsx-element-definition-n-to-z">
+<h1>EMSX Element Definition (N to Z)<a class="headerlink" href="#emsx-element-definition-n-to-z" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Definition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_NOTES</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Instructions is the free form instructions that may be</div>
+<div class="line">sent to the broker. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_NSE_AVG_PRICE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX National Stock Exchange Average Price is the average</div>
+<div class="line">price of the fills completed for the order or route on the</div>
+<div class="line">National Stock Exchange (NSE). This field is applicable to trades</div>
+<div class="line">on an order and/or route level, and does not populate on a per</div>
+<div class="line">security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_NSE_FILLED</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX National Stock Exchange Filled is the total quantity of</div>
+<div class="line">the fills completed for the order or route on the National Stock</div>
+<div class="line">Exchange (NSE). This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ORIGINATE_TRADER_FIRM</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The firm of the trader who routed the order. This field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ORIGINATE_TRADER</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The name of the trader who routed the order. This field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_P_A</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Principal/Agency element specifies the capacity in which</div>
+<div class="line">the broker acts for a particular order and route; either</div>
+<div class="line">‘P’ - Principal or ‘A’ - Agency. This field is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_PERCENT_REMAIN</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The remaining balance of the order as a percentage of the</div>
+<div class="line">projected remaining volume in the day. This field is applicable</div>
+<div class="line">to trades on an order and/or route level, and does not populate</div>
+<div class="line">on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_PORT_MGR</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Portfolio Manager is the name of the portfolio manager</div>
+<div class="line">in the AIM function. For standalone users, this is the same as the</div>
+<div class="line">EMSX Trader Name. This field is applicable to trades on an order</div>
+<div class="line">and/or on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_PORT_NAME</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Portfolio Name is the name of the portfolio from which</div>
+<div class="line">the order is sourced. This field is applicable to trades on an</div>
+<div class="line">order and/or route level, and does not populate on a per security</div>
+<div class="line">basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_PORT_NUM</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Portfolio Number is the number of the portfolio from</div>
+<div class="line">which the order is sourced. This field is applicable to trades on</div>
+<div class="line">an order and/or route level, and does not populate on a per</div>
+<div class="line">security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_POSITION</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Position specifies if the position for the order is open</div>
+<div class="line">or closed. This field is applicable to trades on an order and/or</div>
+<div class="line">route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_PRINCIPAL</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Principal is the gross executed value of the trade. This</div>
+<div class="line">field is applicable to trades on an order and/or route level, and</div>
+<div class="line">does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_PRODUCT</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Product Name is the product type of the order. This field</div>
+<div class="line">is applicable to trades on an order and/or route level, and does</div>
+<div class="line">not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_QUEUED_DATE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Queued Date is the date in the future when a route will</div>
+<div class="line">be released to the broker. This field is applicable to trades on</div>
+<div class="line">an order and/or route level, and does not populate on a per</div>
+<div class="line">security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_QUEUED_TIME</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The time in the future when a route will be released to the broker</div>
+<div class="line">This field is applicable to trades on an order and/or route level,</div>
+<div class="line">and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_REASON_CODE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The reason code customized by a firm for the order or route. The</div>
+<div class="line">corresponding description for a code is in EMSX  Reacon Code</div>
+<div class="line">Description. This field is applicable to trades on an order and/or</div>
+<div class="line">route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_REASON_DESC</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Reason Code Description is the reason description</div>
+<div class="line">customized by a firm for the order or route. The corresponding</div>
+<div class="line">code for the description is in EMSX Reason Code. This  field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_REMAIN_BALANCE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The amount of shares not executed on and still outstanding. This</div>
+<div class="line">field is applicable to trades on an order and/or route level, and</div>
+<div class="line">does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_CREATE_DATE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The date of the creation of the route in the user’s time zone.</div>
+<div class="line">This field is applicable to trades on an order and/or route level,</div>
+<div class="line">and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_CREATE_TIME</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The time of the creation of the route in seconds from midnight in</div>
+<div class="line">the user’s time zone. This field is applicable to trades on an</div>
+<div class="line">order and/or route level, and does not populate on a per security</div>
+<div class="line">basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_ID</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The transaction number of the route in the system. This field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The time stamp of the last execution or cancellation on a route.</div>
+<div class="line">This field is applicable to trades on an order and/or route level,</div>
+<div class="line">and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_PRICE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The oute price benchmark for the route. This is the midpoint</div>
+<div class="line">during market hours, and the next opening price between exchange</div>
+<div class="line">sessions. This field is applicable to trades on an order and/or</div>
+<div class="line">route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_SEC_NAME</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Security Name is the long name of the security being</div>
+<div class="line">traded in EMSX. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_SEDOL</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Stock Exchange Daily Official List - SEDOL (Stock</div>
+<div class="line">Exchange Daily Official List) number of the security in the order.</div>
+<div class="line">This field is applicable to trades on an order and/or route level,</div>
+<div class="line">and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_SEQUENCE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The sequence number generated by the EMSX function for the order.</div>
+<div class="line">This field is applicable to trades on an order and/or route level,</div>
+<div class="line">and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_SETTLE_AMOUNT</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Net Money is the executed value of trade net of</div>
+<div class="line">commission, taxes, and fees. This field is applicable to trades on</div>
+<div class="line">an order and/or route level, and does not populate on a per</div>
+<div class="line">security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_SETTLE_DATE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The date on which payment is due to settle the trade for the order</div>
+<div class="line">or route. This field is applicable to trades on an order and/or</div>
+<div class="line">route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_SIDE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX Side specifies whether the order or route is generated</div>
+<div class="line">from the buy side (B) or sell side (S). This field is applicable</div>
+<div class="line">to trades on an order and/or route level, and does not populate</div>
+<div class="line">on a per security  basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_START_AMOUNT</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The original order quantity at creation of the order. This field</div>
+<div class="line">is applicable to trades on an order and/or route level, and does</div>
+<div class="line">not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_STATUS</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The current status of the order or route. This field is applicable</div>
+<div class="line">to trades on an order and/or route level, and does not populate</div>
+<div class="line">on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_STEP_OUT_BROKER</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The name of the broker the executing broker gives all or a portion</div>
+<div class="line">of the commission to for the order. This field is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_STOP_PRICE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The price at which an order to buy or sell a security is</div>
+<div class="line">triggered. Once the trigger price is reached, the order becomes</div>
+<div class="line">a market order. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_STRATEGY_END_TIME</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The end time for the EMSX Strategy Type <code class="docutils literal notranslate"><span class="pre">EMSX_STRATEGY_TYPE</span></code>.</div>
+<div class="line">This field is applicable to trades on an order and/or route level,</div>
+<div class="line">and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_STRATEGY_PART_RATE1</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The first participation rate for the algorithmic strategy on the</div>
+<div class="line">route. This field is applicable to trades on an order and/or route</div>
+<div class="line">level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_STRATEGY_PART_RATE2</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The second participation rate for the algorithmic strategy on the</div>
+<div class="line">route. This field is applicable to trades on an order and/or route</div>
+<div class="line">level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_STRATEGY_START_TIME</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The tart time for the EMSX Strategy Type <code class="docutils literal notranslate"><span class="pre">EMSX_STRATEGY_TYPE</span></code>.</div>
+<div class="line">This field is applicable to trades on an order and/or route level,</div>
+<div class="line">and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_STRATEGY_STYLE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The execution urgency for the algorithmic strategy on the route;</div>
+<div class="line">values are customized by individual brokers. This field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_STRATEGY_TYPE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The method used for the route or order, customized by individual</div>
+<div class="line">brokers. This field is applicable to trades on an order and/or</div>
+<div class="line">route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TICKER</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The ticker specifies the abbreviation assigned to a security for</div>
+<div class="line">trading purposes. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TIF</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The time limit of the order; how long the order remains in effect</div>
+<div class="line">for. This field is applicable to trades on an order and/or route</div>
+<div class="line">level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TIME_STAMP</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The time the order or route is created, in seconds from midnight</div>
+<div class="line">based on the user’s time. This field is applicable to trades on an</div>
+<div class="line">order and/or route level, and does not populate on a per security</div>
+<div class="line">basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TRADE_DESK</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The name of the trading desk on the order. This field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TRADER</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The current trader’s Bloomberg login name. This field is</div>
+<div class="line">to trades on an order and/or route level, and does not populate</div>
+<div class="line">on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TRADER_NOTE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The ree form notes for the trader which are not passed on to the</div>
+<div class="line">brokers. This field is applicable to trades on an order and/or</div>
+<div class="line">route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TS_ORDNUM</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The order number generated by the AIM function. For a non-AIM</div>
+<div class="line">user, this number is the same as the EMSX Sequence Number. This</div>
+<div class="line">field is applicable to trades on an order and/or route level, and</div>
+<div class="line">does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TYPE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The type of the order; this can be a preconfigured valued or a</div>
+<div class="line">value configured by the individual broker. This field is</div>
+<div class="line">applicable to trades on an order and/or route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_UNDERLYING_TICKER</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The instrument to which a derivative, such as an equity or index</div>
+<div class="line">option, is related. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_URGENCY_LEVEL</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The integer which is the parameter for a route strategy, which</div>
+<div class="line">determines a route’s priority. This field is applicable to trades</div>
+<div class="line">on an order and/or route level, and does not populate on a per</div>
+<div class="line">security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_USER_COMM_AMOUNT</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX User Commission Amount is the total commission charged</div>
+<div class="line">on the trade based on user-defined commission rates entered. This</div>
+<div class="line">field is applicable to trades on an order and/or route level, and</div>
+<div class="line">does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_USER_COMM_RATE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The EMSX User Commission Rate is the user-defined commission rate</div>
+<div class="line">for the trade. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_USER_FEES</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The user-defined fees for the trade. This field is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_USER_NET_MONEY</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The executed value of trade net of user-defined commission, taxes,</div>
+<div class="line">and fees. This field is applicable to trades on an order and/or</div>
+<div class="line">route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_WORKING</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The amount the broker is working with. This field is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_WORK_PRICE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The limit price of the last working route of a given order. This</div>
+<div class="line">field is applicable to trades on an order and/or route level, and</div>
+<div class="line">does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_YELLOW_KEY</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The yellow key of the security in the order. This is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -242,7 +1176,7 @@ EMT&lt;GO&gt; and EMBR&lt;GO&gt;.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.1.0',
+            VERSION:'1.2.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
