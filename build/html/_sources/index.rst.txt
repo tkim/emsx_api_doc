@@ -16,7 +16,7 @@ The Bloomberg EMSX API is available as desktop API and server-side API. The desk
 
 
 
-.. important::
+.. warning::
   
   Please note that performance/load test should never be performed on any of the API environment as this is a shared environment and we monitor and increase capacity as needed.
 
