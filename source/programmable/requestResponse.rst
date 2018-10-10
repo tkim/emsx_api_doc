@@ -30,7 +30,7 @@ Assign Trader Request
 
 The ``AssignTrader`` request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.
 
-Assigned trader must be in same EMBR<GO> group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
+Assigned trader must be in same ``EMBR<GO>`` group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
 
 
 Full code sample:-
@@ -247,11 +247,34 @@ Get broker code, strategy name, and strategy parameters
 
 
 
+Cancel Order Extended Request
+=============================
+
+In ``EMSX<GO>`` there is a feature that allows the user to cancel the parent order and child routes associated with the parent order in a single call. The ``CancelOrderEx`` request replicates this ``EMSX<GO>`` UI feature.
+
+However, unlike the ``CancelRouteEx`` request which changes the parent order state into ``Assigned``, this request will permanently place the order in an inoperable  ``Cancel`` state. 
+
+
+Full code sample:-
+
+===================== =================== ===================
+`Cancel Order cs`_  	
+--------------------- ------------------- -------------------
+
+===================== =================== ===================
+
+.. _Cancel Order cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CancelOrder.cs
+
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
 Cancel Route Extended Request
 ==============================
 
 
-In EMSX<GO> we have a notion of parent order and child routes. The ``CancelRoute`` request is to effectively send out 
+In ``EMSX<GO>`` we have a notion of parent order and child routes. The ``CancelRoute`` request is to effectively send out 
 a cancellation request to the execution venue of the current live route. Submission of ``CancelRoute`` does not 
 automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue 
 of the route.
