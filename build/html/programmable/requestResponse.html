@@ -415,7 +415,7 @@ fields. The service name is <code class="docutils literal notranslate"><span cla
 <div class="section" id="cancel-order-extended-request">
 <h2>Cancel Order Extended Request<a class="headerlink" href="#cancel-order-extended-request" title="Permalink to this headline">¶</a></h2>
 <p>In <code class="docutils literal notranslate"><span class="pre">EMSX&lt;GO&gt;</span></code> there is a feature that allows the user to cancel the parent order and child routes associated with the parent order in a single call. The <code class="docutils literal notranslate"><span class="pre">CancelOrderEx</span></code> request replicates this <code class="docutils literal notranslate"><span class="pre">EMSX&lt;GO&gt;</span></code> UI feature.</p>
-<p>However, unlike the <code class="docutils literal notranslate"><span class="pre">CancelRouteEx</span></code> request which changes the parent order state into <code class="docutils literal notranslate"><span class="pre">Assigned</span></code>, this request will permanently place the order in an inoperable  <code class="docutils literal notranslate"><span class="pre">Cancel</span></code> state.</p>
+<p>However, unlike the <a class="reference external" href="https://emsx-api-doc.readthedocs.io/en/latest/programmable/requestResponse.html#cancel-route-extended-request">CancelRouteEx</a> request which changes the parent order state into <code class="docutils literal notranslate"><span class="pre">Assigned</span></code>, this request will permanently place the order in an inoperable  <code class="docutils literal notranslate"><span class="pre">Cancel</span></code> state.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>

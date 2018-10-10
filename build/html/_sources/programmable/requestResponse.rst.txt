@@ -252,8 +252,7 @@ Cancel Order Extended Request
 
 In ``EMSX<GO>`` there is a feature that allows the user to cancel the parent order and child routes associated with the parent order in a single call. The ``CancelOrderEx`` request replicates this ``EMSX<GO>`` UI feature.
 
-However, unlike the ``CancelRouteEx`` request which changes the parent order state into ``Assigned``, this request will permanently place the order in an inoperable  ``Cancel`` state. 
-
+However, unlike the `CancelRouteEx`_ request which changes the parent order state into ``Assigned``, this request will permanently place the order in an inoperable  ``Cancel`` state. 
 
 Full code sample:-
 
@@ -264,6 +263,8 @@ Full code sample:-
 ===================== =================== ===================
 
 .. _Cancel Order cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CancelOrder.cs
+
+.. _CancelRouteEx: https://emsx-api-doc.readthedocs.io/en/latest/programmable/requestResponse.html#cancel-route-extended-request
 
 .. hint:: 
 
