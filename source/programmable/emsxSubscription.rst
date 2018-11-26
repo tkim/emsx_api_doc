@@ -3,7 +3,7 @@ EMSX Subscription
 #################
 
 
-EMSX subscription service provides a way of accessing and monitoring real-time updates on orders and routes in the user's blotter outside of EMSX<GO> function in your Bloomberg terminal.
+EMSX subscription service provides a way of accessing and monitoring real-time updates on orders and routes in the user's blotter outside of ``EMSX<GO>`` function in your Bloomberg terminal.
 
 EMSX subscription sample illustrates how to use both Order and Route subscription service for EMSX API.
 
@@ -15,6 +15,11 @@ Additionally, any changes to these orders and/or routes will generate events tha
 .. warning::
 
     When implementing subscription service, it's important to write the code using two separate .subscribe() events for the order and route subscriptions.
+
+.. important::
+
+    It's important to unsubscribe before starting the Subscription service. 
+
 
 
 Description of Subscription Messages
