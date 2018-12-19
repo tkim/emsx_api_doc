@@ -55,7 +55,7 @@ Element             				Description
 ``LastCapacity`` 					Last capacity field in EMSX<GO>
 ``LastMarket`` 						Last market detail
 ``LimitPrice`` 						Limit price detail
-``Liquidity`` 						Last liquidity indicator (1=Added, 2=Removed, 3=Routed out, M=Maker, T=Taker, R=Rerouted, A=Auction)
+``Liquidity`` 						Last liquidity indicator 1,2,3,M,T,A [definition]_.
 ``LocalExchangeSymbol`` 			Local exchange symbol
 ``LocateBroker`` 					Locate broker detail
 ``LocateId`` 						Locate ID 
@@ -208,5 +208,9 @@ Process response events:-
                     errorMessage = msg.getElementAsString("ERROR_MESSAGE")
                     print "ERROR CODE: %d\tERROR MESSAGE: %s" % (errorCode,errorMessage)
                 elif msg.messageType() == GET_FILLS_RESPONSE:
+
+
+
+.. [definition] 1=Added, 2=Removed, 3=Routed out, M=Maker, T=Taker, R=Rerouted, A=Auction
 
 

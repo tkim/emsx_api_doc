@@ -191,8 +191,8 @@
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="23%" />
-<col width="77%" />
+<col width="32%" />
+<col width="68%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Element</th>
@@ -288,7 +288,7 @@
 <td>Limit price detail</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Liquidity</span></code></td>
-<td>Last liquidity indicator (1=Added, 2=Removed, 3=Routed out, M=Maker, T=Taker, R=Rerouted, A=Auction)</td>
+<td>Last liquidity indicator 1,2,3,M,T,A <a class="reference internal" href="#definition" id="id1">[definition]</a>.</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">LocalExchangeSymbol</span></code></td>
 <td>Local exchange symbol</td>
@@ -499,6 +499,12 @@
             <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">GET_FILLS_RESPONSE</span><span class="p">:</span>
 </pre></div>
 </div>
+<table class="docutils citation" frame="void" id="definition" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[definition]</a></td><td>1=Added, 2=Removed, 3=Routed out, M=Maker, T=Taker, R=Rerouted, A=Auction</td></tr>
+</tbody>
+</table>
 </div>
 
 
