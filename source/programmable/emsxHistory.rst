@@ -55,7 +55,7 @@ Element             				Description
 ``LastCapacity`` 					Last capacity field in EMSX<GO>
 ``LastMarket`` 						Last market detail
 ``LimitPrice`` 						Limit price detail
-``Liquidity`` 						Liquidity detail
+``Liquidity`` 						Last liquidity indicator (1=Added, 2=Removed, 3=Routed out, M=Maker, T=Taker, R=Rerouted, A=Auction)
 ``LocalExchangeSymbol`` 			Local exchange symbol
 ``LocateBroker`` 					Locate broker detail
 ``LocateId`` 						Locate ID 

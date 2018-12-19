@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -92,7 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#emsx-teams">EMSX Teams</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#emsx-element-definitions">EMSX Element Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#emsx-element-definition-a-to-m">EMSX Element Definition (A to M)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#multi-leg-elements-definition">Multi-Leg Elements Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#multi-leg-element-definition">Multi-Leg Element Definition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#emsx-element-definition-n-to-z">EMSX Element Definition (N to Z)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testEnv.html">Accessing the Test Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stateDiagram.html">Order State Diagram</a></li>
@@ -186,13 +185,17 @@
             
   <div class="section" id="emsx-subscription">
 <h1>EMSX Subscription<a class="headerlink" href="#emsx-subscription" title="Permalink to this headline">¶</a></h1>
-<p>EMSX subscription service provides a way of accessing and monitoring real-time updates on orders and routes in the user’s blotter outside of EMSX&lt;GO&gt; function in your Bloomberg terminal.</p>
+<p>EMSX subscription service provides a way of accessing and monitoring real-time updates on orders and routes in the user’s blotter outside of <code class="docutils literal notranslate"><span class="pre">EMSX&lt;GO&gt;</span></code> function in your Bloomberg terminal.</p>
 <p>EMSX subscription sample illustrates how to use both Order and Route subscription service for EMSX API.</p>
 <p>Once the subscription is established all the orders and routes in the user’s blotter are returned via one or more Bloomberg API events of type <code class="docutils literal notranslate"><span class="pre">SUBSCRIPTION</span></code>. Each event is further composed of one or more messages where each message contains all the subscribed fields for a single order or route.</p>
 <p>Additionally, any changes to these orders and/or routes will generate events that are passed along as they occur.  These subscriptions can be asynchronous or synchronous but it is best to always approach this with asynchronous event-driven architecture in mind.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">When implementing subscription service, it’s important to write the code using two separate .subscribe() events for the order and route subscriptions.</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">It’s important to unsubscribe before starting the Subscription service.</p>
 </div>
 <div class="section" id="description-of-subscription-messages">
 <h2>Description of Subscription Messages<a class="headerlink" href="#description-of-subscription-messages" title="Permalink to this headline">¶</a></h2>
@@ -210,7 +213,7 @@
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MSG_TYPE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">MSG_TYPE=E</span></code>, this indicates the message is an EMSX API message.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MSG_SUBTYPE</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MSG_SUB_TYPE</span></code></td>
 <td>O = Order &amp; R = Route</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EVENT_STATUS</span></code></td>
@@ -994,7 +997,7 @@ expire 24 hours after exchange close time.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Terrence C. Kim.
+        &copy; Copyright 2017, Terrence C. Kim
 
     </p>
   </div>
@@ -1013,33 +1016,21 @@ expire 24 hours after exchange close time.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.2.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 

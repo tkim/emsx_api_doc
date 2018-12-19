@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -92,7 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#emsx-teams">EMSX Teams</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#emsx-element-definitions">EMSX Element Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#emsx-element-definition-a-to-m">EMSX Element Definition (A to M)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#multi-leg-elements-definition">Multi-Leg Elements Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#multi-leg-element-definition">Multi-Leg Element Definition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emsxFeatures.html#emsx-element-definition-n-to-z">EMSX Element Definition (N to Z)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testEnv.html">Accessing the Test Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stateDiagram.html">Order State Diagram</a></li>
@@ -179,6 +178,7 @@
 <h1>EMSX History Request<a class="headerlink" href="#emsx-history-request" title="Permalink to this headline">¶</a></h1>
 <p>EMSX history service provides individual fill information via request/response service. The service name is
 <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history</span></code> for production and <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history.uat</span></code> for test environment.</p>
+<p>The EMSX history service goes back up to 30 days in history.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Please note this service will not be available as part of <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc</span></code> or <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc_beta</span></code> service.</p>
@@ -191,8 +191,8 @@
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
-<col width="68%" />
+<col width="23%" />
+<col width="77%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Element</th>
@@ -288,7 +288,7 @@
 <td>Limit price detail</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Liquidity</span></code></td>
-<td>Liquidity detail</td>
+<td>Last liquidity indicator (1=Added, 2=Removed, 3=Routed out, M=Maker, T=Taker, R=Rerouted, A=Auction)</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">LocalExchangeSymbol</span></code></td>
 <td>Local exchange symbol</td>
@@ -521,7 +521,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Terrence C. Kim.
+        &copy; Copyright 2017, Terrence C. Kim
 
     </p>
   </div>
@@ -540,33 +540,21 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.2.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 
