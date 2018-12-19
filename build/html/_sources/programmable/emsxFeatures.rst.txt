@@ -238,7 +238,12 @@ EMSX Element Definition (A to M)
 |                             |  | to trades on an order and/or route level, and does not populate on  |
 |                             |  | a per security basis.                                               |
 +-----------------------------+------------------------------------------------------------------------+
-
+|``EMSX_MOD_PEND_STATUS``     |  | Only valid for Sell-Side EMSX on E2E (EMSX to EMSX) settings.       |
+|                             |  | Fields that can populate: Size, Price, Stop, GTDDate, TIF, Type and |
+|                             |  | instruments.                                                        |
+|                             |  | e.g. EMSX_MOD_PEND_STATUS= "Pending Info|Size: 500.0 -> 200.0|      |
+|                             |  | Price 2.0000 -> 4.0000|Instr: -> test instr"                        |
++-----------------------------+------------------------------------------------------------------------+
 
 Multi-Leg Element Definition
 ============================
