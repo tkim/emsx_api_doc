@@ -31,7 +31,7 @@ Support
 =======
 
 
-For General EMSX functionality inquires please contact the EMSX Trade Desk. They are available 24/6 and please ensure you provide your Bloomberg UUID.
+For all EMSX functionality and EMSX API techincal inquires please contact the EMSX Trade Desk. They are available 24/6 and please ensure you provide your Bloomberg UUID.
 
 
 By Bloomberg Terminal:
@@ -53,48 +53,6 @@ Please call your local global customer support number and ask to speak to the EM
 +1-212-617-2000 +44-20-7330-7500 +65-6212-1000
 =============== ================ =============
 
-
-For programming Support please update the existing link or use the https://service.bloomberg.com
-
-Please provide the BMDS number if this is in regards to EMSX API Server.  The BMDS information is sent 
-with the CPSH documentation prior to going live.
-
-
-Sign Up - Programming Support
-=============================
-
-
-For general programming support, please open an account through the following URL:- 
-
-https://service.bloomberg.com
-
-
-For a new user, you will need to first start by creating the account in https://service.bloomberg.com  and select “Request a new account”.
-
-
-.. image:: /image/signIn.png
-	:width: 300pt
-
-
-Select Enterprise Solutions:-
-
-
-.. image:: /image/accountType.png
-	:width: 300pt
-
-
-Fill out the details on Account Registration:- 
-
-
-.. image:: /image/accountReg.png
-	:width: 300pt
-
-Select B-Pipe, select the role as Technical Contact, and insert Customer #.  The Customer # can be found in the terminal by 
-typing IAM<GO>. Select production information as B-Pipe and click register to finish:-
-
-
-.. image:: /image/register.png
-	:width: 300pt
 
 
 EMSX API Code Samples
