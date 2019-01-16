@@ -137,13 +137,13 @@ The following elements are available on order and/or route subscription services
 =================================== ==================================================================
 Element								Description             		
 =================================== ==================================================================
-``EMSX_ACCOUNT``					30-character free text field (29+1 check digit), FIX Tag 1
-``EMSX_BASKET_NAME``                21-character free text field (20+1 check digit)
+``EMSX_ACCOUNT``					29-character free text field (29+1 check digit), FIX Tag 1
+``EMSX_BASKET_NAME``                20-character free text field (20+1 check digit)
 ``EMSX_INVESTOR_ID``                12-character free text field mostly used to identify Investor ID
-``EMSX_NOTE``						44-character free text field (43+1 check digit), FIX Tag 58
-``EMSX_ORDER_REF_ID``				16-character field (15+1 check digit) *order subscription only*
-``EMSX_ROUTE_REF_ID``				16-character field (15+1 check digit) *route subscription only*
-``EMSX_TRADER_NOTES``				44-character free text field (43+1 check digit), **internal only**
+``EMSX_NOTE``						43-character free text field (43+1 check digit), FIX Tag 58
+``EMSX_ORDER_REF_ID``				15-character field (15+1 check digit) *order subscription only*
+``EMSX_ROUTE_REF_ID``				15-character field (15+1 check digit) *route subscription only*
+``EMSX_TRADER_NOTES``				43-character free text field (43+1 check digit), **internal only**
 =================================== ==================================================================
 
 
@@ -158,11 +158,11 @@ The following elements are available only for internal fields unless custom mapp
 =================================== ==================================================================
 Element								Description             		
 =================================== ==================================================================
-``EMSX_CUSTOM_NOTE1``				80-character free text field (79+1 check digit)
-``EMSX_CUSTOM_NOTE2``				80-character free text field (79+1 check digit) 
-``EMSX_CUSTOM_NOTE3``				80-character free text field (79+1 check digit) 
-``EMSX_CUSTOM_NOTE4``				80-character free text field (79+1 check digit)
-``EMSX_CUSTOM_NOTE5``				80-character free text field (79+1 check digit)
+``EMSX_CUSTOM_NOTE1``				79-character free text field (79+1 check digit)
+``EMSX_CUSTOM_NOTE2``				79-character free text field (79+1 check digit) 
+``EMSX_CUSTOM_NOTE3``				79-character free text field (79+1 check digit) 
+``EMSX_CUSTOM_NOTE4``				79-character free text field (79+1 check digit)
+``EMSX_CUSTOM_NOTE5``				79-character free text field (79+1 check digit)
 =================================== ==================================================================
 
 
