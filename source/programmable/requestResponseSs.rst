@@ -1,8 +1,6 @@
 ##################################
 Sell-Side Request/Response Service
 ##################################
-
-
 The sell-side Request/Response service is specifically used for EMSX to EMSX (E2E) setting where the sell-side EMSX is used to capture order flow from other buy-side EMSX users.
 
 The EMSX API allows developers to use the Request/Response services for order and route creation, modification, 
@@ -29,8 +27,6 @@ submission of various requests.
 
 Manaul Fill Request
 ===================
-
-
 The ``ManualFill`` request can be used on the sell-side EMSX<GO> settings to create fills and notifies EMSX<GO>.
 
 
@@ -53,14 +49,13 @@ Full code sample:-
 .. _Manual Fill vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/ManualFill.cls
 
 
-
 .. hint:: 
 
     Please right click on the top code sample link to open in a new tab.
 
 
 .. code-block:: python
-    
+   :linenos:    
 
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -112,8 +107,6 @@ Full code sample:-
 
 Sell Side Ack Request
 =====================
-
-
 The SellSideAck request is used on the sell-side EMSX<GO> settings to create Ack message on incoming orders from 
 buy-side EMSX<GO>. 
 
@@ -137,14 +130,13 @@ Full code sample:-
 .. _Sell Side Ack vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/SellSideAck.cls
 
 
-
 .. hint:: 
 
 	Please right click on the top code sample link to open in a new tab.
 
 
 .. code-block:: python
-
+   :linenos:
 	
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -177,8 +169,6 @@ Full code sample:-
 
 Sell Side Reject Request
 ========================
-
-
 The SellSideReject request is used on the sell-side EMSX<GO> settings to create Reject message on incoming orders from 
 buy-side EMSX<GO>. 
 
@@ -208,7 +198,7 @@ Full code sample:-
 
 
 .. code-block:: python
-
+   :linenos:
 	
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -237,10 +227,5 @@ Full code sample:-
                             
             elif msg.messageType() == SERVICE_OPEN_FAILURE:
                 print >> sys.stderr, "Error: Service failed to open"        
-
-
-
-
-
 
 

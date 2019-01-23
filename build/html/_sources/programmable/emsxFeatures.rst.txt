@@ -1,6 +1,5 @@
 EMSX Features
 =============
-
 The EMSX API supports 99% of the features supported in ``EMSX<GO>`` function. 
 
 One of the few exceptions to this is the EMSX Pairs Ticket. Currently, the EMSX API does not support the EMSX Pairs Ticket features. 
@@ -9,7 +8,6 @@ However, most EMSX API users are still able to trade pairs using the old EMSX ti
 
 EMSX Teams
 ==========
-
 The EMSX API allows the same action on ``TEAMVIEW`` as you would have permission on ``EMSX<GO>`` function.
 
 The ``TEAMVIEW`` feature in ``EMSX<GO>`` allows a team member to view or take action on behalf of the team members based on the team setting within ``EMSX<GO>``.
@@ -38,7 +36,6 @@ In cases where a user is defined as a member of multiple teams, then the user wi
 
 EMSX Element Definitions
 ========================
-
 For information on accessing field meta data, this is currently only supported within Bloomberg terminal.
 
 The user will need to access ``FLDS<GO>`` function within the Bloomberg terminal. Once in ``FLDS<GO>``, type EMSX underneath the security section and choose EMSX under the filter. The source is Calcrt and should select All for Field Type.
@@ -244,6 +241,7 @@ EMSX Element Definition (A to M)
 |                             |  | e.g. EMSX_MOD_PEND_STATUS= "Pending Info|Size: 500.0 -> 200.0|      |
 |                             |  | Price 2.0000 -> 4.0000|Instr: -> test instr"                        |
 +-----------------------------+------------------------------------------------------------------------+
+
 
 Multi-Leg Element Definition
 ============================

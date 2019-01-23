@@ -1,7 +1,6 @@
 #####################
 Programmable EMSX API
 #####################
-
 The programmable API provides developers with access to EMSX data via a number of programming languages. It can be used independantly of the EMSX Excel add-in, or as a complement. The API provide the developer with the means to replicate most of the behaviour available from the EMSX<GO> in the terminal.
 
 The API supports two distinct programming paradigms; Subscription and Request/Response. Anyone already familiar with the Bloomberg API will recognize this approach. The EMSX API is simply an additional service (``//blp/emapisvc`` or ``//blp/emapisvc_beta``) on the Bloomberg API, with certain subtle differences due to the nature of the data involved.

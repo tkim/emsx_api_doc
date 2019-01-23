@@ -225,53 +225,97 @@ submission of various requests.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
-    <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
 
-        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPENED</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s2">&quot;Service opened...&quot;</span>
+         <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPENED</span><span class="p">:</span>
+             <span class="k">print</span> <span class="s2">&quot;Service opened...&quot;</span>
 
-            <span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
+             <span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
 
-            <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;ManualFill&quot;</span><span class="p">);</span>
+             <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;ManualFill&quot;</span><span class="p">);</span>
 
-            <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1)</span>
+             <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1)</span>
 
-            <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_TRADER_UUID&quot;</span><span class="p">,</span> <span class="mi">12109783</span><span class="p">)</span>
+             <span class="n">request</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;EMSX_TRADER_UUID&quot;</span><span class="p">,</span> <span class="mi">12109783</span><span class="p">)</span>
 
-            <span class="n">routeToFill</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;ROUTE_TO_FILL&quot;</span><span class="p">)</span>
+             <span class="n">routeToFill</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;ROUTE_TO_FILL&quot;</span><span class="p">)</span>
 
-            <span class="n">routeToFill</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">1234567</span><span class="p">)</span>
-            <span class="n">routeToFill</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_ROUTE_ID&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+             <span class="n">routeToFill</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">1234567</span><span class="p">)</span>
+             <span class="n">routeToFill</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_ROUTE_ID&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-            <span class="n">fills</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;FILLS&quot;</span><span class="p">)</span>
+             <span class="n">fills</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;FILLS&quot;</span><span class="p">)</span>
 
-            <span class="n">fills</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_AMOUNT&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-            <span class="n">fills</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_PRICE&quot;</span><span class="p">,</span> <span class="mf">123.4</span><span class="p">)</span>
-            <span class="n">fills</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_LAST_MARKET&quot;</span><span class="p">,</span> <span class="s2">&quot;XLON&quot;</span><span class="p">)</span>
+             <span class="n">fills</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_AMOUNT&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+             <span class="n">fills</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_PRICE&quot;</span><span class="p">,</span> <span class="mf">123.4</span><span class="p">)</span>
+             <span class="n">fills</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_LAST_MARKET&quot;</span><span class="p">,</span> <span class="s2">&quot;XLON&quot;</span><span class="p">)</span>
 
-            <span class="n">fills</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_INDIA_EXCHANGE&quot;</span><span class="p">,</span><span class="s2">&quot;BGL&quot;</span><span class="p">)</span>
+             <span class="n">fills</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_INDIA_EXCHANGE&quot;</span><span class="p">,</span><span class="s2">&quot;BGL&quot;</span><span class="p">)</span>
 
-            <span class="n">fillDateTime</span> <span class="o">=</span> <span class="n">fills</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_DATE_TIME&quot;</span><span class="p">)</span>
+             <span class="n">fillDateTime</span> <span class="o">=</span> <span class="n">fills</span><span class="o">.</span><span class="n">getElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_DATE_TIME&quot;</span><span class="p">)</span>
 
-            <span class="n">fillDateTime</span><span class="o">.</span><span class="n">setChoice</span><span class="p">(</span><span class="s2">&quot;Legacy&quot;</span><span class="p">);</span>
+             <span class="n">fillDateTime</span><span class="o">.</span><span class="n">setChoice</span><span class="p">(</span><span class="s2">&quot;Legacy&quot;</span><span class="p">);</span>
 
-            <span class="n">fillDateTime</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_DATE&quot;</span><span class="p">,</span><span class="mi">20172203</span><span class="p">)</span>
-            <span class="n">fillDateTime</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_TIME&quot;</span><span class="p">,</span><span class="mi">17054</span><span class="p">)</span>
-            <span class="n">fillDateTime</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_TIME_FORMAT&quot;</span><span class="p">,</span><span class="s2">&quot;SecondsFromMidnight&quot;</span><span class="p">)</span>
+             <span class="n">fillDateTime</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_DATE&quot;</span><span class="p">,</span><span class="mi">20172203</span><span class="p">)</span>
+             <span class="n">fillDateTime</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_TIME&quot;</span><span class="p">,</span><span class="mi">17054</span><span class="p">)</span>
+             <span class="n">fillDateTime</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_FILL_TIME_FORMAT&quot;</span><span class="p">,</span><span class="s2">&quot;SecondsFromMidnight&quot;</span><span class="p">)</span>
 
-            <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+             <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
 
-            <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
+             <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
 
-        <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
-            <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
+         <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
+             <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="section" id="sell-side-ack-request">
 <h2>Sell Side Ack Request<a class="headerlink" href="#sell-side-ack-request" title="Permalink to this headline">¶</a></h2>
@@ -299,35 +343,61 @@ buy-side EMSX&lt;GO&gt;.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
-    <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
 
-        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPENED</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s2">&quot;Service opened...&quot;</span>
+         <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPENED</span><span class="p">:</span>
+             <span class="k">print</span> <span class="s2">&quot;Service opened...&quot;</span>
 
-            <span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
+             <span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
 
-            <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;SellSideAck&quot;</span><span class="p">);</span>
+             <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;SellSideAck&quot;</span><span class="p">);</span>
 
-            <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1)</span>
+             <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1)</span>
 
-            <span class="n">request</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">1234567</span><span class="p">)</span>
+             <span class="n">request</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">1234567</span><span class="p">)</span>
 
-            <span class="c1"># If performing the ack on an order owned by another team member, provide owner&#39;s UUID</span>
-            <span class="c1">#request.set(&quot;EMSX_TRADER_UUID&quot;, 7654321)</span>
+             <span class="c1"># If performing the ack on an order owned by another team member, provide owner&#39;s UUID</span>
+             <span class="c1">#request.set(&quot;EMSX_TRADER_UUID&quot;, 7654321)</span>
 
-            <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+             <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
 
-            <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
+             <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
 
-        <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
-            <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
+         <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
+             <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="section" id="sell-side-reject-request">
 <h2>Sell Side Reject Request<a class="headerlink" href="#sell-side-reject-request" title="Permalink to this headline">¶</a></h2>
@@ -355,35 +425,61 @@ buy-side EMSX&lt;GO&gt;.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+     <span class="k">print</span> <span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span>
 
-    <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
 
-        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPENED</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s2">&quot;Service opened...&quot;</span>
+         <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPENED</span><span class="p">:</span>
+             <span class="k">print</span> <span class="s2">&quot;Service opened...&quot;</span>
 
-            <span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
+             <span class="n">service</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
 
-            <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;SellSideReject&quot;</span><span class="p">);</span>
+             <span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">createRequest</span><span class="p">(</span><span class="s2">&quot;SellSideReject&quot;</span><span class="p">);</span>
 
-            <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1)</span>
+             <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1)</span>
 
-            <span class="n">request</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">1234567</span><span class="p">)</span>
+             <span class="n">request</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">1234567</span><span class="p">)</span>
 
-            <span class="c1"># If performing the reject on an order owned by another team member, provide owner&#39;s UUID</span>
-            <span class="c1">#request.set(&quot;EMSX_TRADER_UUID&quot;, 7654321)</span>
+             <span class="c1"># If performing the reject on an order owned by another team member, provide owner&#39;s UUID</span>
+             <span class="c1">#request.set(&quot;EMSX_TRADER_UUID&quot;, 7654321)</span>
 
-            <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+             <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">CorrelationId</span><span class="p">()</span>
 
-            <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
+             <span class="n">session</span><span class="o">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">correlationId</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">requestID</span> <span class="p">)</span>
 
-        <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
-            <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
+         <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
+             <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 </div>
 

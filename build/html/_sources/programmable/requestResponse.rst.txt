@@ -1,8 +1,6 @@
 #################################
 Buy-Side Request/Response Service
 #################################
-
-
 The EMSX API allows developers to use the Request/Response services for order and route creation, modification, 
 queries related to orders and routes as well as EMSX Team details. Depending on the type of action required, the 
 application programmer must create a specific request, populate it with required parameters and send that request to 
@@ -26,8 +24,6 @@ These are initialized in the constructor as below and are then available for the
 
 Assign Trader Request
 =====================
-
-
 The ``AssignTrader`` request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.
 
 Assigned trader must be in same ``EMBR<GO>`` group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
@@ -58,7 +54,7 @@ Full code sample:-
 
 
 .. code-block:: python
-             
+   :linenos:          
 
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -89,8 +85,6 @@ Full code sample:-
 
 Broker Spec Request
 =====================
-
-
 The ``BrokerSpec`` request allows EMSX API users to call all the production broker strategy name and fields and FIX tags 
 associated with the broker strategies. Unfortunately, this is currently only available for production broker strategy 
 fields. The service name is ``\\blp\emsx.brokerspec``.
@@ -119,7 +113,7 @@ Call ``//blp/emsx.brokerspec`` service:-
 
 
 .. code-block:: python
-
+  
         
     SESSION_STARTED         = blpapi.Name("SessionStarted")
     SESSION_STARTUP_FAILURE = blpapi.Name("SessionStartupFailure")
@@ -249,7 +243,6 @@ Get broker code, strategy name, and strategy parameters
 
 Cancel Order Extended Request
 =============================
-
 In ``EMSX<GO>`` there is a feature that allows the user to cancel the parent order and child routes associated with the parent order in a single call. The ``CancelOrderEx`` request replicates this ``EMSX<GO>`` UI feature.
 
 However, unlike the `CancelRouteEx`_ request which changes the parent order state into ``Assigned``, this request will permanently place the order in an inoperable  ``Cancel`` state. 
@@ -273,8 +266,6 @@ Full code sample:-
 
 Cancel Route Extended Request
 ==============================
-
-
 In ``EMSX<GO>`` we have a notion of parent order and child routes. The ``CancelRoute`` request is to effectively send out 
 a cancellation request to the execution venue of the current live route. Submission of ``CancelRoute`` does not 
 automatically cancel the outstanding route. This action needs to be acknowledged and performed by the execution venue 
@@ -306,7 +297,7 @@ Full code sample:-
 
 
 .. code-block:: python
-
+   :linenos:
 
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -342,7 +333,6 @@ Full code sample:-
 
 Create Basket Request
 =====================
-
 Creating a basket requires the user to create a request from the service object of type ``CreateBasket`` and fill in the required fields before submitting the request.
 
 The ``CreateBasket`` request creates a basket with the list of securities. This maintains a list or a basket from a portfolio perspective.
@@ -379,7 +369,8 @@ Full code sample:-
     Please right click on the top code sample link to open in a new tab.
 
 .. code-block:: python
-    
+   :linenos:
+
      def processServiceStatusEvent(self,event,session):
         print("Processing SERVICE_STATUS event")
         
@@ -415,8 +406,6 @@ Full code sample:-
 
 Create Order Request
 ====================
-
-
 Creating an order requires the user to create a request from the service object of type ``CreateOrder`` and fill in the required fields before submitting the request. 
 
 If the handling instruction is for DMA access or any other non-standard handling instructions, EMSX API will not allow users to stage the order from the EMSX API unless the broker enables the broker code for EMSX API.  This is also true for custom Time in Force fields. Any non-standard TIF will also be restricted from staging unless the broker enables the broker code for EMSX API.
@@ -447,6 +436,7 @@ Full code sample:-
 
 
 .. code-block:: python
+   :linenos:
 
 	                
     def processServiceStatusEvent(self,event,session):
@@ -512,10 +502,8 @@ Full code sample:-
             print >> sys.stderr, "Error: Service failed to open" 
 
 
-
 Create Order and Route Extended Request
 =======================================
-
 The ``CreateOrderAndRouteEx`` request can be used for both strategy and non-strategy broker destinations.  Creating 
 an order and routing with strategy requires the user to create a request from the service object of type ``
 CreateOrderAndRouteEx`` and fill in the required fields before submitting the request. 
@@ -553,7 +541,7 @@ Full code sample:-
 
 
 .. code-block:: python
-	                
+   :linenos:                
 
 	    def processServiceStatusEvent(self,event,session):
 	        print "Processing SERVICE_STATUS event"
@@ -582,8 +570,6 @@ Full code sample:-
 
 Create Order And Route Manually Request
 =======================================
-
-
 The ``CreateOrderAndRouteManually`` request is generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
 
 
@@ -613,7 +599,7 @@ Full code sample:-
 
 
 .. code-block:: python
-     
+   :linenos: 
 
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -672,8 +658,6 @@ Full code sample:-
 
 Delete Order Request
 ====================
-
-
 The ``DeleteOrder`` request deletes an existing order in EMSX<GO>. This is not the same action as canceling the parent order. In fact, EMSX API does not expose Cancel Order status as in EMSX<GO>. 
 
 The primary reason behind this is because the cancel rrder in EMSX<GO> really just puts an order in an inoperable state and doesn't really serve any meaningful function.
@@ -705,6 +689,8 @@ Full code sample:-
 
 
 .. code-block:: python	                
+   :linenos:
+
 
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -736,8 +722,6 @@ Full code sample:-
 
 Get All Field Metadata Request
 ==============================
-
-
 The ``GetAllFiedlMetaData`` request provides all field metadata in a response message.
 
 
@@ -842,8 +826,6 @@ Process response messages:-
 
 Get Broker Strategies with Asset Class Request
 ==============================================
-
-
 The ``GetBrokerStrategiesWithAssetClass`` request provides all broker strategy fields with asset class data in a response message.
 
 
@@ -872,6 +854,7 @@ Full code sample:-
 
 
 .. code-block:: python
+   :linenos:
 
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -903,8 +886,6 @@ Full code sample:-
 
 Get Broker Strategy Info with Asset Class Request
 =================================================
-
-
 The ``GetBrokerStrategyInfoWithAssetClass`` request provides all broker strategy information fields with asset classdata in a response message.
 
 
@@ -933,7 +914,7 @@ Full code sample:-
 
 
 .. code-block:: python
-
+   :linenos:
 
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -965,8 +946,6 @@ Full code sample:-
 
 Get Brokers with Asset Class Request
 ====================================
-
-
 The ``GetBrokersWithAssetClass`` request provides all broker information with asset class data in a response message.
 
 
@@ -995,7 +974,7 @@ Full code sample:-
 
 
 .. code-block:: python
-                
+   :linenos:                
 
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -1025,8 +1004,6 @@ Full code sample:-
 
 Get Field Metadata Request
 ===========================
-
-
 The ``GetFieldMetaData`` request provides all field metadata in a response message.
 
 
@@ -1055,7 +1032,7 @@ Full code sample:-
 
 
 .. code-block:: python
-
+   :linenos:
 
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -1086,8 +1063,6 @@ Full code sample:-
 
 Get Teams Request
 =================
-
-
 The ``GetTeams`` request provides all the team details in a response message.
 
 
@@ -1116,7 +1091,7 @@ Full code sample:-
 
 
 .. code-block:: python
-
+   :linenos:
 
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -1144,8 +1119,6 @@ Full code sample:-
 
 Group Route Extended Request
 ============================
-
-
 The ``GroupRouteEx`` request submits an entire list as a single route to a basket/program broker strategy destination.
 
 This request should only be used if the intention is to submit an entire list or basket of securities to a single broker strategy destination. This should not be confused with maintaining a list or a basket from a portfolio perspective.
@@ -1187,7 +1160,7 @@ Full code sample:-
 
 
 .. code-block:: python
-
+   :linenos:
 
 	    def processServiceStatusEvent(self,event,session):
 	        print "Processing SERVICE_STATUS event"
@@ -1324,8 +1297,6 @@ Full code sample:-
 
 Group Route Extended Request - Multi-Leg Options
 ================================================
-
-
 The multi-leg options can be traded using ``GroupRouteEx`` request. The first step is to create the 
 options and if need be equities leg using ``CreateOrder`` request. Once this is completed, create a 
 request object for ``GroupRouteEx`` and submit it to the session with all the fields necessary for the 
@@ -1355,8 +1326,6 @@ level subscription.  They are ``EMSX_ML_ID``, ``EMSX_ML_LEG_QUANTITY``, ``EMSX_M
 
 Group Route Extended Request - Route As Spread
 ==============================================
-
-
 As of 15th of May, 2017 there also will be an ability to use GroupRouteEx to route two non-ticker as spread ticker in 
 EMSX. 
 
@@ -1387,6 +1356,7 @@ Full code sample:-
 
 
 .. code-block:: python
+   :linenos:
 
     def routeSpread(self, session):
         
@@ -1413,8 +1383,6 @@ Full code sample:-
 
 Manaul Fill Request
 ===================
-
-
 The ``ManualFill`` request can be used on the sell-side EMSX<GO> settings to create fills and notifies 
 EMSX<GO>.
 
@@ -1443,7 +1411,8 @@ Full code sample:-
 
 
 .. code-block:: python
-    
+   :linenos:
+
     def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
         
@@ -1494,8 +1463,6 @@ Full code sample:-
 
 Modify Order Extended Request
 =============================
-
-
 The ``ModifyOrderEx`` request modifies an existing or previously created order in EMSX<GO> or using EMSX API. 
 
 
@@ -1524,6 +1491,7 @@ Full code sample:-
 
 
 .. code-block:: python
+   :linenos:
 
 	 def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -1579,8 +1547,6 @@ Full code sample:-
 
 Modify Route Extended Request
 =============================
-
-
 The ``ModifyRouteEx`` request modifies an existing or previously created child routes in EMSX<GO> or using EMSX API. 
 
 
@@ -1603,13 +1569,13 @@ Full code sample:-
 .. _Modify Route Extended vba: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_VBA/ModifyRouteEx.cls
 
 
-
 .. hint:: 
 
 	Please right click on the top code sample link to open in a new tab.
 
 
 .. code-block:: python
+   :linenos:
 
 	 def processServiceStatusEvent(self,event,session):
         print "Processing SERVICE_STATUS event"
@@ -1728,8 +1694,6 @@ Full code sample:-
 
 Route Extended Request
 ======================
-
-
 The ``RouteEx`` request submits an existing order into various execution veneues. This request is used primarily to submit a child route based on previously created parent order. 
 
 
@@ -1758,7 +1722,7 @@ Full code sample:-
 
 
 .. code-block:: python
-	                
+   :linenos:	                
 
 	    def processServiceStatusEvent(self,event,session):
 	        print "Processing SERVICE_STATUS event"
@@ -1814,8 +1778,6 @@ Full code sample:-
 
 Route Manually Extended Request
 ===============================
-
-
 The ``RouteManuallyEx`` requestis generally used for phone orders where the placement is external to EMSX API. This request creates an order and notifies EMSX<GO> that this order is routed to the execution venue.
 
 
@@ -1844,7 +1806,7 @@ Full code sample:-
 
 
 .. code-block:: python
-
+   :linenos:
 	
 	    def processServiceStatusEvent(self,event,session):
 	        print "Processing SERVICE_STATUS event"
@@ -1946,7 +1908,5 @@ Full code sample:-
 	                            
 	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
 	                print >> sys.stderr, "Error: Service failed to open"        
-
-
 
 

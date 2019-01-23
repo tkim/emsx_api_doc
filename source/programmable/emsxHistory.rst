@@ -1,7 +1,5 @@
 EMSX History Request
 ====================
-
-
 EMSX history service provides individual fill information via request/response service. The service name is 
 ``//blp/emsx.history`` for production and ``//blp/emsx.history.uat`` for test environment. 
 
@@ -14,13 +12,11 @@ The EMSX history service goes back up to 30 days in history.
 
 Unlike the ``//blp/emapisvc`` and ``//blp/emapisvc_beta`` service, ``//blp/emsx.history`` and ``//blp/emsx.history.uat`` service uses semi-camel character for the element names.
 
-
 .. important::
 	
 	Please note that the timezone of this service will always be in US EST timezone for the fills regardless of the TZDF setting for the UUID.
 
 	Please note that EMSX History should never be used as a replacement for route subscription for real-time fills and updates to routes.
-
 
 
 =================================== ===================================================================
@@ -124,7 +120,7 @@ Specify service name and host/port :-
 
 
 .. code-block:: python
-
+   
 
 	d_service="//blp/emsx.history.uat"
 	d_host="localhost"
@@ -163,7 +159,7 @@ Set elements (e.g. UUID, team name, and Date/Time range):-
 
 	               
 .. code-block:: python
-	
+   	
 
 	service = session.getService(d_service)
 
@@ -194,6 +190,7 @@ Process response events:-
 
 
 .. code-block:: python
+   
 		
     def processResponseEvent(self, event):
         print "Processing RESPONSE event"

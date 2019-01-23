@@ -1,8 +1,6 @@
 #######################################
 Description of Request/Response Service
 #######################################
-
-
 The request/response service can be used for both buy-side EMSX<GO> workflows or sell-side EMSX to EMSX (E2E) workflows.
 
 The buy-side EMSX request/response supports all the basic buy-side execution management control via request/response service where the sell-side EMSX request/response supports additional sell-side workflow for acknowledging or rejecting an order coming in via E2E workflow.
@@ -10,9 +8,7 @@ The buy-side EMSX request/response supports all the basic buy-side execution man
 
 Buy-Side Request/Response Service
 =================================
-
 EMSX API supports the following buy-side Request/Response services:-
-
 *Please note, the descriptions to the legacy request/response services are omitted from the description section.*
 
 ======================================= =================================================================
@@ -51,10 +47,7 @@ Request Name             			    Action
 
 Sell-Side Request/Response Service
 ==================================
-
-
 EMSX API supports the following sell-side Request/Response services:-
-
 *Please note, the descriptions to the legacy request/response services are omitted from the description section.*
 
 
@@ -76,16 +69,11 @@ Request Name             			Action
 
 CFD & Odd Lot Flag
 ==================
-
-
 This is a feature that indicates CFD orders or to flag an odd lot in EMSX API.
-
 ``EMSX_CFD_FLAG``  is used to flag a particular order as CFD 
 
 	* 0 = not flagged														
 	* 1 = flagged															
-
-
 
 ``EMSX_ODD_LOT_FLAG``  is an odd lot is a quantity of stock that is less than 100 shares. A deal involving 100 shares or more is considered a round-lot transactions.
 
@@ -95,8 +83,6 @@ This is a feature that indicates CFD orders or to flag an odd lot in EMSX API.
 
 Date & Time Format
 ==================
-
-
 All date format except ``EMSX_QUEUED_TIME`` are in yyyymmdd format. All time format except ``EMSX_STRATEGY_END_TIME`` and ``
 EMSX_STRATEGY_START_TIME`` are in number of seconds from midnight.
 
@@ -127,8 +113,6 @@ The ``//blp/emsx.history`` and ``//blp/emsx.history.uat`` are set in date time o
 
 Custom Notes & Free Text Fields
 ================================
-
-
 The EMSX API provides several different EMSX options for entering and using free text fields. Some of these free text fields can be used for an internal only workflow where the others can be used to communicate with the various execution counterparts. 
 
 The following elements are available on order and/or route subscription services. These elements will be passed to the external trading counterparts.

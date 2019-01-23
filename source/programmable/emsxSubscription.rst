@@ -1,8 +1,6 @@
 #################
 EMSX Subscription
 #################
-
-
 EMSX subscription service provides a way of accessing and monitoring real-time updates on orders and routes in the user's blotter outside of ``EMSX<GO>`` function in your Bloomberg terminal.
 
 EMSX subscription sample illustrates how to use both Order and Route subscription service for EMSX API.
@@ -19,7 +17,6 @@ Additionally, any changes to these orders and/or routes will generate events tha
 .. important::
 
     It's important to unsubscribe before starting the Subscription service. 
-
 
 
 Description of Subscription Messages
@@ -267,8 +264,6 @@ Description of the Child Route Status Changes
 
 Description of Order Expiration Logic
 =====================================
-
-
 The parent orders in EMSX follow an expiration logic that first puts orders into view only mode before it gets removed from 
 EMSX blotter.
 
@@ -313,8 +308,6 @@ Option GT   ``EXPIRED`` On GTD date if open routes, then redated to current GTD 
 
 Description of Route Expiration Logic
 =====================================
-
-
 All equities routes in EMSX will expire 8 hours after the exchange midnight. All futures and options routes in EMSX will 
 expire 24 hours after exchange close time.
 
@@ -349,6 +342,7 @@ Specify service name and host/port :-
 
 
 .. code-block:: python
+
 
 	# EMSXSubscriptions.py
 

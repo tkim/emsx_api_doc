@@ -1,6 +1,5 @@
 Accessing the Test Environment
 ==============================
-
 Bloomberg provides a test environment for clients to build and test their strategies using the EMSX API.
 
 This is accomplished by referencing ``//blp/emapisvc_beta`` as the service name in your program. This 
