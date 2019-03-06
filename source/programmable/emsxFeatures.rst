@@ -393,7 +393,7 @@ EMSX Element Definition (N to Z)
 |                               |  | This field is applicable to trades on an order and/or route level,|
 |                               |  | and does not populate on a per security basis.                    |
 +-------------------------------+----------------------------------------------------------------------+
-|``EMSX_ROUTE_PRICE``           |  | The oute price benchmark for the route. This is the midpoint      |
+|``EMSX_ROUTE_PRICE``           |  | The route price benchmark for the route. This is the midpoint     |
 |                               |  | during market hours, and the next opening price between exchange  |
 |                               |  | sessions. This field is applicable to trades on an order and/or   |
 |                               |  | route level, and does not populate on a per security basis.       |
