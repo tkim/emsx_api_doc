@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>EMSX Features &mdash; EMSX API Programmers Guide 1.5.0 documentation</title>
+  <title>EMSX Features &mdash; EMSX API Programmers Guide 1.6.0 documentation</title>
   
 
   
@@ -58,7 +58,7 @@
             
             
               <div class="version">
-                1.5.0
+                1.6.0
               </div>
             
           
@@ -188,7 +188,7 @@ However, most EMSX API users are still able to trade pairs using the old EMSX ti
 <p>For EMSX API, This offers flexibilities within the application design. For example, a single subscription with the team name can capture all the events for the team members. The topic string for using team remains the same as non-team with the exception of adding team name on the topic string as illustrated below.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">//blp/emapisvc_beta/order; <strong>team=my_team_name</strong> ?fields=EMSX_ASSIGNED_TRADER, EMSX_BASKET_NAME, EMSX_CFD_FLAG, EMSX_AMOUNT</p>
+<p class="last">//blp/emapisvc_beta/order;**team=my_team_name**?fields=EMSX_ASSIGNED_TRADER, EMSX_BASKET_NAME, EMSX_CFD_FLAG, EMSX_AMOUNT</p>
 </div>
 <p>Trading on behalf of team members from <code class="docutils literal notranslate"><span class="pre">TEAMVIEW</span></code> requires creating a route on behalf of the team member. The service object of type <code class="docutils literal notranslate"><span class="pre">RouteEx</span></code> and fill in the required fields before submitting the request.</p>
 <p>Within <code class="docutils literal notranslate"><span class="pre">RouteEx</span></code>, there is an element <code class="docutils literal notranslate"><span class="pre">EMSX_TRADER_UUID</span></code> where the user can enter the order owner’s Bloomberg UUID. Bloomberg will do the validation against the user privilege setup via
@@ -862,7 +862,7 @@ However, most EMSX API users are still able to trade pairs using the old EMSX ti
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_PRICE</span></code></td>
 <td><div class="first last line-block">
-<div class="line">The oute price benchmark for the route. This is the midpoint</div>
+<div class="line">The route price benchmark for the route. This is the midpoint</div>
 <div class="line">during market hours, and the next opening price between exchange</div>
 <div class="line">sessions. This field is applicable to trades on an order and/or</div>
 <div class="line">route level, and does not populate on a per security basis.</div>
