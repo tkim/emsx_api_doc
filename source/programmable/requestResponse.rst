@@ -250,12 +250,14 @@ However, unlike the `CancelRouteEx`_ request which changes the parent order stat
 Full code sample:-
 
 ===================== =================== ===================
-`Cancel Order cs`_  	
+`Cancel Order cs`_    `Cancel Order py`_	
 --------------------- ------------------- -------------------
 
 ===================== =================== ===================
 
 .. _Cancel Order cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/CancelOrder.cs
+
+.. _Cancel Order py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/CancelOrderEx.py
 
 .. _CancelRouteEx: https://emsx-api-doc.readthedocs.io/en/latest/programmable/requestResponse.html#cancel-route-extended-request
 
