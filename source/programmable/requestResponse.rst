@@ -1315,6 +1315,7 @@ the ``EMSX_SEQUENCE`` matches in the ``GroupRouteEx`` with the orders created us
 request. For the subscription services, there will initially be eight elements to subscribe at the Route 
 level subscription.  They are ``EMSX_ML_ID``, ``EMSX_ML_LEG_QUANTITY``, ``EMSX_ML_NUM_LEGS``, ``EMSX_ML_PERCENT_FILLED``, ``EMSX_ML_RATIO``, ``EMSX_ML_REMAIN_BALANCE``, ``EMSX_ML_STRATEGY``, and ``EMSX_ML_TOTAL_QUANTITY``.
 
+Please set the ``EMSX_REQEST_TYPE`` as ``multileg`` to submit the multi-leg options using GroupRouteEx request.
 
 .. note::
 
@@ -1332,7 +1333,7 @@ As of 15th of May, 2017 there also will be an ability to use GroupRouteEx to rou
 EMSX. 
 
 The underlying concept remains the same and the only difference is to use ``EMSX_REQUEST_TYPE`` as a ``spread`` instead 
-of multileg and for ``EMSX_TICKER`` use one of the two tickers that makes the spread ticker. The ``EMSX_SEQUENCE`` 
+of ``multileg`` and for ``EMSX_TICKER`` use one of the two tickers that makes the spread ticker. The ``EMSX_SEQUENCE`` 
 inside the array to submit the list remains the same for using ``GroupRouteEx`` to route as a spread.
 
 
