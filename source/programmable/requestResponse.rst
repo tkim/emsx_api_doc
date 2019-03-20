@@ -1333,7 +1333,7 @@ As of 15th of May, 2017 there also will be an ability to use GroupRouteEx to rou
 EMSX. 
 
 The underlying concept remains the same and the only difference is to use ``EMSX_REQUEST_TYPE`` as a ``spread`` instead 
-of ``multileg`` and for ``EMSX_TICKER`` use one of the two tickers that makes the spread ticker. The ``EMSX_SEQUENCE`` 
+of ``Multileg`` and for ``EMSX_TICKER`` use one of the two tickers that makes the spread ticker. The ``EMSX_SEQUENCE`` 
 inside the array to submit the list remains the same for using ``GroupRouteEx`` to route as a spread.
 
 
