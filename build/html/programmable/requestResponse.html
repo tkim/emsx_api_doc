@@ -1865,11 +1865,12 @@ EMSX.</p>
 the <code class="docutils literal notranslate"><span class="pre">EMSX_SEQUENCE</span></code> matches in the <code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code> with the orders created using <code class="docutils literal notranslate"><span class="pre">CreateOrder</span></code>
 request. For the subscription services, there will initially be eight elements to subscribe at the Route
 level subscription.  They are <code class="docutils literal notranslate"><span class="pre">EMSX_ML_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">EMSX_ML_LEG_QUANTITY</span></code>, <code class="docutils literal notranslate"><span class="pre">EMSX_ML_NUM_LEGS</span></code>, <code class="docutils literal notranslate"><span class="pre">EMSX_ML_PERCENT_FILLED</span></code>, <code class="docutils literal notranslate"><span class="pre">EMSX_ML_RATIO</span></code>, <code class="docutils literal notranslate"><span class="pre">EMSX_ML_REMAIN_BALANCE</span></code>, <code class="docutils literal notranslate"><span class="pre">EMSX_ML_STRATEGY</span></code>, and <code class="docutils literal notranslate"><span class="pre">EMSX_ML_TOTAL_QUANTITY</span></code>.</p>
-<p>Please set the <code class="docutils literal notranslate"><span class="pre">EMSX_REQEST_TYPE</span></code> as <code class="docutils literal notranslate"><span class="pre">multileg</span></code> to submit the multi-leg options using GroupRouteEx request.</p>
+<p>Please set the <code class="docutils literal notranslate"><span class="pre">EMSX_REQEST_TYPE</span></code> as <code class="docutils literal notranslate"><span class="pre">Multileg</span></code> to submit the multi-leg options using GroupRouteEx request.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>The Debit and Credit is indicated by the  net price. Credit is indicated by using the negative sign
 in the net price where the Debit is indicated by the positive net price.</p>
+<p>The net price can be specified using the <code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span></code> element for the multi-leg options orders.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Debit</span></code> = positive for the net price</p>
 <p class="last"><code class="docutils literal notranslate"><span class="pre">Credit</span></code> = negative for the net price</p>
 </div>
