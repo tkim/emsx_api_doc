@@ -171,6 +171,12 @@ General FAQ
 	there will be no access to the service. The dependencies here are on the the machines the services 
 	resides and not the service itself.
 
+* Is there a community project based on EMSX API?
+	Yes, there is a MIT licensed community project. It's called `EasyMSX`_.
+
+	.. _EasyMSX: https://easymsx.readthedocs.io/en/latest/
+
+
 .. Excel Add-In FAQ
 .. ================
 
