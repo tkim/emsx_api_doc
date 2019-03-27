@@ -107,6 +107,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#description-of-order-status-messages">Description of Order Status  Messages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description-of-the-child-route-status-messages">Description of the Child Route Status Messages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description-of-the-child-route-status-changes">Description of the Child Route Status Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-fills-using-route-subscription">Description of Fills using Route Subscription</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description-of-order-expiration-logic">Description of Order Expiration Logic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description-of-route-expiration-logic">Description of Route Expiration Logic</a></li>
 </ul>
@@ -685,6 +686,108 @@ on part filled route. (placement)</td>
 <td><code class="docutils literal notranslate"><span class="pre">WORKING</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">REJECTED</span></code></td>
 <td>Route rejected from working.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-fills-using-route-subscription">
+<h2>Description of Fills using Route Subscription<a class="headerlink" href="#description-of-fills-using-route-subscription" title="Permalink to this headline">¶</a></h2>
+<p>The real-time fills in EMSX API are delivered through the route subscription service.  However, to capture the full state of the order, we always recommend the client listens to both the order and route subscription service.</p>
+<p>The following elements provide the route updates that can be calculated to obtain the real-time incoming fills for a live route.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Definition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_FILL_DATE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The date of the last fill based on the user’s time zone. This field</div>
+<div class="line">is applicable to trades on an order and/or route level, and does</div>
+<div class="line">not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_MAREKT</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The last market of execution for a trade as returned by the broker.</div>
+<div class="line">This field is applicable to trades on an order and/or route level,</div>
+<div class="line">and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_PRICE</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The last execution price for a trade. This field is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_SHARES</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The last executed quantity for a trade. This field is applicable to</div>
+<div class="line">trades on an order and/or route level, and does not populate on a</div>
+<div class="line">per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_FILL_TIME</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The time of the last fill based on seconds from midnight in the</div>
+<div class="line">user’s time zone. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">EMSX_FILL_ID</span></code> is the transaction sequence number to keep track of the individual fills. One thing to keep in mind is that this is a reflection of the fills and thus you will typically see the <cite>EMSX_FILL_ID`</cite> to show 0, 2, 3, 4,.. 8,9,.. 14, and etc.  In most cases, the <code class="docutils literal notranslate"><span class="pre">EMSX_FILL_ID</span></code> = 1 is not reflected as this is an <code class="docutils literal notranslate"><span class="pre">ACK</span></code> message from the broker. The EMSX_FILL_ID is a unique ID per fill in sequential order but does not necessarily tie to the actual Fill numbers and will skip fill events that are not directly tied to a fill.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Definition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_FILL_ID</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The fill number associated with a route. This field is applicable</div>
+<div class="line">to trades on an order and/or route level, and does not populate</div>
+<div class="line">on a per security basis.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME</span></code> is timestamp based on the number of seconds from midnight that reflects the last update of a route. This can be fill or any other route-based update events.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Definition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME</span></code></td>
+<td><div class="first last line-block">
+<div class="line">The time stamp of the last execution or cancellation on a route.</div>
+<div class="line">This field is applicable to trades on an order and/or route level,</div>
+<div class="line">and does not populate on a per security basis.</div>
+</div>
+</td>
 </tr>
 </tbody>
 </table>

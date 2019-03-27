@@ -261,6 +261,59 @@ Description of the Child Route Status Changes
 |``EMSX_STATUS``       |``WORKING`` |``REJECTED``|Route rejected from working.                     |
 +----------------------+------------+------------+-------------------------------------------------+
 
+Description of Fills using Route Subscription
+=============================================
+The real-time fills in EMSX API are delivered through the route subscription service.  However, to capture the full state of the order, we always recommend the client listens to both the order and route subscription service.
+
+The following elements provide the route updates that can be calculated to obtain the real-time incoming fills for a live route.
+
+
++-----------------------------+------------------------------------------------------------------------+
+|Field                        |Definition                                                              |
++=============================+========================================================================+
+|``EMSX_LAST_FILL_DATE``      |  | The date of the last fill based on the user's time zone. This field |
+|                             |  | is applicable to trades on an order and/or route level, and does    |
+|                             |  | not populate on a per security basis.                               | 
++-----------------------------+------------------------------------------------------------------------+
+|``EMSX_LAST_MAREKT``         |  | The last market of execution for a trade as returned by the broker. |
+|                             |  | This field is applicable to trades on an order and/or route level,  |
+|                             |  | and does not populate on a per security basis.                      |
++-----------------------------+------------------------------------------------------------------------+
+|``EMSX_LAST_PRICE``          |  | The last execution price for a trade. This field is applicable to   |
+|                             |  | trades on an order and/or route level, and does not populate on a   |
+|                             |  | per security basis.                                                 |
++-----------------------------+------------------------------------------------------------------------+
+|``EMSX_LAST_SHARES``         |  | The last executed quantity for a trade. This field is applicable to |
+|                             |  | trades on an order and/or route level, and does not populate on a   |
+|                             |  | per security basis.                                                 |
++-----------------------------+------------------------------------------------------------------------+
+|``EMSX_LAST_FILL_TIME``      |  | The time of the last fill based on seconds from midnight in the     |
+|                             |  | user's time zone. This field is applicable to trades on an order    |
+|                             |  | and/or route level, and does not populate on a per security basis.  | 
++-----------------------------+------------------------------------------------------------------------+
+
+
+The ``EMSX_FILL_ID`` is the transaction sequence number to keep track of the individual fills. One thing to keep in mind is that this is a reflection of the fills and thus you will typically see the `EMSX_FILL_ID`` to show 0, 2, 3, 4,.. 8,9,.. 14, and etc.  In most cases, the ``EMSX_FILL_ID`` = 1 is not reflected as this is an ``ACK`` message from the broker. The EMSX_FILL_ID is a unique ID per fill in sequential order but does not necessarily tie to the actual Fill numbers and will skip fill events that are not directly tied to a fill. 
+
++-----------------------------+------------------------------------------------------------------------+
+|Field                        |Definition                                                              |
++=============================+========================================================================+
+|``EMSX_FILL_ID``             |  | The fill number associated with a route. This field is applicable   |
+|                             |  | to trades on an order and/or route level, and does not populate     |
+|                             |  | on a per security basis.                                            | 
++-----------------------------+------------------------------------------------------------------------+
+
+The ``EMSX_ROUTE_LAST_UPDATE_TIME`` is timestamp based on the number of seconds from midnight that reflects the last update of a route. This can be fill or any other route-based update events.
+
++-------------------------------+----------------------------------------------------------------------+
+|Field                          |Definition                                                            |
++===============================+======================================================================+
+|``EMSX_ROUTE_LAST_UPDATE_TIME``|  | The time stamp of the last execution or cancellation on a route.  |
+|                               |  | This field is applicable to trades on an order and/or route level,|
+|                               |  | and does not populate on a per security basis.                    |
++-------------------------------+----------------------------------------------------------------------+
+
+
 
 Description of Order Expiration Logic
 =====================================
