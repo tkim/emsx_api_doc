@@ -26,7 +26,7 @@ Assign Trader Request
 =====================
 The ``AssignTrader`` request allows EMSX API to reassign order to another user UUID. A typical setup will have the different UUID as another part of the TEAM setup for the order creater UUID. This will allow systematically generated trades to be reassigned to another human trader if need be from the EMSX API.
 
-Assigned trader must be in same ``EMBR<GO>`` group for this to work. EMBR<GO> is an internal Bloomberg function the EMSX account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the AssignTrader request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
+Assigned trader must be in same ``EMBR<GO>`` group for this to work. ``EMBR<GO>`` is an internal Bloomberg function the account managers will use to set this feature on behalf of the client. The EMSX account manager will check off the ability to reassign before the ``AssignTrader`` request will work. Once this feature is on, trading on behalf other UUID feature will no longer work for that team.
 
 
 Full code sample:-
