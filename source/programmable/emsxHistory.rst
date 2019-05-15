@@ -3,6 +3,9 @@ EMSX History Request
 EMSX history service provides individual fill information via request/response service. The service name is 
 ``//blp/emsx.history`` for production and ``//blp/emsx.history.uat`` for test environment. 
 
+Unlike the EMSX API service ``//blp/emapisvc`` and ``//blp/emapisvc_beta``, the history service supports ``PARTIAL_RESPONSE`` events.
+The ``PARTIAL_RESPONSE`` event messages will return messages that are a subset of the information.
+
 The EMSX history service goes back up to 30 days in history.
 
 .. note::
