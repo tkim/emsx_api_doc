@@ -14,8 +14,3 @@ More details can be found on the following URL:
 http://ioi-api-doc.readthedocs.io/en/latest/
 
 
-Custom Analytics API
-====================
-
-
-The Custom Analytics API allows Bloomberg users to publish their own data or analytics into Bloomberg Graphic Dashboard. Please reach out to your local EMSX Sales representative for more details on the product offering.

@@ -104,7 +104,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">EMSX Subscription</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#description-of-subscription-messages">Description of Subscription Messages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description-of-event-status-messages">Description of Event Status Messages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#description-of-order-status-messages">Description of Order Status  Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description-of-order-status-messages">Description of Order Status Messages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description-of-the-child-route-status-messages">Description of the Child Route Status Messages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description-of-the-child-route-status-changes">Description of the Child Route Status Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description-of-fills-using-route-subscription">Description of Fills using Route Subscription</a></li>
@@ -271,7 +271,7 @@
 </table>
 </div>
 <div class="section" id="description-of-order-status-messages">
-<h2>Description of Order Status  Messages<a class="headerlink" href="#description-of-order-status-messages" title="Permalink to this headline">¶</a></h2>
+<h2>Description of Order Status Messages<a class="headerlink" href="#description-of-order-status-messages" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -332,48 +332,66 @@
 <td>Applicable Child Route Status: <code class="docutils literal notranslate"><span class="pre">FILLED</span></code>.</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MOD-PEND</span></code></td>
-<td>The Sell-Side EMSX to EMSX (E2E), order modification pending acknowledgement.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">NEW</span></code></td>
-<td>The order has been added/staged; no routes have been created.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ORD-PEND</span></code></td>
-<td>The Sell-Side EMSX to EMSX (E2E), new order pending acknowledgement.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">PARTFILLED</span></code></td>
-<td>The order has idle or unfilled shares.</td>
-</tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line"><br /></div>
-</div>
-</td>
-<td>Applicable Child Route Status: <code class="docutils literal notranslate"><span class="pre">CANCEL</span></code>, <code class="docutils literal notranslate"><span class="pre">FILLED</span></code>, or <code class="docutils literal notranslate"><span class="pre">PARTFILLED</span></code>.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">SENT</span></code></td>
-<td>The route has been sent to the broker but has not been acknowledged.</td>
-</tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line"><br /></div>
-</div>
-</td>
-<td>Applicable Child Route Status: <code class="docutils literal notranslate"><span class="pre">SENT</span></code>.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">WORKING</span></code></td>
-<td>The route has been sent and acknowledged by the broker or the route has been</td>
-</tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line"><br /></div>
-</div>
-</td>
-<td>partially filled or route has a cancel request pending or rejected.</td>
+<td>Only valid for the Sell-Side EMSX to EMSX (E2E) settings.  The order modification</td>
 </tr>
 <tr class="row-even"><td><div class="first last line-block">
 <div class="line"><br /></div>
 </div>
 </td>
-<td>Applicable Child Route Status: <code class="docutils literal notranslate"><span class="pre">CXLREJ</span></code>, <code class="docutils literal notranslate"><span class="pre">CXLREQ</span></code>, <code class="docutils literal notranslate"><span class="pre">CXLRPRQ</span></code>, <code class="docutils literal notranslate"><span class="pre">CXLRPRJ</span></code>,</td>
+<td>pending acknowledgement. Fields that can populate: Size, Price, Stop,  GTDDate,</td>
 </tr>
 <tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td>TIF, Type and instruments.  e.g. EMSX_MOD_PEND_STATUS= “Pending Info|Size: 500.0</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td>-&gt; 200.0|Price 2.0000 -&gt; 4.0000|Instr: -&gt; test instr”</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">NEW</span></code></td>
+<td>The order has been added/staged; no routes have been created.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ORD-PEND</span></code></td>
+<td>The Sell-Side EMSX to EMSX (E2E), new order pending acknowledgement.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">PARTFILLED</span></code></td>
+<td>The order has idle or unfilled shares.</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td>Applicable Child Route Status: <code class="docutils literal notranslate"><span class="pre">CANCEL</span></code>, <code class="docutils literal notranslate"><span class="pre">FILLED</span></code>, or <code class="docutils literal notranslate"><span class="pre">PARTFILLED</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">SENT</span></code></td>
+<td>The route has been sent to the broker but has not been acknowledged.</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td>Applicable Child Route Status: <code class="docutils literal notranslate"><span class="pre">SENT</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">WORKING</span></code></td>
+<td>The route has been sent and acknowledged by the broker or the route has been</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td>partially filled or route has a cancel request pending or rejected.</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td>Applicable Child Route Status: <code class="docutils literal notranslate"><span class="pre">CXLREJ</span></code>, <code class="docutils literal notranslate"><span class="pre">CXLREQ</span></code>, <code class="docutils literal notranslate"><span class="pre">CXLRPRQ</span></code>, <code class="docutils literal notranslate"><span class="pre">CXLRPRJ</span></code>,</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
 <div class="line"><br /></div>
 </div>
 </td>

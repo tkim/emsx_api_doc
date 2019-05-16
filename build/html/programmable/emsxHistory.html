@@ -179,6 +179,8 @@
 <h1>EMSX History Request<a class="headerlink" href="#emsx-history-request" title="Permalink to this headline">¶</a></h1>
 <p>EMSX history service provides individual fill information via request/response service. The service name is
 <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history</span></code> for production and <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history.uat</span></code> for test environment.</p>
+<p>Unlike the EMSX API service <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc</span></code> and <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc_beta</span></code>, the history service supports <code class="docutils literal notranslate"><span class="pre">PARTIAL_RESPONSE</span></code> events.
+The <code class="docutils literal notranslate"><span class="pre">PARTIAL_RESPONSE</span></code> event messages will return messages that are a subset of the information.</p>
 <p>The EMSX history service goes back up to 30 days in history.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
