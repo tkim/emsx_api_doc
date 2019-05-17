@@ -1119,6 +1119,110 @@ Full code sample:-
                 print >> sys.stderr, "Error: Service failed to open"        
 	    
 
+Get Trade Desks Request
+=======================
+The ``GetTradeDesks`` is AIM specific request and provides all the trade desk details in a response message.
+
+
+Full code sample:-
+
+===================== =================
+`Get Trade Desks cs`_ 	
+--------------------- -----------------
+`Get Trade Desks py`_
+===================== =================
+
+
+.. _Get Trade Desks cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetTradeDesks.cs
+
+.. _Get Trade Desks py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetTradeDesks.py
+
+
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
+.. code-block:: python
+   :linenos:
+
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
+
+                service = session.getService(d_service)
+    
+                request = service.createRequest("GetTradeDesks")
+
+                #request.set("EMSX_REQUEST_SEQ", 1)
+                
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"   
+
+
+Get Traders Request
+===================
+
+The ``GetTraders`` is AIM specific request and provides all the traders details in a response message.
+
+
+Full code sample:-
+
+================= =================
+`Get Traders cs`_ 	
+----------------- -----------------
+`Get Traders py`_
+================= =================
+
+
+.. _Get Traders cs: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_C%23/GetTraders.cs
+
+.. _Get Traders py: https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/GetTraders.py
+
+
+
+.. hint:: 
+
+	Please right click on the top code sample link to open in a new tab.
+
+
+.. code-block:: python
+   :linenos:
+
+    def processServiceStatusEvent(self,event,session):
+        print "Processing SERVICE_STATUS event"
+        
+        for msg in event:
+            
+            if msg.messageType() == SERVICE_OPENED:
+                print "Service opened..."
+
+                service = session.getService(d_service)
+    
+                request = service.createRequest("GetTraders")
+
+                #request.set("EMSX_REQUEST_SEQ", 1)
+                
+                print "Request: %s" % request.toString()
+                    
+                self.requestID = blpapi.CorrelationId()
+                
+                session.sendRequest(request, correlationId=self.requestID )
+                            
+            elif msg.messageType() == SERVICE_OPEN_FAILURE:
+                print >> sys.stderr, "Error: Service failed to open"   
+
+
 Group Route Extended Request
 ============================
 The ``GroupRouteEx`` request submits an entire list as a single route to a basket/program broker strategy destination.
