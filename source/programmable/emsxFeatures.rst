@@ -50,6 +50,8 @@ EMSX Element Definition (A to M)
 +-----------------------------+------------------------------------------------------------------------+
 |Field                        |Definition                                                              |
 +=============================+========================================================================+
+|``API_SEQ_NUM``              |  | ``INT64`` Special Field                                             |          
++-----------------------------+------------------------------------------------------------------------+
 |``EMSX_ACCOUNT``             |  | ``STRING`` ``O,R`` The account of the routing firm as designated by |
 |                             |  | the broker chosen. This field is applicable to trades on an order   |
 |                             |  | and/or route level, and does not populate on a per security basis.  |
@@ -550,117 +552,155 @@ EMSX Element Definition (N to Z)
 |                               |  | order and/or route level, and does not populate on a per security |
 |                               |  | basis.                                                            |
 +-------------------------------+----------------------------------------------------------------------+
-|``EMSX_STATUS``                |  | The current status of the order or route. This field is applicable|
-|                               |  | to trades on an order and/or route level, and does not populate   |
-|                               |  | on a per security basis.                                          | 
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_STEP_OUT_BROKER``       |  | The name of the broker the executing broker gives all or a portion|
-|                               |  | of the commission to for the order. This field is applicable to   |
-|                               |  | trades on an order and/or route level, and does not populate on a |
-|                               |  | per security basis.                                               |
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_STOP_PRICE``            |  | The price at which an order to buy or sell a security is          |
-|                               |  | triggered. Once the trigger price is reached, the order becomes   |
-|                               |  | a market order. This field is applicable to trades on an order    |
-|                               |  | and/or route level, and does not populate on a per security basis.| 
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_STRATEGY_END_TIME``     |  | The end time for the EMSX Strategy Type ``EMSX_STRATEGY_TYPE``.   |
-|                               |  | This field is applicable to trades on an order and/or route level,|
-|                               |  | and does not populate on a per security basis.                    | 
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_STRATEGY_PART_RATE1``   |  | The first participation rate for the algorithmic strategy on the  |
-|                               |  | route. This field is applicable to trades on an order and/or route|
-|                               |  | level, and does not populate on a per security basis.             | 
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_STRATEGY_PART_RATE2``   |  | The second participation rate for the algorithmic strategy on the |
-|                               |  | route. This field is applicable to trades on an order and/or route|
-|                               |  | level, and does not populate on a per security basis.             |
-+-------------------------------+----------------------------------------------------------------------+ 
-|``EMSX_STRATEGY_START_TIME``   |  | The tart time for the EMSX Strategy Type ``EMSX_STRATEGY_TYPE``.  |
-|                               |  | This field is applicable to trades on an order and/or route level,|
-|                               |  | and does not populate on a per security basis.                    |
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_STRATEGY_STYLE``        |  | The execution urgency for the algorithmic strategy on the route;  |
-|                               |  | values are customized by individual brokers. This field is        |
-|                               |  | applicable to trades on an order and/or route level, and does not |
-|                               |  | populate on a per security basis.                                 | 
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_STRATEGY_TYPE``         |  | The method used for the route or order, customized by individual  |
-|                               |  | brokers. This field is applicable to trades on an order and/or    |
-|                               |  | route level, and does not populate on a per security basis.       | 
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_TICKER``                |  | The ticker specifies the abbreviation assigned to a security for  |
-|                               |  | trading purposes. This field is applicable to trades on an order  |
-|                               |  | and/or route level, and does not populate on a per security basis.| 
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_TIF``                   |  | The time limit of the order; how long the order remains in effect |
-|                               |  | for. This field is applicable to trades on an order and/or route  |
-|                               |  | level, and does not populate on a per security basis.             |
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_TIME_STAMP``            |  | The time the order or route is created, in seconds from midnight  |
-|                               |  | based on the user's time. This field is applicable to trades on an|
-|                               |  | order and/or route level, and does not populate on a per security |
-|                               |  | basis.                                                            |  
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_TRADE_DESK``            |  | The name of the trading desk on the order. This field is          |
-|                               |  | applicable to trades on an order and/or route level, and does not |
-|                               |  | populate on a per security basis. This is specifically for AIM.   | 
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_TRADER``                |  | The current trader's Bloomberg login name. This field is          |
-|                               |  | to trades on an order and/or route level, and does not populate   |
-|                               |  | on a per security basis.                                          |
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_TRADER_NOTE``           |  | The free form notes for the trader which are not passed on to the |
-|                               |  | brokers. This field is applicable to trades on an order and/or    |
-|                               |  | route level, and does not populate on a per security basis.       | 
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_TRADER_UUID``           |  | The UUID of the EMSX Trader role in AIM.                          |
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_TS_ORDNUM``             |  | The order number generated by the AIM function. For a non-AIM     |
-|                               |  | user, this number is the same as the EMSX Sequence Number. This   |
+|``EMSX_STATUS``                |  | ``STRING`` ``O,R`` The current status of the order or route. This |
 |                               |  | field is applicable to trades on an order and/or route level, and |
-|                               |  | does not populate on a per security basis.                        |
+|                               |  | does not populate on a per security basis.                        | 
 +-------------------------------+----------------------------------------------------------------------+
-|``EMSX_TYPE``                  |  | The type of the order; this can be a preconfigured valued or a    |
-|                               |  | value configured by the individual broker. This field is          |
-|                               |  | applicable to trades on an order and/or route level, and does not |
+|``EMSX_STEP_OUT_BROKER``       |  | ``STRING`` ``ORDER`` The name of the broker the executing broker  |
+|                               |  | gives all or a portion of the commission to for the order. This   |
+|                               |  | field is applicable to trades on an order level, and does not     |
 |                               |  | populate on a per security basis.                                 |
 +-------------------------------+----------------------------------------------------------------------+
-|``EMSX_UNDERLYING_TICKER``     |  | The instrument to which a derivative, such as an equity or index  |
-|                               |  | option, is related. This field is applicable to trades on an order|
-|                               |  | and/or route level, and does not populate on a per security basis.| 
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_URGENCY_LEVEL``         |  | The integer which is the parameter for a route strategy, which    |
-|                               |  | determines a route's priority. This field is applicable to trades |
+|``EMSX_STOP_PRICE``            |  | ``FLOAT64`` ``O,R`` The price at which an order to buy or sell    |
+|                               |  | a security is triggered. Once the trigger price is reached, the   |
+|                               |  | order becomes a market order. This field is applicable to trades  |
 |                               |  | on an order and/or route level, and does not populate on a per    |
 |                               |  | security basis.                                                   | 
 +-------------------------------+----------------------------------------------------------------------+
-|``EMSX_USER_COMM_AMOUNT``      |  | The EMSX User Commission Amount is the total commission charged   |
-|                               |  | on the trade based on user-defined commission rates entered. This |
-|                               |  | field is applicable to trades on an order and/or route level, and |
-|                               |  | does not populate on a per security basis.                        |
+|``EMSX_STRATEGY_END_TIME``     |  | ``INT32`` ``O,R`` The end time for the EMSX Strategy Type         |
+|                               |  | ``EMSX_STRATEGY_TYPE``. This field is applicable to trades on an  |
+|                               |  | order and/or route level, and does not populate on a per security |
+|                               |  | basis.                                                            | 
 +-------------------------------+----------------------------------------------------------------------+
-|``EMSX_USER_COMM_RATE``        |  | The EMSX User Commission Rate is the user-defined commission rate |
-|                               |  | for the trade. This field is applicable to trades on an order     |
-|                               |  | and/or route level, and does not populate on a per security basis.|
-+-------------------------------+----------------------------------------------------------------------+
-|``EMSX_USER_FEES``             |  | The user-defined fees for the trade. This field is applicable to  |
+|``EMSX_STRATEGY_PART_RATE1``   |  | ``FLOAT64`` ``O,R`` The first participation rate for the          |
+|                               |  | algorithmic strategy on the route. This field is applicable to    |
 |                               |  | trades on an order and/or route level, and does not populate on a |
+|                               |  | per security basis.                                               |
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_STRATEGY_PART_RATE2``   |  | ``FLOAT64`` ``O,R`` The second participation rate for the         |
+|                               |  | algorithmic strategy on the  route. This field is applicable to   |
+|                               |  | trades on an order and/or route level, and does not populate on a | 
 |                               |  | per security basis.                                               |
 +-------------------------------+----------------------------------------------------------------------+ 
-|``EMSX_USER_NET_MONEY``        |  | The executed value of trade net of user-defined commission, taxes,|
-|                               |  | and fees. This field is applicable to trades on an order and/or   |
-|                               |  | route level, and does not populate on a per security basis.       |
+|``EMSX_STRATEGY_START_TIME``   |  | ``INT32`` ``O,R`` The start time for the EMSX Strategy Type       |
+|                               |  | ``EMSX_STRATEGY_TYPE``. This field is applicable to trades on an  |
+|                               |  | order and/or route level, and does not populate on a per security |
+|                               |  | basis.                                                            |
 +-------------------------------+----------------------------------------------------------------------+
-|``EMSX_WORKING``               |  | The amount the broker is working with. This field is applicable to|
-|                               |  | trades on an order and/or route level, and does not populate on a |
+|``EMSX_STRATEGY_STYLE``        |  | ``STRING`` ``O,R`` The execution urgency for the algorithmic      |
+|                               |  | strategy on the route; values are customized by individual        |
+|                               |  | brokers. This field is applicable to trades on an order and/or    |
+|                               |  | route level, and does not populate on a per security basis.       | 
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_STRATEGY_TYPE``         |  | ``STRING`` ``O,R`` The method used for the route or order,        |
+|                               |  | customized by individual brokers. This field is applicable to     |
+|                               |  | trades on an order and/or  route level, and does not populate on a|  
 |                               |  | per security basis.                                               |
 +-------------------------------+----------------------------------------------------------------------+
-|``EMSX_WORK_PRICE``            |  | The limit price of the last working route of a given order. This  |
+|``EMSX_TICKER``                |  | ``STRING`` ``STATIC`` ``ORDER`` The ticker specifies the          |
+|                               |  |  abbreviation assigned to a security for trading purposes. This   |
+|                               |  | field is applicable to trades on an order level, and does not     |
+|                               |  | populate on a per security basis.                                 | 
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_TIF``                   |  | ``STRING`` ``O,R`` The time limit of the order; how long the order|
+|                               |  | remains in effect for. This field is applicable to trades on an   |
+|                               |  | order and/or route level, and does not populate on a per security |
+|                               |  | basis.                                                            | 
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_TIME_STAMP``            |  | ``INT32`` ``O,R`` The time the order or route is created, in      |
+|                               |  | seconds from midnight based on the user's time. This field is     |
+|                               |  | applicable to trades on an order and/or route level, and does not |
+|                               |  | populate on a per security basis.                                 |  
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_TIME_STAMP_MICROSEC``   |  | ``FLOAT64`` ``O,R`` ``EMSX_TIME_STAMP`` in microseconds.          |
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_TRAD_UUID``             |  | ``INT32`` ``ORDER`` The UUID of the EMSX Trader. This field is    |
+|                               |  | equivalent to ``EMSX_TRADER_UUID`` in the elements in the         |
+|                               |  | request/response.                                                 |
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_TRADE_DESK``            |  | ``STRING`` `` STATIC`` ``ORDER`` The name of the trading desk on  |
+|                               |  | the order. This field is applicable to trades on an order level,  |
+|                               |  | and does not populate on a per security basis. This is            |
+|                               |  | specifically for AIM.                                             | 
++-------------------------------+----------------------------------------------------------------------+
+
++----------------------------------+-------------------------------------------------------------------+
+|``EMSX_TRADE_REPORTING_INDICATOR``|  | ``STRING`` ``STATIC`` ``ORDER`` The trade reporting indicator  |
+|                                  |  | for MiFID II.                                                  |
++----------------------------------+-------------------------------------------------------------------+
+
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_TRADER``                |  | ``STRING`` ``ORDER`` The current trader's Bloomberg login name.   |
+|                               |  | This field is to trades on an order level, and does not populate  |
+|                               |  | on a per security basis.                                          |
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_TRADER_NOTES``          |  | ``STRING`` ``ORDER`` The free form notes for the trader which are |
+|                               |  | not passed on to the brokers. This field is applicable to trades  |
+|                               |  | on an order level, and does not populate on a per security basis. | 
++-------------------------------+----------------------------------------------------------------------+
+
++----------------------------------+-------------------------------------------------------------------+
+|``EMSX_TRANSACTION_REPORTING_MIC``|  | ``STRING`` ``ROUTE`` The transaction reporting MIC code in     |
+|                                  |  | MiFID II.                                                      |
++----------------------------------+-------------------------------------------------------------------+
+
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_TS_ORDNUM``             |  | ``INT32`` ``STATIC`` ``ORDER`` The order number generated by the  | 
+|                               |  | AIM. For a non-AIM user, this number is the same as the           |
+|                               |  | ``EMSX_SEQUENCE`` Number. This field is applicable to trades on   |
+|                               |  | an order level, and does not populate on a per security basis.    |
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_TYPE``                  |  | ``STRING`` ``O,R`` The type of the order; this can be a           |
+|                               |  | preconfigured valued or a value configured by the individual      |
+|                               |  | broker. This field is applicable to trades on an order and/or     |
+|                               |  | route level, and does not populate on a per security basis.       |
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_UNDERLYING_TICKER``     |  | ``STRING`` ``STATIC`` ``ORDER`` The instrument to which a         |
+|                               |  | derivative, such as an equity or index option, is related. This   |
+|                               |  | field is applicable to trades on an order and/or route level, and |
+|                               |  | does not populate on a per security basis.                        | 
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_URGENCY_LEVEL``         |  | ``INT32`` ``ROUTE`` The integer which is the parameter for a      |
+|                               |  | route strategy, which determines a route's priority. This field is|
+|                               |  | applicable to trades on an order and/or route level, and does not |
+|                               |  | populate on a per security basis.                                 | 
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_USER_COMM_AMOUNT``      |  | ``FLOAT64`` ``O,R`` The EMSX User Commission Amount is the total  |
+|                               |  | commission charged on the trade based on user-defined commission  |
+|                               |  | rates entered. This field is applicable to trades on an order     |
+|                               |  | and/or route level, and does not populate on a per security basis.|
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_USER_COMM_RATE``        |  | ``FLOAT64`` ``O,R`` The EMSX User Commission Rate is the          |
+|                               |  | user-defined commission rate for the trade. This field is         |
+|                               |  | applicable to trades on an order and/or route level, and does not | 
+|                               |  | populate on a per security basis.                                 |
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_USER_FEES``             |  | ``FLOAT64`` ``O,R`` The user-defined fees for the trade. This     |
+|                               |  | field is applicable to trades on an order and/or route level, and |
+|                               |  | does not populate on a per security basis.                        |
++-------------------------------+----------------------------------------------------------------------+ 
+|``EMSX_USER_NET_MONEY``        |  | ``FLOAT64`` ``O,R`` The executed value of trade net of            |
+|                               |  | user-defined commission, taxes, and fees. This field is applicable|
+|                               |  | to trades on an order and/or route level, and does not populate on|
+|                               |  | a per security basis.                                             |
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_WAIVER_FLAG``           |  | ``STRING`` ``ROUTE`` The waiver flag indicator for MiFID II.      |
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_WORK_PRICE``            |  | ``FLOAT64`` ``ORDER`` The limit price of the last working route of|
+|                               |  | a given order. This field is applicable to trades on an order     |
+|                               |  | and/or route level, and does not populate on a per security basis.|
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_WORKING``               |  | ``INT32`` ``O,R`` The amount the broker is working with. This     |
 |                               |  | field is applicable to trades on an order and/or route level, and |
 |                               |  | does not populate on a per security basis.                        |
 +-------------------------------+----------------------------------------------------------------------+
-|``EMSX_YELLOW_KEY``            |  | The yellow key of the security in the order. This is applicable to|
-|                               |  | trades on an order and/or route level, and does not populate on a |
-|                               |  | per security basis.                                               | 
+|``EMSX_YELLOW_KEY``            |  | ``STRING`` ``STATIC`` ``ORDER`` The yellow key of the security in |
+|                               |  | the order. This is applicable to trades on an order level, and    |
+|                               |  | does not populate on a per security basis.                        | 
++-------------------------------+----------------------------------------------------------------------+
+|``EVENT_STATUS``               |  | ``INT32`` Special Field                                           |
++-------------------------------+----------------------------------------------------------------------+
+|``MSG_SUB_TYPE``               |  | ``STRING`` Special Field                                          |
++-------------------------------+----------------------------------------------------------------------+
+|``MSG_TYPE``                   |  | ``STRING`` Special Field                                          |
 +-------------------------------+----------------------------------------------------------------------+
