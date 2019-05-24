@@ -50,7 +50,8 @@ EMSX Element Definition (A to M)
 +-----------------------------+------------------------------------------------------------------------+
 |Field                        |Definition                                                              |
 +=============================+========================================================================+
-|``API_SEQ_NUM``              |  | ``INT64`` Special Field                                             |          
+|``API_SEQ_NUM``              |  | ``INT64`` Special field to indicate the sequence number of the API  |
+|                             |  | events.                                                             |          
 +-----------------------------+------------------------------------------------------------------------+
 |``EMSX_ACCOUNT``             |  | ``STRING`` ``O,R`` The account of the routing firm as designated by |
 |                             |  | the broker chosen. This field is applicable to trades on an order   |
@@ -698,9 +699,14 @@ EMSX Element Definition (N to Z)
 |                               |  | the order. This is applicable to trades on an order level, and    |
 |                               |  | does not populate on a per security basis.                        | 
 +-------------------------------+----------------------------------------------------------------------+
-|``EVENT_STATUS``               |  | ``INT32`` Special Field                                           |
+|``EVENT_STATUS``               |  | ``INT32`` Special field to indicate the status type of an event.  |
+|                               |  | (e.g. ``EVENT_STATUS = 1`` Heartbeat Message, ``EVENT_STATUS = 6``|
+|                               |  | new order or route messsags on all subscription fields.)          |
 +-------------------------------+----------------------------------------------------------------------+
-|``MSG_SUB_TYPE``               |  | ``STRING`` Special Field                                          |
+|``MSG_SUB_TYPE``               |  | ``STRING`` Special field to indicate the type of sub message in   |
+|                               |  | the EMSX API. O is to indicate an Order event and R is to indicate|
+|                               |  | a Route event.                                                    |
 +-------------------------------+----------------------------------------------------------------------+
-|``MSG_TYPE``                   |  | ``STRING`` Special Field                                          |
+|``MSG_TYPE``                   |  | ``STRING`` Special field to indicate the type of message ``E`` for|
+|                               |  | EMSX message type.                                                |
 +-------------------------------+----------------------------------------------------------------------+

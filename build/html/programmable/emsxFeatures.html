@@ -221,7 +221,8 @@ However, most EMSX API users are still able to trade pairs using the old EMSX ti
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">API_SEQ_NUM</span></code></td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">INT64</span></code> Special Field</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">INT64</span></code> Special field to indicate the sequence number of the API</div>
+<div class="line">events.</div>
 </div>
 </td>
 </tr>
@@ -1563,19 +1564,24 @@ However, most EMSX API users are still able to trade pairs using the old EMSX ti
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EVENT_STATUS</span></code></td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">INT32</span></code> Special Field</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">INT32</span></code> Special field to indicate the status type of an event.</div>
+<div class="line">(e.g. <code class="docutils literal notranslate"><span class="pre">EVENT_STATUS</span> <span class="pre">=</span> <span class="pre">1</span></code> Heartbeat Message, <code class="docutils literal notranslate"><span class="pre">EVENT_STATUS</span> <span class="pre">=</span> <span class="pre">6</span></code></div>
+<div class="line">new order or route messsags on all subscription fields.)</div>
 </div>
 </td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MSG_SUB_TYPE</span></code></td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">STRING</span></code> Special Field</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">STRING</span></code> Special field to indicate the type of sub message in</div>
+<div class="line">the EMSX API. O is to indicate an Order event and R is to indicate</div>
+<div class="line">a Route event.</div>
 </div>
 </td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MSG_TYPE</span></code></td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">STRING</span></code> Special Field</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">STRING</span></code> Special field to indicate the type of message <code class="docutils literal notranslate"><span class="pre">E</span></code> for</div>
+<div class="line">EMSX message type.</div>
 </div>
 </td>
 </tr>
