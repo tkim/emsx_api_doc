@@ -222,7 +222,9 @@ However, most EMSX API users are still able to trade pairs using the old EMSX ti
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">API_SEQ_NUM</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">INT64</span></code> Special field to indicate the sequence number of the API</div>
-<div class="line">events.</div>
+<div class="line">events. The number begins at 1 and increases with each event posted</div>
+<div class="line">to a client subscription. It can be used by the client side to</div>
+<div class="line">guarantee order, and to identify any gaps in subscription events.</div>
 </div>
 </td>
 </tr>
@@ -1565,23 +1567,27 @@ However, most EMSX API users are still able to trade pairs using the old EMSX ti
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EVENT_STATUS</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">INT32</span></code> Special field to indicate the status type of an event.</div>
-<div class="line">(e.g. <code class="docutils literal notranslate"><span class="pre">EVENT_STATUS</span> <span class="pre">=</span> <span class="pre">1</span></code> Heartbeat Message, <code class="docutils literal notranslate"><span class="pre">EVENT_STATUS</span> <span class="pre">=</span> <span class="pre">6</span></code></div>
-<div class="line">new order or route messsags on all subscription fields.)</div>
+<div class="line">This is a means of determining the type of event you have</div>
+<div class="line">received. This helps the developers to know what structure of the</div>
+<div class="line">message should be, including the expected fields that should be</div>
+<div class="line">available. (e.g. <code class="docutils literal notranslate"><span class="pre">EVENT_STATUS</span> <span class="pre">=</span> <span class="pre">1</span></code> Heartbeat Message,</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">EVENT_STATUS</span> <span class="pre">=</span> <span class="pre">6</span></code> new order or route messsags on all</div>
+<div class="line">subscription fields.)</div>
 </div>
 </td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MSG_SUB_TYPE</span></code></td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">STRING</span></code> Special field to indicate the type of sub message in</div>
-<div class="line">the EMSX API. O is to indicate an Order event and R is to indicate</div>
-<div class="line">a Route event.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">STRING</span></code> Special field to indicate the service specific details</div>
+<div class="line">in the EMSX API. O is to indicate an Order event and R is to</div>
+<div class="line">indicate a Route event.</div>
 </div>
 </td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MSG_TYPE</span></code></td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">STRING</span></code> Special field to indicate the type of message <code class="docutils literal notranslate"><span class="pre">E</span></code> for</div>
-<div class="line">EMSX message type.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">STRING</span></code> Special field to indicate the service specific details.</div>
+<div class="line">The <code class="docutils literal notranslate"><span class="pre">MSG_TYPE</span></code> should always be <code class="docutils literal notranslate"><span class="pre">E</span></code> for EMSX message type.</div>
 </div>
 </td>
 </tr>
