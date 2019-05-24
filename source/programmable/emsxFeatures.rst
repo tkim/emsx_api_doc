@@ -710,9 +710,9 @@ EMSX Element Definition (N to Z)
 |                               |  | subscription fields.)                                             |
 +-------------------------------+----------------------------------------------------------------------+
 |``MSG_SUB_TYPE``               |  | ``STRING`` Special field to indicate the service specific details |  
-|                               |  | in the EMSX API. O is to indicate an Order event and R is to      |
-|                               |  | indicate a Route event.                                           |
+|                               |  | in the EMSX API. ``MSG_SUB_TYPE = O`` is to indicate an Order     |
+|                               |  | event and ``MSG_SUB_TYPE = R`` is to indicate a Route event.      |
 +-------------------------------+----------------------------------------------------------------------+
 |``MSG_TYPE``                   |  | ``STRING`` Special field to indicate the service specific details.|
-|                               |  | The ``MSG_TYPE`` should always be ``E`` for EMSX message type.    |
+|                               |  | The value is always ``MSG_TYPE = E`` for EMSX message type.       |
 +-------------------------------+----------------------------------------------------------------------+
