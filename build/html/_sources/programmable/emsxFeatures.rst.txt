@@ -47,6 +47,8 @@ The user will need to access ``FLDS<GO>`` function within the Bloomberg terminal
 EMSX Element Definition (A to M)
 ================================
 
+The EMSX element definitions will include the type of the element and will inform whether the element is an ``ORDER``, ``ROUTE``, or sometimes both ``O,R`` elements. The type consists of ``INT64``, ``INT32``, ``STRING``, and ``FLOAT64``.
+
 +-----------------------------+------------------------------------------------------------------------+
 |Field                        |Definition                                                              |
 +=============================+========================================================================+
