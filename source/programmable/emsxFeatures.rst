@@ -1,9 +1,6 @@
 EMSX Features
 =============
-The EMSX API supports 99% of the features supported in ``EMSX<GO>`` function. 
-
-One of the few exceptions to this is the EMSX Pairs Ticket. Currently, the EMSX API does not support the EMSX Pairs Ticket features. 
-However, most EMSX API users are still able to trade pairs using the old EMSX ticket logic or by incorporating their own pairs logics on top of the EMSX API.
+The EMSX API supports 99.9% of the features supported in ``EMSX<GO>`` function. 
 
 
 EMSX Teams
