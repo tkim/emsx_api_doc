@@ -177,9 +177,7 @@
             
   <div class="section" id="emsx-features">
 <h1>EMSX Features<a class="headerlink" href="#emsx-features" title="Permalink to this headline">¶</a></h1>
-<p>The EMSX API supports 99% of the features supported in <code class="docutils literal notranslate"><span class="pre">EMSX&lt;GO&gt;</span></code> function.</p>
-<p>One of the few exceptions to this is the EMSX Pairs Ticket. Currently, the EMSX API does not support the EMSX Pairs Ticket features.
-However, most EMSX API users are still able to trade pairs using the old EMSX ticket logic or by incorporating their own pairs logics on top of the EMSX API.</p>
+<p>The EMSX API supports 99.9% of the features supported in <code class="docutils literal notranslate"><span class="pre">EMSX&lt;GO&gt;</span></code> function.</p>
 </div>
 <div class="section" id="emsx-teams">
 <h1>EMSX Teams<a class="headerlink" href="#emsx-teams" title="Permalink to this headline">¶</a></h1>
@@ -341,7 +339,9 @@ However, most EMSX API users are still able to trade pairs using the old EMSX ti
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BROKER_STATUS</span></code></td>
 <td><div class="first last line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">STRING</span></code> <code class="docutils literal notranslate"><span class="pre">ROUTE</span></code> Broker status in EMSX.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">STRING</span></code> <code class="docutils literal notranslate"><span class="pre">ROUTE</span></code> Broker status in EMSX. This element will</div>
+<div class="line">populate one of the three values: <code class="docutils literal notranslate"><span class="pre">CXRPRJ</span></code>, <code class="docutils literal notranslate"><span class="pre">CXLREJ</span></code>, and</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">MODIFIED</span></code>. More details can be found in <a class="reference external" href="https://emsx-api-doc.readthedocs.io/en/latest/programmable/emsxSubscription.html#description-of-the-child-route-status-messages">here</a>.</div>
 </div>
 </td>
 </tr>

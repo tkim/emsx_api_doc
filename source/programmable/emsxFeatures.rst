@@ -108,7 +108,9 @@ The EMSX element definitions will include the type of the element and will infor
 +-----------------------------+------------------------------------------------------------------------+
 |``EMSX_BROKER_SI``           |  | ``STRING`` ``ROUTE`` Broker Systematic Internalizer in MiFID II.    |
 +-----------------------------+------------------------------------------------------------------------+
-|``EMSX_BROKER_STATUS``       |  | ``STRING`` ``ROUTE`` Broker status in EMSX.                         |
+|``EMSX_BROKER_STATUS``       |  | ``STRING`` ``ROUTE`` Broker status in EMSX. This element will       |
+|                             |  | populate one of the three values: ``CXRPRJ``, ``CXLREJ``, and       |
+|                             |  | ``MODIFIED``. More details can be found in `here`_.                 |
 +-----------------------------+------------------------------------------------------------------------+
 |``EMSX_BSE_AVG_PRICE``       |  | ``FLOAT64`` ``STATIC`` ``O,R`` The EMSX Bombay Stock Exchange       |
 |                             |  | Average Price. Average price of the fills completed for the order or| 
@@ -715,3 +717,6 @@ EMSX Element Definition (N to Z)
 |``MSG_TYPE``                   |  | ``STRING`` Special field to indicate the service specific details.|
 |                               |  | The value is always ``MSG_TYPE = E`` for EMSX message type.       |
 +-------------------------------+----------------------------------------------------------------------+
+
+
+.. _here: https://emsx-api-doc.readthedocs.io/en/latest/programmable/emsxSubscription.html#description-of-the-child-route-status-messages
