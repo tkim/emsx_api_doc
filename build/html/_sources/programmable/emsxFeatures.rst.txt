@@ -2,6 +2,107 @@ EMSX Features
 =============
 The EMSX API supports 99.9% of the features supported in ``EMSX<GO>`` function. 
 
+The following standalone EMSX settings will also impact the EMSX API.
+
+
+.. important::
+   
+  Please note the following EMSX settings are changed by Bloomberg at the user or user firms request.
+
+
++-----------------------------------------------+
+|EMSX Setting                                   |
++===============================================+
+|EMSX Routing enabled                           |
++-----------------------------------------------+
+|Orders=routes enabled                          |
++-----------------------------------------------+
+|Staging Protection enabled                     | 
++-----------------------------------------------+ 
+|Use B/O & S/C for Futures enabled              |  
++-----------------------------------------------+
+|Allow ``MKT`` routes on ``LMT``                | 
++-----------------------------------------------+
+|Broker (Hard) Restrictions                     |
++-----------------------------------------------+
+|Directed Broker                                |
++-----------------------------------------------+
+|Restricted Secuirites List (EMSX)              |
++-----------------------------------------------+
+|Cross check for Equity                         |
++-----------------------------------------------+ 
+|Cross check for Futures                        |
++-----------------------------------------------+
+|Broker (Soft) restriction                      |
++-----------------------------------------------+
+|Allow After-Market Routing for Day Order       |
++-----------------------------------------------+
+|Exec/Research/Risk Capital Rate Type           |
++-----------------------------------------------+
+|Enable Route as Futures Spread                 |
++-----------------------------------------------+
+|Enable Basket All or None                      |
++-----------------------------------------------+
+|Enable Restricted Securities Validation (RTIP) |
++-----------------------------------------------+
+|Filter out Directed/Restricted brokers         |
++-----------------------------------------------+
+|Enable Team Risk Ticket                        |
++-----------------------------------------------+
+|Enable Routing InvestorID to Broker            |
++-----------------------------------------------+
+|Allow Blottery Snc Orders to be Deleted        |
++-----------------------------------------------+
+|Enable Centralized Trading controls            |
++-----------------------------------------------+
+|Block Market Routes                            |
++-----------------------------------------------+
+|AIM: Use Settlement Date from B/S              |
++-----------------------------------------------+
+|AIM: Send AIM Order# in BlockID tag            |
++-----------------------------------------------+
+|LMSA: Lock Broker Code on Order                |
++-----------------------------------------------+
+|LMSA: AIM Restricted Order Violation Setting   |
++-----------------------------------------------+
+|LMSA: AIM Add Order from EMSX Lanuch Ticket    |
++-----------------------------------------------+
+
+
+
+.. important::
+   
+  The following settings are controlled by the user of ``EMSX<GO>``.
+
+
+======================================= =================================================================
+EMSX User Defaults             			EMSX Setting Location
+======================================= =================================================================
+Home Currency							Setting under Confirmation & Warnings in EMSX
+Warn About Restricted Short Sells       Setting under Confirmation & Warnings in EMSX
+Order Violation Settings                Setting under Confirmation & Warnings in EMSX
+Confirm Order Violation                 Setting under Confirmation & Warnings in EMSX
+Quantity Warning                        Setting under Confirmation & Warnings in EMSX
+Quantity Maximum                        Setting under Confirmation & Warnings in EMSX
+Market Value Warning                    Setting under Confirmation & Warnings in EMSX
+%ADV Warning Threshold                  Setting under Confirmation & Warnings in EMSX
+%ADV Maximum Threshold                  Setting under Confirmation & Warnings in EMSX
+ADV Benchmark                           Setting under Confirmation & Warnings in EMSX
+Price Tolerance level                   Setting under Confirmation & Warnings in EMSX   
+======================================= =================================================================
+
+
+======================================= =================================================================
+EMSX Routing Defaults             	    EMSX Setting Location
+======================================= =================================================================
+Strategy Time Zone                      Setting under Routing Generic
+Show Commission Fields                  Setting under Routing Generic
+Show Basket Name in Broker Notes        Setting under Routing Generic
+Send Odd Lots                           Setting under Routing Generic
+Send Parent Order Instruction*          Setting under Routing Generic
+User Order Values for Routing           Setting under Routing Generic
+======================================= =================================================================
+
 
 EMSX Teams
 ==========

@@ -178,6 +178,157 @@
   <div class="section" id="emsx-features">
 <h1>EMSX Features<a class="headerlink" href="#emsx-features" title="Permalink to this headline">¶</a></h1>
 <p>The EMSX API supports 99.9% of the features supported in <code class="docutils literal notranslate"><span class="pre">EMSX&lt;GO&gt;</span></code> function.</p>
+<p>The following standalone EMSX settings will also impact the EMSX API.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Please note the following EMSX settings are changed by Bloomberg at the user or user firms request.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">EMSX Setting</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>EMSX Routing enabled</td>
+</tr>
+<tr class="row-odd"><td>Orders=routes enabled</td>
+</tr>
+<tr class="row-even"><td>Staging Protection enabled</td>
+</tr>
+<tr class="row-odd"><td>Use B/O &amp; S/C for Futures enabled</td>
+</tr>
+<tr class="row-even"><td>Allow <code class="docutils literal notranslate"><span class="pre">MKT</span></code> routes on <code class="docutils literal notranslate"><span class="pre">LMT</span></code></td>
+</tr>
+<tr class="row-odd"><td>Broker (Hard) Restrictions</td>
+</tr>
+<tr class="row-even"><td>Directed Broker</td>
+</tr>
+<tr class="row-odd"><td>Restricted Secuirites List (EMSX)</td>
+</tr>
+<tr class="row-even"><td>Cross check for Equity</td>
+</tr>
+<tr class="row-odd"><td>Cross check for Futures</td>
+</tr>
+<tr class="row-even"><td>Broker (Soft) restriction</td>
+</tr>
+<tr class="row-odd"><td>Allow After-Market Routing for Day Order</td>
+</tr>
+<tr class="row-even"><td>Exec/Research/Risk Capital Rate Type</td>
+</tr>
+<tr class="row-odd"><td>Enable Route as Futures Spread</td>
+</tr>
+<tr class="row-even"><td>Enable Basket All or None</td>
+</tr>
+<tr class="row-odd"><td>Enable Restricted Securities Validation (RTIP)</td>
+</tr>
+<tr class="row-even"><td>Filter out Directed/Restricted brokers</td>
+</tr>
+<tr class="row-odd"><td>Enable Team Risk Ticket</td>
+</tr>
+<tr class="row-even"><td>Enable Routing InvestorID to Broker</td>
+</tr>
+<tr class="row-odd"><td>Allow Blottery Snc Orders to be Deleted</td>
+</tr>
+<tr class="row-even"><td>Enable Centralized Trading controls</td>
+</tr>
+<tr class="row-odd"><td>Block Market Routes</td>
+</tr>
+<tr class="row-even"><td>AIM: Use Settlement Date from B/S</td>
+</tr>
+<tr class="row-odd"><td>AIM: Send AIM Order# in BlockID tag</td>
+</tr>
+<tr class="row-even"><td>LMSA: Lock Broker Code on Order</td>
+</tr>
+<tr class="row-odd"><td>LMSA: AIM Restricted Order Violation Setting</td>
+</tr>
+<tr class="row-even"><td>LMSA: AIM Add Order from EMSX Lanuch Ticket</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The following settings are controlled by the user of <code class="docutils literal notranslate"><span class="pre">EMSX&lt;GO&gt;</span></code>.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">EMSX User Defaults</th>
+<th class="head">EMSX Setting Location</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Home Currency</td>
+<td>Setting under Confirmation &amp; Warnings in EMSX</td>
+</tr>
+<tr class="row-odd"><td>Warn About Restricted Short Sells</td>
+<td>Setting under Confirmation &amp; Warnings in EMSX</td>
+</tr>
+<tr class="row-even"><td>Order Violation Settings</td>
+<td>Setting under Confirmation &amp; Warnings in EMSX</td>
+</tr>
+<tr class="row-odd"><td>Confirm Order Violation</td>
+<td>Setting under Confirmation &amp; Warnings in EMSX</td>
+</tr>
+<tr class="row-even"><td>Quantity Warning</td>
+<td>Setting under Confirmation &amp; Warnings in EMSX</td>
+</tr>
+<tr class="row-odd"><td>Quantity Maximum</td>
+<td>Setting under Confirmation &amp; Warnings in EMSX</td>
+</tr>
+<tr class="row-even"><td>Market Value Warning</td>
+<td>Setting under Confirmation &amp; Warnings in EMSX</td>
+</tr>
+<tr class="row-odd"><td>%ADV Warning Threshold</td>
+<td>Setting under Confirmation &amp; Warnings in EMSX</td>
+</tr>
+<tr class="row-even"><td>%ADV Maximum Threshold</td>
+<td>Setting under Confirmation &amp; Warnings in EMSX</td>
+</tr>
+<tr class="row-odd"><td>ADV Benchmark</td>
+<td>Setting under Confirmation &amp; Warnings in EMSX</td>
+</tr>
+<tr class="row-even"><td>Price Tolerance level</td>
+<td>Setting under Confirmation &amp; Warnings in EMSX</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">EMSX Routing Defaults</th>
+<th class="head">EMSX Setting Location</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Strategy Time Zone</td>
+<td>Setting under Routing Generic</td>
+</tr>
+<tr class="row-odd"><td>Show Commission Fields</td>
+<td>Setting under Routing Generic</td>
+</tr>
+<tr class="row-even"><td>Show Basket Name in Broker Notes</td>
+<td>Setting under Routing Generic</td>
+</tr>
+<tr class="row-odd"><td>Send Odd Lots</td>
+<td>Setting under Routing Generic</td>
+</tr>
+<tr class="row-even"><td>Send Parent Order Instruction*</td>
+<td>Setting under Routing Generic</td>
+</tr>
+<tr class="row-odd"><td>User Order Values for Routing</td>
+<td>Setting under Routing Generic</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="emsx-teams">
 <h1>EMSX Teams<a class="headerlink" href="#emsx-teams" title="Permalink to this headline">¶</a></h1>
