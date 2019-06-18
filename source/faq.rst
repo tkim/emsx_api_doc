@@ -24,6 +24,17 @@ General FAQ
 	The most common cause is that the user is connected to the BETA machines on the API side, whilst 
 	using the PROD machine on the terminal. Switching one of these will normally resolve the problem.
 
+* What happens when I subscribe to route level element on the topic string of my order subscription and vice versa?
+	Your subscription will fail and will generate error similar to the following:
+
+.. code-block:: python
+
+		reason = {
+			errorCode = 3
+			description = "Invalid field passed in: Field=|EMSX_MOD_PEND_STATUS|"
+			category = "-13"
+		}
+
 * **How do I connect to the BETA machine of the terminal?**
 	Use the function DGRT Y087<GO> on the terminal, followed by EMSX<GO>. This will connect that terminal 
 	window to the EMSX BETA machine. Please note that this only applies to that particular terminal 
@@ -65,8 +76,8 @@ General FAQ
 	Some fields are specific to either Orders or Routes. You cannot subscribe to an Order field in the 
 	Route subscription and vice versa. 
 
-	The type of message will also dictate which fields will be returned. For ``NEW_ORDER_ROUTE`` and ``
-	INIT_PAINT`` messages, all fields will be returned. However, for ``UPD_ORDER_ROUTE``, the user will 
+	The type of message will also dictate which fields will be returned. For ``NEW_ORDER_ROUTE`` and 
+	``INIT_PAINT`` messages, all fields will be returned. However, for ``UPD_ORDER_ROUTE``, the user will 
 	only receive a small number of static fields along with all those fields deemed to be ‘dynamic’, 
 	meaning they can change during the lifetime of the order or route.
 

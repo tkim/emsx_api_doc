@@ -194,6 +194,21 @@ using the PROD machine on the terminal. Switching one of these will normally res
 </dl>
 </li>
 <li><dl class="first docutils">
+<dt>What happens when I subscribe to route level element on the topic string of my order subscription and vice versa?</dt>
+<dd><p class="first last">Your subscription will fail and will generate error similar to the following:</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">reason</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">errorCode</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Invalid field passed in: Field=|EMSX_MOD_PEND_STATUS|&quot;</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;-13&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul>
+<li><dl class="first docutils">
 <dt><strong>How do I connect to the BETA machine of the terminal?</strong></dt>
 <dd><p class="first last">Use the function DGRT Y087&lt;GO&gt; on the terminal, followed by EMSX&lt;GO&gt;. This will connect that terminal
 window to the EMSX BETA machine. Please note that this only applies to that particular terminal
@@ -258,8 +273,8 @@ static field.</p>
 <dt>Why is a field not being returned?</dt>
 <dd><p class="first">Some fields are specific to either Orders or Routes. You cannot subscribe to an Order field in the
 Route subscription and vice versa.</p>
-<p>The type of message will also dictate which fields will be returned. For <code class="docutils literal notranslate"><span class="pre">NEW_ORDER_ROUTE</span></code> and ``
-INIT_PAINT`` messages, all fields will be returned. However, for <code class="docutils literal notranslate"><span class="pre">UPD_ORDER_ROUTE</span></code>, the user will
+<p>The type of message will also dictate which fields will be returned. For <code class="docutils literal notranslate"><span class="pre">NEW_ORDER_ROUTE</span></code> and
+<code class="docutils literal notranslate"><span class="pre">INIT_PAINT</span></code> messages, all fields will be returned. However, for <code class="docutils literal notranslate"><span class="pre">UPD_ORDER_ROUTE</span></code>, the user will
 only receive a small number of static fields along with all those fields deemed to be ‘dynamic’,
 meaning they can change during the lifetime of the order or route.</p>
 <p class="last">This is one of the reasons as why the user is encouraged to maintain their own image of and order or
