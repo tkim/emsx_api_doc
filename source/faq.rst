@@ -158,7 +158,10 @@ General FAQ
 	Set ``EMSX_STOP_PRICE`` to "-1" or -1 
 
 * How do I reset my order from Limit to Market?
-	``EMSX_LIMIT_PRICE =-99999`` is only required when modifying *from* LMT to something else
+	``EMSX_LIMIT_PRICE = -99999`` is only required when modifying *from* LMT to something else
+
+* How do I set 0 limit price for futures spread orders?
+    ``EMSX_LIMIT_PRICE = -99999`` needs to be set, otherwise the 0 limit price will be ignored.
 
 * How is ``EMSX_RELEASE_TIME`` used?
 	``EMSX_RELEASE_TIME`` is in ``HH:MM`` format. For the API it is defaulted to the exchange time. This 

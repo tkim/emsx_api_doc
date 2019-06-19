@@ -385,7 +385,13 @@ simulator codes and by the broker for their own production codes.</p>
 </li>
 <li><dl class="first docutils">
 <dt>How do I reset my order from Limit to Market?</dt>
-<dd><p class="first last"><code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span> <span class="pre">=-99999</span></code> is only required when modifying <em>from</em> LMT to something else</p>
+<dd><p class="first last"><code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span> <span class="pre">=</span> <span class="pre">-99999</span></code> is only required when modifying <em>from</em> LMT to something else</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>How do I set 0 limit price for futures spread orders?</dt>
+<dd><p class="first last"><code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span> <span class="pre">=</span> <span class="pre">-99999</span></code> needs to be set, otherwise the 0 limit price will be ignored.</p>
 </dd>
 </dl>
 </li>
