@@ -1574,6 +1574,12 @@ Modify Order Extended Request
 =============================
 The ``ModifyOrderEx`` request modifies an existing or previously created order in EMSX<GO> or using EMSX API. 
 
+.. important::
+
+    Please note, when modifying an order or route, the limit price can be positive or negative. (e.g. Futures spreads). 
+    There are two special cases for setting the limit price to 0. In the ``EMSX_LIMIT_PRICE`` a value of 0 means to ignore the value. 
+    A value of ``EMSX_LIMIT_PRICE`` = -99999 means to reset the ``EMSX_LIMIT_PRICE`` to 0.
+
 
 Full code sample:-
 
@@ -1657,6 +1663,12 @@ Full code sample:-
 Modify Route Extended Request
 =============================
 The ``ModifyRouteEx`` request modifies an existing or previously created child routes in EMSX<GO> or using EMSX API. 
+
+.. important::
+
+    Please note, when modifying an order or route, the limit price can be positive or negative. (e.g. Futures spreads). 
+    There are two special cases for setting the limit price to 0. In the ``EMSX_LIMIT_PRICE`` a value of 0 means to ignore the value. 
+    A value of ``EMSX_LIMIT_PRICE`` = -99999 means to reset the ``EMSX_LIMIT_PRICE`` to 0.
 
 
 Full code sample:-

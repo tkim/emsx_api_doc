@@ -2196,6 +2196,12 @@ EMSX&lt;GO&gt;.</p>
 <div class="section" id="modify-order-extended-request">
 <h2>Modify Order Extended Request<a class="headerlink" href="#modify-order-extended-request" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">ModifyOrderEx</span></code> request modifies an existing or previously created order in EMSX&lt;GO&gt; or using EMSX API.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Please note, when modifying an order or route, the limit price can be positive or negative. (e.g. Futures spreads).
+There are two special cases for setting the limit price to 0. In the <code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span></code> a value of 0 means to ignore the value.
+A value of <code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span></code> = -99999 means to reset the <code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span></code> to 0.</p>
+</div>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -2321,6 +2327,12 @@ EMSX&lt;GO&gt;.</p>
 <div class="section" id="modify-route-extended-request">
 <h2>Modify Route Extended Request<a class="headerlink" href="#modify-route-extended-request" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">ModifyRouteEx</span></code> request modifies an existing or previously created child routes in EMSX&lt;GO&gt; or using EMSX API.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Please note, when modifying an order or route, the limit price can be positive or negative. (e.g. Futures spreads).
+There are two special cases for setting the limit price to 0. In the <code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span></code> a value of 0 means to ignore the value.
+A value of <code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span></code> = -99999 means to reset the <code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span></code> to 0.</p>
+</div>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
