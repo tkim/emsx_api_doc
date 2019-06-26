@@ -21,11 +21,10 @@ In the server environment, the user identities must be created and cached prior 
 
 The first new step is to open the authentication service. This is done in the same way as for any other service in the Bloomberg API. For example:-
 
-
 .. code-block:: none
 
-		d_authsvc = "//blp/apiauth";
-		session.openServiceAsync(d_authsvc);
+	d_authsvc = "//blp/apiauth";
+	session.openServiceAsync(d_authsvc);
 
 
 Once the service is opened, we need to create and send an authorization request. To create an identity for a specific user, you will need the AuthID for the user. This is the name the user is known by in the EMRS system for your server. The values for these names will have been agreed with you as part of the implementation of the server, or subsequently when adding a new user. Also, an IP address is required. The only requirement for this IP address is that it is unique amongst all the identities generated for a session. You can create and send the request as follows:-
@@ -94,7 +93,7 @@ Using User Identities
 =====================
 
 
-When a client application connects to EMSX via the API on DAPI, it does so by leveraging the identity of the logged in Bloomberg terminal user. This means that when a request or subscription object is received by the Bloomberg infrastructure, the target EMSX blotter can be identified.
+When a client application connects to ``EMSX<GO>`` via the API on desktop, it does so by leveraging the identity of the logged in Bloomberg terminal user. This means that when a request or subscription object is received by the Bloomberg infrastructure, the target EMSX blotter can be identified.
 
 In the server environment, there is no Bloomberg terminal, and therefore no implied user can be identified.  Moreover, the server is capable of connecting to any number of EMSX user blotters, simultaneously. Therefore, the application making the call must indicate which user is the intended target. This is done through the creation and use of Identity object.
 
@@ -116,6 +115,135 @@ Migrating the existing desktop application call to a server application simply i
 		Server:
 			session.sendRequest(request, Identity, requestID);
 			session.subscribe(subscriptions, Identity);
+
+
+
+
+Following python sample summarizes the above:-
+
+.. code-block:: python
+
+		import sys
+		import blpapi
+		import datetime
+		import time
+
+		SESSION_STARTED                 = blpapi.Name("SessionStarted")
+		SESSION_TERMINATED              = blpapi.Name("SessionTerminated")
+		SESSION_STARTUP_FAILURE         = blpapi.Name("SessionStartupFailure")
+		SESSION_CONNECTION_UP           = blpapi.Name("SessionConnectionUp")
+		SESSION_CONNECTION_DOWN         = blpapi.Name("SessionConnectionDown")
+
+		SERVICE_OPENED                  = blpapi.Name("ServiceOpened")
+		SERVICE_OPEN_FAILURE            = blpapi.Name("ServiceOpenFailure")
+		
+		SLOW_CONSUMER_WARNING           = blpapi.Name("SlowConsumerWarning")
+		SLOW_CONSUMER_WARNING_CLEARED   = blpapi.Name("SlowConsumerWarningCleared")
+		
+		SUBSCRIPTION_FAILURE            = blpapi.Name("SubscriptionFailure")
+		SUBSCRIPTION_STARTED            = blpapi.Name("SubscriptionStarted")
+		SUBSCRIPTION_TERMINATED         = blpapi.Name("SubscriptionTerminated")
+		
+		AUTHORIZATION_SUCCESS           = blpapi.Name("AuthorizationSuccess")
+		AUTHORIZATION_FAILURE           = blpapi.Name("AuthorizationFailure")
+		HANDLE                          = blpapi.Name("handle")
+		
+
+		#EMSX/IOI API Server authentication
+		d_service = "//blp/emapisvc_beta"
+		d_auth = "//blp/apiauth";
+		d_host = "1.2.3.4" #static ip address of the server
+		d_port = 8195
+		d_user = "MyAuthIDOrEMRSID"
+
+
+		.
+		.
+		.
+
+		class SessionEventHandler():
+
+			def sendAuthRequest(self, session):
+
+				authService = session.getService(d_auth)
+				authReq = authService.createAuthorizationRequest()
+				authReq.set("emrsId", d_user)
+				authReq.set("ipAddress", d_host)
+				self.identity = session.createIdentity ()
+
+				print("Sending authorization request: %s" % (authReq))
+
+				session.sendAuthorizationRequest(authReq, self.identity)
+
+				print("Authorization request.sent.")
+		.
+		.
+		.
+		    def processSessionStatusEvent(self,event,session):
+				print("Processing SESSION_STATUS event")
+
+				for msg in event:
+
+					print(msg)
+
+					if msg.messageType() == SESSION_STARTED:
+						print("Session started...")
+						session.openServiceAsync(d_auth)
+					
+					elif msg.messageType() == SESSION_STARTUP_FAILURE:
+						sys.stderr.write("Error: Session startup failed")
+					
+					elif msg.messageType() == SESSION_CONNECTION_UP:
+						print("Session connection is up")
+					
+					elif msg.messageType() == SESSION_CONNECTINO_DOWN:
+						print("Session connection is down")
+					
+					else:
+						print(msg)
+
+
+			def processServiceStatusEvent(self,event,session):
+				print("Processing SERVICE_STATUS event")
+
+				for msg in event:
+
+					print(msg)
+
+					if msg.messageType() ==SERVICE_OPENED:
+
+						serviceName = msg.asElement().getElementAsString("serviceName");
+
+						print("Service opened [%s] % (serviceName))
+
+						if serviceName==d_auth;
+
+							print("Auth service opened... Opening application service...")
+							session.openServiceAsync(d_service)
+
+						elif serviceName==d_service;
+
+							print("Application service opened... Sending authorization request...")
+
+							self.sendAuthRequest(session)
+
+						elif msg.messageType() == SERVICE_OPEN_FAILURE:
+							print("Error: Service Failed to open")
+			
+			def processAuthorizationStatusEvent(self,event):
+
+				print("Processing AUTHORIZATION_STATUS event")
+
+				for msg in event:
+
+					print("AUTHORIZATION_STATUS message: %s" % (msg))
+
+		.
+		.
+		.
+	
+
+
 
 
 Server Side Request/Response

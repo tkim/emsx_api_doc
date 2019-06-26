@@ -231,7 +231,7 @@ catch (Exception e)
 </div>
 <div class="section" id="using-user-identities">
 <h1>Using User Identities<a class="headerlink" href="#using-user-identities" title="Permalink to this headline">¶</a></h1>
-<p>When a client application connects to EMSX via the API on DAPI, it does so by leveraging the identity of the logged in Bloomberg terminal user. This means that when a request or subscription object is received by the Bloomberg infrastructure, the target EMSX blotter can be identified.</p>
+<p>When a client application connects to <code class="docutils literal notranslate"><span class="pre">EMSX&lt;GO&gt;</span></code> via the API on desktop, it does so by leveraging the identity of the logged in Bloomberg terminal user. This means that when a request or subscription object is received by the Bloomberg infrastructure, the target EMSX blotter can be identified.</p>
 <p>In the server environment, there is no Bloomberg terminal, and therefore no implied user can be identified.  Moreover, the server is capable of connecting to any number of EMSX user blotters, simultaneously. Therefore, the application making the call must indicate which user is the intended target. This is done through the creation and use of Identity object.</p>
 <p>An Identity object represents a specific Bloomberg UUID.  Once created, an Identity object can be cached for 24hrs, and used with every <code class="docutils literal notranslate"><span class="pre">sendRequest()</span></code> and <code class="docutils literal notranslate"><span class="pre">subscribe()</span></code> call.</p>
 <p>Identity objects are live, that is they remain connected to Bloomberg in real-time and are capable of receiving events. We recommend that an identity is recreated every 24hrs, to ensure that it picks up the latest changes to any user settings, including access to EMSX.</p>
@@ -244,6 +244,127 @@ catch (Exception e)
 Server:
         session.sendRequest(request, Identity, requestID);
         session.subscribe(subscriptions, Identity);
+</pre></div>
+</div>
+<p>Following python sample summarizes the above:-</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">blpapi</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">SESSION_STARTED</span>                 <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionStarted&quot;</span><span class="p">)</span>
+<span class="n">SESSION_TERMINATED</span>              <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionTerminated&quot;</span><span class="p">)</span>
+<span class="n">SESSION_STARTUP_FAILURE</span>         <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionStartupFailure&quot;</span><span class="p">)</span>
+<span class="n">SESSION_CONNECTION_UP</span>           <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionConnectionUp&quot;</span><span class="p">)</span>
+<span class="n">SESSION_CONNECTION_DOWN</span>         <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SessionConnectionDown&quot;</span><span class="p">)</span>
+
+<span class="n">SERVICE_OPENED</span>                  <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ServiceOpened&quot;</span><span class="p">)</span>
+<span class="n">SERVICE_OPEN_FAILURE</span>            <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;ServiceOpenFailure&quot;</span><span class="p">)</span>
+
+<span class="n">SLOW_CONSUMER_WARNING</span>           <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SlowConsumerWarning&quot;</span><span class="p">)</span>
+<span class="n">SLOW_CONSUMER_WARNING_CLEARED</span>   <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SlowConsumerWarningCleared&quot;</span><span class="p">)</span>
+
+<span class="n">SUBSCRIPTION_FAILURE</span>            <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SubscriptionFailure&quot;</span><span class="p">)</span>
+<span class="n">SUBSCRIPTION_STARTED</span>            <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SubscriptionStarted&quot;</span><span class="p">)</span>
+<span class="n">SUBSCRIPTION_TERMINATED</span>         <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;SubscriptionTerminated&quot;</span><span class="p">)</span>
+
+<span class="n">AUTHORIZATION_SUCCESS</span>           <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;AuthorizationSuccess&quot;</span><span class="p">)</span>
+<span class="n">AUTHORIZATION_FAILURE</span>           <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;AuthorizationFailure&quot;</span><span class="p">)</span>
+<span class="n">HANDLE</span>                          <span class="o">=</span> <span class="n">blpapi</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">&quot;handle&quot;</span><span class="p">)</span>
+
+
+<span class="c1">#EMSX/IOI API Server authentication</span>
+<span class="n">d_service</span> <span class="o">=</span> <span class="s2">&quot;//blp/emapisvc_beta&quot;</span>
+<span class="n">d_auth</span> <span class="o">=</span> <span class="s2">&quot;//blp/apiauth&quot;</span><span class="p">;</span>
+<span class="n">d_host</span> <span class="o">=</span> <span class="s2">&quot;1.2.3.4&quot;</span> <span class="c1">#static ip address of the server</span>
+<span class="n">d_port</span> <span class="o">=</span> <span class="mi">8195</span>
+<span class="n">d_user</span> <span class="o">=</span> <span class="s2">&quot;MyAuthIDOrEMRSID&quot;</span>
+
+
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="o">.</span>
+
+<span class="k">class</span> <span class="nc">SessionEventHandler</span><span class="p">():</span>
+
+        <span class="k">def</span> <span class="nf">sendAuthRequest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
+
+                <span class="n">authService</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="n">d_auth</span><span class="p">)</span>
+                <span class="n">authReq</span> <span class="o">=</span> <span class="n">authService</span><span class="o">.</span><span class="n">createAuthorizationRequest</span><span class="p">()</span>
+                <span class="n">authReq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;emrsId&quot;</span><span class="p">,</span> <span class="n">d_user</span><span class="p">)</span>
+                <span class="n">authReq</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;ipAddress&quot;</span><span class="p">,</span> <span class="n">d_host</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">identity</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">createIdentity</span> <span class="p">()</span>
+
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Sending authorization request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">authReq</span><span class="p">))</span>
+
+                <span class="n">session</span><span class="o">.</span><span class="n">sendAuthorizationRequest</span><span class="p">(</span><span class="n">authReq</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">identity</span><span class="p">)</span>
+
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Authorization request.sent.&quot;</span><span class="p">)</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="o">.</span>
+    <span class="k">def</span> <span class="nf">processSessionStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Processing SESSION_STATUS event&quot;</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+
+                        <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+                        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SESSION_STARTED</span><span class="p">:</span>
+                                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Session started...&quot;</span><span class="p">)</span>
+                                <span class="n">session</span><span class="o">.</span><span class="n">openServiceAsync</span><span class="p">(</span><span class="n">d_auth</span><span class="p">)</span>
+
+                        <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SESSION_STARTUP_FAILURE</span><span class="p">:</span>
+                                <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Error: Session startup failed&quot;</span><span class="p">)</span>
+
+                        <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SESSION_CONNECTION_UP</span><span class="p">:</span>
+                                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Session connection is up&quot;</span><span class="p">)</span>
+
+                        <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SESSION_CONNECTINO_DOWN</span><span class="p">:</span>
+                                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Session connection is down&quot;</span><span class="p">)</span>
+
+                        <span class="k">else</span><span class="p">:</span>
+                                <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+
+        <span class="k">def</span> <span class="nf">processServiceStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="n">session</span><span class="p">):</span>
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Processing SERVICE_STATUS event&quot;</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+
+                        <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+                        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span><span class="n">SERVICE_OPENED</span><span class="p">:</span>
+
+                                <span class="n">serviceName</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">asElement</span><span class="p">()</span><span class="o">.</span><span class="n">getElementAsString</span><span class="p">(</span><span class="s2">&quot;serviceName&quot;</span><span class="p">);</span>
+
+                                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Service opened [</span><span class="si">%s</span><span class="s2">] % (serviceName))</span>
+
+                                <span class="k">if</span> <span class="n">serviceName</span><span class="o">==</span><span class="n">d_auth</span><span class="p">;</span>
+
+                                        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Auth service opened... Opening application service...&quot;</span><span class="p">)</span>
+                                        <span class="n">session</span><span class="o">.</span><span class="n">openServiceAsync</span><span class="p">(</span><span class="n">d_service</span><span class="p">)</span>
+
+                                <span class="k">elif</span> <span class="n">serviceName</span><span class="o">==</span><span class="n">d_service</span><span class="p">;</span>
+
+                                        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Application service opened... Sending authorization request...&quot;</span><span class="p">)</span>
+
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">sendAuthRequest</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+
+                                <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">SERVICE_OPEN_FAILURE</span><span class="p">:</span>
+                                        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Error: Service Failed to open&quot;</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">processAuthorizationStatusEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+
+                <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Processing AUTHORIZATION_STATUS event&quot;</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+
+                        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;AUTHORIZATION_STATUS message: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">msg</span><span class="p">))</span>
+
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="o">.</span>
 </pre></div>
 </div>
 </div>
