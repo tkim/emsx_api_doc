@@ -151,7 +151,7 @@ Following python sample summarizes the above:-
 
 		#EMSX/IOI API Server authentication
 		d_service = "//blp/emapisvc_beta"
-		d_auth = "//blp/apiauth";
+		d_auth = "//blp/apiauth"
 		d_host = "1.2.3.4" #static ip address of the server
 		d_port = 8195
 		d_user = "MyAuthIDOrEMRSID"
