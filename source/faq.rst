@@ -85,10 +85,14 @@ General FAQ
 	route within their application.
 
 * How do I receive Fill messages?
-	Currently, Fill level messaging is not supported. A fill event will generate a ``UPD_ORDER_ROUTE`` 
-	message, with the applicable changes to the order and route data and these are not guaranteed update 
-	for the fills. The only way to track individual fills is to use the ``//blp/emsx.history`` service 
-	using request/response service calls.
+	Currently, the easiest way to track individual fills is to use the ``//blp/emsx.history`` service 
+	using request/response service calls. 
+	
+	The other option is to use the `route subscription`_ service. Each individual fill events will generate a ``UPD_ORDER_ROUTE`` 
+	the message, with the applicable changes to the order and route data.
+
+.. _route subscription: https://emsx-api-doc.readthedocs.io/en/latest/programmable/emsxSubscription.html#description-of-fills-using-route-subscription
+
 
 * How do I route a complete basket?
 	The term basket here is defined as a way to send the entire group of order into a single basket to a 

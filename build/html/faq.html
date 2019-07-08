@@ -284,13 +284,15 @@ route within their application.</p>
 </li>
 <li><dl class="first docutils">
 <dt>How do I receive Fill messages?</dt>
-<dd><p class="first last">Currently, Fill level messaging is not supported. A fill event will generate a <code class="docutils literal notranslate"><span class="pre">UPD_ORDER_ROUTE</span></code>
-message, with the applicable changes to the order and route data and these are not guaranteed update
-for the fills. The only way to track individual fills is to use the <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history</span></code> service
+<dd><p class="first">Currently, the easiest way to track individual fills is to use the <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history</span></code> service
 using request/response service calls.</p>
+<p class="last">The other option is to use the <a class="reference external" href="https://emsx-api-doc.readthedocs.io/en/latest/programmable/emsxSubscription.html#description-of-fills-using-route-subscription">route subscription</a> service. Each individual fill events will generate a <code class="docutils literal notranslate"><span class="pre">UPD_ORDER_ROUTE</span></code>
+the message, with the applicable changes to the order and route data.</p>
 </dd>
 </dl>
 </li>
+</ul>
+<ul>
 <li><dl class="first docutils">
 <dt>How do I route a complete basket?</dt>
 <dd><p class="first">The term basket here is defined as a way to send the entire group of order into a single basket to a

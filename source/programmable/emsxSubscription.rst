@@ -277,25 +277,25 @@ The following elements provide the route updates that can be calculated to obtai
 +-----------------------------+------------------------------------------------------------------------+
 |Field                        |Definition                                                              |
 +=============================+========================================================================+
-|``EMSX_LAST_FILL_DATE``      |  | The date of the last fill based on the user's time zone. This field |
-|                             |  | is applicable to trades on an order and/or route level, and does    |
-|                             |  | not populate on a per security basis.                               | 
+|``EMSX_LAST_FILL_DATE``      |  | ``INT32`` ``ROUTE`` The date of the last fill based on the user's   |
+|                             |  | time zone. This field is applicable to trades on a route level, and |
+|                             |  | does not populate on a per security basis.                          | 
 +-----------------------------+------------------------------------------------------------------------+
-|``EMSX_LAST_MAREKT``         |  | The last market of execution for a trade as returned by the broker. |
-|                             |  | This field is applicable to trades on an order and/or route level,  |
-|                             |  | and does not populate on a per security basis.                      |
+|``EMSX_LAST_MARKET``         |  | ``STRING`` ``ROUTE`` The last market of execution for a trade as    |
+|                             |  | returned by the broker.This field is applicable to trades on a route|
+|                             |  | level, and does not populate on a per security basis.               |
 +-----------------------------+------------------------------------------------------------------------+
-|``EMSX_LAST_PRICE``          |  | The last execution price for a trade. This field is applicable to   |
-|                             |  | trades on an order and/or route level, and does not populate on a   |
-|                             |  | per security basis.                                                 |
+|``EMSX_LAST_PRICE``          |  | ``FLOAT64`` ``ROUTE`` The last execution price for a trade. This    |
+|                             |  | field is applicable to trades on a route level, and does not        |
+|                             |  | populate ona per security basis.                                    |
 +-----------------------------+------------------------------------------------------------------------+
-|``EMSX_LAST_SHARES``         |  | The last executed quantity for a trade. This field is applicable to |
-|                             |  | trades on an order and/or route level, and does not populate on a   |
-|                             |  | per security basis.                                                 |
+|``EMSX_LAST_SHARES``         |  | ``INT32`` ``ROUTE`` The last executed quantity for a trade. This    |
+|                             |  | field is applicable to trades on a route level, and does not        |
+|                             |  | populate on a per security basis.                                   |
 +-----------------------------+------------------------------------------------------------------------+
-|``EMSX_LAST_FILL_TIME``      |  | The time of the last fill based on seconds from midnight in the     |
-|                             |  | user's time zone. This field is applicable to trades on an order    |
-|                             |  | and/or route level, and does not populate on a per security basis.  | 
+|``EMSX_LAST_FILL_TIME``      |  | ``INT32`` ``ROUTE`` The time of the last fill based on seconds from |
+|                             |  | midnight in the user's time zone. This field is applicable to trades|
+|                             |  | on a route level, and does not populate on a per security basis.    | 
 +-----------------------------+------------------------------------------------------------------------+
 
 
@@ -304,9 +304,9 @@ The ``EMSX_FILL_ID`` is the transaction sequence number to keep track of the ind
 +-----------------------------+------------------------------------------------------------------------+
 |Field                        |Definition                                                              |
 +=============================+========================================================================+
-|``EMSX_FILL_ID``             |  | The fill number associated with a route. This field is applicable   |
-|                             |  | to trades on an order and/or route level, and does not populate     |
-|                             |  | on a per security basis.                                            | 
+|``EMSX_FILL_ID``             |  | ``INT32`` ``STATIC`` ``O,R`` The fill number associated with a      |
+|                             |  | route. This field is applicable to trades on an order and/or route  |
+|                             |  | level, and does not populate on a per security basis.               | 
 +-----------------------------+------------------------------------------------------------------------+
 
 The ``EMSX_ROUTE_LAST_UPDATE_TIME`` is timestamp based on the number of seconds from midnight that reflects the last update of a route. This can be fill or any other route-based update events.
@@ -314,9 +314,9 @@ The ``EMSX_ROUTE_LAST_UPDATE_TIME`` is timestamp based on the number of seconds 
 +-------------------------------+----------------------------------------------------------------------+
 |Field                          |Definition                                                            |
 +===============================+======================================================================+
-|``EMSX_ROUTE_LAST_UPDATE_TIME``|  | The time stamp of the last execution or cancellation on a route.  |
-|                               |  | This field is applicable to trades on an order and/or route level,|
-|                               |  | and does not populate on a per security basis.                    |
+|``EMSX_ROUTE_LAST_UPDATE_TIME``|  | ``INT32`` ``ROUTE`` The time stamp of the last execution or       |
+|                               |  | cancellation on a route. This field is applicable to trades on a  |
+|                               |  | route level and does not populate on a per security basis.        |
 +-------------------------------+----------------------------------------------------------------------+
 
 

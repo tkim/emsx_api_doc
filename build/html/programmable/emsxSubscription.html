@@ -725,41 +725,41 @@ on part filled route. (placement)</td>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_FILL_DATE</span></code></td>
 <td><div class="first last line-block">
-<div class="line">The date of the last fill based on the user’s time zone. This field</div>
-<div class="line">is applicable to trades on an order and/or route level, and does</div>
-<div class="line">not populate on a per security basis.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">INT32</span></code> <code class="docutils literal notranslate"><span class="pre">ROUTE</span></code> The date of the last fill based on the user’s</div>
+<div class="line">time zone. This field is applicable to trades on a route level, and</div>
+<div class="line">does not populate on a per security basis.</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_MAREKT</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_MARKET</span></code></td>
 <td><div class="first last line-block">
-<div class="line">The last market of execution for a trade as returned by the broker.</div>
-<div class="line">This field is applicable to trades on an order and/or route level,</div>
-<div class="line">and does not populate on a per security basis.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">STRING</span></code> <code class="docutils literal notranslate"><span class="pre">ROUTE</span></code> The last market of execution for a trade as</div>
+<div class="line">returned by the broker.This field is applicable to trades on a route</div>
+<div class="line">level, and does not populate on a per security basis.</div>
 </div>
 </td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_PRICE</span></code></td>
 <td><div class="first last line-block">
-<div class="line">The last execution price for a trade. This field is applicable to</div>
-<div class="line">trades on an order and/or route level, and does not populate on a</div>
-<div class="line">per security basis.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">FLOAT64</span></code> <code class="docutils literal notranslate"><span class="pre">ROUTE</span></code> The last execution price for a trade. This</div>
+<div class="line">field is applicable to trades on a route level, and does not</div>
+<div class="line">populate ona per security basis.</div>
 </div>
 </td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_SHARES</span></code></td>
 <td><div class="first last line-block">
-<div class="line">The last executed quantity for a trade. This field is applicable to</div>
-<div class="line">trades on an order and/or route level, and does not populate on a</div>
-<div class="line">per security basis.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">INT32</span></code> <code class="docutils literal notranslate"><span class="pre">ROUTE</span></code> The last executed quantity for a trade. This</div>
+<div class="line">field is applicable to trades on a route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
 </div>
 </td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_FILL_TIME</span></code></td>
 <td><div class="first last line-block">
-<div class="line">The time of the last fill based on seconds from midnight in the</div>
-<div class="line">user’s time zone. This field is applicable to trades on an order</div>
-<div class="line">and/or route level, and does not populate on a per security basis.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">INT32</span></code> <code class="docutils literal notranslate"><span class="pre">ROUTE</span></code> The time of the last fill based on seconds from</div>
+<div class="line">midnight in the user’s time zone. This field is applicable to trades</div>
+<div class="line">on a route level, and does not populate on a per security basis.</div>
 </div>
 </td>
 </tr>
@@ -779,9 +779,9 @@ on part filled route. (placement)</td>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_FILL_ID</span></code></td>
 <td><div class="first last line-block">
-<div class="line">The fill number associated with a route. This field is applicable</div>
-<div class="line">to trades on an order and/or route level, and does not populate</div>
-<div class="line">on a per security basis.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">INT32</span></code> <code class="docutils literal notranslate"><span class="pre">STATIC</span></code> <code class="docutils literal notranslate"><span class="pre">O,R</span></code> The fill number associated with a</div>
+<div class="line">route. This field is applicable to trades on an order and/or route</div>
+<div class="line">level, and does not populate on a per security basis.</div>
 </div>
 </td>
 </tr>
@@ -801,9 +801,9 @@ on part filled route. (placement)</td>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME</span></code></td>
 <td><div class="first last line-block">
-<div class="line">The time stamp of the last execution or cancellation on a route.</div>
-<div class="line">This field is applicable to trades on an order and/or route level,</div>
-<div class="line">and does not populate on a per security basis.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">INT32</span></code> <code class="docutils literal notranslate"><span class="pre">ROUTE</span></code> The time stamp of the last execution or</div>
+<div class="line">cancellation on a route. This field is applicable to trades on a</div>
+<div class="line">route level and does not populate on a per security basis.</div>
 </div>
 </td>
 </tr>
