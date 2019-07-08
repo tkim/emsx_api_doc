@@ -83,8 +83,8 @@ This is a feature that indicates CFD orders or to flag an odd lot in EMSX API.
 
 Date & Time Format
 ==================
-All date format except ``EMSX_QUEUED_TIME`` are in yyyymmdd format. All time format except ``EMSX_STRATEGY_END_TIME`` and ``
-EMSX_STRATEGY_START_TIME`` are in number of seconds from midnight.
+All date format except ``EMSX_QUEUED_TIME`` are in yyyymmdd format. All time format except ``EMSX_STRATEGY_END_TIME`` and 
+``EMSX_STRATEGY_START_TIME`` are in number of seconds from midnight.
 
 The Strategy time zone is set using the EMSX<GO> function in the Bloomberg terminal under Routing Defaults section inside 
 the Settings menu. In the Routing Defaults, the user can select Exchange vs. User time zone for strategy time zone.
