@@ -5,7 +5,7 @@ In preparation for the MiFID II, Bloomberg EMSX API is enhancing its workflow to
 needed data and solutions to fulfill MiFID II obligations (Trade reporting, Transaction reporting, best 
 execution and order record keeping). Bloomberg EMSX API as part of Bloomberg EMSX will connect to 
 Bloomberg RHUB to support client's regulatory obligations through a centralized access for ARM, APA, ORK (
-Bvalut) and best execution (BTCA).
+Bvault) and best execution (BTCA).
 
 
 =========================================== ======= 
