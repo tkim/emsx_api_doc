@@ -88,11 +88,21 @@ General FAQ
 	Currently, the easiest way to track individual fills is to use the ``//blp/emsx.history`` service 
 	using request/response service calls. 
 	
+	However, please do not use this as a replacement for the route subscription. Anyone constantly calling the history service and abusing the history service will be shut down by Bloomberg.
+	
 	The other option is to use the `route subscription`_ service. Each individual fill events will generate a ``UPD_ORDER_ROUTE`` 
 	the message, with the applicable changes to the order and route data.
 
 .. _route subscription: https://emsx-api-doc.readthedocs.io/en/latest/programmable/emsxSubscription.html#description-of-fills-using-route-subscription
 
+* I do not see the fill information for one of my team member when I call the history service using team name.
+	A UUID's fills are only stored if any of the following criteria are met:
+
+	1. The user has at least one Export Fill profile in ``EMSI<GO>``, or
+	2. The user belongs to a team that is setup for team fill export, or
+	3. The user is an EMSX API user, i.e., ``EMSS<GO>`` internal settings show "Enable EMSX API" to be true.
+
+	If the above criteria are not met, there will be no fills data history service can call to export.
 
 * How do I route a complete basket?
 	The term basket here is defined as a way to send the entire group of order into a single basket to a 

@@ -3,6 +3,14 @@ EMSX History Request
 EMSX history service provides individual fill information via request/response service. The service name is 
 ``//blp/emsx.history`` for production and ``//blp/emsx.history.uat`` for test environment. 
 
+This service should not be used as a replacement for route subscription service to capture fills information in real-time.  Anyone found to abuse the service by making constant calls to the history service will be shutdown permanently by Bloomberg.
+
+A UUID's fills are only available if any of the following criteria are met:
+
+1. The user has at least one Export Fill profile in ``EMSI<GO>``, or
+2. The user belongs to a team that is setup for team fill export, or
+3. The user is an EMSX API user and has EMSX API access turned on in ``EMSS<GO>`` setting.
+
 Unlike the EMSX API service ``//blp/emapisvc`` and ``//blp/emapisvc_beta``, the history service supports ``PARTIAL_RESPONSE`` events.
 The ``PARTIAL_RESPONSE`` event messages will return messages that are a subset of the information.
 

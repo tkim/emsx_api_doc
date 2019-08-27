@@ -286,6 +286,7 @@ route within their application.</p>
 <dt>How do I receive Fill messages?</dt>
 <dd><p class="first">Currently, the easiest way to track individual fills is to use the <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history</span></code> service
 using request/response service calls.</p>
+<p>However, please do not use this as a replacement for the route subscription. Anyone constantly calling the history service and abusing the history service will be shut down by Bloomberg.</p>
 <p class="last">The other option is to use the <a class="reference external" href="https://emsx-api-doc.readthedocs.io/en/latest/programmable/emsxSubscription.html#description-of-fills-using-route-subscription">route subscription</a> service. Each individual fill events will generate a <code class="docutils literal notranslate"><span class="pre">UPD_ORDER_ROUTE</span></code>
 the message, with the applicable changes to the order and route data.</p>
 </dd>
@@ -293,6 +294,18 @@ the message, with the applicable changes to the order and route data.</p>
 </li>
 </ul>
 <ul>
+<li><dl class="first docutils">
+<dt>I do not see the fill information for one of my team member when I call the history service using team name.</dt>
+<dd><p class="first">A UUID’s fills are only stored if any of the following criteria are met:</p>
+<ol class="arabic simple">
+<li>The user has at least one Export Fill profile in <code class="docutils literal notranslate"><span class="pre">EMSI&lt;GO&gt;</span></code>, or</li>
+<li>The user belongs to a team that is setup for team fill export, or</li>
+<li>The user is an EMSX API user, i.e., <code class="docutils literal notranslate"><span class="pre">EMSS&lt;GO&gt;</span></code> internal settings show “Enable EMSX API” to be true.</li>
+</ol>
+<p class="last">If the above criteria are not met, there will be no fills data history service can call to export.</p>
+</dd>
+</dl>
+</li>
 <li><dl class="first docutils">
 <dt>How do I route a complete basket?</dt>
 <dd><p class="first">The term basket here is defined as a way to send the entire group of order into a single basket to a

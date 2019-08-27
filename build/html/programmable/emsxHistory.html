@@ -179,6 +179,13 @@
 <h1>EMSX History Request<a class="headerlink" href="#emsx-history-request" title="Permalink to this headline">¶</a></h1>
 <p>EMSX history service provides individual fill information via request/response service. The service name is
 <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history</span></code> for production and <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history.uat</span></code> for test environment.</p>
+<p>This service should not be used as a replacement for route subscription service to capture fills information in real-time.  Anyone found to abuse the service by making constant calls to the history service will be shutdown permanently by Bloomberg.</p>
+<p>A UUID’s fills are only available if any of the following criteria are met:</p>
+<ol class="arabic simple">
+<li>The user has at least one Export Fill profile in <code class="docutils literal notranslate"><span class="pre">EMSI&lt;GO&gt;</span></code>, or</li>
+<li>The user belongs to a team that is setup for team fill export, or</li>
+<li>The user is an EMSX API user and has EMSX API access turned on in <code class="docutils literal notranslate"><span class="pre">EMSS&lt;GO&gt;</span></code> setting.</li>
+</ol>
 <p>Unlike the EMSX API service <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc</span></code> and <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc_beta</span></code>, the history service supports <code class="docutils literal notranslate"><span class="pre">PARTIAL_RESPONSE</span></code> events.
 The <code class="docutils literal notranslate"><span class="pre">PARTIAL_RESPONSE</span></code> event messages will return messages that are a subset of the information.</p>
 <p>The EMSX history service goes back up to 30 days in history.</p>
