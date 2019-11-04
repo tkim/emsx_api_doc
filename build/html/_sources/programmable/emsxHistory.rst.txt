@@ -41,6 +41,8 @@ Element             				Description
 ``BBGID``							BBGID field
 ``BlockId`` 						Block ID
 ``Broker`` 							Executing broker name
+``BrokerExceId``                    Broker Execution ID
+``BrokerOrderId``                   Broker Order ID
 ``ClearingAccount`` 				Clearing account detail
 ``ClearingFirm`` 					Clearing firm detail
 ``ContractExpDate`` 				Contract expiration date
@@ -51,10 +53,10 @@ Element             				Description
 ``Exchange`` 						Exchange details
 ``ExecPrevSeqNo`` 					Previous sequence number of execution
 ``ExecType`` 						Execution type details (FILL,CANCEL,CORRECT and DFD)
-``ExecutingBrokers`` 				Executing broker details
+``ExecutingBroker`` 				Executing broker details
 ``FillId``							ID of the fill
 ``FillPrice`` 						Price of the fill
-``FillShare`` 						Number of share of the fill
+``FillShares`` 						Number of share of the fill
 ``InvestorID`` 						Investor ID detail
 ``IsCfd`` 							CFD flag
 ``Isin`` 							ISIN detail
@@ -67,7 +69,22 @@ Element             				Description
 ``LocateBroker`` 					Locate broker detail
 ``LocateId`` 						Locate ID 
 ``LocateRequired`` 					Flag to indicate whether or not short locate is required
+``MifidAggrFlag``                   Aggregation flag for MiFID II
+``MifidBuysideLei``                 Legal entity identifier in MiFID II for the buy-side
+``MifidGpi``                        Global personal identifier in MiFID II
+``MifidIsSi``                       Flag to indiciate systematic internalizer in MiFID II
+``MifidSellsideApaMic``             Sell-side Approved Publication Arrangment (APA) Market Identifier Code (MIC)
+``MifidSellsideLei``                Legal entity identifier in MiFID II for the sell-side 
+``MifidSellsideOtcFlag``            Sell-side OTC flag 
+``MifidSellsideSiMic``              Sell-side systematic internalizer MIC
+``MifidSellsideTri``                
+``MifidSellsideTriMic``
+``MifidSellsideWaiverFlag``         Sell-side waiver flag for MiFID II
+``MifidTradeInstr``                 Trade instruction for MiFID II
+``Mpid``
 ``MultilegId`` 						Multileg ID
+``NyOrderCreateAsOfDateTime``       NY order create as of datetime 
+``NyTranCreateAsOfDateTime``        NY transaction create as of datetime
 ``OCCSymbol`` 						OCC symbol
 ``OrderExecutionInstruction`` 		Order execution instruction detail
 ``OrderHandlingInstruction`` 		Order handling instruction detail

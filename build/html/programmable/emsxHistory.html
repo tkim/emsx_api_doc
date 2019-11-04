@@ -234,6 +234,12 @@ The <code class="docutils literal notranslate"><span class="pre">PARTIAL_RESPONS
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Broker</span></code></td>
 <td>Executing broker name</td>
 </tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">BrokerExceId</span></code></td>
+<td>Broker Execution ID</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">BrokerOrderId</span></code></td>
+<td>Broker Order ID</td>
+</tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ClearingAccount</span></code></td>
 <td>Clearing account detail</td>
 </tr>
@@ -264,7 +270,7 @@ The <code class="docutils literal notranslate"><span class="pre">PARTIAL_RESPONS
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ExecType</span></code></td>
 <td>Execution type details (FILL,CANCEL,CORRECT and DFD)</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ExecutingBrokers</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ExecutingBroker</span></code></td>
 <td>Executing broker details</td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">FillId</span></code></td>
@@ -273,7 +279,7 @@ The <code class="docutils literal notranslate"><span class="pre">PARTIAL_RESPONS
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">FillPrice</span></code></td>
 <td>Price of the fill</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">FillShare</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">FillShares</span></code></td>
 <td>Number of share of the fill</td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">InvestorID</span></code></td>
@@ -312,106 +318,151 @@ The <code class="docutils literal notranslate"><span class="pre">PARTIAL_RESPONS
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">LocateRequired</span></code></td>
 <td>Flag to indicate whether or not short locate is required</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MultilegId</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MifidAggrFlag</span></code></td>
+<td>Aggregation flag for MiFID II</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MifidBuysideLei</span></code></td>
+<td>Legal entity identifier in MiFID II for the buy-side</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MifidGpi</span></code></td>
+<td>Global personal identifier in MiFID II</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MifidIsSi</span></code></td>
+<td>Flag to indiciate systematic internalizer in MiFID II</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MifidSellsideApaMic</span></code></td>
+<td>Sell-side Approved Publication Arrangment (APA) Market Identifier Code (MIC)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MifidSellsideLei</span></code></td>
+<td>Legal entity identifier in MiFID II for the sell-side</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MifidSellsideOtcFlag</span></code></td>
+<td>Sell-side OTC flag</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MifidSellsideSiMic</span></code></td>
+<td>Sell-side systematic internalizer MIC</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MifidSellsideTri</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MifidSellsideTriMic</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MifidSellsideWaiverFlag</span></code></td>
+<td>Sell-side waiver flag for MiFID II</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MifidTradeInstr</span></code></td>
+<td>Trade instruction for MiFID II</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Mpid</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MultilegId</span></code></td>
 <td>Multileg ID</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">OCCSymbol</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">NyOrderCreateAsOfDateTime</span></code></td>
+<td>NY order create as of datetime</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">NyTranCreateAsOfDateTime</span></code></td>
+<td>NY transaction create as of datetime</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">OCCSymbol</span></code></td>
 <td>OCC symbol</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">OrderExecutionInstruction</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">OrderExecutionInstruction</span></code></td>
 <td>Order execution instruction detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">OrderHandlingInstruction</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">OrderHandlingInstruction</span></code></td>
 <td>Order handling instruction detail</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">OrderId</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">OrderId</span></code></td>
 <td>Order ID</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">OrderInstruction</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">OrderInstruction</span></code></td>
 <td>Order instruction detail</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">OrderOrigin</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">OrderOrigin</span></code></td>
 <td>Order origin detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">OrderReferenceId</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">OrderReferenceId</span></code></td>
 <td>Order reference ID detail</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">OriginatingTraderUuid</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">OriginatingTraderUuid</span></code></td>
 <td>UUID of the originating trader</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ReroutedBroker</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ReroutedBroker</span></code></td>
 <td>Rerouted broker details</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteCommissionAmount</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteCommissionAmount</span></code></td>
 <td>Commission amount of the route</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteCommissionRate</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteCommissionRate</span></code></td>
 <td>Commission rate of the route</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteExecutionInstruction</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteExecutionInstruction</span></code></td>
 <td>Route execution instruction</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteHandlingInstruction</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteHandlingInstruction</span></code></td>
 <td>Route handling instruction</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteId</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteId</span></code></td>
 <td>Route ID</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteNetMoney</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteNetMoney</span></code></td>
 <td>Route net money</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteNotes</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteNotes</span></code></td>
 <td>Route instructions</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteShares</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteShares</span></code></td>
 <td>Route shares</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">SecurityName</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">SecurityName</span></code></td>
 <td>Security name detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Sedol</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Sedol</span></code></td>
 <td>SEDOL</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">SettlementDate</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">SettlementDate</span></code></td>
 <td>Settlement date detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Side</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Side</span></code></td>
 <td>Side</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">StopPrice</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">StopPrice</span></code></td>
 <td>Stop Price</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">StrategyType</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">StrategyType</span></code></td>
 <td>Strategy Type</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Ticker</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Ticker</span></code></td>
 <td>Ticker</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">TIF</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">TIF</span></code></td>
 <td>Time in Force</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">TraderName</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">TraderName</span></code></td>
 <td>Name of the trader</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">TraderUuid</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">TraderUuid</span></code></td>
 <td>Bloomberg UUID of the trader</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Type</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Type</span></code></td>
 <td>Order type</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">UserCommissionAmount</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">UserCommissionAmount</span></code></td>
 <td>User commission amount</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">UserCommissionRate</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">UserCommissionRate</span></code></td>
 <td>User commission rate</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">UserFees</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">UserFees</span></code></td>
 <td>User fee detail</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">UserNetMoney</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">UserNetMoney</span></code></td>
 <td>User net money detail</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">YellowKey</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">YellowKey</span></code></td>
 <td>Bloomberg yellow key field detail</td>
 </tr>
 </tbody>
