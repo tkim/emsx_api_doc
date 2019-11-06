@@ -199,7 +199,7 @@ The EMSX element definitions will include the type of the element and will infor
 |``EMSX_BOOKNAME``            |  | ``STRING`` This element is used to specify TOMS book name while     |            
 |                             |  | using ``CreateOrderAndRouteEx``, ``RouteEx``, and  ``GroupRouteEx`` |
 |                             |  | requests. This element requires ``EMSX_TOMS_PXNUM`` element to      |
-|                             |  | specify the TOMS px#. This element is not available from the order  |
+|                             |  | specify the TOMS PX#. This element is not available from the order  |
 |                             |  | or route subscription services.                                     | 
 +-----------------------------+------------------------------------------------------------------------+
 |``EMSX_BROKER``              |  | ``STRING`` ``O,R`` The code for the broker with whom the order is   |
