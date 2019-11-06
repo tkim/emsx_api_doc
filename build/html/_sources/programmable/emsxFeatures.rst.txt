@@ -196,6 +196,12 @@ The EMSX element definitions will include the type of the element and will infor
 +-----------------------------+------------------------------------------------------------------------+
 |``EMSX_BLOCK_ID``            |  | ``STRING`` ``ORDER`` The EMSX Block ID                              |
 +-----------------------------+------------------------------------------------------------------------+
+|``EMSX_BOOKNAME``            |  | ``STRING`` This element is used to specify TOMS book name while     |            
+|                             |  | using ``CreateOrderAndRouteEx``, ``RouteEx``, and  ``GroupRouteEx`` |
+|                             |  | requests. This element requires ``EMSX_TOMS_PXNUM`` element to      |
+|                             |  | specify the TOMS px#. This element is not available from the order  |
+|                             |  | or route subscription services.                                     | 
++-----------------------------+------------------------------------------------------------------------+
 |``EMSX_BROKER``              |  | ``STRING`` ``O,R`` The code for the broker with whom the order is   |
 |                             |  | routed. This field is applicable to trades on an order and/or route |
 |                             |  | level, and does not populate on a per security basis.               |
@@ -718,6 +724,12 @@ EMSX Element Definition (N to Z)
 |                               |  | populate on a per security basis.                                 |  
 +-------------------------------+----------------------------------------------------------------------+
 |``EMSX_TIME_STAMP_MICROSEC``   |  | ``FLOAT64`` ``O,R`` ``EMSX_TIME_STAMP`` in microseconds.          |
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_TOMS_PXNUM``            |  | ``INT32`` This element allows the user to insert the TOMS PX#     |
+|                               |  | while using ``CreateOrderAndRouteEx``, ``RouteEx``, and           |
+|                               |  | ``GroupRouteEx`` requests. This element is required to use        |
+|                               |  | ``EMSX_BOOKNAME`` to specify the TOMS book name. This element is  |
+|                               |  | not available from the order or route subscription services.      |                  
 +-------------------------------+----------------------------------------------------------------------+
 |``EMSX_TRAD_UUID``             |  | ``INT32`` ``ORDER`` The UUID of the EMSX Trader. This field is    |
 |                               |  | equivalent to ``EMSX_TRADER_UUID`` in the elements in the         |
