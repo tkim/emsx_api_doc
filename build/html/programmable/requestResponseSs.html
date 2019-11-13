@@ -383,9 +383,9 @@ buy-side EMSX&lt;GO&gt;.</p>
 
              <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1)</span>
 
-             <span class="n">request</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">1234567</span><span class="p">)</span>
+             <span class="n">request</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">1234567</span><span class="p">)</span>
 
-             <span class="c1"># If performing the ack on an order owned by another team member, provide owner&#39;s UUID</span>
+             <span class="c1"># The following Element is currently not being used in this request.</span>
              <span class="c1">#request.set(&quot;EMSX_TRADER_UUID&quot;, 7654321)</span>
 
              <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
@@ -465,9 +465,9 @@ buy-side EMSX&lt;GO&gt;.</p>
 
              <span class="c1">#request.set(&quot;EMSX_REQUEST_SEQ&quot;, 1)</span>
 
-             <span class="n">request</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">1234567</span><span class="p">)</span>
+             <span class="n">request</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;EMSX_SEQUENCE&quot;</span><span class="p">,</span> <span class="mi">1234567</span><span class="p">)</span>
 
-             <span class="c1"># If performing the reject on an order owned by another team member, provide owner&#39;s UUID</span>
+             <span class="c1"># The following Element is currently not being used in this request.</span>
              <span class="c1">#request.set(&quot;EMSX_TRADER_UUID&quot;, 7654321)</span>
 
              <span class="k">print</span> <span class="s2">&quot;Request: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>

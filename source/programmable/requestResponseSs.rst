@@ -152,9 +152,9 @@ Full code sample:-
 
                 #request.set("EMSX_REQUEST_SEQ", 1)
 
-                request.setElement("EMSX_SEQUENCE", 1234567)
+                request.append("EMSX_SEQUENCE", 1234567)
                     
-                # If performing the ack on an order owned by another team member, provide owner's UUID
+                # The following Element is currently not being used in this request.
                 #request.set("EMSX_TRADER_UUID", 7654321)
 
                 print "Request: %s" % request.toString()
@@ -214,9 +214,9 @@ Full code sample:-
 
                 #request.set("EMSX_REQUEST_SEQ", 1)
 
-                request.setElement("EMSX_SEQUENCE", 1234567)
+                request.append("EMSX_SEQUENCE", 1234567)
                     
-                # If performing the reject on an order owned by another team member, provide owner's UUID
+                # The following Element is currently not being used in this request.
                 #request.set("EMSX_TRADER_UUID", 7654321)
 
                 print "Request: %s" % request.toString()
