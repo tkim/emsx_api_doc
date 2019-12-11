@@ -5,7 +5,276 @@ How to install serverapi.exe
 
 Please follow the following steps to install and register the installer with Bloomberg Enterprise Solutions with the assistance from EMSX Implementation team.
 
-The following example is based on the windows environment and thus there will be slight variations when installing from linux or solaris operating system.
+Linux Environment
+=================
+
+The following example is based on the linux environment.
+
+
+* Run serverapi.exe
+
+
+.. code-block:: none
+
+	# ./serverapiinstaller64
+
+
+* You will see the following message
+
+
+.. code-block:: none
+
+	# ./serverapiinstaller64
+	logging to /tmp/bloomberg/install.2019111211.130037.log
+
+	Bloomberg ECD Installer for Linux (64-bit)
+	Version 3.2.2.0
+
+
+	Warning: This program is protected by copyright law and international treaties.
+
+	Unauthorized reproduction or distribution of this program, or any portion of
+	it, may result in severe civil and criminal penalties, and will be prosecuted
+	to the maximum extent possible under law.
+
+	Would you like to continue? (Y/N): 
+
+* Type:- Y
+
+
+.. code-block:: none
+
+	Would you like to continue? (Y/N): Y
+
+	Checking connectivity to Bloomberg ...
+
+
+	a) via Bloomberg Network to [ Hostname = 208.134.161.62 Port = 8194 ] ...
+	Succeeded.
+
+								[ Hostname = 208.134.161.158 Port = 8194 ] ...
+	Succeeded.
+
+								[ Hostname = 208.134.161.18 Port = 8194 ] ...
+	Succeeded.
+
+								[ Hostname = 208.134.161.179 Port = 8194 ] ...
+	Succeeded.
+
+	b) via the Internet to [ Hostname = api1.bloomberg.net Port = 8194 ] ...
+
+	Could not resolve host: [ Hostname = api1.bloomberg.net Port = 8194 ]
+
+	Error.
+
+						[ Hostname = api2.bloomberg.net Port = 8194 ] ...
+
+	Could not resolve host: [ Hostname = api2.bloomberg.net Port = 8194 ]
+
+	Error.
+
+						[ Hostname = api3.bloomberg.net Port = 8194 ] ...
+
+	Could not resolve host: [ Hostname = api3.bloomberg.net Port = 8194 ]
+
+	Error.
+
+						[ Hostname = api4.bloomberg.net Port = 8194 ] ...
+
+	Could not resolve host: [ Hostname = api4.bloomberg.net Port = 8194 ]
+
+	Error.
+
+						[ Hostname = api5.bloomberg.net Port = 8194 ] ...
+
+	Could not resolve host: [ Hostname = api5.bloomberg.net Port = 8194 ]
+
+	Error.
+
+						[ Hostname = api6.bloomberg.net Port = 8194 ] ...
+
+	Could not resolve host: [ Hostname = api6.bloomberg.net Port = 8194 ]
+
+	Error.
+
+						[ Hostname = api7.bloomberg.net Port = 8194 ] ...
+
+	Could not resolve host: [ Hostname = api7.bloomberg.net Port = 8194 ]
+
+	Error.
+
+						[ Hostname = api8.bloomberg.net Port = 8194 ] ...
+
+	Could not resolve host: [ Hostname = api8.bloomberg.net Port = 8194 ]
+
+	Error.
+
+	Internet connectivity unavailable. Connecting via the Bloomberg Network.
+
+
+* Select the appropriate network option if it doesn't select by default (private vs. public/internet)
+
+
+.. code-block:: none
+
+	Select Product Class
+	1) blpddm    Software that provides development access to distribute data locally or contribute data to Bloomberg.
+	2) ServerApi Provides access to Bloomberg real-time streaming and static data
+	0) Quit
+
+
+* Select:- 2 for Server API
+
+
+.. code-block:: none
+
+	Please enter selection: 2
+
+	Installation path:
+			'/opt/local'
+
+	Use this path? (Y/N/Q): 
+
+
+* Select:- York
+
+
+.. code-block:: none
+
+	Creating the root directory /opt/local ...
+	done.
+
+	Downloading latest installer ...
+	done.
+
+	logging to /tmp/bloomberg/install.2019111211.130037.log
+
+	Beginning new install ...
+
+
+.. note::
+	
+	If the default port is already being used by a different service it may show the following message:
+
+
+.. code-block:: none
+
+	*** WARNING: Port conflict detected with other service.
+	The port of the Desktop will conflict with the ServerApi should installation proceed. If you still want to install
+	ServerApi, you will need to specify a different port number.
+
+	 Do you want to continue with the installation? (Y/N) [N]:
+
+
+* Select:- Y and enter the port
+
+
+.. code-block:: none
+	
+	Do you want to continue with the installation? (Y/N) [N]:y
+	Please enter ServerApi listen port: [8294]:8294
+
+
+* Select the version:-
+
+.. code-block:: none
+
+	Versions available for ServerApi
+	1) 3.86.5.1     Linux64     ServerAPI 2017-06
+
+	2) 3.88.0.1     Linux64     ServerAPI 2017-08
+
+	3) 3.90.3.1     Linux64     ServerAPI 2017-10
+
+	4) 3.90.6.1     Linux64     ServerAPI 2018-01
+
+	5) 3.98.5.1     Linux64     ServerAPI 2018-04
+
+	6) 3.102.0.1    Linux64     ServerAPI 2018-05
+
+	7) 3.106.0.1    Linux64     ServerAPI 2018-07
+
+	8) 3.112.3.1    Linux64     ServerAPI 2018-10
+
+	9) 3.112.4.1    Linux64     ServerAPI 2019-01
+
+	10) 3.114.9.1    Linux64     ServerAPI 2019-04
+
+	11) 3.118.9.1    Linux64     ServerAPI 2019-07
+
+	12) 3.120.2.0    Linux64     Development B-Pipe 2019-10 (64-bit)
+
+	13) 3.120.2.1    Linux64     ServerAPI 2019-10
+
+	0) Quit
+	Please enter version of ServerApi that you want to install: 
+
+
+* Select the latest:-
+
+
+.. code-block:: none
+
+	Please enter version of ServerApi that you want to install: 13
+	Downloading ServerApi components ...
+
+
+* Enter other information:-
+
+
+.. code-block:: none
+
+	Enter the following information:
+
+			Country (e.g., USA): 
+			State (e.g., NY): 
+			City or Town (e.g., New York): 
+			Company Name (e.g., Bloomberg L.P.): 
+			Department Name (e.g., Equity Trading)
+
+
+* Finished:-
+
+.. code-block:: none
+
+	Enter the following information:
+
+			Country (e.g., USA): USA
+			State (e.g., NY): NY
+			City or Town (e.g., New York): New York
+			Company Name (e.g., Bloomberg L.P.): My Firm
+			Department Name (e.g., Equity Trading): Futures Trading
+
+	Creating certificate ...
+	done.
+
+	Registering server ...
+	done.
+
+	done.
+
+
+	Call Bloomberg's Global Customer Support at +1 (212) 318-2000 and ask for the Global Installs desk. The Bloomberg representative will ask you to read your registration number over the phone four characters at a time.
+
+
+	Your registration key is:
+			123b-4567-1ab2-12c9-g66f-964e-h50b-fa48-c78t-a123
+
+
+	This key was also saved in regkey.txt in the ServerApi root directory.
+
+	ServerApi installation completed. Press ENTER to quit:
+
+
+.. note::
+
+	Once the registration process is completed. EMSX Implementation team globally will assist with configuring the Server Side EMSX API with various execution destinations per client request.
+
+
+Windows Environment
+===================
+
+The following example is based on the windows environment. 
 
 
 * Run serverapi.exe
@@ -172,6 +441,7 @@ The following example is based on the windows environment and thus there will be
 
 * Select the version:-
 
+
 .. code-block:: none
 
 	Versions available for ServerApi
@@ -230,6 +500,7 @@ The following example is based on the windows environment and thus there will be
 
 * Enter other information:-
 
+
 		Enter the following information:
 
 	        Country (e.g., USA): 
@@ -240,6 +511,7 @@ The following example is based on the windows environment and thus there will be
 
 
 * Finished:-
+
 
 .. code-block:: none
 
