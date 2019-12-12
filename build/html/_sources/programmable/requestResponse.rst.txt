@@ -83,6 +83,50 @@ Full code sample:-
                 print >> sys.stderr, "Error: Service failed to open"        
 
 
+Output:- Without proper ``EMBR<GO>`` permssion.
+
+
+.. code-block:: none
+
+    C:\Users\tckim\OneDrive\_scripts>py -3 AssignTrader.py
+    Bloomberg - EMSX API Example - AssignTrader
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: AssignTrader = {
+        EMSX_SEQUENCE[] = {
+            4733955
+        }
+        EMSX_ASSIGNEE_TRADER_UUID = 7569479
+    }
+
+    Processing RESPONSE event
+    MESSAGE: ErrorInfo = {
+        ERROR_CODE = 96233
+        ERROR_MESSAGE = "Not Authorized"
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: ErrorInfo
+    ERROR CODE: 96233       ERROR MESSAGE: Not Authorized
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
+
+
 Broker Spec Request
 =====================
 The ``BrokerSpec`` request allows EMSX API users to call all the production broker strategy name and fields and FIX tags 
@@ -239,7 +283,402 @@ Get broker code, strategy name, and strategy parameters
                             print"\tNo strategies\n"
 
 
+Output:-
 
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 BrokerSpec.py
+    Bloomberg - EMSX API Example - BrokerSpec
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: GetBrokerSpecForUuid = {
+        uuid = 6767714
+    }
+
+    Processing RESPONSE event
+    MESSAGE TYPE: BrokerSpec
+    Number of Brokers: 20
+
+
+    Broker code: BB class: Equity   tag: 9002
+            No. of Strategies: 10
+
+            Strategy Name: NONE     Fix Value: NONE
+                    No. of Parameters: 0
+
+
+            Strategy Name: VWAP     Fix Value: VWAP
+                    No. of Parameters: 0
+
+
+            Strategy Name: PARTICIPATE      Fix Value: PART
+                    No. of Parameters: 0
+
+
+            Strategy Name: INLINE   Fix Value: INLINE
+                    No. of Parameters: 0
+
+
+            Strategy Name: ARRIVAL PRICE    Fix Value: ARRP
+                    No. of Parameters: 0
+
+
+            Strategy Name: BIPS     Fix Value: 2
+                    No. of Parameters: 0
+
+
+            Strategy Name: EP_PE    Fix Value: EP
+                    No. of Parameters: 0
+
+
+            Strategy Name: PAIRS STRATEGY   Fix Value: PAIR
+                    No. of Parameters: 0
+
+
+            Strategy Name: BEST EX  Fix Value: BEST-EX
+                    No. of Parameters: 0
+
+
+            Strategy Name: ratest   Fix Value: ratest
+                    No. of Parameters: 0
+
+            Time In Force:
+                    Name: DAY       Fix Value: 0
+                    Name: FOK       Fix Value: 4
+                    Name: GTC       Fix Value: 1
+                    Name: GTD       Fix Value: 6
+
+            Order Types:
+                    Name: LMT       Fix Value: 2
+                    Name: MKT       Fix Value: 1
+                    Name: SL        Fix Value: 4
+                    Name: ST        Fix Value: 3
+
+            Handling Instructions:
+                    Name: ANY       Fix Value: 2
+                    Name: Auto      Fix Value: 1
+                    Name: DMA       Fix Value: 4
+                    Name: MAN       Fix Value: 3
+                    Name: ORD       Fix Value: 0
+
+    Broker code: BB class: Option
+            No strategies
+
+            Time In Force:
+                    Name: DAY       Fix Value: 0
+
+            Order Types:
+                    Name: LMT       Fix Value: 2
+                    Name: MKT       Fix Value: 1
+
+            Handling Instructions:
+                    Name: ANY       Fix Value: 2
+                    Name: AUTO      Fix Value: 1
+                    Name: MAN       Fix Value: 3
+
+    Broker code: EFIX       class: Equity   tag: 6005
+            No. of Strategies: 53
+
+            Strategy Name: TSTRIKE1 Fix Value: 2
+                    No. of Parameters: 0
+
+
+            Strategy Name: INLINE   Fix Value: INLINE
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY8        Fix Value: 8
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY9        Fix Value: 9
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY10       Fix Value: 10
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY11       Fix Value: 11
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY12       Fix Value: 12
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY13       Fix Value: 13
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY14       Fix Value: 14
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY15       Fix Value: 15
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY16       Fix Value: 16
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY17       Fix Value: 17
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY18       Fix Value: 18
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY19       Fix Value: 19
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY20       Fix Value: 20
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY21       Fix Value: 21
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY22       Fix Value: 22
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY23       Fix Value: 23
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY24       Fix Value: 24
+                    No. of Parameters: 0
+
+
+            Strategy Name: STRATEGY25       Fix Value: 25
+                    No. of Parameters: 0
+
+
+            Strategy Name: Merge    Fix Value: Merge
+                    No. of Parameters: 0
+
+
+            Strategy Name: VWAP     Fix Value: GVW3
+                    No. of Parameters: 0
+
+
+            Strategy Name: TWAP     Fix Value: GTW3
+                    No. of Parameters: 0
+
+
+            Strategy Name: VP       Fix Value: GVP3
+                    No. of Parameters: 0
+
+
+            Strategy Name: VWAP2    Fix Value: 3
+                    No. of Parameters: 0
+
+
+            Strategy Name: ABC      Fix Value: 4
+                    No. of Parameters: 0
+
+
+            Strategy Name: TIME TEST        Fix Value: 1
+                    No. of Parameters: 0
+
+
+            Strategy Name: TIME TEST1       Fix Value: 40
+                    No. of Parameters: 0
+
+
+            Strategy Name: strategy 29      Fix Value: L
+                    No. of Parameters: 0
+
+
+            Strategy Name: strategy 30      Fix Value: 30
+                    No. of Parameters: 0
+
+
+            Strategy Name: ALGOT    Fix Value: TT
+                    No. of Parameters: 0
+
+
+            Strategy Name: Mike Sat Morning Fix Value: M3
+                    No. of Parameters: 0
+
+
+            Strategy Name: janurary Fix Value: jan
+                    No. of Parameters: 0
+
+
+            Strategy Name: test33           Fix Value: 10114
+                    No. of Parameters: 0
+
+
+            Strategy Name: iceberg  Fix Value: iceberg
+                    No. of Parameters: 0
+
+
+            Strategy Name: Merge2   Fix Value: Merge2
+                    No. of Parameters: 0
+
+
+            Strategy Name: testwf   Fix Value: testwf
+                    No. of Parameters: 0
+
+
+            Strategy Name: TS Strike        Fix Value: y
+                    No. of Parameters: 0
+
+
+            Strategy Name: TS Strike        Fix Value: y
+                    No. of Parameters: 0
+
+
+            Strategy Name: strategy 30      Fix Value: 30
+                    No. of Parameters: 0
+
+
+            Strategy Name: Strategy 30      Fix Value: 30
+                    No. of Parameters: 0
+
+
+            Strategy Name: INLIN    Fix Value: INLINE
+                    No. of Parameters: 0
+
+
+            Strategy Name: TS Strike        Fix Value: y
+                    No. of Parameters: 0
+
+
+            Strategy Name: Strategy 30      Fix Value: 30
+                    No. of Parameters: 0
+
+
+            Strategy Name: SMART    Fix Value: SMART
+                    No. of Parameters: 0
+
+
+            Strategy Name: y029test Fix Value: 1029
+                    No. of Parameters: 0
+
+
+            Strategy Name: ra_test  Fix Value: ratest
+                    No. of Parameters: 0
+
+
+            Strategy Name: DEMO     Fix Value: D
+                    No. of Parameters: 0
+
+
+            Strategy Name: A        Fix Value: 2
+                    No. of Parameters: 0
+
+
+            Strategy Name: TEST1    Fix Value: T1
+                    No. of Parameters: 0
+
+
+            Strategy Name: TEST2    Fix Value: T2
+                    No. of Parameters: 0
+
+
+            Strategy Name: TEST3    Fix Value: T3
+                    No. of Parameters: 0
+
+
+            Strategy Name: jeff     Fix Value: jeff
+                    No. of Parameters: 0
+
+            Time In Force:
+                    Name: CLO       Fix Value: 7
+                    Name: DAY       Fix Value: 0
+                    Name: FOK       Fix Value: 4
+                    Name: GTC       Fix Value: 1
+                    Name: GTD       Fix Value: 6
+                    Name: GTX       Fix Value: 5
+                    Name: IOC       Fix Value: 3
+                    Name: OPG       Fix Value: A
+
+            Order Types:
+                    Name: CD        Fix Value: Q
+                    Name: COVR      Fix Value: F
+                    Name: FUN       Fix Value: I
+                    Name: JP        Fix Value: N
+                    Name: LMT       Fix Value: 2
+                    Name: LOB       Fix Value: R
+                    Name: LOC       Fix Value: B
+                    Name: LOO       Fix Value: 6
+                    Name: MKT       Fix Value: 1
+                    Name: MOC       Fix Value: 5
+                    Name: MOO       Fix Value: X
+                    Name: OC        Fix Value: A
+                    Name: PEGG      Fix Value: P
+                    Name: RED       Fix Value: E
+                    Name: SL        Fix Value: 4
+                    Name: ST        Fix Value: 3
+
+            Handling Instructions:
+                    Name: ANY       Fix Value: 2
+                    Name: AUTO      Fix Value: 1
+                    Name: MAN       Fix Value: 3
+
+    Broker code: EFIX       class: Future   tag: 1000
+            No. of Strategies: 6
+
+            Strategy Name: test 2   Fix Value: 200
+                    No. of Parameters: 0
+
+
+            Strategy Name: test     Fix Value: 100
+                    No. of Parameters: 0
+
+
+            Strategy Name: time test        Fix Value: time
+                    No. of Parameters: 0
+
+
+            Strategy Name: Range test       Fix Value: rng
+                    No. of Parameters: 0
+
+
+            Strategy Name: test3    Fix Value: I
+                    No. of Parameters: 0
+
+
+            Strategy Name: DEMO     Fix Value: D
+                    No. of Parameters: 0
+
+            Time In Force:
+                    Name: DAY       Fix Value: 0
+                    Name: GTC       Fix Value: 1
+                    Name: GTD       Fix Value: 6
+                    Name: GTI       Fix Value: 8
+                    Name: GTT       Fix Value: 9
+                    Name: IOC       Fix Value: 3
+
+            Order Types:
+                    Name: LMT       Fix Value: 2
+                    Name: MKT       Fix Value: 1
+                    Name: MOC       Fix Value: 5
+                    Name: SL        Fix Value: 4
+                    Name: ST        Fix Value: 3
+
+            Handling Instructions:
+                    Name: ANY       Fix Value: 2
+                    Name: AUTO      Fix Value: 1
+                    Name: DOT       Fix Value: 4
+                    Name: MAN       Fix Value: 3
+    ...
 
 Cancel Order Extended Request
 =============================
@@ -332,6 +771,47 @@ Full code sample:-
                 print >> sys.stderr, "Error: Service failed to open"        
 	                	 
 
+Output:-
+
+.. code-block:: none
+    
+    C:\Users\tckim\OneDrive\_scripts>py -3 CancelOrderEx.py
+    Bloomberg - EMSX API Example - CancelOrderEx
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: CancelOrderEx = {
+        EMSX_SEQUENCE[] = {
+            4733955
+        }
+    }
+
+    Processing RESPONSE event
+    MESSAGE: CancelOrderEx = {
+        STATUS = 1
+        MESSAGE = "Order cancellation request sent to broker"
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: CancelOrderEx
+    STATUS: 1       MESSAGE: Order cancellation request sent to broker
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
+
 
 Create Basket Request
 =====================
@@ -403,7 +883,49 @@ Full code sample:-
                 print("Error: Service failed to open")
                      
 
+Output:-
 
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 CreateBasket.py
+    Bloomberg - EMSX API Example - CreateBasket
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: CreateBasket = {
+        EMSX_BASKET_NAME = "TestBasket"
+        EMSX_SEQUENCE[] = {
+            4733961, 4733962
+        }
+    }
+
+    Processing RESPONSE event
+    MESSAGE: CreateBasket = {
+        EMSX_SEQUENCE[] = {
+            4733961, 4733962
+        }
+        MESSAGE = "Orders added to Basket"
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: CreateBasket
+    EMSX_SEQUENCE: 4733961  MESSAGE: Orders added to Basket
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
 
 
 Create Order Request
@@ -504,6 +1026,51 @@ Full code sample:-
             print >> sys.stderr, "Error: Service failed to open" 
 
 
+Output:-
+
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 CreateOrder.py
+    Bloomberg - EMSX API Example - CreateOrder
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: CreateOrder = {
+        EMSX_TICKER = "MSFT US Equity"
+        EMSX_AMOUNT = 1100
+        EMSX_ORDER_TYPE = MKT
+        EMSX_TIF = DAY
+        EMSX_HAND_INSTRUCTION = "ANY"
+        EMSX_SIDE = BUY
+    }
+
+    Processing RESPONSE event
+    MESSAGE: CreateOrder = {
+        EMSX_SEQUENCE = 4733955
+        MESSAGE = "Order created"
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: CreateOrder
+    EMSX_SEQUENCE: 4733955  MESSAGE: Order created
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
+
+
 Create Order and Route Extended Request
 =======================================
 The ``CreateOrderAndRouteEx`` request can be used for both strategy and non-strategy broker destinations.  Creating 
@@ -568,6 +1135,101 @@ Full code sample:-
 	                
 	                # The fields below are optional
 	                #request.set("EMSX_ACCOUNT","TestAccount")       
+
+
+Output:-
+
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 CreateOrderAndRouteEx.py
+    Bloomberg - EMSX API Example - CreateOrderAndRouteEx
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: CreateOrderAndRouteEx = {
+        EMSX_TICKER = "FB US Equity"
+        EMSX_AMOUNT = 1000
+        EMSX_ORDER_TYPE = MKT
+        EMSX_TIF = DAY
+        EMSX_HAND_INSTRUCTION = "ANY"
+        EMSX_SIDE = SELL
+        EMSX_BROKER = "BMTB"
+        EMSX_ACCOUNT = "testAccount"
+        EMSX_NOTES = "blah blah blah"
+        EMSX_ORDER_REF_ID = "UniqueID"
+        EMSX_P_A = "A"
+        EMSX_ROUTE_REF_ID = "UniqueID2"
+        EMSX_STRATEGY_PARAMS = {
+            EMSX_STRATEGY_NAME = "VWAP"
+            EMSX_STRATEGY_FIELD_INDICATORS[] = {
+                EMSX_STRATEGY_FIELD_INDICATORS = {
+                    EMSX_FIELD_INDICATOR = 0
+                }
+                EMSX_STRATEGY_FIELD_INDICATORS = {
+                    EMSX_FIELD_INDICATOR = 0
+                }
+                EMSX_STRATEGY_FIELD_INDICATORS = {
+                    EMSX_FIELD_INDICATOR = 1
+                }
+                EMSX_STRATEGY_FIELD_INDICATORS = {
+                    EMSX_FIELD_INDICATOR = 1
+                }
+                EMSX_STRATEGY_FIELD_INDICATORS = {
+                    EMSX_FIELD_INDICATOR = 1
+                }
+                EMSX_STRATEGY_FIELD_INDICATORS = {
+                    EMSX_FIELD_INDICATOR = 1
+                }
+            }
+            EMSX_STRATEGY_FIELDS[] = {
+                EMSX_STRATEGY_FIELDS = {
+                    EMSX_FIELD_DATA = "09:30:00"
+                }
+                EMSX_STRATEGY_FIELDS = {
+                    EMSX_FIELD_DATA = "10:30:00"
+                }
+                EMSX_STRATEGY_FIELDS = {
+                    EMSX_FIELD_DATA = ""
+                }
+                EMSX_STRATEGY_FIELDS = {
+                    EMSX_FIELD_DATA = ""
+                }
+                EMSX_STRATEGY_FIELDS = {
+                    EMSX_FIELD_DATA = ""
+                }
+                EMSX_STRATEGY_FIELDS = {
+                    EMSX_FIELD_DATA = ""
+                }
+            }
+        }
+    }
+
+    Processing RESPONSE event
+    MESSAGE: CreateOrderAndRouteEx = {
+        EMSX_SEQUENCE = 4733965
+        EMSX_ROUTE_ID = 1
+        MESSAGE = "Order created and routed"
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: CreateOrderAndRouteEx
+    EMSX_SEQUENCE: 4733965  EMSX_ROUTE_ID: 1        MESSAGE: Order created and routed
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
 
 
 Create Order And Route Manually Request
@@ -722,6 +1384,48 @@ Full code sample:-
                 print >> sys.stderr, "Error: Service failed to open"        
                   
 
+Output:-
+
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 DeleteOrder.py
+    Bloomberg - EMSX API Example - DeleteOrder
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: DeleteOrder = {
+        EMSX_SEQUENCE[] = {
+            4733961
+        }
+    }
+
+    Processing RESPONSE event
+    MESSAGE: DeleteOrder = {
+        STATUS = 0
+        MESSAGE = "Order deleted"
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: DeleteOrder
+    STATUS: 0       MESSAGE: Order deleted
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
+
+
 Get All Field Metadata Request
 ==============================
 The ``GetAllFiedlMetaData`` request provides all field metadata in a response message.
@@ -826,6 +1530,126 @@ Process response messages:-
             print "MESSAGE: %s" % (msg.tostring())
 
 
+Output:-
+
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 GetAllFieldMetaData.py
+    Bloomberg - EMSX API Example - GetAllFieldMetaData
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: GetAllFieldMetaData = {
+    }
+
+    Processing RESPONSE event
+    MESSAGE: GetAllFieldMetaData = {
+        MetaData[] = {
+            MetaData = {
+                EMSX_FIELD_NAME = "MSG_TYPE"
+                EMSX_DISP_NAME = "Msg Type"
+                EMSX_TYPE = String
+                EMSX_LEVEL = 0
+                EMSX_LEN = 1
+            }
+            MetaData = {
+                EMSX_FIELD_NAME = "MSG_SUB_TYPE"
+                EMSX_DISP_NAME = "Msg Sub Type"
+                EMSX_TYPE = String
+                EMSX_LEVEL = 0
+                EMSX_LEN = 1
+            }
+            MetaData = {
+                EMSX_FIELD_NAME = "EVENT_STATUS"
+                EMSX_DISP_NAME = "Msg Status"
+                EMSX_TYPE = Int32
+                EMSX_LEVEL = 0
+                EMSX_LEN = 10
+            }
+            MetaData = {
+                EMSX_FIELD_NAME = "API_SEQ_NUM"
+                EMSX_DISP_NAME = "Api Sequence"
+                EMSX_TYPE = Int64
+                EMSX_LEVEL = 0
+                EMSX_LEN = 20
+            }
+            MetaData = {
+                EMSX_FIELD_NAME = "EMSX_SEQUENCE"
+                EMSX_DISP_NAME = "Sequence #"
+                EMSX_TYPE = Int32
+                EMSX_LEVEL = 27
+                EMSX_LEN = 10
+            }
+            MetaData = {
+                EMSX_FIELD_NAME = "EMSX_ROUTE_ID"
+                EMSX_DISP_NAME = "Tran No"
+                EMSX_TYPE = Int32
+                EMSX_LEVEL = 11
+                EMSX_LEN = 10
+            }
+            MetaData = {
+                EMSX_FIELD_NAME = "EMSX_FILL_ID"
+                EMSX_DISP_NAME = "Fill Id"
+                EMSX_TYPE = Int32
+                EMSX_LEVEL = 2
+                EMSX_LEN = 10
+            }
+            MetaData = {
+                EMSX_FIELD_NAME = "EMSX_SIDE"
+                EMSX_DISP_NAME = "B/S"
+                EMSX_TYPE = String
+                EMSX_LEVEL = 17
+                EMSX_LEN = 4
+           ...
+
+           ...
+            MetaData = {
+                EMSX_FIELD_NAME = "EMSX_LEG_FILL_TICKER"
+                EMSX_DISP_NAME = "Leg Fill Ticker"
+                EMSX_TYPE = String
+                EMSX_LEVEL = 2
+                EMSX_LEN = 32
+            }
+        }
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: GetAllFieldMetaData
+    MetaData: MSG_TYPE,Msg Type,String,0,1
+    MetaData: MSG_SUB_TYPE,Msg Sub Type,String,0,1
+    MetaData: EVENT_STATUS,Msg Status,Int32,0,10
+    MetaData: API_SEQ_NUM,Api Sequence,Int64,0,20
+    MetaData: EMSX_SEQUENCE,Sequence #,Int32,27,10
+    ...
+    ...
+    MetaData: EMSX_ROUTE_AS_OF_TIME_MICROSEC,Route As of Time,Time,2,20
+    MetaData: EMSX_AS_OF_DATE,Order/Route As of Date,Date,24,8
+    MetaData: EMSX_AS_OF_TIME_MICROSEC,Order/Route As of Time,Time,24,20
+    MetaData: EMSX_LEG_FILL_SIDE,Leg Fill Side,String,2,3
+    MetaData: EMSX_LEG_FILL_DATE_ADDED,Leg Fill Date Added,Date,2,8
+    MetaData: EMSX_LEG_FILL_TIME_ADDED,Leg fill Time Added,Time,2,20
+    MetaData: EMSX_LEG_FILL_SHARES,Leg Fill Shares,Double,2,15
+    MetaData: EMSX_LEG_FILL_PRICE,Leg Fill Price,Double,2,15
+    MetaData: EMSX_LEG_FILL_SEQ_NO,Leg Fill Seq No,Int32,2,10
+    MetaData: EMSX_LEG_FILL_TICKER,Leg Fill Ticker,String,2,32
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
+
+
 Get Broker Strategies with Asset Class Request
 ==============================================
 The ``GetBrokerStrategiesWithAssetClass`` request provides all broker strategy fields with asset class data in a response message.
@@ -884,6 +1708,47 @@ Full code sample:-
             elif msg.messageType() == SERVICE_OPEN_FAILURE:
                 print >> sys.stderr, "Error: Service failed to open"        
 
+
+Output:-
+
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 GetBrokerStrategiesWithAssetClass.py
+    Bloomberg - EMSX API Example - GetBrokerStrategiesWithAssetClass
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: GetBrokerStrategiesWithAssetClass = {
+        EMSX_ASSET_CLASS = EQTY
+        EMSX_BROKER = "PAIR"
+    }
+
+    Processing RESPONSE event
+    MESSAGE: GetBrokerStrategiesWithAssetClass = {
+        EMSX_STRATEGIES[] = {
+            ""
+        }
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: GetBrokerStrategiesWithAssetClass
+    EMSX_STRATEGY:
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
 
 
 Get Broker Strategy Info with Asset Class Request
@@ -946,6 +1811,84 @@ Full code sample:-
                 print >> sys.stderr, "Error: Service failed to open"        	    
 
 
+Output:-
+
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 GetBrokerStrategyInfoWithAssetClass.py
+    Bloomberg - EMSX API Example - GetBrokerStrategyInfoWithAssetClass
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: GetBrokerStrategyInfoWithAssetClass = {
+        EMSX_REQUEST_SEQ = 1
+        EMSX_ASSET_CLASS = EQTY
+        EMSX_BROKER = "BMTB"
+        EMSX_STRATEGY = "VWAP"
+    }
+
+    Processing RESPONSE event
+    MESSAGE: GetBrokerStrategyInfoWithAssetClass = {
+        EMSX_STRATEGY_INFO[] = {
+            EMSX_STRATEGY_INFO = {
+                FieldName = "Start Time"
+                Disable = 0
+                StringValue = ""
+            }
+            EMSX_STRATEGY_INFO = {
+                FieldName = "End Time"
+                Disable = 0
+                StringValue = ""
+            }
+            EMSX_STRATEGY_INFO = {
+                FieldName = "Max % Volume"
+                Disable = 0
+                StringValue = ""
+            }
+            EMSX_STRATEGY_INFO = {
+                FieldName = "Discretion"
+                Disable = 0
+                StringValue = ""
+            }
+            EMSX_STRATEGY_INFO = {
+                FieldName = "Display Qty"
+                Disable = 0
+                StringValue = ""
+            }
+            EMSX_STRATEGY_INFO = {
+                FieldName = "FltLmtType"
+                Disable = 0
+                StringValue = ""
+            }
+        }
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: GetBrokerStrategyInfoWithAssetClass
+    EMSX_STRATEGY_INFO: Start Time, 0,
+    EMSX_STRATEGY_INFO: End Time, 0,
+    EMSX_STRATEGY_INFO: Max % Volume, 0,
+    EMSX_STRATEGY_INFO: Discretion, 0,
+    EMSX_STRATEGY_INFO: Display Qty, 0,
+    EMSX_STRATEGY_INFO: FltLmtType, 0,
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
+
+
 Get Brokers with Asset Class Request
 ====================================
 The ``GetBrokersWithAssetClass`` request provides all broker information with asset class data in a response message.
@@ -1003,6 +1946,54 @@ Full code sample:-
             elif msg.messageType() == SERVICE_OPEN_FAILURE:
 	                print >> sys.stderr, "Error: Service failed to open"        
 	                
+
+Output:-
+
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 GetBrokersWithAssetClass.py
+    Bloomberg - EMSX API Example - GetBrokersWithAssetClass
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: GetBrokersWithAssetClass = {
+        EMSX_ASSET_CLASS = EQTY
+    }
+
+    Processing RESPONSE event
+    MESSAGE: GetBrokersWithAssetClass = {
+        EMSX_BROKERS[] = {
+            "API", "BB", "BEXE", "BMTB", "EEUE", "EFIX", "RFQ", "TKOR"
+        }
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: GetBrokersWithAssetClass
+    EMSX_BROKER: API
+    EMSX_BROKER: BB
+    EMSX_BROKER: BEXE
+    EMSX_BROKER: BMTB
+    EMSX_BROKER: EEUE
+    EMSX_BROKER: EFIX
+    EMSX_BROKER: RFQ
+    EMSX_BROKER: TKOR
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
+
 
 Get Field Metadata Request
 ===========================
