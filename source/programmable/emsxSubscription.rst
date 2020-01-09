@@ -236,7 +236,7 @@ Description of the Child Route Status Changes
 +----------------------+------------+------------+-------------------------------------------------+
 |``EMSX_STATUS``       |``REPPEN``  |``WORKING`` |Broker rejected modify request on working route. |
 +----------------------+------------+------------+                                                 |
-|``EMSX_BROKER_STATUS``|n/a         |``CXRPRJ``  |                                                 |
+|``EMSX_BROKER_STATUS``|n/a         |``CXLRPRJ`` |                                                 |
 +----------------------+------------+------------+-------------------------------------------------+
 |``EMSX_STATUS``       |``REPPEN``  |``WORKING`` |Broker accepted and applied the modify request   |
 +----------------------+------------+------------+on working route. (placement)                    |
@@ -246,7 +246,7 @@ Description of the Child Route Status Changes
 +----------------------+------------+------------+-------------------------------------------------+
 |``EMSX_STATUS``       |``REPPEN``  |``PARTFILL``|Broker rejected modify request on part filled    |
 +----------------------+------------+------------+route. (placement)                               |
-|``EMSX_BROKER_STATUS``|n/a         |``CXRPRJ``  |                                                 |
+|``EMSX_BROKER_STATUS``|n/a         |``CXLRPRJ`` |                                                 |
 +----------------------+------------+------------+-------------------------------------------------+
 |``EMSX_STATUS``       |``REPPEN``  |``PARTFILL``|Broker accepted and applied the modify request   |
 +----------------------+------------+------------+on part filled route. (placement)                |
