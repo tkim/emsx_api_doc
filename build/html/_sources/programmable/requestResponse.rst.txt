@@ -2392,6 +2392,77 @@ Full code sample:-
 	                print >> sys.stderr, "Error: Service failed to open"        
 
 
+Output:-
+
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 GroupRouteEx.py
+    Bloomberg - EMSX API Example - GroupRouteEx
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: GroupRouteEx = {
+        EMSX_SEQUENCE[] = {
+            4747927, 4747928
+        }
+        EMSX_AMOUNT_PERCENT = 20
+        EMSX_BROKER = "BB"
+        EMSX_HAND_INSTRUCTION = "ANY"
+        EMSX_ORDER_TYPE = MKT
+        EMSX_TICKER = "GE US Equity"
+        EMSX_TIF = DAY
+        EMSX_ROUTE_REF_ID_PAIRS[] = {
+            EMSX_ROUTE_REF_ID_PAIRS = {
+                EMSX_ROUTE_REF_ID = "MyRouteRef1"
+                EMSX_SEQUENCE = 4747927
+            }
+            EMSX_ROUTE_REF_ID_PAIRS = {
+                EMSX_ROUTE_REF_ID = "MyRouteRef2"
+                EMSX_SEQUENCE = 4747928
+            }
+        }
+    }
+
+    Processing RESPONSE event
+    MESSAGE: GroupRouteEx = {
+        EMSX_SUCCESS_ROUTES[] = {
+            EMSX_SUCCESS_ROUTES = {
+                EMSX_SEQUENCE = 4747927
+                EMSX_ROUTE_ID = 1
+            }
+            EMSX_SUCCESS_ROUTES = {
+                EMSX_SEQUENCE = 4747928
+                EMSX_ROUTE_ID = 1
+            }
+        }
+        EMSX_FAILED_ROUTES[] = {
+        }
+        MESSAGE = "2 of 2 Order(s) Routed"
+        EMSX_ML_ID = "0:0"
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: GroupRouteEx
+    SUCCESS: 4747927,1
+    SUCCESS: 4747928,1
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
+
+
 Group Route Extended Request - Multi-Leg Options
 ================================================
 The multi-leg options can be traded using ``GroupRouteEx`` request. The first step is to create the 
@@ -2650,6 +2721,49 @@ Full code sample:-
                 print >> sys.stderr, "Error: Service failed to open"        
 
 
+Output:-
+
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 ModifyOrder.py
+    Bloomberg - EMSX API Example - ModifyOrderEx
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: ModifyOrderEx = {
+        EMSX_SEQUENCE = 4747927
+        EMSX_AMOUNT = 6000
+        EMSX_ORDER_TYPE = MKT
+        EMSX_TIF = DAY
+        EMSX_TICKER = "MSFT US Equity"
+        EMSX_INVESTOR_ID = "InvID"
+    }
+
+    Processing RESPONSE event
+    MESSAGE: ModifyOrderEx = {
+        EMSX_SEQUENCE = 4747927
+        MESSAGE = "Order Modified"
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: ModifyOrderEx
+    EMSX_SEQUENCE: 4747927  MESSAGE: Order Modified
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
 
 Modify Route Extended Request
 =============================
@@ -2802,6 +2916,49 @@ Full code sample:-
                 print >> sys.stderr, "Error: Service failed to open"  
 
 
+Output:-
+
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 ModifyRouteEx.py
+    Bloomberg - EMSX API Example - ModifyRouteEx
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: ModifyRouteEx = {
+        EMSX_SEQUENCE = 4747928
+        EMSX_ROUTE_ID = 1
+        EMSX_AMOUNT = 500
+        EMSX_ORDER_TYPE = MKT
+        EMSX_TIF = DAY
+    }
+
+    Processing RESPONSE event
+    MESSAGE: ModifyRouteEx = {
+        EMSX_SEQUENCE = 0
+        EMSX_ROUTE_ID = 0
+        MESSAGE = "Route modified"
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: ModifyRouteEx
+    MESSAGE: Route modified
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
 
 
 Route Extended Request
@@ -2887,6 +3044,54 @@ Full code sample:-
 	            elif msg.messageType() == SERVICE_OPEN_FAILURE:
 	                print >> sys.stderr, "Error: Service failed to open"        
 
+
+Output:-
+
+.. code-block:: none
+
+    C:\Users\_scripts>py -3 RouteEx.py
+    Bloomberg - EMSX API Example - RouteWithStrat
+    Connecting to localhost:8194
+    Processing SESSION_STATUS event
+    SessionConnectionUp = {
+        server = "localhost:8194"
+        encryptionStatus = "Clear"
+    }
+
+    Processing SESSION_STATUS event
+    Session started...
+    Processing SERVICE_STATUS event
+    Service opened...
+    Request: RouteEx = {
+        EMSX_SEQUENCE = 4747927
+        EMSX_AMOUNT = 200
+        EMSX_BROKER = "BB"
+        EMSX_HAND_INSTRUCTION = "ANY"
+        EMSX_ORDER_TYPE = MKT
+        EMSX_TICKER = "MSFT US Equity"
+        EMSX_TIF = DAY
+        EMSX_NOTES = "Some notes"
+        EMSX_P_A = "P"
+    }
+
+    Processing RESPONSE event
+    MESSAGE: Route = {
+        EMSX_SEQUENCE = 4747927
+        EMSX_ROUTE_ID = 2
+        MESSAGE = "Order Routed"
+    }
+
+    CORRELATION ID: 3
+    MESSAGE TYPE: Route
+    EMSX_SEQUENCE: 4747927  EMSX_ROUTE_ID: 2        MESSAGE: Order Routed
+    Processing SESSION_STATUS event
+    SessionConnectionDown = {
+        server = "localhost:8194"
+    }
+
+    Processing SESSION_STATUS event
+    SessionTerminated = {
+    }
 
 Route Manually Extended Request
 ===============================

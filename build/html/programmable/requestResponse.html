@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Buy-Side Request/Response Service &mdash; EMSX API Programmers Guide 1.8.0 documentation</title>
+  <title>Buy-Side Request/Response Service &mdash; EMSX API Programmers Guide 2.0.0 documentation</title>
   
 
   
@@ -58,7 +58,7 @@
             
             
               <div class="version">
-                1.8.0
+                2.0.0
               </div>
             
           
@@ -2953,6 +2953,74 @@ SessionTerminated = {
                      <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
 </pre></div>
 </td></tr></table></div>
+<p>Output:-</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>C:\Users\_scripts&gt;py -3 GroupRouteEx.py
+Bloomberg - EMSX API Example - GroupRouteEx
+Connecting to localhost:8194
+Processing SESSION_STATUS event
+SessionConnectionUp = {
+    server = &quot;localhost:8194&quot;
+    encryptionStatus = &quot;Clear&quot;
+}
+
+Processing SESSION_STATUS event
+Session started...
+Processing SERVICE_STATUS event
+Service opened...
+Request: GroupRouteEx = {
+    EMSX_SEQUENCE[] = {
+        4747927, 4747928
+    }
+    EMSX_AMOUNT_PERCENT = 20
+    EMSX_BROKER = &quot;BB&quot;
+    EMSX_HAND_INSTRUCTION = &quot;ANY&quot;
+    EMSX_ORDER_TYPE = MKT
+    EMSX_TICKER = &quot;GE US Equity&quot;
+    EMSX_TIF = DAY
+    EMSX_ROUTE_REF_ID_PAIRS[] = {
+        EMSX_ROUTE_REF_ID_PAIRS = {
+            EMSX_ROUTE_REF_ID = &quot;MyRouteRef1&quot;
+            EMSX_SEQUENCE = 4747927
+        }
+        EMSX_ROUTE_REF_ID_PAIRS = {
+            EMSX_ROUTE_REF_ID = &quot;MyRouteRef2&quot;
+            EMSX_SEQUENCE = 4747928
+        }
+    }
+}
+
+Processing RESPONSE event
+MESSAGE: GroupRouteEx = {
+    EMSX_SUCCESS_ROUTES[] = {
+        EMSX_SUCCESS_ROUTES = {
+            EMSX_SEQUENCE = 4747927
+            EMSX_ROUTE_ID = 1
+        }
+        EMSX_SUCCESS_ROUTES = {
+            EMSX_SEQUENCE = 4747928
+            EMSX_ROUTE_ID = 1
+        }
+    }
+    EMSX_FAILED_ROUTES[] = {
+    }
+    MESSAGE = &quot;2 of 2 Order(s) Routed&quot;
+    EMSX_ML_ID = &quot;0:0&quot;
+}
+
+CORRELATION ID: 3
+MESSAGE TYPE: GroupRouteEx
+SUCCESS: 4747927,1
+SUCCESS: 4747928,1
+Processing SESSION_STATUS event
+SessionConnectionDown = {
+    server = &quot;localhost:8194&quot;
+}
+
+Processing SESSION_STATUS event
+SessionTerminated = {
+}
+</pre></div>
+</div>
 </div>
 <div class="section" id="group-route-extended-request-multi-leg-options">
 <h2>Group Route Extended Request - Multi-Leg Options<a class="headerlink" href="#group-route-extended-request-multi-leg-options" title="Permalink to this headline">¶</a></h2>
@@ -3288,6 +3356,48 @@ A value of <code class="docutils literal notranslate"><span class="pre">EMSX_LIM
              <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
 </pre></div>
 </td></tr></table></div>
+<p>Output:-</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>C:\Users\_scripts&gt;py -3 ModifyOrder.py
+Bloomberg - EMSX API Example - ModifyOrderEx
+Connecting to localhost:8194
+Processing SESSION_STATUS event
+SessionConnectionUp = {
+    server = &quot;localhost:8194&quot;
+    encryptionStatus = &quot;Clear&quot;
+}
+
+Processing SESSION_STATUS event
+Session started...
+Processing SERVICE_STATUS event
+Service opened...
+Request: ModifyOrderEx = {
+    EMSX_SEQUENCE = 4747927
+    EMSX_AMOUNT = 6000
+    EMSX_ORDER_TYPE = MKT
+    EMSX_TIF = DAY
+    EMSX_TICKER = &quot;MSFT US Equity&quot;
+    EMSX_INVESTOR_ID = &quot;InvID&quot;
+}
+
+Processing RESPONSE event
+MESSAGE: ModifyOrderEx = {
+    EMSX_SEQUENCE = 4747927
+    MESSAGE = &quot;Order Modified&quot;
+}
+
+CORRELATION ID: 3
+MESSAGE TYPE: ModifyOrderEx
+EMSX_SEQUENCE: 4747927  MESSAGE: Order Modified
+Processing SESSION_STATUS event
+SessionConnectionDown = {
+    server = &quot;localhost:8194&quot;
+}
+
+Processing SESSION_STATUS event
+SessionTerminated = {
+}
+</pre></div>
+</div>
 </div>
 <div class="section" id="modify-route-extended-request">
 <h2>Modify Route Extended Request<a class="headerlink" href="#modify-route-extended-request" title="Permalink to this headline">¶</a></h2>
@@ -3543,6 +3653,48 @@ A value of <code class="docutils literal notranslate"><span class="pre">EMSX_LIM
              <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
 </pre></div>
 </td></tr></table></div>
+<p>Output:-</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>C:\Users\_scripts&gt;py -3 ModifyRouteEx.py
+Bloomberg - EMSX API Example - ModifyRouteEx
+Connecting to localhost:8194
+Processing SESSION_STATUS event
+SessionConnectionUp = {
+    server = &quot;localhost:8194&quot;
+    encryptionStatus = &quot;Clear&quot;
+}
+
+Processing SESSION_STATUS event
+Session started...
+Processing SERVICE_STATUS event
+Service opened...
+Request: ModifyRouteEx = {
+    EMSX_SEQUENCE = 4747928
+    EMSX_ROUTE_ID = 1
+    EMSX_AMOUNT = 500
+    EMSX_ORDER_TYPE = MKT
+    EMSX_TIF = DAY
+}
+
+Processing RESPONSE event
+MESSAGE: ModifyRouteEx = {
+    EMSX_SEQUENCE = 0
+    EMSX_ROUTE_ID = 0
+    MESSAGE = &quot;Route modified&quot;
+}
+
+CORRELATION ID: 3
+MESSAGE TYPE: ModifyRouteEx
+MESSAGE: Route modified
+Processing SESSION_STATUS event
+SessionConnectionDown = {
+    server = &quot;localhost:8194&quot;
+}
+
+Processing SESSION_STATUS event
+SessionTerminated = {
+}
+</pre></div>
+</div>
 </div>
 <div class="section" id="route-extended-request">
 <h2>Route Extended Request<a class="headerlink" href="#route-extended-request" title="Permalink to this headline">¶</a></h2>
@@ -3670,6 +3822,52 @@ A value of <code class="docutils literal notranslate"><span class="pre">EMSX_LIM
                      <span class="k">print</span> <span class="o">&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error: Service failed to open&quot;</span>
 </pre></div>
 </td></tr></table></div>
+<p>Output:-</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>C:\Users\_scripts&gt;py -3 RouteEx.py
+Bloomberg - EMSX API Example - RouteWithStrat
+Connecting to localhost:8194
+Processing SESSION_STATUS event
+SessionConnectionUp = {
+    server = &quot;localhost:8194&quot;
+    encryptionStatus = &quot;Clear&quot;
+}
+
+Processing SESSION_STATUS event
+Session started...
+Processing SERVICE_STATUS event
+Service opened...
+Request: RouteEx = {
+    EMSX_SEQUENCE = 4747927
+    EMSX_AMOUNT = 200
+    EMSX_BROKER = &quot;BB&quot;
+    EMSX_HAND_INSTRUCTION = &quot;ANY&quot;
+    EMSX_ORDER_TYPE = MKT
+    EMSX_TICKER = &quot;MSFT US Equity&quot;
+    EMSX_TIF = DAY
+    EMSX_NOTES = &quot;Some notes&quot;
+    EMSX_P_A = &quot;P&quot;
+}
+
+Processing RESPONSE event
+MESSAGE: Route = {
+    EMSX_SEQUENCE = 4747927
+    EMSX_ROUTE_ID = 2
+    MESSAGE = &quot;Order Routed&quot;
+}
+
+CORRELATION ID: 3
+MESSAGE TYPE: Route
+EMSX_SEQUENCE: 4747927  EMSX_ROUTE_ID: 2        MESSAGE: Order Routed
+Processing SESSION_STATUS event
+SessionConnectionDown = {
+    server = &quot;localhost:8194&quot;
+}
+
+Processing SESSION_STATUS event
+SessionTerminated = {
+}
+</pre></div>
+</div>
 </div>
 <div class="section" id="route-manually-extended-request">
 <h2>Route Manually Extended Request<a class="headerlink" href="#route-manually-extended-request" title="Permalink to this headline">¶</a></h2>

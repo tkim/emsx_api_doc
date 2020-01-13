@@ -235,6 +235,107 @@ Process response events:-
                 elif msg.messageType() == GET_FILLS_RESPONSE:
 
 
+Output:-
+
+.. code-block:: none
+
+	C:\Users\_scripts>py -3 EMSXHistory.py
+	Bloomberg - EMSX API Example - EMSXHistory
+	Connecting to localhost:8194
+	Processing SESSION_STATUS event
+	SessionConnectionUp = {
+		server = "localhost:8194"
+		encryptionStatus = "Clear"
+	}
+
+	Processing SESSION_STATUS event
+	Session started...
+	Processing SERVICE_STATUS event
+	Service opened...
+	Request: GetFills = {
+		FromDateTime = 2019-10-01T00:00:00.000+00:00
+		ToDateTime = 2020-01-13T23:59:00.000+00:00
+		Scope = {
+			Uuids[] = {
+				12345678
+			}
+		}
+	}
+
+	Processing RESPONSE event
+	MESSAGE TYPE: GetFillsResponse
+	Date: 2019-12-12T11:35:02.674-05:00
+	Fill ID: 3      OrderId: 4733965        RouteId: 1
+	Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+	Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+	Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 10112
+	Basket ID: 0    Currency: USD   Multileg ID:
+	Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+	Date: 2019-12-12T11:50:02.717-05:00
+	Fill ID: 4      OrderId: 4733965        RouteId: 1
+	Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+	Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+	Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 20224
+	Basket ID: 0    Currency: USD   Multileg ID:
+	Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+	Date: 2019-12-12T12:05:02.758-05:00
+	Fill ID: 5      OrderId: 4733965        RouteId: 1
+	Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+	Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+	Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 30336
+	Basket ID: 0    Currency: USD   Multileg ID:
+	Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+	Date: 2019-12-12T12:20:02.799-05:00
+	Fill ID: 6      OrderId: 4733965        RouteId: 1
+	Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+	Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+	Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 40448
+	Basket ID: 0    Currency: USD   Multileg ID:
+	Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+	Date: 2019-12-12T12:35:02.841-05:00
+	Fill ID: 7      OrderId: 4733965        RouteId: 1
+	Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+	Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+	Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 50560
+	Basket ID: 0    Currency: USD   Multileg ID:
+	Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+	Date: 2019-12-12T12:50:02.881-05:00
+	Fill ID: 8      OrderId: 4733965        RouteId: 1
+	Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+	Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+	Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 60672
+	Basket ID: 0    Currency: USD   Multileg ID:
+	Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+	Date: 2019-12-12T13:05:02.923-05:00
+	Fill ID: 9      OrderId: 4733965        RouteId: 1
+	Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+	Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+	Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 70784
+	Basket ID: 0    Currency: USD   Multileg ID:
+	Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+	Date: 2020-01-13T14:01:23.880-05:00
+	Fill ID: 11     OrderId: 4747927        RouteId: 2
+	Ticker: MSFT    Asset Class: Equity     Yellow Key: Equity
+	Shares: 20      Price: 161.330000       Broker: BB      CFD: False
+	Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 29039
+	Basket ID: 0    Currency: USD   Multileg ID:
+	Account:        LocateId:                       LocateBroker: False     OCCSymbol:
+	Date: 2020-01-13T14:01:53.882-05:00
+	Fill ID: 12     OrderId: 4747927        RouteId: 2
+	Ticker: MSFT    Asset Class: Equity     Yellow Key: Equity
+	Shares: 20      Price: 161.330000       Broker: BB      CFD: False
+	Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 32266
+	Basket ID: 0    Currency: USD   Multileg ID:
+	Account:        LocateId:                       LocateBroker: False     OCCSymbol:
+	Processing SESSION_STATUS event
+	SessionConnectionDown = {
+		server = "localhost:8194"
+	}
+
+	Processing SESSION_STATUS event
+	SessionTerminated = {
+	}
+
 
 .. [definition] 1=Added, 2=Removed, 3=Routed out, M=Maker, T=Taker, R=Rerouted, A=Auction
 

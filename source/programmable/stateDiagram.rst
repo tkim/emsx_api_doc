@@ -22,3 +22,19 @@ Following is a route state diagram for EMSX API:-
 
 
 .. image:: /image/routeState.png
+
+
+EMSX API Schema
+===============
+
+`EMSX API Schema`_
+
+.. _EMSX API Schema: https://github.com/tkim/emsx_api_repository/blob/master/emapisvc_3.33.1.4.xml
+
+
+EMSX API History Service Schema
+===============================
+
+`EMSX API History Service Schema`_
+
+.. _EMSX API History Service Schema: https://github.com/tkim/emsx_api_repository/blob/master/emsx.history_1.4.0.0.xml

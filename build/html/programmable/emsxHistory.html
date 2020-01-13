@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>EMSX History Request &mdash; EMSX API Programmers Guide 1.8.0 documentation</title>
+  <title>EMSX History Request &mdash; EMSX API Programmers Guide 2.0.0 documentation</title>
   
 
   
@@ -58,7 +58,7 @@
             
             
               <div class="version">
-                1.8.0
+                2.0.0
               </div>
             
           
@@ -558,6 +558,105 @@ The <code class="docutils literal notranslate"><span class="pre">PARTIAL_RESPONS
                 <span class="n">errorMessage</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">getElementAsString</span><span class="p">(</span><span class="s2">&quot;ERROR_MESSAGE&quot;</span><span class="p">)</span>
                 <span class="k">print</span> <span class="s2">&quot;ERROR CODE: </span><span class="si">%d</span><span class="se">\t</span><span class="s2">ERROR MESSAGE: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">errorCode</span><span class="p">,</span><span class="n">errorMessage</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">msg</span><span class="o">.</span><span class="n">messageType</span><span class="p">()</span> <span class="o">==</span> <span class="n">GET_FILLS_RESPONSE</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Output:-</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>C:\Users\_scripts&gt;py -3 EMSXHistory.py
+Bloomberg - EMSX API Example - EMSXHistory
+Connecting to localhost:8194
+Processing SESSION_STATUS event
+SessionConnectionUp = {
+        server = &quot;localhost:8194&quot;
+        encryptionStatus = &quot;Clear&quot;
+}
+
+Processing SESSION_STATUS event
+Session started...
+Processing SERVICE_STATUS event
+Service opened...
+Request: GetFills = {
+        FromDateTime = 2019-10-01T00:00:00.000+00:00
+        ToDateTime = 2020-01-13T23:59:00.000+00:00
+        Scope = {
+                Uuids[] = {
+                        12345678
+                }
+        }
+}
+
+Processing RESPONSE event
+MESSAGE TYPE: GetFillsResponse
+Date: 2019-12-12T11:35:02.674-05:00
+Fill ID: 3      OrderId: 4733965        RouteId: 1
+Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 10112
+Basket ID: 0    Currency: USD   Multileg ID:
+Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+Date: 2019-12-12T11:50:02.717-05:00
+Fill ID: 4      OrderId: 4733965        RouteId: 1
+Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 20224
+Basket ID: 0    Currency: USD   Multileg ID:
+Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+Date: 2019-12-12T12:05:02.758-05:00
+Fill ID: 5      OrderId: 4733965        RouteId: 1
+Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 30336
+Basket ID: 0    Currency: USD   Multileg ID:
+Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+Date: 2019-12-12T12:20:02.799-05:00
+Fill ID: 6      OrderId: 4733965        RouteId: 1
+Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 40448
+Basket ID: 0    Currency: USD   Multileg ID:
+Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+Date: 2019-12-12T12:35:02.841-05:00
+Fill ID: 7      OrderId: 4733965        RouteId: 1
+Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 50560
+Basket ID: 0    Currency: USD   Multileg ID:
+Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+Date: 2019-12-12T12:50:02.881-05:00
+Fill ID: 8      OrderId: 4733965        RouteId: 1
+Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 60672
+Basket ID: 0    Currency: USD   Multileg ID:
+Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+Date: 2019-12-12T13:05:02.923-05:00
+Fill ID: 9      OrderId: 4733965        RouteId: 1
+Ticker: FB      Asset Class: Equity     Yellow Key: Equity
+Shares: 50      Price: 202.240000       Broker: BMTB    CFD: False
+Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 70784
+Basket ID: 0    Currency: USD   Multileg ID:
+Account: testAccount    LocateId:                       LocateBroker: False     OCCSymbol:
+Date: 2020-01-13T14:01:23.880-05:00
+Fill ID: 11     OrderId: 4747927        RouteId: 2
+Ticker: MSFT    Asset Class: Equity     Yellow Key: Equity
+Shares: 20      Price: 161.330000       Broker: BB      CFD: False
+Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 29039
+Basket ID: 0    Currency: USD   Multileg ID:
+Account:        LocateId:                       LocateBroker: False     OCCSymbol:
+Date: 2020-01-13T14:01:53.882-05:00
+Fill ID: 12     OrderId: 4747927        RouteId: 2
+Ticker: MSFT    Asset Class: Equity     Yellow Key: Equity
+Shares: 20      Price: 161.330000       Broker: BB      CFD: False
+Commission: 0   Commission Rate: 0      Fees: 0 Net Money: 32266
+Basket ID: 0    Currency: USD   Multileg ID:
+Account:        LocateId:                       LocateBroker: False     OCCSymbol:
+Processing SESSION_STATUS event
+SessionConnectionDown = {
+        server = &quot;localhost:8194&quot;
+}
+
+Processing SESSION_STATUS event
+SessionTerminated = {
+}
 </pre></div>
 </div>
 <table class="docutils citation" frame="void" id="definition" rules="none">
