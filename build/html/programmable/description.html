@@ -97,6 +97,8 @@
 <li class="toctree-l2"><a class="reference internal" href="testEnv.html#api-demo-tool">API Demo Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stateDiagram.html">Order State Diagram</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stateDiagram.html#route-state-diagram">Route State Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stateDiagram.html#emsx-api-schema">EMSX API Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stateDiagram.html#emsx-api-history-service-schema">EMSX API History Service Schema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">Session Object</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Description of Request/Response Service</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#buy-side-request-response-service">Buy-Side Request/Response Service</a></li>
@@ -378,8 +380,8 @@ the Settings menu. In the Routing Defaults, the user can select Exchange vs. Use
 <p>The following elements are available on order and/or route subscription services. These elements will be passed to the external trading counterparts.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="31%" />
-<col width="69%" />
+<col width="27%" />
+<col width="73%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Element</th>
@@ -406,7 +408,7 @@ the Settings menu. In the Routing Defaults, the user can select Exchange vs. Use
 <td>15-character field (15+1 check digit) <em>route subscription only</em></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TRADER_NOTES</span></code></td>
-<td>43-character free text field (43+1 check digit), <strong>internal only</strong></td>
+<td>43-character free text field (43+1 check digit), <strong>internal &amp; read only from API</strong></td>
 </tr>
 </tbody>
 </table>

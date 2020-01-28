@@ -3,7 +3,11 @@ EMSX History Request
 EMSX history service provides individual fill information via request/response service. The service name is 
 ``//blp/emsx.history`` for production and ``//blp/emsx.history.uat`` for test environment. 
 
-This service should not be used as a replacement for route subscription service to capture fills information in real-time.  Anyone found to abuse the service by making constant calls to the history service will be shutdown permanently by Bloomberg.
+.. important::
+
+	This service should not be used as a replacement for route subscription service to capture fills information in real-time.  	
+	Anyone found to abuse the service by making constant calls to the history service will be shutdown permanently by Bloomberg.
+
 
 A UUID's fills are only available if any of the following criteria are met:
 

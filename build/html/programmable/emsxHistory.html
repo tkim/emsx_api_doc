@@ -97,6 +97,8 @@
 <li class="toctree-l2"><a class="reference internal" href="testEnv.html#api-demo-tool">API Demo Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stateDiagram.html">Order State Diagram</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stateDiagram.html#route-state-diagram">Route State Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stateDiagram.html#emsx-api-schema">EMSX API Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stateDiagram.html#emsx-api-history-service-schema">EMSX API History Service Schema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">Session Object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="description.html">Description of Request/Response Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requestResponse.html">Buy-Side Request/Response Service</a></li>
@@ -179,7 +181,11 @@
 <h1>EMSX History Request<a class="headerlink" href="#emsx-history-request" title="Permalink to this headline">¶</a></h1>
 <p>EMSX history service provides individual fill information via request/response service. The service name is
 <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history</span></code> for production and <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history.uat</span></code> for test environment.</p>
-<p>This service should not be used as a replacement for route subscription service to capture fills information in real-time.  Anyone found to abuse the service by making constant calls to the history service will be shutdown permanently by Bloomberg.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">This service should not be used as a replacement for route subscription service to capture fills information in real-time.
+Anyone found to abuse the service by making constant calls to the history service will be shutdown permanently by Bloomberg.</p>
+</div>
 <p>A UUID’s fills are only available if any of the following criteria are met:</p>
 <ol class="arabic simple">
 <li>The user has at least one Export Fill profile in <code class="docutils literal notranslate"><span class="pre">EMSI&lt;GO&gt;</span></code>, or</li>
