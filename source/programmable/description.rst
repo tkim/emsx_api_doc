@@ -124,7 +124,7 @@ Element								Description
 ``EMSX_ACCOUNT``					29-character free text field (29+1 check digit), FIX Tag 1
 ``EMSX_BASKET_NAME``                20-character free text field (20+1 check digit)
 ``EMSX_INVESTOR_ID``                12-character free text field mostly used to identify Investor ID
-``EMSX_NOTE``						43-character free text field (43+1 check digit), FIX Tag 58
+``EMSX_NOTES``						43-character free text field (43+1 check digit), FIX Tag 58
 ``EMSX_ORDER_REF_ID``				15-character field (15+1 check digit) *order subscription only*
 ``EMSX_ROUTE_REF_ID``				15-character field (15+1 check digit) *route subscription only*
 ``EMSX_TRADER_NOTES``				43-character free text field (43+1 check digit), **internal & read only from API**
