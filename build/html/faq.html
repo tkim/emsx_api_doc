@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -24,21 +22,28 @@
 
   
 
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Glossary" href="glossary.html" />
-    <link rel="prev" title="IOI API Service" href="other.html" /> 
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="EMSX API Programmers Guide 2.0.0 documentation" href="index.html"/>
+        <link rel="next" title="Glossary" href="glossary.html"/>
+        <link rel="prev" title="IOI API Service" href="other.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -79,10 +84,7 @@
           
             
             
-              
-            
-            
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server/index.html">Server Side EMSX API</a></li>
@@ -105,54 +107,34 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">EMSX API Programmers Guide</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">EMSX API Programmers Guide</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>FAQ</li>
-    
-    
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>FAQ</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/faq.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -167,14 +149,14 @@
 <dt>What is a session?</dt>
 <dd><p class="first">Sessions are logical data stream connections and the EMSX API supports failover betweeen physical connections. During this failover, EMSX API will handle re-subscriptions for the end application.</p>
 <p class="last">If you are using multiple bloomberg API services, it is recommended to use separate sessions to avoid
-delaying a fast stream with slow one. For most design, it’s best to have separte session for
+delaying a fast stream with slow one. For most design, it&#8217;s best to have separte session for
 real-time data vs. EMSX API or reference data service.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>Should I open and close sessions as needed?</dt>
-<dd><p class="first last">No, typically opening and closing a session is expensive for both the client’s application and for Bloomberg back-end and thus unnecessary for most application designs while using EMSX API.</p>
+<dd><p class="first last">No, typically opening and closing a session is expensive for both the client&#8217;s application and for Bloomberg back-end and thus unnecessary for most application designs while using EMSX API.</p>
 </dd>
 </dl>
 </li>
@@ -200,7 +182,7 @@ using the PROD machine on the terminal. Switching one of these will normally res
 </dl>
 </li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">reason</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">reason</span> <span class="o">=</span> <span class="p">{</span>
         <span class="n">errorCode</span> <span class="o">=</span> <span class="mi">3</span>
         <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Invalid field passed in: Field=|EMSX_MOD_PEND_STATUS|&quot;</span>
         <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;-13&quot;</span>
@@ -218,13 +200,13 @@ window only. To return to PROD system on the terminal, type DGRT OFF&lt;GO&gt;</
 </li>
 <li><dl class="first docutils">
 <dt>How do I connect to PROD or BETA in the API?</dt>
-<dd><p class="first last">Two separate services are provided. These are <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc</span></code> (PROD) and <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc_beta</span></code> (TEST)</p>
+<dd><p class="first last">Two separate services are provided. These are <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> (PROD) and <code class="docutils literal"><span class="pre">//blp/emapisvc_beta</span></code> (TEST)</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>How do I match my requests to responses?</dt>
-<dd><p class="first last">This is done in the same was as for other Bloomberg API services, with the use of <code class="docutils literal notranslate"><span class="pre">CorrelationID</span></code>.</p>
+<dd><p class="first last">This is done in the same was as for other Bloomberg API services, with the use of <code class="docutils literal"><span class="pre">CorrelationID</span></code>.</p>
 </dd>
 </dl>
 </li>
@@ -255,7 +237,7 @@ for route messages when using our programmable interface.</p>
 <li><dl class="first docutils">
 <dt>Why am I still seeing orders that I deleted or have completed?</dt>
 <dd><p class="first last">Orders that were manually deleted, or completed in a previous session, will continue to transmit on
-the order. Check the <code class="docutils literal notranslate"><span class="pre">EMSX_STATUS</span></code> of the returned message to confirm if this is a live order.
+the order. Check the <code class="docutils literal"><span class="pre">EMSX_STATUS</span></code> of the returned message to confirm if this is a live order.
 These orders will cease to report between 24 and 48 hours after they are deleted depending on the
 nature of the order.</p>
 </dd>
@@ -273,8 +255,8 @@ static field.</p>
 <dt>Why is a field not being returned?</dt>
 <dd><p class="first">Some fields are specific to either Orders or Routes. You cannot subscribe to an Order field in the
 Route subscription and vice versa.</p>
-<p>The type of message will also dictate which fields will be returned. For <code class="docutils literal notranslate"><span class="pre">NEW_ORDER_ROUTE</span></code> and
-<code class="docutils literal notranslate"><span class="pre">INIT_PAINT</span></code> messages, all fields will be returned. However, for <code class="docutils literal notranslate"><span class="pre">UPD_ORDER_ROUTE</span></code>, the user will
+<p>The type of message will also dictate which fields will be returned. For <code class="docutils literal"><span class="pre">NEW_ORDER_ROUTE</span></code> and
+<code class="docutils literal"><span class="pre">INIT_PAINT</span></code> messages, all fields will be returned. However, for <code class="docutils literal"><span class="pre">UPD_ORDER_ROUTE</span></code>, the user will
 only receive a small number of static fields along with all those fields deemed to be ‘dynamic’,
 meaning they can change during the lifetime of the order or route.</p>
 <p class="last">This is one of the reasons as why the user is encouraged to maintain their own image of and order or
@@ -284,10 +266,10 @@ route within their application.</p>
 </li>
 <li><dl class="first docutils">
 <dt>How do I receive Fill messages?</dt>
-<dd><p class="first">Currently, the easiest way to track individual fills is to use the <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history</span></code> service
+<dd><p class="first">Currently, the easiest way to track individual fills is to use the <code class="docutils literal"><span class="pre">//blp/emsx.history</span></code> service
 using request/response service calls.</p>
 <p>However, please do not use this as a replacement for the route subscription. Anyone constantly calling the history service and abusing the history service will be shut down by Bloomberg.</p>
-<p class="last">The other option is to use the <a class="reference external" href="https://emsx-api-doc.readthedocs.io/en/latest/programmable/emsxSubscription.html#description-of-fills-using-route-subscription">route subscription</a> service. Each individual fill events will generate a <code class="docutils literal notranslate"><span class="pre">UPD_ORDER_ROUTE</span></code>
+<p class="last">The other option is to use the <a class="reference external" href="https://emsx-api-doc.readthedocs.io/en/latest/programmable/emsxSubscription.html#description-of-fills-using-route-subscription">route subscription</a> service. Each individual fill events will generate a <code class="docutils literal"><span class="pre">UPD_ORDER_ROUTE</span></code>
 the message, with the applicable changes to the order and route data.</p>
 </dd>
 </dl>
@@ -296,11 +278,11 @@ the message, with the applicable changes to the order and route data.</p>
 <ul>
 <li><dl class="first docutils">
 <dt>I do not see the fill information for one of my team member when I call the history service using team name.</dt>
-<dd><p class="first">A UUID’s fills are only stored if any of the following criteria are met:</p>
+<dd><p class="first">A UUID&#8217;s fills are only stored if any of the following criteria are met:</p>
 <ol class="arabic simple">
-<li>The user has at least one Export Fill profile in <code class="docutils literal notranslate"><span class="pre">EMSI&lt;GO&gt;</span></code>, or</li>
+<li>The user has at least one Export Fill profile in <code class="docutils literal"><span class="pre">EMSI&lt;GO&gt;</span></code>, or</li>
 <li>The user belongs to a team that is setup for team fill export, or</li>
-<li>The user is an EMSX API user, i.e., <code class="docutils literal notranslate"><span class="pre">EMSS&lt;GO&gt;</span></code> internal settings show “Enable EMSX API” to be true.</li>
+<li>The user is an EMSX API user, i.e., <code class="docutils literal"><span class="pre">EMSS&lt;GO&gt;</span></code> internal settings show &#8220;Enable EMSX API&#8221; to be true.</li>
 </ol>
 <p class="last">If the above criteria are not met, there will be no fills data history service can call to export.</p>
 </dd>
@@ -312,10 +294,10 @@ the message, with the applicable changes to the order and route data.</p>
 broker destination or to a broker algorithm, which supports basket. The term basket here is not
 intended for those who want to tie a particular group of orders into a trading strategy.</p>
 <p>Currently routing a basket is a two-step process in EMSX API. First, the user will need to use
-<code class="docutils literal notranslate"><span class="pre">CreateOrder</span></code> request to create the order and include the <code class="docutils literal notranslate"><span class="pre">EMSX_BASKET_NAME</span></code> in the field. To route
-the order, the user can use either <code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code> or <code class="docutils literal notranslate"><span class="pre">GroupRouteWithStrat</span></code> and include the
-<code class="docutils literal notranslate"><span class="pre">EMSX_SEQUENCE</span></code> number inside the array.</p>
-<p class="last">If the user misses an <code class="docutils literal notranslate"><span class="pre">EMSX_SEQUENCE</span></code> number inside the specified basket, the particular missing
+<code class="docutils literal"><span class="pre">CreateOrder</span></code> request to create the order and include the <code class="docutils literal"><span class="pre">EMSX_BASKET_NAME</span></code> in the field. To route
+the order, the user can use either <code class="docutils literal"><span class="pre">GroupRouteEx</span></code> or <code class="docutils literal"><span class="pre">GroupRouteWithStrat</span></code> and include the
+<code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> number inside the array.</p>
+<p class="last">If the user misses an <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> number inside the specified basket, the particular missing
 order will not be sent as part of the basket. This is the same logic used on EMSX&lt;GO&gt; for basket creation
 and basket submission.</p>
 </dd>
@@ -325,7 +307,7 @@ and basket submission.</p>
 <dt>How long do DAY orders and complete orders stay on the blotter and in the API?** (Status = 8)</dt>
 <dd><p class="first">In the old logic, the DAY orders stayed 4 hours after the exchange closed. The new logic is to extend
 this to 8 hours after the exchange closed. Expired orders are deleted after 2 days. For expired
-orders, when user gets <code class="docutils literal notranslate"><span class="pre">INIT_PAINT</span></code>, the will get updates for those expired orders with status=8.</p>
+orders, when user gets <code class="docutils literal"><span class="pre">INIT_PAINT</span></code>, the will get updates for those expired orders with status=8.</p>
 <p class="last">For partially filled orders delete will modify amount down to the filled amount and that order will
 not disappear and will be treated as a filled order. The Excel Add-In currently removes anything in
 the blotter with Status=8.</p>
@@ -381,59 +363,59 @@ simulator codes and by the broker for their own production codes.</p>
 </li>
 <li><p class="first">How do I regenerate apiregistry.ini file?</p>
 <blockquote>
-<div><p>Open regedit from RUN window and Clear the “APIRegistryCRC32” registry value located at
-“HKEY_LOCAL_MACHINESOFTWAREBloomberg L.P.Office ToolsSettings” or
-“HKEY_LOCAL_MACHINESOFTWAREWow6432NodeBloomberg L.P.Office ToolsSettings” on Windows 7.</p>
+<div><p>Open regedit from RUN window and Clear the &#8220;APIRegistryCRC32&#8221; registry value located at
+&#8220;HKEY_LOCAL_MACHINESOFTWAREBloomberg L.P.Office ToolsSettings&#8221; or
+&#8220;HKEY_LOCAL_MACHINESOFTWAREWow6432NodeBloomberg L.P.Office ToolsSettings&#8221; on Windows 7.</p>
 </div></blockquote>
 </li>
 <li><dl class="first docutils">
 <dt>How do I modify GTD to day order?</dt>
-<dd><p class="first last">Set <code class="docutils literal notranslate"><span class="pre">EMSX_GTD_DATE</span></code> to “-1” or -1 or any negative GTD date will reset the order to day order.</p>
+<dd><p class="first last">Set <code class="docutils literal"><span class="pre">EMSX_GTD_DATE</span></code> to &#8220;-1&#8221; or -1 or any negative GTD date will reset the order to day order.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>How do I modify or reset the stop price of an order?</dt>
-<dd><p class="first last">Set <code class="docutils literal notranslate"><span class="pre">EMSX_STOP_PRICE</span></code> to “-1” or -1</p>
+<dd><p class="first last">Set <code class="docutils literal"><span class="pre">EMSX_STOP_PRICE</span></code> to &#8220;-1&#8221; or -1</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>How do I reset my order from Limit to Market?</dt>
-<dd><p class="first last"><code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span> <span class="pre">=</span> <span class="pre">-99999</span></code> is only required when modifying <em>from</em> LMT to something else</p>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">EMSX_LIMIT_PRICE</span> <span class="pre">=</span> <span class="pre">-99999</span></code> is only required when modifying <em>from</em> LMT to something else</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>How do I set 0 limit price for futures spread orders?</dt>
-<dd><p class="first last"><code class="docutils literal notranslate"><span class="pre">EMSX_LIMIT_PRICE</span> <span class="pre">=</span> <span class="pre">-99999</span></code> needs to be set, otherwise the 0 limit price will be ignored.</p>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">EMSX_LIMIT_PRICE</span> <span class="pre">=</span> <span class="pre">-99999</span></code> needs to be set, otherwise the 0 limit price will be ignored.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>How is <code class="docutils literal notranslate"><span class="pre">EMSX_RELEASE_TIME</span></code> used?</dt>
-<dd><p class="first last"><code class="docutils literal notranslate"><span class="pre">EMSX_RELEASE_TIME</span></code> is in <code class="docutils literal notranslate"><span class="pre">HH:MM</span></code> format. For the API it is defaulted to the exchange time. This
+<dt>How is <code class="docutils literal"><span class="pre">EMSX_RELEASE_TIME</span></code> used?</dt>
+<dd><p class="first last"><code class="docutils literal"><span class="pre">EMSX_RELEASE_TIME</span></code> is in <code class="docutils literal"><span class="pre">HH:MM</span></code> format. For the API it is defaulted to the exchange time. This
 only works on requests that are routable from EMSX API. Thus, it will not work on CreateOrder
-request. Since the field is an integer, it should be forammted as <code class="docutils literal notranslate"><span class="pre">1101</span></code> for <code class="docutils literal notranslate"><span class="pre">11:01</span></code>.</p>
+request. Since the field is an integer, it should be forammted as <code class="docutils literal"><span class="pre">1101</span></code> for <code class="docutils literal"><span class="pre">11:01</span></code>.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>Are <code class="docutils literal notranslate"><span class="pre">EMSX_TICKER</span></code> and <code class="docutils literal notranslate"><span class="pre">EMSX_SIDE</span></code> elements always available on the subscription service?</dt>
+<dt>Are <code class="docutils literal"><span class="pre">EMSX_TICKER</span></code> and <code class="docutils literal"><span class="pre">EMSX_SIDE</span></code> elements always available on the subscription service?</dt>
 <dd><p class="first last">No, any fields that are static are not always returned.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>Can update events come before the <code class="docutils literal notranslate"><span class="pre">INITIAL_PAINT</span></code> or new event?</dt>
-<dd><p class="first last">Yes, this wasn’t the original intention, however, due to current EMSX back-end, the update <code class="docutils literal notranslate"><span class="pre">Event</span>
-<span class="pre">Status</span> <span class="pre">=</span> <span class="pre">7</span></code> messages can come before <code class="docutils literal notranslate"><span class="pre">INITIAL_PAINT</span></code> <code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">Status=4</span></code> or New <code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">Status</span> <span class="pre">=</span> <span class="pre">6</span></code></p>
+<dt>Can update events come before the <code class="docutils literal"><span class="pre">INITIAL_PAINT</span></code> or new event?</dt>
+<dd><p class="first last">Yes, this wasn’t the original intention, however, due to current EMSX back-end, the update <code class="docutils literal"><span class="pre">Event</span>
+<span class="pre">Status</span> <span class="pre">=</span> <span class="pre">7</span></code> messages can come before <code class="docutils literal"><span class="pre">INITIAL_PAINT</span></code> <code class="docutils literal"><span class="pre">Event</span> <span class="pre">Status=4</span></code> or New <code class="docutils literal"><span class="pre">Event</span> <span class="pre">Status</span> <span class="pre">=</span> <span class="pre">6</span></code></p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>Are <code class="docutils literal notranslate"><span class="pre">INITIAL_PAINT</span></code> messages always first?</dt>
-<dd><p class="first last">No, you can receive any route messages before the order message with <code class="docutils literal notranslate"><span class="pre">INITIAL_PAINT</span></code>.</p>
+<dt>Are <code class="docutils literal"><span class="pre">INITIAL_PAINT</span></code> messages always first?</dt>
+<dd><p class="first last">No, you can receive any route messages before the order message with <code class="docutils literal"><span class="pre">INITIAL_PAINT</span></code>.</p>
 </dd>
 </dl>
 </li>
@@ -449,7 +431,7 @@ resides and not the service itself.</p>
 </li>
 <li><dl class="first docutils">
 <dt>Is there a community project based on EMSX API?</dt>
-<dd><p class="first last">Yes, there is a MIT licensed community project. It’s called <a class="reference external" href="https://easymsx.readthedocs.io/en/latest/">EasyMSX</a>.</p>
+<dd><p class="first last">Yes, there is a MIT licensed community project. It&#8217;s called <a class="reference external" href="https://easymsx.readthedocs.io/en/latest/">EasyMSX</a>.</p>
 </dd>
 </dl>
 </li>
@@ -459,16 +441,15 @@ resides and not the service itself.</p>
 
 
            </div>
-           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="other.html" class="btn btn-neutral" title="IOI API Service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="other.html" class="btn btn-neutral" title="IOI API Service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -477,11 +458,11 @@ resides and not the service itself.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Terrence C. Kim
+        &copy; Copyright 2017, Terrence C. Kim.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -496,23 +477,34 @@ resides and not the service itself.</p>
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

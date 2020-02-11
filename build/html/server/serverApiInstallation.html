@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -24,21 +22,29 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Programmable EMSX API" href="../programmable/index.html" />
-    <link rel="prev" title="Creating User Identities" href="migration.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="EMSX API Programmers Guide 2.0.0 documentation" href="../index.html"/>
+        <link rel="up" title="Server Side EMSX API" href="index.html"/>
+        <link rel="next" title="Programmable EMSX API" href="../programmable/index.html"/>
+        <link rel="prev" title="Creating User Identities" href="migration.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -79,10 +85,7 @@
           
             
             
-              
-            
-            
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Server Side EMSX API</a><ul class="current">
@@ -112,56 +115,36 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">EMSX API Programmers Guide</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">EMSX API Programmers Guide</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
           <li><a href="index.html">Server Side EMSX API</a> &raquo;</li>
-        
-      <li>How to install serverapi.exe</li>
-    
-    
+      
+    <li>How to install serverapi.exe</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/server/serverApiInstallation.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -176,13 +159,13 @@
 <ul class="simple">
 <li>Run serverapi.exe</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># ./serverapiinstaller64
+<div class="highlight-none"><div class="highlight"><pre><span></span># ./serverapiinstaller64
 </pre></div>
 </div>
 <ul class="simple">
 <li>You will see the following message</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># ./serverapiinstaller64
+<div class="highlight-none"><div class="highlight"><pre><span></span># ./serverapiinstaller64
 logging to /tmp/bloomberg/install.2019111211.130037.log
 
 Bloomberg ECD Installer for Linux (64-bit)
@@ -201,7 +184,7 @@ Would you like to continue? (Y/N):
 <ul class="simple">
 <li>Type:- Y</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Would you like to continue? (Y/N): Y
+<div class="highlight-none"><div class="highlight"><pre><span></span>Would you like to continue? (Y/N): Y
 
 Checking connectivity to Bloomberg ...
 
@@ -270,9 +253,9 @@ Internet connectivity unavailable. Connecting via the Bloomberg Network.
 </pre></div>
 </div>
 <ul class="simple">
-<li>Select the appropriate network option if it doesn’t select by default (private vs. public/internet)</li>
+<li>Select the appropriate network option if it doesn&#8217;t select by default (private vs. public/internet)</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Select Product Class
+<div class="highlight-none"><div class="highlight"><pre><span></span>Select Product Class
 1) blpddm    Software that provides development access to distribute data locally or contribute data to Bloomberg.
 2) ServerApi Provides access to Bloomberg real-time streaming and static data
 0) Quit
@@ -281,7 +264,7 @@ Internet connectivity unavailable. Connecting via the Bloomberg Network.
 <ul class="simple">
 <li>Select:- 2 for Server API</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Please enter selection: 2
+<div class="highlight-none"><div class="highlight"><pre><span></span>Please enter selection: 2
 
 Installation path:
                 &#39;/opt/local&#39;
@@ -292,7 +275,7 @@ Use this path? (Y/N/Q):
 <ul class="simple">
 <li>Select:- York</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Creating the root directory /opt/local ...
+<div class="highlight-none"><div class="highlight"><pre><span></span>Creating the root directory /opt/local ...
 done.
 
 Downloading latest installer ...
@@ -307,7 +290,7 @@ Beginning new install ...
 <p class="first admonition-title">Note</p>
 <p class="last">If the default port is already being used by a different service it may show the following message:</p>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>*** WARNING: Port conflict detected with other service.
+<div class="highlight-none"><div class="highlight"><pre><span></span>*** WARNING: Port conflict detected with other service.
 The port of the Desktop will conflict with the ServerApi should installation proceed. If you still want to install
 ServerApi, you will need to specify a different port number.
 
@@ -317,14 +300,14 @@ ServerApi, you will need to specify a different port number.
 <ul class="simple">
 <li>Select:- Y and enter the port</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Do you want to continue with the installation? (Y/N) [N]:y
+<div class="highlight-none"><div class="highlight"><pre><span></span>Do you want to continue with the installation? (Y/N) [N]:y
 Please enter ServerApi listen port: [8294]:8294
 </pre></div>
 </div>
 <ul class="simple">
 <li>Select the version:-</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Versions available for ServerApi
+<div class="highlight-none"><div class="highlight"><pre><span></span>Versions available for ServerApi
 1) 3.86.5.1     Linux64     ServerAPI 2017-06
 
 2) 3.88.0.1     Linux64     ServerAPI 2017-08
@@ -358,14 +341,14 @@ Please enter version of ServerApi that you want to install:
 <ul class="simple">
 <li>Select the latest:-</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Please enter version of ServerApi that you want to install: 13
+<div class="highlight-none"><div class="highlight"><pre><span></span>Please enter version of ServerApi that you want to install: 13
 Downloading ServerApi components ...
 </pre></div>
 </div>
 <ul class="simple">
 <li>Enter other information:-</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Enter the following information:
+<div class="highlight-none"><div class="highlight"><pre><span></span>Enter the following information:
 
                 Country (e.g., USA):
                 State (e.g., NY):
@@ -377,7 +360,7 @@ Downloading ServerApi components ...
 <ul class="simple">
 <li>Finished:-</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Enter the following information:
+<div class="highlight-none"><div class="highlight"><pre><span></span>Enter the following information:
 
                 Country (e.g., USA): USA
                 State (e.g., NY): NY
@@ -417,13 +400,13 @@ ServerApi installation completed. Press ENTER to quit:
 <ul class="simple">
 <li>Run serverapi.exe</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>C:\temp&gt;serverapiinstaller.exe
+<div class="highlight-none"><div class="highlight"><pre><span></span>C:\temp&gt;serverapiinstaller.exe
 </pre></div>
 </div>
 <ul class="simple">
 <li>You will see the following message</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>C:\temp&gt;serverapiinstaller.exe
+<div class="highlight-none"><div class="highlight"><pre><span></span>C:\temp&gt;serverapiinstaller.exe
 logging to C:\temp\install.2016102610.152444.log
 
 Bloomberg ECD Installer for Windows (32-bit)
@@ -456,7 +439,7 @@ Would you like to continue? (Y/N):
 <ul class="simple">
 <li>Type:- Y</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Would you like to continue? (Y/N): y
+<div class="highlight-none"><div class="highlight"><pre><span></span>Would you like to continue? (Y/N): y
 
 Checking connectivity to Bloomberg ...
 
@@ -505,7 +488,7 @@ Which of the above routes will you use to connect to Bloomberg? (a/b):
 <ul class="simple">
 <li>Select the appropriate network option (private vs. public/internet)</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Which of the above routes will you use to connect to Bloomberg? (a/b): b
+<div class="highlight-none"><div class="highlight"><pre><span></span>Which of the above routes will you use to connect to Bloomberg? (a/b): b
 
 Bloomberg Network connectivity unavailable. Connecting via the Internet.
 
@@ -520,7 +503,7 @@ Please enter selection:
 <ul class="simple">
 <li>Select:- 2 for Server API</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Please enter selection: 2
+<div class="highlight-none"><div class="highlight"><pre><span></span>Please enter selection: 2
 
 Installation path:
         &#39;C:\&#39;
@@ -531,7 +514,7 @@ Use this path? (Y/N/Q):
 <ul class="simple">
 <li>Select:- Y</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Use this path? (Y/N/Q): y
+<div class="highlight-none"><div class="highlight"><pre><span></span>Use this path? (Y/N/Q): y
 
 Downloading latest installer ...
 done.
@@ -545,7 +528,7 @@ Beginning new install ...
 <p class="first admonition-title">Note</p>
 <p class="last">If the default port is already being used by a different service it may show the following message:</p>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>*** WARNING: Port conflict detected with other service.
+<div class="highlight-none"><div class="highlight"><pre><span></span>*** WARNING: Port conflict detected with other service.
 The port of the Desktop will conflict with the ServerApi should installation proceed. If you still want to install
 ServerApi, you will need to specify a different port number.
 
@@ -555,14 +538,14 @@ ServerApi, you will need to specify a different port number.
 <ul class="simple">
 <li>Select:- Y and enter the port</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Do you want to continue with the installation? (Y/N) [N]:y
+<div class="highlight-none"><div class="highlight"><pre><span></span>Do you want to continue with the installation? (Y/N) [N]:y
 Please enter ServerApi listen port: [8294]:8294
 </pre></div>
 </div>
 <ul class="simple">
 <li>Select the version:-</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Versions available for ServerApi
+<div class="highlight-none"><div class="highlight"><pre><span></span>Versions available for ServerApi
 1) 3.46.6.0     Windows     ServerAPI 2014-07
 
 2) 3.48.8.1     Windows     ServerAPI 2014-09
@@ -610,7 +593,7 @@ Please enter version of ServerApi that you want to install:
 <ul class="simple">
 <li>Select the latest:-</li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Please enter version of ServerApi that you want to install: 20
+<div class="highlight-none"><div class="highlight"><pre><span></span>Please enter version of ServerApi that you want to install: 20
 Downloading ServerApi components ...
 </pre></div>
 </div>
@@ -628,7 +611,7 @@ Department Name (e.g., Equity Trading):</p>
 <li><p class="first">Finished:-</p>
 </li>
 </ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Enter the following information:
+<div class="highlight-none"><div class="highlight"><pre><span></span>Enter the following information:
 
 Country (e.g., USA): USA
 State (e.g., NY): NY
@@ -673,16 +656,15 @@ Your registration key is:
 
 
            </div>
-           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../programmable/index.html" class="btn btn-neutral float-right" title="Programmable EMSX API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../programmable/index.html" class="btn btn-neutral float-right" title="Programmable EMSX API" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="migration.html" class="btn btn-neutral" title="Creating User Identities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="migration.html" class="btn btn-neutral" title="Creating User Identities" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -691,11 +673,11 @@ Your registration key is:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Terrence C. Kim
+        &copy; Copyright 2017, Terrence C. Kim.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -710,23 +692,34 @@ Your registration key is:
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

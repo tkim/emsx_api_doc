@@ -2552,7 +2552,7 @@ Full code sample:-
         session.sendRequest(request, correlationId=self.requestID )
 
 
-Manaul Fill Request
+Manual Fill Request
 ===================
 The ``ManualFill`` request can be used on the sell-side EMSX<GO> settings to create fills and notifies 
 EMSX<GO>.

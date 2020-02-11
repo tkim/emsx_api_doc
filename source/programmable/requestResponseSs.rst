@@ -25,7 +25,7 @@ These are initialized in the constructor as below and are then available for the
 submission of various requests. 
 
 
-Manaul Fill Request
+Manual Fill Request
 ===================
 The ``ManualFill`` request can be used on the sell-side EMSX<GO> settings to create fills and notifies EMSX<GO>.
 
