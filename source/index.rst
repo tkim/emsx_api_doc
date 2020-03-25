@@ -21,6 +21,9 @@ The object model for Java, .NET and C++ are identical. The C interface provides 
   starting on any EMSX API, please have your local EMSX representative provide a full training of ``EMSX<GO>`` function. This documentation 
   does not include any details on how ``EMSX<GO>`` works.
 
+  Due to the trading nature with the various Trading API's  at Bloomberg (e.g. EMSX API, IOI API, etc.) Bloomberg cannot legally assist on the client-side coding other than providing a high-level overview of the service, advice on some of the best practices approach to use the request/response paradigm and asynchronous event-driven nature of the subscription paradigm.  
+  
+  It is highly recommended that the technical resource working on the Trading API has extensive programming experiences and a solid understanding of software application architecture.
 
 
 .. warning::
