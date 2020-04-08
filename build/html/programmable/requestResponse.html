@@ -862,6 +862,10 @@ Broker code: EFIX       class: Future   tag: 1000
 <h2>Cancel Order Extended Request<a class="headerlink" href="#cancel-order-extended-request" title="Permalink to this headline">¶</a></h2>
 <p>In <code class="docutils literal"><span class="pre">EMSX&lt;GO&gt;</span></code> there is a feature that allows the user to cancel the parent order and child routes associated with the parent order in a single call. The <code class="docutils literal"><span class="pre">CancelOrderEx</span></code> request replicates this <code class="docutils literal"><span class="pre">EMSX&lt;GO&gt;</span></code> UI feature.</p>
 <p>However, unlike the <a class="reference external" href="https://emsx-api-doc.readthedocs.io/en/latest/programmable/requestResponse.html#cancel-route-extended-request">CancelRouteEx</a> request which changes the parent order state into <code class="docutils literal"><span class="pre">Assigned</span></code>, this request will permanently place the order in an inoperable  <code class="docutils literal"><span class="pre">Cancel</span></code> state.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Please note this request does not work for AIM users. This request only works for standalone EMSX API user.</p>
+</div>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>

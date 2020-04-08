@@ -686,6 +686,12 @@ In ``EMSX<GO>`` there is a feature that allows the user to cancel the parent ord
 
 However, unlike the `CancelRouteEx`_ request which changes the parent order state into ``Assigned``, this request will permanently place the order in an inoperable  ``Cancel`` state. 
 
+
+.. important::
+
+    Please note this request does not work for AIM users. This request only works for standalone EMSX API user.
+
+
 Full code sample:-
 
 ===================== =================== ===================
