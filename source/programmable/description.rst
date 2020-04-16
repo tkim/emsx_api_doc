@@ -1,7 +1,7 @@
 #######################################
 Description of Request/Response Service
 #######################################
-The request/response service can be used for both buy-side EMSX<GO> workflows or sell-side EMSX to EMSX (E2E) workflows.
+The request/response service can be used for both buy-side ``EMSX<GO>`` workflows or sell-side EMSX to EMSX (E2E) workflows.
 
 The buy-side EMSX request/response supports all the basic buy-side execution management control via request/response service where the sell-side EMSX request/response supports additional sell-side workflow for acknowledging or rejecting an order coming in via E2E workflow.
 
@@ -38,7 +38,7 @@ Request Name             			    Action
 
 	``CreateOrderAndRouteEx`` can be used for both strategy and non-strategy broker destinations.
 
-	``CreateOrderAndRouteManually`` is generally used for phone orders to brokers, where the actual placement is outside of EMSX<GO>.
+	``CreateOrderAndRouteManually`` is generally used for phone orders to brokers, where the actual placement is outside of ``EMSX<GO>``.
 
 	``RouteEx`` can be used for both strategy and non-strategy broker destinations.
 
@@ -50,7 +50,6 @@ Sell-Side Request/Response Service
 EMSX API supports the following sell-side Request/Response services:-
 *Please note, the descriptions to the legacy request/response services are omitted from the description section.*
 
-
 =================================== =================================================================
 Request Name             			Action
 =================================== =================================================================
@@ -58,7 +57,6 @@ Request Name             			Action
 ``SellSideAck`` 					Request to acknowlede an order on EMSX to EMSX setting.
 ``SellSideReject`` 					Request to reject an order on EMSX to EMSX setting.
 =================================== =================================================================
-
 
 .. note::
 
@@ -83,12 +81,10 @@ This is a feature that indicates CFD orders or to flag an odd lot in EMSX API.
 
 Date & Time Format
 ==================
-All date format except ``EMSX_QUEUED_TIME`` are in yyyymmdd format. All time format except ``EMSX_STRATEGY_END_TIME`` and 
-``EMSX_STRATEGY_START_TIME`` are in number of seconds from midnight.
+All date format except ``EMSX_QUEUED_TIME`` are in yyyymmdd format. All time format except ``EMSX_STRATEGY_END_TIME``,  ``EMSX_STRATEGY_START_TIME``, and ``EMSX_RELEASE_TIME`` are in number of seconds from midnight.
 
 The Strategy time zone is set using the EMSX<GO> function in the Bloomberg terminal under Routing Defaults section inside 
-the Settings menu. In the Routing Defaults, the user can select Exchange vs. User time zone for strategy time zone.
-
+the Settings menu. In the Routing Defaults, the user can select Exchange vs. User time zone for strategy time zone. The default is the Exchange time.
 
 =================================== =================================================================
 Element								Description             		
@@ -100,6 +96,7 @@ Element								Description
 ``EMSX_ROUTE_CREATE_DATE``			yyyymmdd
 ``EMSX_SETTLE_DATE``				yyyymmdd
 ``EMSX_QUEUED_TIME``				hhmm
+``EMSX_RELEASE_TIME``               hhmm   (For the API, it is defaulted to the exchange time.)
 ``EMSX_STRATEGY_END_TIME``			hhmmss
 ``EMSX_STRATEGY_START_TIME``		hhmmss
 ``EMSX_LAST_FILL_TIME``				Number of seconds from midnight
