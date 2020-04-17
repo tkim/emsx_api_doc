@@ -166,7 +166,7 @@ The EMSX element definitions will include the type of the element and will infor
 |``EMSX_APA_MIC``             |  | ``STRING`` ``ROUTE`` Approved publication arrangement in MiFID II.  |
 |                             |  | This is a route level field.                                        |
 +-----------------------------+------------------------------------------------------------------------+
-|``EMSX_ARRIVAL_PRICE``       |  | ``FLOAT64`` ``ROUTE`` The arrival price benchmark for order.The     | 
+|``EMSX_ARRIVAL_PRICE``       |  | ``FLOAT64`` ``ORDER`` The arrival price benchmark for order.The     | 
 |                             |  | arrival price is the midpoint during market hours, and the next     |   
 |                             |  | opening price between exchange sessions. This field is applicable to|
 |                             |  | trades on an order level, and does not populate on a per security   |
