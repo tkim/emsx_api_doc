@@ -9,6 +9,12 @@ However, the service schema is the same across the two platforms.  This means th
 All that is required to move desktop EMSX API applications to the server is the addition of code needed to perform user authentication.
 
 
+.. important::
+
+	Please reference ``BBPC<GO>`` in your Bloomberg terminal for full network and connectivity setup. This is in the Bloomberg Transport and Security Specification document.
+
+
+
 .. toctree::
 	:maxdepth: 3
 

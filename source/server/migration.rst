@@ -1,7 +1,5 @@
 Creating User Identities
 ========================
-
-
 The steps involved in connecting to the EMSX API on the desktop are as follows:-
 
 
@@ -91,8 +89,6 @@ In the above code, you will see that we examine the ‘seatType’ of the identi
 
 Using User Identities
 =====================
-
-
 When a client application connects to ``EMSX<GO>`` via the API on desktop, it does so by leveraging the identity of the logged in Bloomberg terminal user. This means that when a request or subscription object is received by the Bloomberg infrastructure, the target EMSX blotter can be identified.
 
 In the server environment, there is no Bloomberg terminal, and therefore no implied user can be identified.  Moreover, the server is capable of connecting to any number of EMSX user blotters, simultaneously. Therefore, the application making the call must indicate which user is the intended target. This is done through the creation and use of Identity object.
@@ -248,8 +244,6 @@ Following python sample summarizes the above:-
 
 Server Side Request/Response
 ============================
-
-
 As of today, the following ``emapisvc`` and ``emapisvc_beta`` requests are available from the server side access.
 
 

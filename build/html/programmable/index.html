@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -24,21 +22,28 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="EMSX Features" href="emsxFeatures.html" />
-    <link rel="prev" title="How to install serverapi.exe" href="../server/serverApiInstallation.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="EMSX API Programmers Guide 2.1.0 documentation" href="../index.html"/>
+        <link rel="next" title="EMSX Features" href="emsxFeatures.html"/>
+        <link rel="prev" title="How to install serverapi.exe" href="../server/serverApiInstallation.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -79,10 +84,7 @@
           
             
             
-              
-            
-            
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
@@ -122,54 +124,34 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">EMSX API Programmers Guide</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">EMSX API Programmers Guide</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li>Programmable EMSX API</li>
-    
-    
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Programmable EMSX API</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/programmable/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -178,13 +160,13 @@
   <div class="section" id="programmable-emsx-api">
 <h1>Programmable EMSX API<a class="headerlink" href="#programmable-emsx-api" title="Permalink to this headline">¶</a></h1>
 <p>The programmable API provides developers with access to EMSX data via a number of programming languages. It can be used independantly of the EMSX Excel add-in, or as a complement. The API provide the developer with the means to replicate most of the behaviour available from the EMSX&lt;GO&gt; in the terminal.</p>
-<p>The API supports two distinct programming paradigms; Subscription and Request/Response. Anyone already familiar with the Bloomberg API will recognize this approach. The EMSX API is simply an additional service (<code class="docutils literal notranslate"><span class="pre">//blp/emapisvc</span></code> or <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc_beta</span></code>) on the Bloomberg API, with certain subtle differences due to the nature of the data involved.</p>
-<p>The <strong>Request/Response</strong> methods are used to directly affect the state of the order book. Using these methods, the developer can Create and Delete (or Cancel) orders and routes (placements). When a request is made, for example <code class="docutils literal notranslate"><span class="pre">CreateOrder</span></code>, the application must supply the necessary field values as parameters. The application must then wait for, and process, any responses (success or failure, for example) before the order or route can be futher utilized. Requests are matched to their responses through the use of CorrelationIDs.</p>
+<p>The API supports two distinct programming paradigms; Subscription and Request/Response. Anyone already familiar with the Bloomberg API will recognize this approach. The EMSX API is simply an additional service (<code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> or <code class="docutils literal"><span class="pre">//blp/emapisvc_beta</span></code>) on the Bloomberg API, with certain subtle differences due to the nature of the data involved.</p>
+<p>The <strong>Request/Response</strong> methods are used to directly affect the state of the order book. Using these methods, the developer can Create and Delete (or Cancel) orders and routes (placements). When a request is made, for example <code class="docutils literal"><span class="pre">CreateOrder</span></code>, the application must supply the necessary field values as parameters. The application must then wait for, and process, any responses (success or failure, for example) before the order or route can be futher utilized. Requests are matched to their responses through the use of CorrelationIDs.</p>
 <p>The <strong>subscription</strong> service is used to maintain a local view of a user’s order book. Subscriptions are made for either orders or routes (placements), and any number of subscriptions can be made. The subscription is made at a user level, meaning all orders (or routes) for a given user are monitored on single subscription.
-When implementing subscription service, it’s important to write the code using two separate <code class="docutils literal notranslate"><span class="pre">.subscribe()</span></code> events for the order and route subscriptions.</p>
+When implementing subscription service, it’s important to write the code using two separate <code class="docutils literal"><span class="pre">.subscribe()</span></code> events for the order and route subscriptions.</p>
 <p>When a subscription is first made, the application will receive all the necessary messages to bring the local image of the user’s EMSX order book up to date. These initial messages will contain all the relevant fields for each order, both static and dynamic. Thereafter (within the same session), the user will only receive dynamic fields in any update messages. It is the developer’s responsibility to identify the changes, and respond appropriately. These messages are not stateful, and the API does not guarentee the order in which messages are received. However, this should not negatively impact the application, as long as the developer is aware of this and takes it into account.</p>
-<p>For example, when a <code class="docutils literal notranslate"><span class="pre">CreateOrder</span></code> is issued, as discussed above, it is perfectly feasible for a subscription event to be received before the response to the request. As this is a new order, the <code class="docutils literal notranslate"><span class="pre">EMSX_SEQUENCE</span></code> (the order ID number) will not yet be known on the client side. Therefore, you may be receiving messages for a sequence number that is not recognised, and will not be known until the response to the original <code class="docutils literal notranslate"><span class="pre">CreateOrder</span></code> request is processed. This can be dealt with through simple buffering of the subscription events.  In order to simplify this process the user has an option of using <code class="docutils literal notranslate"><span class="pre">EMSX_ORD_REF_ID</span></code> in subscription by supplying the <code class="docutils literal notranslate"><span class="pre">EMSX_ORDER_REF_ID</span></code> in your Request. This will allow the user to use the subscription event without having to wait for the response. The user can match requests with responses as well as subscription events. <code class="docutils literal notranslate"><span class="pre">EMSX_ORDER_REF_ID</span></code> has 16 character limitations but otherwise should be good to use as custom user defined field.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">EMSX_REQUEST_SEQ</span></code> should also be added to every request. The <code class="docutils literal notranslate"><span class="pre">EMSX_REQUEST_SEQ</span></code> should consist of 64-bit integer and should be reset once a week.  The purpose of this unique user assigned sequence number is to prevent duplicate requests from being sent during system outages. The number also should be unique per serial number of the Bloomberg terminal.</p>
+<p>For example, when a <code class="docutils literal"><span class="pre">CreateOrder</span></code> is issued, as discussed above, it is perfectly feasible for a subscription event to be received before the response to the request. As this is a new order, the <code class="docutils literal"><span class="pre">EMSX_SEQUENCE</span></code> (the order ID number) will not yet be known on the client side. Therefore, you may be receiving messages for a sequence number that is not recognised, and will not be known until the response to the original <code class="docutils literal"><span class="pre">CreateOrder</span></code> request is processed. This can be dealt with through simple buffering of the subscription events.  In order to simplify this process the user has an option of using <code class="docutils literal"><span class="pre">EMSX_ORD_REF_ID</span></code> in subscription by supplying the <code class="docutils literal"><span class="pre">EMSX_ORDER_REF_ID</span></code> in your Request. This will allow the user to use the subscription event without having to wait for the response. The user can match requests with responses as well as subscription events. <code class="docutils literal"><span class="pre">EMSX_ORDER_REF_ID</span></code> has 16 character limitations but otherwise should be good to use as custom user defined field.</p>
+<p>The <code class="docutils literal"><span class="pre">EMSX_REQUEST_SEQ</span></code> should also be added to every request. The <code class="docutils literal"><span class="pre">EMSX_REQUEST_SEQ</span></code> should consist of 64-bit integer and should be reset once a week.  The purpose of this unique user assigned sequence number is to prevent duplicate requests from being sent during system outages. The number also should be unique per serial number of the Bloomberg terminal.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="emsxFeatures.html">EMSX Features</a></li>
@@ -263,16 +245,15 @@ When implementing subscription service, it’s important to write the code using
 
 
            </div>
-           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="emsxFeatures.html" class="btn btn-neutral float-right" title="EMSX Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="emsxFeatures.html" class="btn btn-neutral float-right" title="EMSX Features" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../server/serverApiInstallation.html" class="btn btn-neutral" title="How to install serverapi.exe" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../server/serverApiInstallation.html" class="btn btn-neutral" title="How to install serverapi.exe" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -281,11 +262,11 @@ When implementing subscription service, it’s important to write the code using
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Terrence C. Kim
+        &copy; Copyright 2017, Terrence C. Kim.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -300,23 +281,34 @@ When implementing subscription service, it’s important to write the code using
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

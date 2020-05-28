@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -24,21 +22,29 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="EMSX Subscription" href="emsxSubscription.html" />
-    <link rel="prev" title="Buy-Side Request/Response Service" href="requestResponse.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="EMSX API Programmers Guide 2.1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Programmable EMSX API" href="index.html"/>
+        <link rel="next" title="EMSX Subscription" href="emsxSubscription.html"/>
+        <link rel="prev" title="Buy-Side Request/Response Service" href="requestResponse.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -79,10 +85,7 @@
           
             
             
-              
-            
-            
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
@@ -127,56 +130,36 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">EMSX API Programmers Guide</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">EMSX API Programmers Guide</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
           <li><a href="index.html">Programmable EMSX API</a> &raquo;</li>
-        
-      <li>Sell-Side Request/Response Service</li>
-    
-    
+      
+    <li>Sell-Side Request/Response Service</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/programmable/requestResponseSs.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -193,18 +176,18 @@ requires the following steps:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>Create a session (if session does not yet exist).</li>
-<li>Connect session to <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc_beta</span></code> or <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc</span></code> service and start it.</li>
+<li>Connect session to <code class="docutils literal"><span class="pre">//blp/emapisvc_beta</span></code> or <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> service and start it.</li>
 <li>Fetch a service object from the session representing emapisvc.</li>
 <li>Use the service object from above to create a Request object of the desired type</li>
 <li>Send request object via sendRequest method of session object, pass object of type EventQueue to the sendRequest.</li>
-<li>Loop through the EventQueue object until event of type <code class="docutils literal notranslate"><span class="pre">Event::RESPONSE</span></code> is read.</li>
+<li>Loop through the EventQueue object until event of type <code class="docutils literal"><span class="pre">Event::RESPONSE</span></code> is read.</li>
 </ol>
 </div></blockquote>
 <p>These are initialized in the constructor as below and are then available for the life of the application for
 submission of various requests.</p>
 <div class="section" id="manual-fill-request">
 <h2>Manual Fill Request<a class="headerlink" href="#manual-fill-request" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">ManualFill</span></code> request can be used on the sell-side EMSX&lt;GO&gt; settings to create fills and notifies EMSX&lt;GO&gt;.</p>
+<p>The <code class="docutils literal"><span class="pre">ManualFill</span></code> request can be used on the sell-side EMSX&lt;GO&gt; settings to create fills and notifies EMSX&lt;GO&gt;.</p>
 <p>Full code sample:-</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -219,7 +202,7 @@ submission of various requests.</p>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/ManualFill.java">Manual Fill java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/ManualFill.py">Manual Fill py</a></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -227,7 +210,7 @@ submission of various requests.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -337,7 +320,7 @@ buy-side EMSX&lt;GO&gt;.</p>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/SellSideAck.java">Sell Side Ack java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideAck.py">Sell Side Ack py</a></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -345,7 +328,7 @@ buy-side EMSX&lt;GO&gt;.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -419,7 +402,7 @@ buy-side EMSX&lt;GO&gt;.</p>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Java/SellSideReject.java">Sell Side Reject java</a></td>
 <td><a class="reference external" href="https://github.com/tkim/emsx_api_repository/blob/master/EMSXFullSet_Python/SellSideReject.py">Sell Side Reject py</a></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -427,7 +410,7 @@ buy-side EMSX&lt;GO&gt;.</p>
 <p class="first admonition-title">Hint</p>
 <p class="last">Please right click on the top code sample link to open in a new tab.</p>
 </div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -487,16 +470,15 @@ buy-side EMSX&lt;GO&gt;.</p>
 
 
            </div>
-           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="emsxSubscription.html" class="btn btn-neutral float-right" title="EMSX Subscription" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="emsxSubscription.html" class="btn btn-neutral float-right" title="EMSX Subscription" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="requestResponse.html" class="btn btn-neutral" title="Buy-Side Request/Response Service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="requestResponse.html" class="btn btn-neutral" title="Buy-Side Request/Response Service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -505,11 +487,11 @@ buy-side EMSX&lt;GO&gt;.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Terrence C. Kim
+        &copy; Copyright 2017, Terrence C. Kim.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -524,23 +506,34 @@ buy-side EMSX&lt;GO&gt;.</p>
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

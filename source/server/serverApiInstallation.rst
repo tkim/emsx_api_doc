@@ -1,13 +1,10 @@
 ############################
 How to install serverapi.exe
 ############################
-
-
 Please follow the following steps to install and register the installer with Bloomberg Enterprise Solutions with the assistance from EMSX Implementation team.
 
 Linux Environment
 =================
-
 The following example is based on the linux environment.
 
 
@@ -273,7 +270,6 @@ The following example is based on the linux environment.
 
 Windows Environment
 ===================
-
 The following example is based on the windows environment. 
 
 
