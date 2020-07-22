@@ -563,7 +563,16 @@
 <col width="71%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_COMM_DIFF_FLAG</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_CLIENT_ORDER_ID</span></code></td>
+<td><div class="first last line-block">
+<div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">ROUTE</span></code> The client order ID identifier generated</div>
+<div class="line">between EMSX and the EOR Broker. This value is unique per day. This</div>
+<div class="line">field is applicable to trades on a route level, and does not</div>
+<div class="line">populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_COMM_DIFF_FLAG</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The EMSX Commission Difference between broker</div>
 <div class="line">commission and AIM (Asset and Investment Manager) commission values.</div>
@@ -572,7 +581,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_COMM_RATE</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_COMM_RATE</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">FLOAT64</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The EMSX Commission Rate of commission charged</div>
 <div class="line">on the trade. This field is applicable to trades on an order and/or</div>
@@ -580,7 +589,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_CURRENCY_PAIR</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CURRENCY_PAIR</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">STATIC</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The EMSX Currency Pair which provides</div>
 <div class="line">the spot rate to convert the security&#8217;s currency and the user&#8217;s</div>
@@ -589,7 +598,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_ACCOUNT</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_ACCOUNT</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">ROUTE</span></code> The EMSX Route Account, is the account value at</div>
 <div class="line">the level of the route. This field is applicable to trades on a</div>
@@ -597,13 +606,13 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTEn</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTEn</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> 79-character free text field.</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_DATE</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_DATE</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> The EMSX Order Creation Date is the date on</div>
 <div class="line">which the order is created. This field is applicable to trades on an</div>
@@ -611,7 +620,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_DAY_AVG_PRICE</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_DAY_AVG_PRICE</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">FLOAT64</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The EMSX Day Average Price is the average price</div>
 <div class="line">for one share executed with the order, based on shares filled today.</div>
@@ -620,7 +629,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_DAY_FILL</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_DAY_FILL</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The EMSX Day Fill is the total quantity of shares</div>
 <div class="line">filled today for this order/security, across any number of brokers.</div>
@@ -629,7 +638,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_DIR_BROKER_FLAG</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_DIR_BROKER_FLAG</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> The EMSX Directed Brokers is an indicator of</div>
 <div class="line">whether the order has funds with the directed brokers defined. This</div>
@@ -638,7 +647,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_EXCHANGE</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_EXCHANGE</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">STATIC</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> The EMSX Exchange is the exchange</div>
 <div class="line">code for the order where the security in the order is listed. This</div>
@@ -647,7 +656,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_EXCHANGE_DESTINATION</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_EXCHANGE_DESTINATION</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The EMSX Exchange Destination is the Exchange</div>
 <div class="line">destination of the security for the order or route. This field is</div>
@@ -656,13 +665,13 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_EXEC_INSTRUCTION</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_EXEC_INSTRUCTION</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The EMSX execution instruction field.</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_EXECUTE_BROKER</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_EXECUTE_BROKER</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">ROUTE</span></code> The EMSX Execution Broker is the executing</div>
 <div class="line">broker on the trade for the route. This field is applicable to</div>
@@ -671,7 +680,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_FILL_ID</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_FILL_ID</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">STATIC</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The fill number associated with a</div>
 <div class="line">route. This field is applicable to trades on an order and/or route</div>
@@ -679,7 +688,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_FILLED</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_FILLED</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The quantity of shares which have been executed by</div>
 <div class="line">broker. This field is applicable to trades on an order and/or route</div>
@@ -687,13 +696,13 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_GPI</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_GPI</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The Global Personal Identifier in MiFID II.</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_GTD_DATE</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_GTD_DATE</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The EMSX Good to Date is the date the order is in</div>
 <div class="line">force until, based on local exchange date and time. This field is</div>
@@ -702,7 +711,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_HAND_INSTRUCTION</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_HAND_INSTRUCTION</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The EMSX Handling Instruction is the instructions</div>
 <div class="line">for handling the order or route. The values can be preconfigured or</div>
@@ -712,7 +721,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_IDLE_AMOUNT</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_IDLE_AMOUNT</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> The quantity of shares yet to be routed or</div>
 <div class="line">executed, equal to the order quantity minus amounts filled,</div>
@@ -721,7 +730,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_INVESTOR_ID</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_INVESTOR_ID</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> The identifier for the buy side investor as</div>
 <div class="line">used for markets such as Korea and Taiwan. This field is applicable</div>
@@ -730,7 +739,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_IS_MANUAL_ROUTE</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_IS_MANUAL_ROUTE</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">STATIC</span></code> <code class="docutils literal"><span class="pre">ROUTE</span></code> The EMSX Manual Route indicates that</div>
 <div class="line">the route was not communicated  electronically to the broker. This</div>
@@ -739,7 +748,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ISIN</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ISIN</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">STATIC</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> The EMSX International Securities</div>
 <div class="line">Identification Number or the ISIN (International Securities</div>
@@ -749,14 +758,14 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_LAST_CAPACITY</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_LAST_CAPACITY</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">ROUTE</span></code> The broker capacity in order execution.</div>
 <div class="line">(e.g. agent, cross as agent, cross as principal, and principal)</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_DATE</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_DATE</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">ROUTE</span></code> The date of the last fill based on the user&#8217;s</div>
 <div class="line">time zone. This field is applicable to trades on a route level, and</div>
@@ -764,7 +773,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_TIME</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_TIME</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">ROUTE</span></code> The time of the last fill based on seconds from</div>
 <div class="line">midnight in the user&#8217;s time zone. This field is applicable to trades</div>
@@ -1382,7 +1391,16 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_SETTLE_DATE</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_SETTLE_CURRENCY</span></code></td>
+<td><div class="first last line-block">
+<div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The settlement currency of the order or route,</div>
+<div class="line">will only be populated when settlement currency differs from</div>
+<div class="line">trading currency. This field is applicable to trades on an order</div>
+<div class="line">and/or route level, and does not populate on a per security basis.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_SETTLE_DATE</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The date on which payment is due to settle the</div>
 <div class="line">trade for the order or route. This field is applicable to trades</div>
@@ -1391,13 +1409,13 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_SI</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_SI</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> The Systematic Internalizer in MiFID II.</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_SIDE</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_SIDE</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">STATIC</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> The EMSX Side specifies whether</div>
 <div class="line">the order or route is generated from the buy side (B) or sell side</div>
@@ -1406,7 +1424,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_START_AMOUNT</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_START_AMOUNT</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">STATIC</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> The original order quantity at</div>
 <div class="line">creation of the order. This field is applicable to trades on an</div>
@@ -1415,7 +1433,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_STATUS</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_STATUS</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The current status of the order or route. This</div>
 <div class="line">field is applicable to trades on an order and/or route level, and</div>
@@ -1423,7 +1441,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_STEP_OUT_BROKER</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_STEP_OUT_BROKER</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> The name of the broker the executing broker</div>
 <div class="line">gives all or a portion of the commission to for the order. This</div>
@@ -1432,7 +1450,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_STOP_PRICE</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_STOP_PRICE</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">FLOAT64</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The price at which an order to buy or sell</div>
 <div class="line">a security is triggered. Once the trigger price is reached, the</div>
@@ -1442,7 +1460,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_END_TIME</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_END_TIME</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The end time for the EMSX Strategy Type</div>
 <div class="line"><code class="docutils literal"><span class="pre">EMSX_STRATEGY_TYPE</span></code>. This field is applicable to trades on an</div>
@@ -1451,7 +1469,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_PART_RATE1</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_PART_RATE1</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">FLOAT64</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The first participation rate for the</div>
 <div class="line">algorithmic strategy on the route. This field is applicable to</div>
@@ -1460,7 +1478,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_PART_RATE2</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_PART_RATE2</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">FLOAT64</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The second participation rate for the</div>
 <div class="line">algorithmic strategy on the  route. This field is applicable to</div>
@@ -1469,7 +1487,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_START_TIME</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_START_TIME</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The start time for the EMSX Strategy Type</div>
 <div class="line"><code class="docutils literal"><span class="pre">EMSX_STRATEGY_TYPE</span></code>. This field is applicable to trades on an</div>
@@ -1478,7 +1496,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_STYLE</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_STYLE</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The execution urgency for the algorithmic</div>
 <div class="line">strategy on the route; values are customized by individual</div>
@@ -1487,7 +1505,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_TYPE</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_TYPE</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The method used for the route or order,</div>
 <div class="line">customized by individual brokers. This field is applicable to</div>
@@ -1496,7 +1514,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TICKER</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_TICKER</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">STATIC</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> The ticker specifies the</div>
 <div class="line-block">
@@ -1507,7 +1525,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_TIF</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TIF</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The time limit of the order; how long the order</div>
 <div class="line">remains in effect for. This field is applicable to trades on an</div>
@@ -1516,7 +1534,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> The time the order or route is created, in</div>
 <div class="line">seconds from midnight based on the user&#8217;s time. This field is</div>
@@ -1525,13 +1543,13 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP_MICROSEC</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">FLOAT64</span></code> <code class="docutils literal"><span class="pre">O,R</span></code> <code class="docutils literal"><span class="pre">EMSX_TIME_STAMP</span></code> in microseconds.</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TOMS_PXNUM</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_TOMS_PXNUM</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> This element allows the user to insert the TOMS PX#</div>
 <div class="line">while using <code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code>, <code class="docutils literal"><span class="pre">RouteEx</span></code>, and</div>
@@ -1541,7 +1559,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_TRAD_UUID</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TRAD_UUID</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">INT32</span></code> <code class="docutils literal"><span class="pre">ORDER</span></code> The UUID of the EMSX Trader. This field is</div>
 <div class="line">equivalent to <code class="docutils literal"><span class="pre">EMSX_TRADER_UUID</span></code> in the elements in the</div>
@@ -1549,7 +1567,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TRADE_DESK</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_TRADE_DESK</span></code></td>
 <td><div class="first last line-block">
 <div class="line"><code class="docutils literal"><span class="pre">STRING</span></code> `` STATIC`` <code class="docutils literal"><span class="pre">ORDER</span></code> The name of the trading desk on</div>
 <div class="line">the order. This field is applicable to trades on an order level,</div>

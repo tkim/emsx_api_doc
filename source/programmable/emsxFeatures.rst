@@ -251,6 +251,11 @@ The EMSX element definitions will include the type of the element and will infor
 +------------------------------+-----------------------------------------------------------------------+
 
 +-----------------------------+------------------------------------------------------------------------+
+|``EMSX_CLIENT_ORDER_ID``     |  | ``STRING`` ``ROUTE`` The client order ID identifier generated       |
+|                             |  | between EMSX and the EOR Broker. This value is unique per day. This |
+|                             |  | field is applicable to trades on a route level, and does not        |
+|                             |  | populate on a per security basis.                                   |
++-----------------------------+------------------------------------------------------------------------+
 |``EMSX_COMM_DIFF_FLAG``      |  | ``STRING`` ``O,R`` The EMSX Commission Difference between broker    |
 |                             |  | commission and AIM (Asset and Investment Manager) commission values.|
 |                             |  | This field is applicable to trades on an order and/or route level,  |
@@ -645,6 +650,11 @@ EMSX Element Definition (N to Z)
 |                               |  | trade net of commission, taxes, and fees. This field is applicable| 
 |                               |  | to trades on an order and/or route level, and does not populate on| 
 |                               |  | a per security basis.                                             |
++-------------------------------+----------------------------------------------------------------------+
+|``EMSX_SETTLE_CURRENCY``       |  | ``STRING`` ``O,R`` The settlement currency of the order or route, |
+|                               |  | will only be populated when settlement currency differs from      |
+|                               |  | trading currency. This field is applicable to trades on an order  |
+|                               |  | and/or route level, and does not populate on a per security basis.|
 +-------------------------------+----------------------------------------------------------------------+
 |``EMSX_SETTLE_DATE``           |  | ``INT32`` ``O,R`` The date on which payment is due to settle the  |
 |                               |  | trade for the order or route. This field is applicable to trades  |
