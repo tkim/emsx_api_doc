@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -22,29 +24,21 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="EMSX API Programmers Guide 2.1.0 documentation" href="../index.html"/>
-        <link rel="up" title="Programmable EMSX API" href="index.html"/>
-        <link rel="next" title="Buy-Side Request/Response Service" href="requestResponse.html"/>
-        <link rel="prev" title="Session Object" href="session.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Buy-Side Request/Response Service" href="requestResponse.html" />
+    <link rel="prev" title="Session Object" href="session.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -85,7 +79,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server Side EMSX API</a></li>
@@ -132,36 +129,56 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">EMSX API Programmers Guide</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EMSX API Programmers Guide</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="index.html">Programmable EMSX API</a> &raquo;</li>
-      
-    <li>Description of Request/Response Service</li>
+        
+      <li>Description of Request/Response Service</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/programmable/description.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -169,7 +186,7 @@
             
   <div class="section" id="description-of-request-response-service">
 <h1>Description of Request/Response Service<a class="headerlink" href="#description-of-request-response-service" title="Permalink to this headline">¶</a></h1>
-<p>The request/response service can be used for both buy-side <code class="docutils literal"><span class="pre">EMSX&lt;GO&gt;</span></code> workflows or sell-side EMSX to EMSX (E2E) workflows.</p>
+<p>The request/response service can be used for both buy-side <code class="docutils literal notranslate"><span class="pre">EMSX&lt;GO&gt;</span></code> workflows or sell-side EMSX to EMSX (E2E) workflows.</p>
 <p>The buy-side EMSX request/response supports all the basic buy-side execution management control via request/response service where the sell-side EMSX request/response supports additional sell-side workflow for acknowledging or rejecting an order coming in via E2E workflow.</p>
 <div class="section" id="buy-side-request-response-service">
 <h2>Buy-Side Request/Response Service<a class="headerlink" href="#buy-side-request-response-service" title="Permalink to this headline">¶</a></h2>
@@ -186,65 +203,65 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">AssignTrader</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">AssignTrader</span></code></td>
 <td>Assign an order to another UUID.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CancelRouteEx</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">CancelRouteEx</span></code></td>
 <td>Cancel outstanding routes (placements).</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">CreateOrder</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">CreateOrder</span></code></td>
 <td>Create an order or stage an order into EMSX&lt;GO&gt;.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">CreateOrderAndRouteEx</span></code></td>
 <td>Create a new order and route in a single request.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">CreateOrderAndRouteManually</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">CreateOrderAndRouteManually</span></code></td>
 <td>Create the order and notify EMSX this is routed.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">DeleteOrder</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">DeleteOrder</span></code></td>
 <td>Delete an existing order in EMSX&lt;GO&gt;.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">GetAllFieldMetaData</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GetAllFieldMetaData</span></code></td>
 <td>Get all field meta data in a response message.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">GetBrokerStrategiesWithAssetClass</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">GetBrokerStrategiesWithAssetClass</span></code></td>
 <td>Get all broker strategy information and asset class data.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GetBrokerStrategyInfoWithAssetClass</span></code></td>
 <td>Get all broker strategy info and asset class data.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">GetBrokerWithAssetClass</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">GetBrokerWithAssetClass</span></code></td>
 <td>Get all broker data with asset class in a response message.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">GetFieldMetaData</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GetFieldMetaData</span></code></td>
 <td>Get field meta data in a reponse message.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">GetTeams</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">GetTeams</span></code></td>
 <td>Get team data in a response message.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">GroupRouteEx</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GroupRouteEx</span></code></td>
 <td>Submit the entire list as a single route to a basket algorithm.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ModifyOrder</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ModifyOrder</span></code></td>
 <td>Modify parent order.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ModifyRouteEx</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ModifyRouteEx</span></code></td>
 <td>Modify child route.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RouteEx</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RouteEx</span></code></td>
 <td>Route existing order.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RouteManuallyEx</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RouteManuallyEx</span></code></td>
 <td>Route manually and notify EMSX that it is routed.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p><code class="docutils literal"><span class="pre">CreateOrderAndRouteEx</span></code> can be used for both strategy and non-strategy broker destinations.</p>
-<p><code class="docutils literal"><span class="pre">CreateOrderAndRouteManually</span></code> is generally used for phone orders to brokers, where the actual placement is outside of <code class="docutils literal"><span class="pre">EMSX&lt;GO&gt;</span></code>.</p>
-<p><code class="docutils literal"><span class="pre">RouteEx</span></code> can be used for both strategy and non-strategy broker destinations.</p>
-<p class="last"><code class="docutils literal"><span class="pre">RouteManuallyEx</span></code> is generally used for phone orders to manually enter back the execution to EMSX&lt;GO&gt;.</p>
+<p><code class="docutils literal notranslate"><span class="pre">CreateOrderAndRouteEx</span></code> can be used for both strategy and non-strategy broker destinations.</p>
+<p><code class="docutils literal notranslate"><span class="pre">CreateOrderAndRouteManually</span></code> is generally used for phone orders to brokers, where the actual placement is outside of <code class="docutils literal notranslate"><span class="pre">EMSX&lt;GO&gt;</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">RouteEx</span></code> can be used for both strategy and non-strategy broker destinations.</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">RouteManuallyEx</span></code> is generally used for phone orders to manually enter back the execution to EMSX&lt;GO&gt;.</p>
 </div>
 </div>
 <div class="section" id="sell-side-request-response-service">
@@ -262,44 +279,44 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ManualFill</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ManualFill</span></code></td>
 <td>Request to manually fill a child route.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">SellSideAck</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">SellSideAck</span></code></td>
 <td>Request to acknowlede an order on EMSX to EMSX setting.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">SellSideReject</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">SellSideReject</span></code></td>
 <td>Request to reject an order on EMSX to EMSX setting.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p><code class="docutils literal"><span class="pre">SellSideAck</span></code> is used for EMSX to EMSX or E2E settings where sell-side EMSX&lt;GO&gt; is used to receive order from buy-side EMSX.</p>
-<p class="last"><code class="docutils literal"><span class="pre">SellSideReject</span></code> is used for EMSX to EMSX or E2E settings where sell-side EMSX&lt;GO&gt; is used to receive order from buy-side EMSX.</p>
+<p><code class="docutils literal notranslate"><span class="pre">SellSideAck</span></code> is used for EMSX to EMSX or E2E settings where sell-side EMSX&lt;GO&gt; is used to receive order from buy-side EMSX.</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">SellSideReject</span></code> is used for EMSX to EMSX or E2E settings where sell-side EMSX&lt;GO&gt; is used to receive order from buy-side EMSX.</p>
 </div>
 </div>
 <div class="section" id="cfd-odd-lot-flag">
 <h2>CFD &amp; Odd Lot Flag<a class="headerlink" href="#cfd-odd-lot-flag" title="Permalink to this headline">¶</a></h2>
 <p>This is a feature that indicates CFD orders or to flag an odd lot in EMSX API.
-<code class="docutils literal"><span class="pre">EMSX_CFD_FLAG</span></code>  is used to flag a particular order as CFD</p>
+<code class="docutils literal notranslate"><span class="pre">EMSX_CFD_FLAG</span></code>  is used to flag a particular order as CFD</p>
 <blockquote>
 <div><ul class="simple">
 <li>0 = not flagged</li>
 <li>1 = flagged</li>
 </ul>
 </div></blockquote>
-<p><code class="docutils literal"><span class="pre">EMSX_ODD_LOT_FLAG</span></code>  is an odd lot is a quantity of stock that is less than 100 shares. A deal involving 100 shares or more is considered a round-lot transactions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">EMSX_ODD_LOT_FLAG</span></code>  is an odd lot is a quantity of stock that is less than 100 shares. A deal involving 100 shares or more is considered a round-lot transactions.</p>
 <blockquote>
 <div><ul class="simple">
-<li>0 = not an odd lot / it won&#8217;t fill odd lots</li>
+<li>0 = not an odd lot / it won’t fill odd lots</li>
 <li>1 = odd lot</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="date-time-format">
 <h2>Date &amp; Time Format<a class="headerlink" href="#date-time-format" title="Permalink to this headline">¶</a></h2>
-<p>All date format except <code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME</span></code> are in yyyymmdd format. All time format except <code class="docutils literal"><span class="pre">EMSX_STRATEGY_END_TIME</span></code>,  <code class="docutils literal"><span class="pre">EMSX_STRATEGY_START_TIME</span></code>, and <code class="docutils literal"><span class="pre">EMSX_RELEASE_TIME</span></code> are in number of seconds from midnight.</p>
+<p>All date format except <code class="docutils literal notranslate"><span class="pre">EMSX_QUEUED_TIME</span></code> are in yyyymmdd format. All time format except <code class="docutils literal notranslate"><span class="pre">EMSX_STRATEGY_END_TIME</span></code>,  <code class="docutils literal notranslate"><span class="pre">EMSX_STRATEGY_START_TIME</span></code>, and <code class="docutils literal notranslate"><span class="pre">EMSX_RELEASE_TIME</span></code> are in number of seconds from midnight.</p>
 <p>The Strategy time zone is set using the EMSX&lt;GO&gt; function in the Bloomberg terminal under Routing Defaults section inside
 the Settings menu. In the Routing Defaults, the user can select Exchange vs. User time zone for strategy time zone. The default is the Exchange time.</p>
 <table border="1" class="docutils">
@@ -313,51 +330,51 @@ the Settings menu. In the Routing Defaults, the user can select Exchange vs. Use
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_DATE</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_DATE</span></code></td>
 <td>yyyymmdd</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_GTD_DATE</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_GTD_DATE</span></code></td>
 <td>yyyymmdd</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_DATE</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_FILL_DATE</span></code></td>
 <td>yyyymmdd</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_QUEUED_DATE</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_QUEUED_DATE</span></code></td>
 <td>yyyymmdd</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_DATE</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_CREATE_DATE</span></code></td>
 <td>yyyymmdd</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_SETTLE_DATE</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_SETTLE_DATE</span></code></td>
 <td>yyyymmdd</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_QUEUED_TIME</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_QUEUED_TIME</span></code></td>
 <td>hhmm</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_RELEASE_TIME</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_RELEASE_TIME</span></code></td>
 <td>hhmm   (For the API, it is defaulted to the exchange time.)</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_END_TIME</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_STRATEGY_END_TIME</span></code></td>
 <td>hhmmss</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_STRATEGY_START_TIME</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_STRATEGY_START_TIME</span></code></td>
 <td>hhmmss</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_LAST_FILL_TIME</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_LAST_FILL_TIME</span></code></td>
 <td>Number of seconds from midnight</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_CREATE_TIME</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_CREATE_TIME</span></code></td>
 <td>Number of seconds from midnight</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_LAST_UPDATE_TIME</span></code></td>
 <td>Number of seconds from midnight</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_TIME_STAMP</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TIME_STAMP</span></code></td>
 <td>Number of seconds from midnight</td>
 </tr>
 </tbody>
 </table>
-<p>The <code class="docutils literal"><span class="pre">//blp/emsx.history</span></code> and <code class="docutils literal"><span class="pre">//blp/emsx.history.uat</span></code> are set in date time objects unlike the <code class="docutils literal"><span class="pre">//blp/emapisvc</span></code> or <code class="docutils literal"><span class="pre">//blp/emapisvc_beta.</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history</span></code> and <code class="docutils literal notranslate"><span class="pre">//blp/emsx.history.uat</span></code> are set in date time objects unlike the <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc</span></code> or <code class="docutils literal notranslate"><span class="pre">//blp/emapisvc_beta.</span></code></p>
 </div>
 <div class="section" id="custom-notes-free-text-fields">
 <h2>Custom Notes &amp; Free Text Fields<a class="headerlink" href="#custom-notes-free-text-fields" title="Permalink to this headline">¶</a></h2>
@@ -374,25 +391,25 @@ the Settings menu. In the Routing Defaults, the user can select Exchange vs. Use
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ACCOUNT</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ACCOUNT</span></code></td>
 <td>29-character free text field (29+1 check digit), FIX Tag 1</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_BASKET_NAME</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_BASKET_NAME</span></code></td>
 <td>20-character free text field (20+1 check digit)</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_INVESTOR_ID</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_INVESTOR_ID</span></code></td>
 <td>12-character free text field mostly used to identify Investor ID</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_NOTES</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_NOTES</span></code></td>
 <td>43-character free text field (43+1 check digit), FIX Tag 58</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_ORDER_REF_ID</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ORDER_REF_ID</span></code></td>
 <td>15-character field (15+1 check digit) <em>order subscription only</em></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_ROUTE_REF_ID</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_ROUTE_REF_ID</span></code></td>
 <td>15-character field (15+1 check digit) <em>route subscription only</em></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_TRADER_NOTES</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_TRADER_NOTES</span></code></td>
 <td>43-character free text field (43+1 check digit), <strong>internal &amp; read only from API</strong></td>
 </tr>
 </tbody>
@@ -400,7 +417,7 @@ the Settings menu. In the Routing Defaults, the user can select Exchange vs. Use
 <p>The following elements are available only for internal fields unless custom mapped to a custom FIX tag to a particular trading counterparty.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">The following <code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE*</span></code> elements are only available on order subscription service.</p>
+<p class="last">The following <code class="docutils literal notranslate"><span class="pre">EMSX_CUSTOM_NOTE*</span></code> elements are only available on order subscription service.</p>
 </div>
 <table border="1" class="docutils">
 <colgroup>
@@ -413,19 +430,19 @@ the Settings menu. In the Routing Defaults, the user can select Exchange vs. Use
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE1</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_CUSTOM_NOTE1</span></code></td>
 <td>79-character free text field (79+1 check digit)</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE2</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_CUSTOM_NOTE2</span></code></td>
 <td>79-character free text field (79+1 check digit)</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE3</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_CUSTOM_NOTE3</span></code></td>
 <td>79-character free text field (79+1 check digit)</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE4</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">EMSX_CUSTOM_NOTE4</span></code></td>
 <td>79-character free text field (79+1 check digit)</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">EMSX_CUSTOM_NOTE5</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">EMSX_CUSTOM_NOTE5</span></code></td>
 <td>79-character free text field (79+1 check digit)</td>
 </tr>
 </tbody>
@@ -435,15 +452,16 @@ the Settings menu. In the Routing Defaults, the user can select Exchange vs. Use
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="requestResponse.html" class="btn btn-neutral float-right" title="Buy-Side Request/Response Service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="requestResponse.html" class="btn btn-neutral float-right" title="Buy-Side Request/Response Service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="session.html" class="btn btn-neutral" title="Session Object" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="session.html" class="btn btn-neutral" title="Session Object" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -452,11 +470,11 @@ the Settings menu. In the Routing Defaults, the user can select Exchange vs. Use
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Terrence C. Kim.
+        &copy; Copyright 2017, Terrence C. Kim
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -471,34 +489,23 @@ the Settings menu. In the Routing Defaults, the user can select Exchange vs. Use
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'2.1.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

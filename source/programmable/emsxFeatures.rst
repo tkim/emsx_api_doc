@@ -513,7 +513,7 @@ EMSX Element Definition (N to Z)
 +-------------------------------+----------------------------------------------------------------------+
 |``EMSX_P_A``                   |  | ``STRING`` ``ROUTE`` The EMSX Principal/Agency element specifies  |
 |                               |  | the capacity in which the broker acts for a particular order and  |
-|                               |  | route; either 'Principal' or 'Agency'. This field is      |
+|                               |  | route; either 'Principal' or 'Agency'. This field is              |
 |                               |  | applicable to trades on a route level, and does not populate on a |
 |                               |  | per security basis.                                               | 
 +-------------------------------+----------------------------------------------------------------------+
