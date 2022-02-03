@@ -538,7 +538,6 @@ Pick and choose the elements and create order subscription:-
 	        orderTopic = orderTopic + "API_SEQ_NUM,"
 	        orderTopic = orderTopic + "EMSX_ACCOUNT,"
 	        orderTopic = orderTopic + "EMSX_AMOUNT,"
-	        orderTopic = orderTopic + "EMSX_ARRIVAL_PRICE,"
 	        orderTopic = orderTopic + "EMSX_ASSET_CLASS,"
 	        orderTopic = orderTopic + "EMSX_ASSIGNED_TRADER,"
 	        orderTopic = orderTopic + "EMSX_AVG_PRICE,"
@@ -623,7 +622,6 @@ Output:-
 		EVENT_STATUS = 4
 		EMSX_ACCOUNT = ""
 		EMSX_AMOUNT = 6000
-		EMSX_ARRIVAL_PRICE = 162.805000
 		EMSX_ASSET_CLASS = "Equity"
 		EMSX_ASSIGNED_TRADER = ""
 		EMSX_AVG_PRICE = 161.330000
@@ -722,7 +720,6 @@ Output:-
 	API_SEQ_NUM: 1
 	EMSX_ACCOUNT:
 	EMSX_AMOUNT: 6000
-	EMSX_ARRIVAL_PRICE: 162
 	EMSX_ASSET_CLASS: Equity
 	EMSX_ASSIGNED_TRADER:
 	EMSX_AVG_PRICE: 161
@@ -835,7 +832,6 @@ Output:-
 		EVENT_STATUS = 4
 		EMSX_ACCOUNT = ""
 		EMSX_AMOUNT = 1100
-		EMSX_ARRIVAL_PRICE = 162.805000
 		EMSX_ASSET_CLASS = "Equity"
 		EMSX_ASSIGNED_TRADER = ""
 		EMSX_AVG_PRICE = 161.330000
@@ -934,7 +930,6 @@ Output:-
 	API_SEQ_NUM: 2
 	EMSX_ACCOUNT:
 	EMSX_AMOUNT: 1100
-	EMSX_ARRIVAL_PRICE: 162
 	EMSX_ASSET_CLASS: Equity
 	EMSX_ASSIGNED_TRADER:
 	EMSX_AVG_PRICE: 161
