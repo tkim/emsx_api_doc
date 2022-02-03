@@ -328,10 +328,6 @@ Output:-
                     No. of Parameters: 0
 
 
-            Strategy Name: ARRIVAL PRICE    Fix Value: ARRP
-                    No. of Parameters: 0
-
-
             Strategy Name: BIPS     Fix Value: 2
                     No. of Parameters: 0
 
