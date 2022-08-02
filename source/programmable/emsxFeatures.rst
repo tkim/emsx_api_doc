@@ -483,6 +483,7 @@ EMSX Element Definition (N to Z)
 +-------------------------------+----------------------------------------------------------------------+
 |``EMSX_ORD_REF_ID``            |  | ``STRING`` ``ORDER`` The EMSX Order Reference ID. The element is  |
 |                               |  | called the ``EMSX_ORDER_REF_ID`` in the request/response services.|
+|                               |  | Not available to AIM users.                                       |
 +-------------------------------+----------------------------------------------------------------------+
 |``EMSX_ORDER_AS_OF_DATE``      |  | ``INT32`` ``ORDER`` The order as of date in EMSX.                 |
 +-------------------------------+----------------------------------------------------------------------+
@@ -624,6 +625,7 @@ EMSX Element Definition (N to Z)
 +-------------------------------+----------------------------------------------------------------------+
 |``EMSX_ROUTE_REF_ID``          |  | ``STRING`` ``ROUTE`` The EMSX Route Reference ID. The element is  |
 |                               |  | called the ``EMSX_ROUTE_REF_ID`` in the request/response services.|
+|                               |  | Not available to AIM users.                                       |
 +-------------------------------+----------------------------------------------------------------------+
 |``EMSX_SEC_NAME``              |  | ``STRING`` ``STATIC`` ``ORDER`` The EMSX Security Name is the long| 
 |                               |  | name of the security being traded in EMSX. This field is          |
