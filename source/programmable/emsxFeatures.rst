@@ -485,11 +485,13 @@ EMSX Element Definition (N to Z)
 |                               |  | called the ``EMSX_ORDER_REF_ID`` in the request/response services.|
 |                               |  | Not available to AIM users.                                       |
 +-------------------------------+----------------------------------------------------------------------+
-|``EMSX_ORDER_AS_OF_DATE``      |  | ``INT32`` ``ORDER`` The order as of date in EMSX.                 |
+|``EMSX_ORDER_AS_OF_DATE``      |  | ``INT32`` ``ORDER`` The order as of date in EMSX in New York      |
+|                               |  | time zone.                                                        |
 +-------------------------------+----------------------------------------------------------------------+
 
 +----------------------------------+-------------------------------------------------------------------+
-|``EMSX_ORDER_AS_OF_TIME_MICROSEC``|  | ``FLOAT64`` ``ORDER`` The order as of time in microseconds.    |
+|``EMSX_ORDER_AS_OF_TIME_MICROSEC``|  | ``FLOAT64`` ``ORDER`` The order as of time in microseconds in  |
+|                                  |  | New York time zone.                                            |
 +----------------------------------+-------------------------------------------------------------------+
 
 +-------------------------------+----------------------------------------------------------------------+
@@ -577,12 +579,13 @@ EMSX Element Definition (N to Z)
 |                               |  | and/or route level, and does not populate on a per security basis.| 
 +-------------------------------+----------------------------------------------------------------------+
 |``EMSX_ROUTE_AS_OF_DATE``      |  | ``INT32`` ``ROUTE`` The date of the creation of the route in the  |
-|                               |  | user's time zone. This field is applicable to trades on a route   |
+|                               |  | New York time zone. This field is applicable to trades on a route |
 |                               |  | level, and does not populate on a per security basis.             |
 +-------------------------------+----------------------------------------------------------------------+
 
 +----------------------------------+-------------------------------------------------------------------+
-|``EMSX_ROUTE_AS_OF_TIME_MICROSEC``|  | ``FLOAT64`` ``ROUTE`` The route as of time in microseconds.    |
+|``EMSX_ROUTE_AS_OF_TIME_MICROSEC``|  | ``FLOAT64`` ``ROUTE`` The route as of time in microseconds, in |
+|                                  |  | New York time zone.                                            |
 +----------------------------------+-------------------------------------------------------------------+
 
 +-------------------------------+----------------------------------------------------------------------+
