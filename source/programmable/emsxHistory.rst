@@ -176,7 +176,7 @@ Connect and create a session object:-
 	            elif event.eventType() == blpapi.Event.SERVICE_STATUS:
 	                self.processServiceStatusEvent(event,session)
 
-	            elif event.eventType() == blpapi.Event.RESPONSE:
+	            elif event.eventType() == blpapi.Event.RESPONSE or event.eventType() == blpapi.Event.PARTIAL_RESPONSE:
 	                self.processResponseEvent(event)
 	            
 	            else:
